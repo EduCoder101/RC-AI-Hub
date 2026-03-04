@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching with AI — Roseville College Staff Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --burgundy: #5b152e;
+            --burgundy-dark: #3e0e20;
+            --burgundy-light: #7a1e3f;
+            --sandstone: #f6dc80;
+            --sandstone-light: #fdf3c4;
+            --heritage: #8ba8d8;
+            --heritage-light: #d0dff2;
+            --warm-rose: #f24468;
+            --light-grey: #c8bfb7;
+            --mid-grey: #a19a94;
+            --off-white: #faf8f5;
+            --white: #ffffff;
+            --text: #2c1a22;
+            --text-light: #6b5a62;
+            --nb-teal: #2a7a6a;
+            --nb-teal-light: #e0f2ee;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            background: var(--burgundy);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 4px 24px rgba(91,21,46,0.3);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--sandstone);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--burgundy);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: 0.75rem;
+            color: var(--sandstone);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .nav-link.active { color: var(--sandstone); background: rgba(246,220,128,0.15); }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 60%, var(--burgundy-light) 100%);
+            padding: 5rem 2rem 4rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 8%;
+            width: 250px;
+            height: 250px;
+            background: rgba(246,220,128,0.06);
+            border-radius: 50%;
+        }
+
+        .hero .circle-3 {
+            position: absolute;
+            top: 40%;
+            left: -60px;
+            width: 180px;
+            height: 180px;
+            background: rgba(139,168,216,0.05);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-inner h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+        }
+
+        .hero-inner p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ─── SECTION CONTAINER ─── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        /* ─── DECISION FLOW (I want to...) ─── */
+        .decision-flow {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 4px 16px rgba(91,21,46,0.06);
+        }
+
+        .decision-flow-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.1rem;
+            color: var(--burgundy);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .flow-row {
+            display: flex;
+            align-items: stretch;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .flow-item {
+            flex: 1;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.25rem 1rem;
+            border-radius: 12px;
+            background: var(--off-white);
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+        }
+
+        .flow-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(91,21,46,0.1);
+        }
+
+        .flow-item.flow-gemini { border-top: 4px solid var(--heritage); }
+        .flow-item.flow-gemini:hover { border-color: var(--heritage); }
+        .flow-item.flow-gems { border-top: 4px solid var(--burgundy); }
+        .flow-item.flow-gems:hover { border-color: var(--burgundy); }
+        .flow-item.flow-notebook { border-top: 4px solid var(--nb-teal); }
+        .flow-item.flow-notebook:hover { border-color: var(--nb-teal); }
+
+        .flow-intent {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+            font-style: italic;
+        }
+
+        .flow-exemplar {
+            font-size: 0.72rem;
+            color: var(--mid-grey);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-arrow {
+            font-size: 1.2rem;
+            color: var(--mid-grey);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-tool {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .flow-item.flow-gemini .flow-tool { color: #5a7aaa; }
+        .flow-item.flow-gems .flow-tool { color: var(--burgundy); }
+        .flow-item.flow-notebook .flow-tool { color: var(--nb-teal); }
+
+        /* ─── DECISION GUIDE CARDS ─── */
+        .decision-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3.5rem;
+        }
+
+        .guide-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .guide-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 0;
+            box-shadow: 0 4px 16px rgba(91,21,46,0.06);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(91,21,46,0.12);
+        }
+
+        .guide-card-header {
+            padding: 1.5rem 1.5rem 1rem;
+            position: relative;
+        }
+
+        .guide-card.card-gemini .guide-card-header { background: linear-gradient(135deg, #e8f0fa 0%, var(--heritage-light) 100%); }
+        .guide-card.card-gems .guide-card-header { background: linear-gradient(135deg, #f5e8ec 0%, #edd0d8 100%); }
+        .guide-card.card-notebook .guide-card-header { background: linear-gradient(135deg, #e0f2ee 0%, #c8e8e0 100%); }
+
+        .guide-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .guide-card.card-gemini .guide-card-header h3 { color: #4a6a9a; }
+        .guide-card.card-gems .guide-card-header h3 { color: var(--burgundy); }
+        .guide-card.card-notebook .guide-card-header h3 { color: var(--nb-teal); }
+
+        .guide-card-header .card-metaphor {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .recommended-badge {
+            display: inline-block;
+            background: var(--sandstone);
+            color: var(--burgundy);
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .guide-card-body {
+            padding: 1.25rem 1.5rem 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .guide-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .guide-row-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--mid-grey);
+        }
+
+        .guide-row-value {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.55;
+        }
+
+        .guide-row-example {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            background: var(--off-white);
+            border-radius: 8px;
+            padding: 0.65rem 0.85rem;
+            line-height: 1.5;
+            border-left: 3px solid var(--light-grey);
+        }
+
+        .guide-card.card-gemini .guide-row-example { border-left-color: var(--heritage); }
+        .guide-card.card-gems .guide-row-example { border-left-color: var(--burgundy-light); }
+        .guide-card.card-notebook .guide-row-example { border-left-color: var(--nb-teal); }
+
+        .guide-start {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            padding-top: 0.75rem;
+            border-top: 1px solid #eee;
+            margin-top: auto;
+        }
+
+        .guide-start strong {
+            color: var(--text);
+        }
+
+        .guide-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.88rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.55rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+            align-self: flex-start;
+        }
+
+        .guide-card.card-gemini .guide-cta {
+            background: var(--heritage);
+            color: var(--white);
+        }
+        .guide-card.card-gemini .guide-cta:hover {
+            background: #7090c0;
+        }
+
+        .guide-card.card-gems .guide-cta {
+            background: var(--burgundy);
+            color: var(--white);
+        }
+        .guide-card.card-gems .guide-cta:hover {
+            background: var(--burgundy-light);
+        }
+
+        .guide-card.card-notebook .guide-cta {
+            background: var(--nb-teal);
+            color: var(--white);
+        }
+        .guide-card.card-notebook .guide-cta:hover {
+            background: #348a7a;
+        }
+
+        /* ─── PATHWAY CARDS ─── */
+        .pathway-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 3.5rem;
+        }
+
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .pathway-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(91,21,46,0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            border: 3px solid transparent;
+            border-top: 5px solid transparent;
+            color: inherit;
+        }
+
+        .pathway-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(91,21,46,0.15);
+        }
+
+        .pathway-card.tile-gemini { border-top-color: var(--heritage); }
+        .pathway-card.tile-gemini:hover { border-color: var(--heritage); }
+        .pathway-card.tile-gems { border-top-color: var(--burgundy); }
+        .pathway-card.tile-gems:hover { border-color: var(--burgundy); }
+        .pathway-card.tile-notebook { border-top-color: var(--nb-teal); }
+        .pathway-card.tile-notebook:hover { border-color: var(--nb-teal); }
+        .pathway-card.tile-diff { border-top-color: var(--warm-rose); }
+        .pathway-card.tile-diff:hover { border-color: var(--warm-rose); }
+
+        .pathway-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pathway-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .pathway-card.tile-gemini .pathway-icon svg { stroke: var(--heritage); }
+        .pathway-card.tile-gems .pathway-icon svg { stroke: var(--burgundy); }
+        .pathway-card.tile-notebook .pathway-icon svg { stroke: var(--nb-teal); }
+        .pathway-card.tile-diff .pathway-icon svg { stroke: var(--warm-rose); }
+
+        .pathway-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .pathway-card.tile-gemini .pathway-label { background: var(--heritage-light); color: #4a6a9a; }
+        .pathway-card.tile-gems .pathway-label { background: #f5e8ec; color: var(--burgundy); }
+        .pathway-card.tile-notebook .pathway-label { background: var(--nb-teal-light); color: var(--nb-teal); }
+        .pathway-card.tile-diff .pathway-label { background: #fde8ed; color: var(--warm-rose); }
+
+        .pathway-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .pathway-card p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .pathway-link {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.25rem;
+        }
+
+        .pathway-card.tile-gemini .pathway-link { color: #4a6a9a; }
+        .pathway-card.tile-gems .pathway-link { color: var(--burgundy); }
+        .pathway-card.tile-notebook .pathway-link { color: var(--nb-teal); }
+        .pathway-card.tile-diff .pathway-link { color: var(--warm-rose); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--burgundy-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1rem;
+            color: var(--sandstone);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-note {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .guide-cards {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 1.25rem;
+            }
+
+            .header-nav {
+                gap: 0.25rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
+            .hero-inner h2 {
+                font-size: 2rem;
+            }
+
+            .hero-inner p {
+                font-size: 1.05rem;
+            }
+
+            .section {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .decision-flow {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .flow-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .flow-item {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .decision-section {
+                padding: 0 1.25rem 2.5rem;
+            }
+
+            .guide-cards {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
+            .pathway-section {
+                padding: 2rem 1.25rem 2.5rem;
+            }
+
+            .pathway-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-inner h2 {
+                font-size: 1.6rem;
+            }
+
+            .hero-inner p {
+                font-size: 0.95rem;
+            }
+
+            .nav-link {
+                font-size: 0.72rem;
+                padding: 0.25rem 0.55rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── HEADER ─── -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-brand">
+                <div class="header-logo">RC</div>
+                <div class="header-text">
+                    <h1>Teaching with AI</h1>
+                    <p>Roseville College Staff Hub</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link active">Hub</a>
+                <a href="gemini.html" class="nav-link">Gemini</a>
+                <a href="gems/gem-builder-guide.html" class="nav-link">Gem Builder</a>
+                <a href="notebooklm.html" class="nav-link">NotebookLM</a>
+                <a href="differentiation-manual/index.html" class="nav-link">Differentiation</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+        <div class="circle-3"></div>
+        <div class="hero-inner">
+            <h2>Teaching with AI</h2>
+            <p>Your starting point for practical AI tools &mdash; built for Roseville College staff. No experience needed, no pressure. Just helpful tools you can try at your own pace.</p>
+        </div>
+    </section>
+
+    <!-- ─── DECISION FLOW ─── -->
+    <div class="section">
+        <h2 class="section-title">Which tool should I use?</h2>
+        <p class="section-subtitle">Not sure where to begin? Start with what you want to do.</p>
+
+        <div class="decision-flow">
+            <div class="decision-flow-title">I want to&hellip;</div>
+            <div class="flow-row">
+                <a href="gemini.html" class="flow-item flow-gemini">
+                    <div class="flow-intent">do something once</div>
+                    <div class="flow-exemplar">e.g. draft an email, answer a question</div>
+                    <div class="flow-arrow">&darr;</div>
+                    <div class="flow-tool">Gemini</div>
+                </a>
+                <a href="gems/ideas-bank.html" class="flow-item flow-gems">
+                    <div class="flow-intent">do the same thing repeatedly</div>
+                    <div class="flow-exemplar">e.g. write report comments every term</div>
+                    <div class="flow-arrow">&darr;</div>
+                    <div class="flow-tool">Gemini Gems</div>
+                </a>
+                <a href="notebooklm.html" class="flow-item flow-notebook">
+                    <div class="flow-intent">ask questions about documents I have</div>
+                    <div class="flow-exemplar">e.g. PDFs, reports, policies</div>
+                    <div class="flow-arrow">&darr;</div>
+                    <div class="flow-tool">NotebookLM</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── DECISION GUIDE COMPARISON ─── -->
+    <div class="decision-section">
+        <div class="guide-cards">
+
+            <!-- Gemini Card -->
+            <div class="guide-card card-gemini">
+                <div class="guide-card-header">
+                    <h3>Gemini</h3>
+                    <div class="card-metaphor">A conversation with a smart colleague</div>
+                </div>
+                <div class="guide-card-body">
+                    <div class="guide-row">
+                        <div class="guide-row-label">Best for</div>
+                        <div class="guide-row-value">One-off tasks, quick questions, exploring ideas</div>
+                    </div>
+                    <div class="guide-row">
+                        <div class="guide-row-label">Example</div>
+                        <div class="guide-row-example">&ldquo;Help me write a parent email about camp&rdquo;</div>
+                    </div>
+                    <div class="guide-row">
+                        <div class="guide-row-label">Skill needed</div>
+                        <div class="guide-row-value">None &mdash; just type and talk</div>
+                    </div>
+                    <div class="guide-start">
+                        <strong>Start here if&hellip;</strong> you've never used AI tools before &mdash; or just want a quick answer
+                    </div>
+                    <a href="gemini.html" class="guide-cta">Get started &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Gems Card -->
+            <div class="guide-card card-gems">
+                <div class="guide-card-header">
+                    <h3>Gemini Gems</h3>
+                    <div class="card-metaphor">A custom-built assistant for a specific job</div>
+                </div>
+                <div class="guide-card-body">
+                    <div class="guide-row">
+                        <div class="guide-row-label">Best for</div>
+                        <div class="guide-row-value">Repeatable tasks you do the same way every time</div>
+                    </div>
+                    <div class="guide-row">
+                        <div class="guide-row-label">Example</div>
+                        <div class="guide-row-example">Report Comment Writer &mdash; paste dot points, get polished comments every time</div>
+                    </div>
+                    <div class="guide-row">
+                        <div class="guide-row-label">Skill needed</div>
+                        <div class="guide-row-value">Some setup, then easy to reuse</div>
+                    </div>
+                    <div class="guide-start">
+                        <strong>Start here if&hellip;</strong> you keep doing the same task and want to speed it up
+                    </div>
+                    <a href="gems/ideas-bank.html" class="guide-cta">Get started &rarr;</a>
+                </div>
+            </div>
+
+            <!-- NotebookLM Card -->
+            <div class="guide-card card-notebook">
+                <div class="guide-card-header">
+                    <h3>NotebookLM</h3>
+                    <div class="card-metaphor">A research assistant that only reads what you give it</div>
+                </div>
+                <div class="guide-card-body">
+                    <div class="guide-row">
+                        <div class="guide-row-label">Best for</div>
+                        <div class="guide-row-value">Working with your own documents &mdash; research, analysis, Q&amp;A</div>
+                    </div>
+                    <div class="guide-row">
+                        <div class="guide-row-label">Example</div>
+                        <div class="guide-row-example">Upload 3 PDF articles &rarr; ask &ldquo;What do these say about student engagement?&rdquo;</div>
+                    </div>
+                    <div class="guide-row">
+                        <div class="guide-row-label">Skill needed</div>
+                        <div class="guide-row-value">Some setup to add sources, then just ask questions</div>
+                    </div>
+                    <div class="guide-start">
+                        <strong>Start here if&hellip;</strong> you have documents you want to search, question, or summarise
+                    </div>
+                    <a href="notebooklm.html" class="guide-cta">Get started &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ─── PATHWAY CARDS ─── -->
+    <div class="pathway-section">
+        <h2 class="section-title">Explore the tools</h2>
+        <p class="section-subtitle">Dive deeper into each tool when you're ready.</p>
+
+        <div class="pathway-grid">
+
+            <!-- Gemini -->
+            <a href="gemini.html" class="pathway-card tile-gemini">
+                <div class="pathway-icon">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 2l2.5 8.5L27 13l-8.5 2.5L16 24l-2.5-8.5L5 13l8.5-2.5L16 2z"/>
+                        <path d="M24 18l1.2 4L29 23.2 25.2 24.5 24 28.5 22.8 24.5 19 23.2l3.8-1.2L24 18z"/>
+                    </svg>
+                </div>
+                <span class="pathway-label">Foundation</span>
+                <h3>Gemini &mdash; Start Here</h3>
+                <p>Learn the foundation skill. Gemini is your starting point for using AI in everyday teaching tasks.</p>
+                <span class="pathway-link">Open guide &rarr;</span>
+            </a>
+
+            <!-- Gems -->
+            <a href="gems/ideas-bank.html" class="pathway-card tile-gems">
+                <div class="pathway-icon">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="16,2 20,12 30,12 22,19 25,29 16,23 7,29 10,19 2,12 12,12"/>
+                    </svg>
+                </div>
+                <span class="pathway-label">Build &amp; Automate</span>
+                <h3>Gemini Gems &mdash; Repeatable Tasks</h3>
+                <p>Build custom AI tools that do your repetitive tasks the same way every time. Browse the Ideas Bank for inspiration.</p>
+                <span class="pathway-link">Browse ideas &rarr;</span>
+            </a>
+
+            <!-- NotebookLM -->
+            <a href="notebooklm.html" class="pathway-card tile-notebook">
+                <div class="pathway-icon">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="3" width="20" height="26" rx="2"/>
+                        <line x1="10" y1="9" x2="22" y2="9"/>
+                        <line x1="10" y1="14" x2="22" y2="14"/>
+                        <line x1="10" y1="19" x2="18" y2="19"/>
+                        <line x1="3" y1="8" x2="6" y2="8"/>
+                        <line x1="3" y1="13" x2="6" y2="13"/>
+                        <line x1="3" y1="18" x2="6" y2="18"/>
+                        <line x1="3" y1="23" x2="6" y2="23"/>
+                    </svg>
+                </div>
+                <span class="pathway-label">Research</span>
+                <h3>NotebookLM &mdash; Research &amp; Retrieval</h3>
+                <p>Upload your own documents and let AI help you research, summarise, and find answers within them.</p>
+                <span class="pathway-link">Open guide &rarr;</span>
+            </a>
+
+            <!-- Differentiation -->
+            <a href="differentiation-manual/index.html" class="pathway-card tile-diff">
+                <div class="pathway-icon">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="5" y="6" width="22" height="5" rx="1.5"/>
+                        <rect x="5" y="14" width="22" height="5" rx="1.5"/>
+                        <rect x="5" y="22" width="22" height="5" rx="1.5"/>
+                        <line x1="11" y1="6" x2="11" y2="11"/>
+                        <line x1="16" y1="14" x2="16" y2="19"/>
+                        <line x1="20" y1="22" x2="20" y2="27"/>
+                    </svg>
+                </div>
+                <span class="pathway-label">Differentiation</span>
+                <h3>Differentiation Manual</h3>
+                <p>A comprehensive interactive tool for building differentiated learning experiences using AI.</p>
+                <span class="pathway-link">Open manual &rarr;</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-title">Teaching with AI &mdash; Roseville College</div>
+            <p class="footer-note">This hub is a living resource. Tools and guides will be updated as our practice develops.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

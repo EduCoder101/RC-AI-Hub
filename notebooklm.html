@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<!-- NotebookLM Guide | Roseville College -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM Guide | Roseville College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --burgundy: #5b152e;
+            --burgundy-dark: #3e0e20;
+            --burgundy-light: #7a1e3f;
+            --sandstone: #f6dc80;
+            --sandstone-light: #fdf3c4;
+            --heritage: #8ba8d8;
+            --heritage-light: #d0dff2;
+            --heritage-dark: #5a7aaa;
+            --warm-rose: #f24468;
+            --light-grey: #c8bfb7;
+            --mid-grey: #a19a94;
+            --off-white: #faf8f5;
+            --white: #ffffff;
+            --text: #2c1a22;
+            --text-light: #6b5a62;
+            /* NotebookLM accent — teal/blue-green to distinguish from Gems */
+            --nb-teal: #2a7a6a;
+            --nb-teal-light: #e0f2ee;
+            --nb-teal-mid: #4a9a8a;
+        }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            background: var(--burgundy);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 4px 24px rgba(91,21,46,0.3);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            width: 40px; height: 40px;
+            background: var(--sandstone);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--burgundy);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: 0.75rem;
+            color: var(--sandstone);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .nav-link.active { color: var(--sandstone); background: rgba(246,220,128,0.15); }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, #0d3d34 0%, #1a5c4e 50%, var(--nb-teal) 100%);
+            padding: 4rem 2rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 400px; height: 400px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: 10%;
+            width: 200px; height: 200px;
+            background: rgba(246,220,128,0.06);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero-tagline {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-distinction {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .hero-distinction-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sandstone);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-distinction-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+
+        .hero-distinction-row:last-child { margin-bottom: 0; }
+
+        .distinction-icon {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .distinction-icon.yes { background: rgba(74,154,138,0.4); color: #a0ffe0; }
+        .distinction-icon.no { background: rgba(242,68,104,0.3); color: #ffb0c0; }
+
+        /* Right side of hero — what it is */
+        .hero-visual {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .hero-visual-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sandstone);
+            margin-bottom: 1rem;
+        }
+
+        .concept-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .concept-step {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.07);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .concept-step-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .concept-arrow {
+            text-align: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+            padding: 0 0 0 1.5rem;
+        }
+
+        /* ─── MAIN ─── */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 5rem;
+        }
+
+        /* ─── SECTION HEADER ─── */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 3rem 0 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-grey);
+        }
+
+        .section-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .section-header h3 {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ─── WHEN TO USE COMPARISON ─── */
+        .tool-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .tool-comparison { grid-template-columns: 1fr; }
+        }
+
+        .tool-col {
+            border-radius: 14px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+        }
+
+        .tool-col.notebooklm {
+            background: var(--nb-teal-light);
+            border-color: var(--nb-teal);
+        }
+
+        .tool-col.gemini {
+            background: var(--heritage-light);
+            border-color: var(--heritage);
+        }
+
+        .tool-col.gems {
+            background: rgba(91,21,46,0.05);
+            border-color: rgba(91,21,46,0.2);
+        }
+
+        .tool-col-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-col.notebooklm .tool-col-label { color: var(--nb-teal); }
+        .tool-col.gemini .tool-col-label { color: var(--heritage-dark); }
+        .tool-col.gems .tool-col-label { color: var(--burgundy); }
+
+        .tool-col h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .tool-col-trigger {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            line-height: 1.5;
+        }
+
+        .tool-col ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tool-col li {
+            font-size: 0.82rem;
+            color: var(--text);
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .tool-col li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0.5;
+        }
+
+        /* ─── STEPS ─── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            position: relative;
+        }
+
+        .step-number {
+            width: 36px; height: 36px;
+            background: var(--nb-teal);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h4 {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.65;
+        }
+
+        .step-card .step-detail {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--light-grey);
+            font-size: 0.78rem;
+            color: var(--mid-grey);
+            line-height: 1.6;
+        }
+
+        /* ─── USE CASE CARDS ─── */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .use-case-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            border-top: 4px solid var(--nb-teal);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            box-shadow: 0 6px 24px rgba(42,122,106,0.15);
+        }
+
+        .use-case-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .use-case-card h4 {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .use-case-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+        }
+
+        .use-case-example {
+            background: var(--nb-teal-light);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: var(--nb-teal);
+            line-height: 1.55;
+            font-style: italic;
+        }
+
+        .use-case-example-label {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* ─── MULTIMODAL SECTION ─── */
+        .multimodal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .multimodal-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .multimodal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(42,122,106,0.12);
+        }
+
+        .multimodal-icon {
+            font-size: 2.25rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .multimodal-card h4 {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .multimodal-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.55;
+        }
+
+        .multimodal-badge {
+            display: inline-block;
+            background: var(--sandstone-light);
+            border: 1px solid var(--sandstone);
+            color: var(--burgundy);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+
+        /* ─── PROMPTS ─── */
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1rem;
+        }
+
+        .prompt-card {
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+        }
+
+        .prompt-card-header {
+            background: var(--nb-teal);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .prompt-card-header span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .prompt-card-body {
+            padding: 1.25rem;
+        }
+
+        .prompt-context {
+            font-size: 0.75rem;
+            color: var(--mid-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt-text {
+            font-size: 0.875rem;
+            color: var(--text);
+            font-family: 'Courier New', monospace;
+            line-height: 1.65;
+            background: var(--off-white);
+            border: 1px solid var(--light-grey);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .copy-btn {
+            background: var(--nb-teal);
+            color: var(--white);
+            border: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: background 0.2s;
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        .copy-btn:hover { background: #1f5c4e; }
+        .copy-btn.copied { background: #3a7a4a; }
+
+        /* ─── LIMITS SECTION ─── */
+        .limits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .limit-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            border-left: 4px solid var(--warm-rose);
+        }
+
+        .limit-card h4 {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .limit-card p {
+            font-size: 0.83rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .limit-card .limit-instead {
+            margin-top: 0.6rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid var(--light-grey);
+            font-size: 0.8rem;
+            color: var(--nb-teal);
+        }
+
+        .limit-card .limit-instead strong { color: var(--nb-teal); }
+
+        /* ─── DATA NOTE ─── */
+        .data-note {
+            background: var(--sandstone-light);
+            border: 2px solid var(--sandstone);
+            border-radius: 14px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .data-note-icon {
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .data-note h4 {
+            font-size: 1rem;
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+        }
+
+        .data-note p {
+            font-size: 0.875rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-note p:last-child { margin-bottom: 0; }
+
+        .data-do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .data-do-dont { grid-template-columns: 1fr; }
+        }
+
+        .data-do, .data-dont {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+        }
+
+        .data-do { background: rgba(42,122,106,0.08); border: 1px solid rgba(42,122,106,0.2); }
+        .data-dont { background: rgba(242,68,104,0.06); border: 1px solid rgba(242,68,104,0.2); }
+
+        .data-do-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nb-teal); margin-bottom: 0.5rem; }
+        .data-dont-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-rose); margin-bottom: 0.5rem; }
+
+        .data-do li, .data-dont li {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+            list-style: none;
+        }
+
+        .data-do li::before { content: '✓'; position: absolute; left: 0; color: var(--nb-teal); }
+        .data-dont li::before { content: '✗'; position: absolute; left: 0; color: var(--warm-rose); }
+
+        /* ─── ACCESS STEPS ─── */
+        .access-steps {
+            display: flex;
+            gap: 0;
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            flex-wrap: wrap;
+        }
+
+        .access-step {
+            flex: 1;
+            min-width: 180px;
+            padding: 1.5rem;
+            border-right: 1px solid var(--light-grey);
+            position: relative;
+        }
+
+        .access-step:last-child { border-right: none; }
+
+        .access-step-num {
+            width: 28px; height: 28px;
+            background: var(--nb-teal);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: Georgia, serif;
+            margin-bottom: 0.75rem;
+        }
+
+        .access-step h4 {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+        }
+
+        .access-step p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.55;
+        }
+
+        .access-step a {
+            color: var(--nb-teal);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .access-step a:hover { text-decoration: underline; }
+
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed;
+            bottom: 2rem; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            z-index: 999;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .toast.visible { transform: translateX(-50%) translateY(0); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--burgundy-dark);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.8rem;
+        }
+        .footer strong { color: var(--sandstone); }
+
+        /* ─── PRINT ─── */
+        @media print {
+            .header { position: static; }
+            .copy-btn { display: none; }
+            .hero { background: #1a5c4e !important; -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <div class="header-logo">RC</div>
+            <div class="header-text">
+                <h1>NotebookLM Guide</h1>
+                <p>Roseville College · Teaching with AI</p>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link">Hub</a>
+            <a href="gemini.html" class="nav-link">Gemini</a>
+            <a href="gems/gem-builder-guide.html" class="nav-link">Gem Builder</a>
+            <a href="notebooklm.html" class="nav-link active">NotebookLM</a>
+            <a href="differentiation-manual/index.html" class="nav-link">Differentiation</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-left">
+            <span class="hero-eyebrow">Tool 3 of 4 · Research &amp; Retrieval</span>
+            <h2>NotebookLM</h2>
+            <p class="hero-tagline">NotebookLM is not a chatbot. It is a document intelligence tool — you bring the sources, and it works entirely within them. Think of it as a research assistant that has read everything you've given it, and nothing else.</p>
+            <div class="hero-distinction">
+                <div class="hero-distinction-label">How it differs from Gemini</div>
+                <div class="hero-distinction-row">
+                    <div class="distinction-icon yes">✓</div>
+                    <span>Answers are grounded in <em>your</em> documents — not the general internet</span>
+                </div>
+                <div class="hero-distinction-row">
+                    <div class="distinction-icon yes">✓</div>
+                    <span>Cites exactly where in your documents each answer comes from</span>
+                </div>
+                <div class="hero-distinction-row">
+                    <div class="distinction-icon yes">✓</div>
+                    <span>Can synthesise across multiple documents simultaneously</span>
+                </div>
+                <div class="hero-distinction-row">
+                    <div class="distinction-icon no">→</div>
+                    <span>Cannot answer questions beyond what you've uploaded</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-visual-label">How it works</div>
+            <div class="concept-flow">
+                <div class="concept-step">
+                    <span class="concept-step-icon">📁</span>
+                    <span>You create a Notebook and upload your sources — PDFs, documents, slides, URLs</span>
+                </div>
+                <div class="concept-arrow">↓</div>
+                <div class="concept-step">
+                    <span class="concept-step-icon">🧠</span>
+                    <span>NotebookLM reads and indexes everything you've uploaded</span>
+                </div>
+                <div class="concept-arrow">↓</div>
+                <div class="concept-step">
+                    <span class="concept-step-icon">💬</span>
+                    <span>You ask questions, request summaries, or generate outputs</span>
+                </div>
+                <div class="concept-arrow">↓</div>
+                <div class="concept-step">
+                    <span class="concept-step-icon">📌</span>
+                    <span>Every answer links back to the exact source passage it came from</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+
+    <!-- WHICH TOOL? -->
+    <div class="section-header" style="margin-top:1rem;">
+        <div class="section-dot" style="background:var(--nb-teal)"></div>
+        <h3>Which tool should I use?</h3>
+    </div>
+
+    <div class="tool-comparison">
+        <div class="tool-col notebooklm">
+            <div class="tool-col-label">Use NotebookLM when…</div>
+            <h4>You have documents to interrogate</h4>
+            <div class="tool-col-trigger">"I need to find, synthesise, or navigate information across a set of documents I already have."</div>
+            <ul>
+                <li>Querying a syllabus or policy document</li>
+                <li>Synthesising meeting notes or reports</li>
+                <li>Finding information across multiple sources</li>
+                <li>Creating a study guide from course materials</li>
+                <li>Researching College publications or archives</li>
+                <li>Generating a podcast or visual summary of documents</li>
+            </ul>
+        </div>
+        <div class="tool-col gemini">
+            <div class="tool-col-label">Use Gemini when…</div>
+            <h4>You have a one-off task to complete</h4>
+            <div class="tool-col-trigger">"I need help drafting, brainstorming, explaining, or producing something right now."</div>
+            <ul>
+                <li>Drafting an email or letter quickly</li>
+                <li>Brainstorming lesson ideas</li>
+                <li>Explaining a concept in simpler terms</li>
+                <li>Getting a quick second opinion on writing</li>
+                <li>Generating ideas without a specific output format</li>
+            </ul>
+        </div>
+        <div class="tool-col gems">
+            <div class="tool-col-label">Use a Gem when…</div>
+            <h4>You do the same task repeatedly</h4>
+            <div class="tool-col-trigger">"I have a task I do regularly and want a consistent, reliable tool built for exactly that purpose."</div>
+            <ul>
+                <li>Writing report comments every semester</li>
+                <li>Generating rubrics for assessment tasks</li>
+                <li>Producing differentiated task variations</li>
+                <li>Formatting documents to a consistent structure</li>
+                <li>Drafting parent communications consistently</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- GETTING STARTED -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--nb-teal)"></div>
+        <h3>Getting Started</h3>
+    </div>
+
+    <div class="access-steps" style="margin-bottom:1.5rem;">
+        <div class="access-step">
+            <div class="access-step-num">1</div>
+            <h4>Go to NotebookLM</h4>
+            <p>Visit <a href="https://notebooklm.google.com/" target="_blank">notebooklm.google.com</a> and sign in with your Roseville Google account.</p>
+        </div>
+        <div class="access-step">
+            <div class="access-step-num">2</div>
+            <h4>Create a Notebook</h4>
+            <p>Click <strong>New Notebook</strong>. Give it a clear name — e.g. "Stage 5 English Syllabus" or "Term 3 Meeting Notes."</p>
+        </div>
+        <div class="access-step">
+            <div class="access-step-num">3</div>
+            <h4>Upload your sources</h4>
+            <p>Add PDFs, Google Docs, slides, or paste a URL. You can add up to 50 sources per notebook. NotebookLM reads them all.</p>
+        </div>
+        <div class="access-step">
+            <div class="access-step-num">4</div>
+            <h4>Start asking questions</h4>
+            <p>Type a question in the chat panel. NotebookLM will answer using only your sources, with citations to show exactly where each answer came from.</p>
+        </div>
+        <div class="access-step">
+            <div class="access-step-num">5</div>
+            <h4>Generate outputs</h4>
+            <p>Use the Studio panel to generate an Audio Overview, a study guide, a briefing doc, a FAQ, or a timeline — all from your sources.</p>
+        </div>
+    </div>
+
+    <!-- USE CASES -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--nb-teal)"></div>
+        <h3>What Roseville Staff Can Use It For</h3>
+    </div>
+
+    <div class="use-cases-grid">
+
+        <div class="use-case-card">
+            <span class="use-case-icon">📋</span>
+            <h4>Navigating Policy Documents</h4>
+            <p>Upload your school's policy library and ask specific questions rather than manually searching through documents. Get answers with direct citations so you can verify instantly.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "What does our policy say about mobile phone use during assessments?"
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">📚</span>
+            <h4>Querying Syllabus Documents</h4>
+            <p>Upload your NESA syllabus and ask it to find relevant outcomes, explain concepts, or map content to assessment requirements. No more manually scrolling through 80-page PDFs.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Which Stage 5 outcomes relate to persuasive writing? List them with their codes."
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">📝</span>
+            <h4>Synthesising Meeting Notes</h4>
+            <p>Upload agendas and minutes from a series of meetings and ask for a summary of decisions made, actions outstanding, or themes across the year.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Summarise all action items from this term's staff meetings. List who is responsible for each."
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">📰</span>
+            <h4>Researching College Archives</h4>
+            <p>Upload historical College publications and search across decades of content for specific events, people, or milestones. Particularly useful for anniversary events, speeches, or context pieces.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Find all references to the school's 50th anniversary celebration and summarise what took place."
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">📊</span>
+            <h4>Cross-Referencing Reports &amp; Data</h4>
+            <p>Upload multiple reports — enrolment data, staffing summaries, financial overviews — and ask questions that draw across all of them. Saves hours of manual cross-referencing.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Based on these three reports, what trends are visible in enrolment across the last four years?"
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">🎓</span>
+            <h4>Building Student Study Resources</h4>
+            <p>Upload your unit materials — readings, notes, key texts — and generate study guides, FAQs, glossaries, or practice questions for students. The content stays grounded in exactly what you taught.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Generate a set of 10 exam-style questions based on these unit readings. Include the answer for each."
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">📁</span>
+            <h4>Onboarding &amp; Handover Documents</h4>
+            <p>Upload the materials for a role, committee, or project and ask NotebookLM to generate a briefing document or FAQ for someone new stepping into the role.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Based on these documents, write a one-page briefing for a new Year 10 Advisor starting in Term 1."
+            </div>
+        </div>
+
+        <div class="use-case-card">
+            <span class="use-case-icon">🗓️</span>
+            <h4>Event &amp; Project Planning</h4>
+            <p>Upload previous event plans, budgets, and post-event notes. Ask NotebookLM to identify what worked, what needs attention, and generate a checklist or timeline for the next iteration.</p>
+            <div class="use-case-example">
+                <span class="use-case-example-label">Try asking</span>
+                "Based on last year's Gala notes, what were the three biggest logistical issues and how were they resolved?"
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MULTIMODAL OUTPUTS -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--sandstone)"></div>
+        <h3>Beyond Q&amp;A — Multimodal Outputs</h3>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--text-light); max-width:700px; margin-bottom:1.5rem; line-height:1.7;">NotebookLM can generate far more than text answers. The Studio panel lets you transform your source documents into a range of formats — all grounded in what you uploaded.</p>
+
+    <div class="multimodal-grid">
+
+        <div class="multimodal-card">
+            <span class="multimodal-icon">🎙️</span>
+            <h4>Audio Overview</h4>
+            <p>Generates a natural-sounding podcast-style conversation between two hosts summarising your documents. Ideal for commutes, or for sharing with colleagues who prefer to listen.</p>
+            <span class="multimodal-badge">Most popular feature</span>
+        </div>
+
+        <div class="multimodal-card">
+            <span class="multimodal-icon">📖</span>
+            <h4>Study Guide</h4>
+            <p>Produces a structured study guide with key concepts, definitions, and review questions drawn directly from your sources.</p>
+        </div>
+
+        <div class="multimodal-card">
+            <span class="multimodal-icon">📄</span>
+            <h4>Briefing Document</h4>
+            <p>A concise executive summary of all your sources — key points, themes, and takeaways in a format ready to share.</p>
+        </div>
+
+        <div class="multimodal-card">
+            <span class="multimodal-icon">❓</span>
+            <h4>FAQ</h4>
+            <p>Automatically generates the most likely questions someone would ask about your documents, with answers from the sources.</p>
+        </div>
+
+        <div class="multimodal-card">
+            <span class="multimodal-icon">⏱️</span>
+            <h4>Timeline</h4>
+            <p>Extracts chronological events or sequences from your documents and presents them as a structured timeline.</p>
+        </div>
+
+        <div class="multimodal-card">
+            <span class="multimodal-icon">🗺️</span>
+            <h4>Mind Map</h4>
+            <p>Generates a visual mind map of the key concepts and relationships in your documents. Useful for planning and curriculum mapping.</p>
+            <span class="multimodal-badge">Newer feature</span>
+        </div>
+
+    </div>
+
+    <!-- STARTER PROMPTS -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--heritage)"></div>
+        <h3>Starter Prompts to Try</h3>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--text-light); max-width:700px; margin-bottom:1.5rem; line-height:1.7;">Copy any of these into NotebookLM's chat once you've uploaded your sources. Adapt the italicised parts to your context.</p>
+
+    <div class="prompts-grid">
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <span>For Syllabus &amp; Curriculum</span>
+            </div>
+            <div class="prompt-card-body">
+                <div class="prompt-context">Use with: NESA syllabus documents</div>
+                <div class="prompt-text">List all outcomes related to <em>[topic]</em> in Stage <em>[X]</em>. Present them as a table with the outcome code, the full outcome statement, and the relevant content dot points.</div>
+                <button class="copy-btn" onclick="copyPrompt(this, &#39;List all outcomes related to [topic] in Stage [X]. Present them as a table with the outcome code, the full outcome statement, and the relevant content dot points.&#39;)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <span>For Policy Documents</span>
+            </div>
+            <div class="prompt-card-body">
+                <div class="prompt-context">Use with: School policy library</div>
+                <div class="prompt-text">What does the policy say about <em>[topic]</em>? Summarise the key rules and any exceptions. Cite the document and section for each point.</div>
+                <button class="copy-btn" onclick="copyPrompt(this, &#39;What does the policy say about [topic]? Summarise the key rules and any exceptions. Cite the document and section for each point.&#39;)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <span>For Meeting Notes</span>
+            </div>
+            <div class="prompt-card-body">
+                <div class="prompt-context">Use with: Agendas and minutes</div>
+                <div class="prompt-text">Identify all action items mentioned across these documents. For each, list: the action, who is responsible, and any deadline mentioned. Format as a table.</div>
+                <button class="copy-btn" onclick="copyPrompt(this, &#39;Identify all action items mentioned across these documents. For each, list: the action, who is responsible, and any deadline mentioned. Format as a table.&#39;)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <span>For Student Study Resources</span>
+            </div>
+            <div class="prompt-card-body">
+                <div class="prompt-context">Use with: Unit readings and notes</div>
+                <div class="prompt-text">Generate a glossary of the 15 most important terms from these materials. For each term, give a one-sentence definition in plain language suitable for a Year <em>[X]</em> student.</div>
+                <button class="copy-btn" onclick="copyPrompt(this, &#39;Generate a glossary of the 15 most important terms from these materials. For each term, give a one-sentence definition in plain language suitable for a Year [X] student.&#39;)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <span>For Reports &amp; Data</span>
+            </div>
+            <div class="prompt-card-body">
+                <div class="prompt-context">Use with: Annual reports, data summaries</div>
+                <div class="prompt-text">Across all these documents, identify the three most significant trends or changes over time. Explain each trend in two to three sentences and cite which document each finding comes from.</div>
+                <button class="copy-btn" onclick="copyPrompt(this, &#39;Across all these documents, identify the three most significant trends or changes over time. Explain each trend in two to three sentences and cite which document each finding comes from.&#39;)">Copy</button>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <div class="prompt-card-header">
+                <span>For Archive Research</span>
+            </div>
+            <div class="prompt-card-body">
+                <div class="prompt-context">Use with: College publications, newsletters</div>
+                <div class="prompt-text">Find every reference to <em>[person / event / topic]</em> across these documents. For each, give the publication name, approximate date, and a brief summary of what was said.</div>
+                <button class="copy-btn" onclick="copyPrompt(this, &#39;Find every reference to [person / event / topic] across these documents. For each, give the publication name, approximate date, and a brief summary of what was said.&#39;)">Copy</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- WHAT IT CAN'T DO -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--warm-rose)"></div>
+        <h3>What NotebookLM Can't Do</h3>
+    </div>
+
+    <p style="font-size:0.95rem; color:var(--text-light); max-width:700px; margin-bottom:1.5rem; line-height:1.7;">Understanding the limits is as important as knowing the capabilities. NotebookLM is a specialist tool — not a replacement for Gemini or Gems.</p>
+
+    <div class="limits-grid">
+
+        <div class="limit-card">
+            <h4>Answer beyond your sources</h4>
+            <p>If the information isn't in a document you've uploaded, NotebookLM will tell you it can't find it rather than generating an answer from general knowledge.</p>
+            <div class="limit-instead"><strong>Instead:</strong> Use Gemini for questions that don't require your specific documents.</div>
+        </div>
+
+        <div class="limit-card">
+            <h4>Work from real-time data</h4>
+            <p>It cannot connect to live systems like Edumate, Calumo, or Canvas. You need to export or copy data from those systems and upload the resulting document.</p>
+            <div class="limit-instead"><strong>Instead:</strong> Export a report, upload the PDF or spreadsheet, then query it.</div>
+        </div>
+
+        <div class="limit-card">
+            <h4>Remember between sessions</h4>
+            <p>Notebooks persist, but the conversation resets when you close and reopen. Your sources stay — your chat history does not carry context forward automatically.</p>
+            <div class="limit-instead"><strong>Instead:</strong> Keep key questions and outputs saved in a Note within the notebook.</div>
+        </div>
+
+        <div class="limit-card">
+            <h4>Produce repeatable automated outputs</h4>
+            <p>If you want the same task done the same way every time — a rubric, a report comment, a formatted document — a Gem is a better fit than NotebookLM.</p>
+            <div class="limit-instead"><strong>Instead:</strong> Build a Gem for repeatable structured tasks. Use NotebookLM for research and retrieval.</div>
+        </div>
+
+        <div class="limit-card">
+            <h4>Process very large files reliably</h4>
+            <p>Very long documents (hundreds of pages) may be processed with reduced accuracy. Breaking large documents into sections or chapters improves results.</p>
+            <div class="limit-instead"><strong>Instead:</strong> Split large PDFs into logical sections before uploading.</div>
+        </div>
+
+        <div class="limit-card">
+            <h4>Replace your professional judgement</h4>
+            <p>NotebookLM summarises and synthesises — it does not evaluate or recommend. Always verify important findings against the original source before acting on them.</p>
+            <div class="limit-instead"><strong>Instead:</strong> Use citations to check any significant claim directly in the source document.</div>
+        </div>
+
+    </div>
+
+    <!-- DATA NOTE -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--sandstone)"></div>
+        <h3>What to Upload — and What Not To</h3>
+    </div>
+
+    <div class="data-note">
+        <div class="data-note-icon">🔒</div>
+        <div>
+            <h4>Roseville College uses Google Workspace for Education — enterprise tier</h4>
+            <p>This means your data is not used to train Google's AI models and is covered by Roseville's enterprise agreement. General school documents, curriculum materials, and professional resources are safe to upload.</p>
+            <p>However, some categories of information should not be uploaded to any AI tool. Use common sense: if you would hesitate to email this document to a colleague outside the school, think carefully before uploading it.</p>
+            <div class="data-do-dont">
+                <div class="data-do">
+                    <div class="data-do-label">✓ Safe to upload</div>
+                    <ul>
+                        <li>NESA syllabus and curriculum documents</li>
+                        <li>School policies and handbooks</li>
+                        <li>Published College newsletters and archives</li>
+                        <li>De-identified meeting minutes and agendas</li>
+                        <li>Your own unit plans and teaching resources</li>
+                        <li>Professional development materials</li>
+                        <li>Anonymised assessment data</li>
+                    </ul>
+                </div>
+                <div class="data-dont">
+                    <div class="data-dont-label">✗ Do not upload</div>
+                    <ul>
+                        <li>Documents containing individual student names and results</li>
+                        <li>Case notes, counselling records, or medical information</li>
+                        <li>HR documents, performance reviews, or complaint records</li>
+                        <li>Personally identifiable parent or family information</li>
+                        <li>Confidential financial records naming individuals</li>
+                        <li>Any document marked confidential or sensitive</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p><strong>NotebookLM Guide</strong> · Roseville College · Teaching with AI Staff Hub · 2025</p>
+    <p style="margin-top:0.4rem;">Part of the Roseville College AI Tools suite. <a href="index.html" style="color:var(--sandstone);">Return to Hub &rarr;</a></p>
+</footer>
+
+<div class="toast" id="toast">✓ Copied to clipboard</div>
+
+<script>
+    function copyPrompt(btn, text) {
+        navigator.clipboard.writeText(text).then(() => {
+            const original = btn.innerHTML;
+            btn.innerHTML = '✓ Copied!';
+            btn.classList.add('copied');
+            const toast = document.getElementById('toast');
+            toast.classList.add('visible');
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.classList.remove('copied');
+                toast.classList.remove('visible');
+            }, 2000);
+        }).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            btn.innerHTML = '✓ Copied!';
+            setTimeout(() => { btn.innerHTML = 'Copy'; }, 2000);
+        });
+    }
+</script>
+
+
+</body></html>
