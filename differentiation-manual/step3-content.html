@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 3: Differentiate Content | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/steps.css">
+    <link rel="stylesheet" href="css/reorganised-pages.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="step-badge">STEP 3: CONTENT</div>
+            <h1>Differentiate Content</h1>
+            <p class="subtitle">The Foundation of Equitable Access</p>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a> → <a href="main.html">Manual</a> → <a href="flowchart.html">Flowchart</a> → <a href="step3-content.html">Step 3</a> → Content
+            <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+        </header>
+
+        <section class="step-content">
+            <!-- Step 3 Sub-Navigation -->
+            <div class="step3-subnav">
+                <span class="step3-subnav-label">Step 3:</span>
+                <a href="step3-content.html" class="active">Content</a>
+                <a href="step3-process.html">Process</a>
+                <a href="step3-product.html">Product</a>
+                <a href="step3-environment.html">Environment</a>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="quick-nav-box">
+                <h3>Jump to Strategy:</h3>
+                <div class="quick-nav-links">
+                    <a href="#content-1" class="quick-nav-link" onclick="jumpToStrategy('content-1'); return false;">Tiered Texts</a>
+                    <a href="#content-2" class="quick-nav-link" onclick="jumpToStrategy('content-2'); return false;">Multi-Modal</a>
+                    <a href="#content-3" class="quick-nav-link" onclick="jumpToStrategy('content-3'); return false;">Compacting</a>
+                    <a href="#content-4" class="quick-nav-link" onclick="jumpToStrategy('content-4'); return false;">Digest of Ideas</a>
+                    <a href="#content-5" class="quick-nav-link" onclick="jumpToStrategy('content-5'); return false;">Highlighted Print</a>
+                    <a href="#content-6" class="quick-nav-link" onclick="jumpToStrategy('content-6'); return false;">Support Systems</a>
+                    <a href="#content-7" class="quick-nav-link" onclick="jumpToStrategy('content-7'); return false;">Visual Supports</a>
+                    <a href="#content-8" class="quick-nav-link" onclick="jumpToStrategy('content-8'); return false;">Neurodiversity</a>
+                    <a href="#content-9" class="quick-nav-link" onclick="jumpToStrategy('content-9'); return false;">Analogy Generator</a>
+                </div>
+            </div>
+
+            <!-- Collapsible Theory Box -->
+            <div class="theory-box-collapsible">
+                <div class="theory-header" onclick="toggleTheoryBox(this)">
+                    <div>
+                        <h3>Theory: Why Content Differentiation Comes First</h3>
+                        <p class="theory-subtitle">Click to expand research foundations</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="theory-content" style="display: none;">
+                    <p>Research consistently shows that <strong>differentiating content—how students access information—is the most powerful way to ensure equitable learning opportunities.</strong></p>
+                    <p>When students can't access the content because it's too complex, too abstract, or presented in an inaccessible format, no amount of process or product differentiation will help. Content access is the foundation.</p>
+                    <p><em>Content refers to the "input"—what students learn and how they gain access to it.</em></p>
+                </div>
+            </div>
+
+            <div class="strategy-section">
+                <h2>Content Differentiation Strategies</h2>
+                <p class="section-intro">Each strategy below includes ready-to-copy AI prompts. Click any strategy to expand and see its prompts.</p>
+
+                <div class="usage-note" style="background: linear-gradient(135deg, rgba(244, 185, 66, 0.15) 0%, rgba(109, 179, 200, 0.15) 100%); padding: 1.5rem; border-radius: 12px; border-left: 6px solid #f4b942; margin-bottom: 2rem;">
+                    <p><strong style="color: #7d1e3f; font-size: 1.1rem;">Try This:</strong> Click a strategy header to expand it, then copy any prompt and paste it into Claude or ChatGPT. Add your specific context (year group, subject, class profile) for best results.</p>
+                </div>
+
+
+
+                
+
+                <div class="strategy-card" id="content-1">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">2</span>
+                            <h3>Tiered Texts & Resource Materials</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Provide reading materials at different complexity and readability levels so students can engage with the same overarching theme or concept regardless of their current literacy skills.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When the core content involves significant reading, and you have students at varied reading levels. This ensures all students can access the concepts without being blocked by text complexity.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> Three versions of an article about climate change—one at grade level, one simplified (without losing conceptual depth), and one with added complexity for advanced readers.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create Tiered Versions of a Text</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Here is a text I'm using with my [grade level] class: [paste text]</p>
+                        <p>Create three versions of this text:</p>
+                        <ul>
+                            <li><strong>Version 1 (Support):</strong> Simplified vocabulary and sentence structure for students reading below grade level, but maintain the conceptual integrity. Do not "dumb down" the ideas—make them more accessible.</li>
+                            <li><strong>Version 2 (Core):</strong> Appropriate for grade-level readers.</li>
+                            <li><strong>Version 3 (Extension):</strong> Increased complexity, academic vocabulary, and additional nuance for advanced readers.</li>
+                        </ul>
+                        <p>Ensure all three versions convey the same core concepts and maintain similar length (±20%).</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Assess Text Readability</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Analyse this text for readability: [paste text]</p>
+                        <p>Tell me:</p>
+                        <ul>
+                            <li>Approximate reading level (grade equivalent)</li>
+                            <li>What makes it challenging (vocabulary, sentence structure, concept density)</li>
+                            <li>Which students in my [grade level] class might struggle with it</li>
+                            <li>What specific adaptations would make it more accessible without losing rigor</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-2">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">4</span>
+                            <h3>Multi-Modal Presentations</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Deliver information through multiple modes—auditory (recordings, discussions), visual (graphic organisers, diagrams, videos), and tactile/kinesthetic (hands-on models, movement).</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When students have varied learning profiles or when content is complex and benefits from multiple representations. This is especially powerful for EALD students or students with learning differences.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> Teaching the water cycle through a written explanation, a video animation, a physical model students can manipulate, and a kinesthetic activity where students "become" water molecules moving through the cycle.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create Multi-Modal Versions</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>I'm teaching [topic] to [grade level] students. Currently, my instruction is primarily [text-based/lecture-based/etc.].</p>
+                        <p>Help me create multi-modal versions that present the same core content through:</p>
+                        <ul>
+                            <li><strong>Visual mode:</strong> Infographic, diagram, graphic organiser, or visual sequence</li>
+                            <li><strong>Auditory mode:</strong> Script for a podcast-style explanation or discussion prompts</li>
+                            <li><strong>Kinesthetic mode:</strong> Hands-on activity, physical model, or movement-based learning</li>
+                        </ul>
+                        <p>All modes should cover the same KUDs but engage students through their preferred learning channel.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Transform Text into Visual Representation</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Take this written content and transform it into a visual representation: [paste text]</p>
+                        <p>Create either:</p>
+                        <ul>
+                            <li>A graphic organiser that shows relationships between concepts</li>
+                            <li>An infographic that presents the information visually</li>
+                            <li>A flowchart or diagram that sequences the content</li>
+                        </ul>
+                        <p>Provide the structure and labels—I'll format it for students.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-3">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">6</span>
+                            <h3>Curriculum Compacting</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">A three-stage process: (1) identify what students have already mastered through pre-assessment, (2) eliminate redundant practice for those students, (3) replace it with meaningful curriculum extensions or independent projects.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When pre-assessment reveals that some students have already mastered portions of the content. This prevents boredom and allows advanced learners to move into deeper exploration.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> A student demonstrates mastery of multiplication facts through pre-assessment, so instead of drilling facts they already know, they explore patterns in multiplication, investigate the relationship to division, or apply multiplication to real-world problem-solving.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design a Compacting Plan</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Based on pre-assessment, several students in my [grade level] class have already mastered [specific content/skills].</p>
+                        <p>Help me design a curriculum compacting plan:</p>
+                        <ul>
+                            <li><strong>Stage 1:</strong> What evidence would confirm mastery? (Design a brief assessment)</li>
+                            <li><strong>Stage 2:</strong> What portions of the standard curriculum can be eliminated for these students?</li>
+                            <li><strong>Stage 3:</strong> What extensions or enrichment activities would deepen their learning on this topic? Provide 3-4 options that go beyond "more of the same."</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-4">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">8</span>
+                            <h3>Digest of Key Ideas</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Create a one- or two-page "capsule" of essential questions, vocabulary, and concepts to support students who struggle with heavy print materials or organisation.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When students are overwhelmed by lengthy texts or complex materials. This gives them a roadmap and helps them focus on what matters most.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> Before reading a chapter in a history textbook, provide students with a one-page digest that outlines: the essential question, key vocabulary with definitions, main concepts to watch for, and 3-4 guiding questions.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create a Content Digest</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Students will be reading this text/chapter: [paste text or describe content]</p>
+                        <p>Create a one-page digest that includes:</p>
+                        <ul>
+                            <li><strong>Essential Question:</strong> The big question this content answers</li>
+                            <li><strong>Key Vocabulary:</strong> 5-8 terms with student-friendly definitions</li>
+                            <li><strong>Main Concepts:</strong> The 3-4 core ideas students must grasp</li>
+                            <li><strong>Guiding Questions:</strong> 4-5 questions to focus reading</li>
+                        </ul>
+                        <p>Format it so students can use it as a reference while they read.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-5">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">10</span>
+                            <h3>Highlighted Print Materials</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Highlight critical passages in a text so that struggling readers can focus energy on essential portions rather than becoming discouraged by an overwhelming amount of print.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When a lengthy text contains essential content, but not every paragraph is equally important. This helps students with reading challenges or executive functioning difficulties know where to focus.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> A 5-page article where pages 2 and 4 contain the core information. Highlight those sections for students who need support, with a note: "Start here—these are the most important paragraphs."
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Identify Key Passages</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Here is a text my students need to read: [paste text]</p>
+                        <p>Help me identify:</p>
+                        <ul>
+                            <li>Which paragraphs or passages contain the essential information aligned to my KUDs</li>
+                            <li>Which sections are supplementary or provide examples but aren't critical</li>
+                            <li>A suggested highlighting strategy for students who need support (e.g., "Read highlighted sections first, then return to read the full text if time permits")</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-6">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">12</span>
+                            <h3>Support Systems (Buddies, Mentors, Technology)</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Use reading buddies, adult mentors, or audio/video recordings to make complex content accessible to all students.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When content is challenging but essential, and students need human or technological support to access it. This is particularly effective for EALD students or students with reading difficulties.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> Pair a strong reader with a struggling reader to read a text together, or provide an audio recording of the text so students can listen while they read.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create an Audio Script</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>I want to create an audio version of this text for students who benefit from listening: [paste text]</p>
+                        <p>Rewrite it as a script that would work well as an audio recording, including:</p>
+                        <ul>
+                            <li>Natural speaking pauses</li>
+                            <li>Verbal cues for emphasis ("This next point is really important...")</li>
+                            <li>Brief summaries at logical breaks</li>
+                        </ul>
+                        <p>Keep the core content intact but make it sound like spoken language, not written text.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design a Reading Buddy Protocol</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>I want to implement reading buddies for [topic/text]. Design a protocol that:</p>
+                        <ul>
+                            <li>Structures how pairs should read together (alternating paragraphs, echo reading, etc.)</li>
+                            <li>Includes prompts for discussion after each section</li>
+                            <li>Assigns roles so both students are actively engaged</li>
+                            <li>Ensures the stronger reader is supporting, not just "doing it for" the other student</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-7">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">14</span>
+                            <h3>Visual Supports: Glossaries, Mind Maps, Flashcards</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Provide visual tools that help students organise, remember, and connect content. These can be pre-made or co-created with students.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When content is vocabulary-heavy, conceptually dense, or requires students to see relationships between ideas. Visual supports are especially helpful for visual learners and students who struggle with working memory.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> A mind map showing how different concepts in a science unit connect, with vocabulary flashcards for key terms, and a visual glossary with pictures alongside definitions.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create a Visual Glossary</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create a visual glossary for these key terms from my [topic] unit: [list terms]</p>
+                        <p>For each term, provide:</p>
+                        <ul>
+                            <li>Student-friendly definition (1-2 sentences)</li>
+                            <li>A visual description or analogy that would help students remember it</li>
+                            <li>An example of how the term is used in context</li>
+                        </ul>
+                        <p>Format it so I can turn it into a visual reference sheet.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design a Mind Map</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create a mind map structure for [topic] that shows how these concepts connect: [list concepts]</p>
+                        <p>Organise it hierarchically with:</p>
+                        <ul>
+                            <li>The central concept in the middle</li>
+                            <li>Major branches for main ideas</li>
+                            <li>Sub-branches for supporting details</li>
+                            <li>Visual cues about which concepts relate to each other</li>
+                        </ul>
+                        <p>Describe the structure so I can create it visually for students.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-8">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">16</span>
+                            <h3>Neurodiversity-Responsive Content Design</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Design content that is accessible for neurodivergent learners by reducing cognitive load, providing multimodal formats, using concrete language, and offering strength-based supports. This approach benefits all students while specifically supporting those with ADHD, autism spectrum disorder, dyslexia, and executive functioning challenges.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When you have students with diagnosed learning differences, when content involves complex language or multi-step processes, or when you want to make content universally accessible from the start.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> A task sheet that combines written instructions with simple icons, uses colour coding to distinguish different sections, breaks tasks into numbered steps, and avoids metaphorical language like "dive into" or "tackle the problem."
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design Low-Demand Version Maintaining Core Intent</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I have a task that requires significant cognitive load, and I need a version that reduces demands without watering down the learning goal.</p>
+                        <p>Objective: Create a streamlined version that maintains the essential learning while reducing extraneous cognitive load.</p>
+                        <p>Instructional nuance: This isn't about making it "easier"—it's about removing unnecessary complexity so students can focus on the core skill or concept. Maintain rigor, reduce load.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>Here is my original task: [paste full task description]</p>
+                        <p>The core learning goal is: [state the essential KUD]</p>
+                        <p>Please create a low-demand version that:</p>
+                        <ul>
+                            <li>Maintains the same learning goal</li>
+                            <li>Reduces cognitive load by removing unnecessary steps, choices, or information</li>
+                            <li>Provides more structure or clearer parameters</li>
+                            <li>Makes success criteria more explicit</li>
+                        </ul>
+                        <p>Identify what you removed and why, so I understand the cognitive load you've reduced.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Convert to Multimodal Format (Text/Visual/Colour)</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I have a task sheet that is primarily text-based, and I need to make it more accessible for students who process information better with visual supports.</p>
+                        <p>Objective: Convert the task into a multimodal version using text, simple visuals, and colour coding.</p>
+                        <p>Instructional nuance: Use colour and visuals purposefully, not decoratively. Each element should support comprehension.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>Here is my current task sheet: [paste content]</p>
+                        <p>Please redesign it as a multimodal version:</p>
+                        <ul>
+                            <li><strong>Text:</strong> Keep key instructions but make them concise and concrete</li>
+                            <li><strong>Visuals:</strong> Suggest simple icons, diagrams, or symbols to represent key steps or concepts</li>
+                            <li><strong>Colour coding:</strong> Suggest a colour scheme to help students distinguish between different types of information (e.g., instructions vs. examples), see the sequence or structure, and identify what's most important</li>
+                        </ul>
+                        <p>Provide:</p>
+                        <ul>
+                            <li>Revised text with [VISUAL] placeholders showing where visuals go</li>
+                            <li>Description of each suggested visual</li>
+                            <li>Colour coding rationale (e.g., 'Blue = instructions, Green = examples')</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Rewrite with Chunked Steps and Concrete Language</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: My task instructions contain abstract language or long paragraphs that may be difficult for students who need concrete, sequential information.</p>
+                        <p>Objective: Break the task into numbered steps using clear, concrete language.</p>
+                        <p>Instructional nuance: Replace abstract concepts with concrete examples. Use active verbs. Make implicit steps explicit.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>Here are my task instructions: [paste instructions]</p>
+                        <p>Please rewrite them as:</p>
+                        <ul>
+                            <li>Numbered steps (no more than 8 steps if possible)</li>
+                            <li>Concrete, specific language (avoid metaphors, abstract terms, or implied information)</li>
+                            <li>Active verbs that tell students exactly what to do</li>
+                            <li>One clear action per step</li>
+                        </ul>
+                        <p>If any step is still complex, break it into sub-steps (e.g., 3a, 3b).</p>
+                        <p>Also note any abstract language you replaced and why it might have been confusing.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create Visual Schedule with Icons</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I need to help students understand the sequence and timing of activities in a lesson or task.</p>
+                        <p>Objective: Create a visual schedule that shows what will happen, in what order, and approximately how long each part will take.</p>
+                        <p>Instructional nuance: Visual schedules support executive functioning and reduce anxiety by making expectations clear and predictable.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>Here is the lesson/task sequence: [describe activities in order]</p>
+                        <p>Please create a visual schedule that includes:</p>
+                        <ul>
+                            <li>Each activity/step with a simple icon or symbol to represent it</li>
+                            <li>Estimated time for each part</li>
+                            <li>A clear way to show progression (e.g., numbered boxes, timeline)</li>
+                        </ul>
+                        <p>For each activity, suggest:</p>
+                        <ul>
+                            <li>A simple icon/symbol (describe what it would look like)</li>
+                            <li>The activity name in 2-4 words</li>
+                            <li>Time allocation</li>
+                        </ul>
+                        <p>Format it so a teacher could quickly recreate this on a slide, poster, or handout.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Rewrite Avoiding Abstract/Metaphorical Language</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: My content or instructions use figurative language, metaphors, or abstract concepts that may confuse literal thinkers or neurodivergent students.</p>
+                        <p>Objective: Rewrite using only concrete, literal language while maintaining the meaning.</p>
+                        <p>Instructional nuance: Some students interpret language very literally. Remove idioms, metaphors, and assumed cultural references.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>Here is my content/instructions: [paste content]</p>
+                        <p>Please rewrite it to:</p>
+                        <ul>
+                            <li>Remove all metaphorical or figurative language</li>
+                            <li>Replace idioms with literal equivalents</li>
+                            <li>Use concrete, specific descriptions instead of abstract concepts</li>
+                            <li>Remove implied meanings—make everything explicit</li>
+                        </ul>
+                        <p>Highlight any phrases you changed and explain why the original might have been confusing for literal thinkers.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Suggest Strength-Based Support for Working Memory</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I have students with working memory challenges who struggle to hold multiple pieces of information in mind while completing tasks.</p>
+                        <p>Objective: Design supports that reduce working memory demands while affirming student strengths.</p>
+                        <p>Instructional nuance: Frame supports as tools for efficiency, not as accommodations for deficiency. Use a strengths-first lens.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>Here is the task: [describe task]</p>
+                        <p>This task requires students to: [list what they need to hold in working memory, e.g., 'remember the question while reading the passage,' 'track multiple steps,' etc.]</p>
+                        <p>Please suggest 3-4 strength-based supports that would reduce working memory demands. For each support:</p>
+                        <ul>
+                            <li>Describe the tool or strategy</li>
+                            <li>Explain how it reduces cognitive load</li>
+                            <li>Frame it positively (e.g., 'This tool helps you work efficiently' not 'This is for students who can't remember')</li>
+                        </ul>
+                        <p>Examples of tools: reference sheets, colour-coded reminders, chunking with check-in points, graphic organizers, etc.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="content-9">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">18</span>
+                            <h3>Analogy Generator for Concept Accessibility</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Use AI to generate multiple analogies for abstract or complex concepts, with each analogy drawn from a different domain (sport, nature, everyday life, technology, cooking, gaming, etc.). This allows you to choose the analogy that best fits your students' interests and experiences, or to offer different analogies to different students as a form of interest-based content differentiation.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When content involves abstract concepts that students struggle to visualise or connect to their existing knowledge. Particularly effective when introducing new topics, when students have diverse interests you can leverage, or when a concept needs to "click" before students can engage with more complex tasks.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> Teaching the concept of "ecosystems and interdependence" in Science. The teacher generates analogies: a football team (each player has a role; remove the goalkeeper and the whole team suffers), a recipe (each ingredient contributes; change one and the result changes), and a school (teachers, students, admin all depend on each other). Students choose the analogy that resonates, then use it to explain the concept in their own words.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Generate Multiple Analogies from Different Domains</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I need to explain an abstract concept and I want multiple analogies so I can choose the best one for my students — or offer different analogies to different groups.</p>
+                        <p>Objective: Create 4-5 analogies for the same concept, each drawn from a different domain that [Year Level] students would find relatable.</p>
+                        <p>Instructional nuance: A good analogy has a strong structural mapping — the relationships between elements in the analogy should mirror the relationships in the target concept. A bad analogy just has surface similarity. Push for analogies where the <em>logic</em> transfers, not just the vibe.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>I need to teach [concept] to [Year Level] students. Many of them find this concept abstract or hard to visualise.</p>
+                        <p>Please generate 5 different analogies to explain this concept, each from a different domain:</p>
+                        <ul>
+                            <li>Sport or physical activity</li>
+                            <li>Everyday life (cooking, household, transport)</li>
+                            <li>Nature or animals</li>
+                            <li>Technology or gaming</li>
+                            <li>Social relationships or school life</li>
+                        </ul>
+                        <p>For each analogy:</p>
+                        <ul>
+                            <li>Explain the analogy in 2-3 sentences, as you'd say it to students</li>
+                            <li>Map the key elements: "In this analogy, [X] represents [Y], and [A] represents [B]"</li>
+                            <li>Note where the analogy breaks down (all analogies have limits — I need to know where this one stops working so I don't create a new misconception)</li>
+                        </ul>
+                        <p>Keep language appropriate for [Year Level].</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create an Interest-Differentiated Analogy Activity</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I want to use analogies as a differentiation-by-interest strategy, where different students work with different analogies for the same concept.</p>
+                        <p>Objective: Design a short activity where students use their chosen analogy to explain a concept, then compare analogies with peers to deepen understanding.</p>
+                        <p>Instructional nuance: The power of this activity is in the <em>comparison</em> phase. When students see that different analogies illuminate different aspects of the same concept, they develop richer, more flexible understanding. Don't skip the share-back.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>I'm teaching [concept] to [Year Level]. I want to create an activity where students choose an analogy that resonates with them and use it to demonstrate understanding.</p>
+                        <p>Using the concept of [concept], please:</p>
+                        <ul>
+                            <li>Provide 4 analogies from different domains (sport, cooking, nature, technology) — each written in student-friendly language</li>
+                            <li>Create a brief "Analogy Card" template for each, with:
+                                <ul>
+                                    <li>The analogy described in 2-3 sentences</li>
+                                    <li>A prompt: "How is [analogy situation] like [concept]? Map at least 3 connections"</li>
+                                    <li>A challenge question: "Where does this analogy stop working? What part of [concept] doesn't fit?"</li>
+                                </ul>
+                            </li>
+                            <li>Design a 5-minute share-back protocol where students with different analogies compare their mappings</li>
+                        </ul>
+                        <p>The Learning Intention is: [paste LI]</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Extend an Analogy into a Worked Example</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Context: I have an analogy that works well and I want to build a fuller teaching sequence around it — using it as the through-line for a lesson segment.</p>
+                        <p>Objective: Take a single strong analogy and develop it into a structured teaching sequence that moves from the familiar (analogy) to the abstract (concept).</p>
+                        <p>Instructional nuance: The analogy is the entry point, not the destination. Students should move from understanding the analogy → mapping it to the concept → working with the concept directly. If students can only explain the concept <em>through</em> the analogy, the scaffold hasn't faded.</p>
+                        <p><br><strong>Prompt:</strong></p>
+                        <p>I'm using this analogy to teach [concept] to [Year Level]:</p>
+                        <p>[describe the analogy]</p>
+                        <p>Please build a short teaching sequence (10-15 minutes) that uses this analogy as the through-line:</p>
+                        <ul>
+                            <li><strong>Hook</strong> (2 min): How to introduce the analogy in a way that grabs attention</li>
+                            <li><strong>Mapping</strong> (5 min): Guided questions that help students connect the analogy to the concept — what corresponds to what?</li>
+                            <li><strong>Transfer</strong> (5 min): An activity where students apply the <em>concept</em> (not just the analogy) to a new situation</li>
+                            <li><strong>Check</strong> (2 min): A question I can ask to confirm students understand the concept itself, not just the analogy</li>
+                        </ul>
+                        <p>Write the teacher dialogue for steps 1 and 2 — what I actually say and ask.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                        </div>
+
+            </section>
+
+        <nav class="step-nav">
+            <a href="step2-learners.html" class="btn-secondary">← Previous: Know Your Learners</a>
+            <a href="step3-process.html" class="btn-primary">Next: Differentiate Process →</a>
+        <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/copy-prompts.js"></script>
+    <script src="js/reorganised-pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* ==========================================
+   NEW STYLES FOR UPDATED LANDING PAGE
+   ========================================== */
+
+/* Try These First Section */
+.try-first-section {
+    background: linear-gradient(135deg, #f4b942 0%, #ffd670 100%);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 20px rgba(244, 185, 66, 0.25);
+}
+
+.try-first-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #7d1e3f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.try-first-intro {
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-size: 1.15rem;
+    color: #2d3748;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.random-strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.random-strategy-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 5px solid #7d1e3f;
+}
+
+.random-strategy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(125, 30, 63, 0.2);
+}
+
+.random-strategy-card h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #7d1e3f;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.strategy-problem {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    color: #5a5a5a;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.strategy-when {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background: #fff9e6;
+    border-radius: 6px;
+    border-left: 3px solid #f4b942;
+    line-height: 1.5;
+}
+
+.strategy-when strong {
+    color: #7d1e3f;
+}
+
+.strategy-desc {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #5a5a5a;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.strategy-category-badge {
+    display: inline-block;
+    background: #6db3c8;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.view-strategy-btn {
+    display: inline-block;
+    background: #7d1e3f;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+.view-strategy-btn:hover {
+    background: #a52a52;
+    transform: translateY(-2px);
+}
+
+.refresh-btn {
+    display: block;
+    margin: 0 auto;
+    background: white;
+    color: #7d1e3f;
+    border: 3px solid #7d1e3f;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    background: #7d1e3f;
+    color: white;
+    transform: scale(1.05);
+}
+
+.refresh-btn:active {
+    transform: scale(0.98);
+}
+
+/* Principles Link Box */
+.principles-link-box {
+    background: linear-gradient(135deg, rgba(109, 179, 200, 0.15) 0%, rgba(244, 185, 66, 0.15) 100%);
+    border: 2px solid #6db3c8;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.principles-link-box h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #7d1e3f;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.principles-link-box p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1rem;
+    color: #5a5a5a;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: white;
+    color: #7d1e3f;
+    border: 2px solid #7d1e3f;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #7d1e3f;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(125, 30, 63, 0.3);
+}

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Prompt Pathway Manual | Roseville College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1e293b;
+            --sage: #d1ddd6;
+            --sage-dark: #9fb3a6;
+            --sage-light: #e8f0eb;
+            --white: #ffffff;
+            --text: #334155;
+            --accent: #4a7c59;
+            --accent-light: #5a9469;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--sage-light) 0%, var(--white) 100%);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Crimson Pro', serif;
+        }
+
+        /* Header */
+        .header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            color: var(--sage);
+            font-size: 0.9rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border: 2px solid var(--sage-dark);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--sage-dark);
+            pointer-events: none;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 1.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--sage-dark);
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: none;
+        }
+
+        .clear-search.visible {
+            display: block;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* Introduction */
+        .intro {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+        }
+
+        .intro h2 {
+            color: var(--navy);
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+        }
+
+        .intro strong {
+            color: var(--accent);
+        }
+
+        .phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .phase {
+            background: var(--sage-light);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .phase-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .phase-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        }
+
+        .card.hidden {
+            display: none;
+        }
+
+        .card-header {
+            background: var(--accent);
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .card-header:hover {
+            background: var(--accent-light);
+        }
+
+        .card-header-content {
+            flex: 1;
+        }
+
+        .card-number {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .card-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0.25rem 0;
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .card-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .card.expanded .card-toggle {
+            transform: rotate(180deg);
+        }
+
+        .card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .card.expanded .card-body {
+            max-height: 3000px;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        /* Information Drop */
+        .info-drop {
+            background: var(--sage-light);
+            border: 2px solid var(--sage-dark);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-drop-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-drop p {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        /* Strategies Grid */
+        .strategies-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Strategy Item */
+        .strategy {
+            background: var(--white);
+            border: 1px solid var(--sage);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .strategy:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(74, 124, 89, 0.15);
+        }
+
+        .strategy.hidden {
+            display: none;
+        }
+
+        .strategy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-name {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .strategy-number {
+            background: var(--sage-light);
+            color: var(--accent);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+
+        .strategy-prompt {
+            font-size: 0.875rem;
+            color: var(--text);
+            background: var(--sage-light);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            font-style: italic;
+            border-left: 3px solid var(--sage-dark);
+        }
+
+        .copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 0.875rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: var(--accent);
+        }
+
+        .copy-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Golden Rule */
+        .golden-rule {
+            background: linear-gradient(135deg, var(--navy) 0%, #2d3a4f 100%);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .golden-rule h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--sage);
+        }
+
+        .golden-rule p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--sage-dark);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--sage-dark);
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+
+        .no-results svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.875rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast svg {
+            width: 18px;
+            height: 18px;
+            color: var(--sage);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+            }
+
+            .strategies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro {
+                padding: 1.5rem;
+            }
+
+            .phases {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Expand/Collapse All */
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .control-btn {
+            background: var(--white);
+            border: 1px solid var(--sage-dark);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: 'Work Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: var(--sage-light);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Highlight animation */
+        @keyframes highlight {
+            0% { background-color: rgba(74, 124, 89, 0.3); }
+            100% { background-color: transparent; }
+        }
+
+        .strategy.highlight {
+            animation: highlight 1.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>The Prompt Pathway Manual</h1>
+        <p>60 Micro-Moves for Chain Prompting with AI • Roseville College 2026</p>
+    </header>
+
+    <div class="search-container">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search strategies... (e.g. 'differentiation', 'EALD', 'scaffold')">
+        <button class="clear-search" id="clearSearch">×</button>
+    </div>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Why Chain Prompting?</h2>
+            <p><strong>Stop treating AI like a vending machine.</strong></p>
+            <p>A single prompt produces generic, 'pedagogical beige' output. Chain prompting transforms AI from a shortcut tool into a cognitive co-worker that extends your professional capabilities.</p>
+            <p>Think of it as supervising a <strong>super keen, super green intern</strong>. They have broad knowledge but need your guidance, your context, and your professional judgement.</p>
+            
+            <div class="phases">
+                <div class="phase">
+                    <div class="phase-num">1</div>
+                    <div class="phase-name">Context</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-num">2</div>
+                    <div class="phase-name">Parameters</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-num">3</div>
+                    <div class="phase-name">Clarity</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-num">4</div>
+                    <div class="phase-name">Iterate</div>
+                </div>
+                <div class="phase">
+                    <div class="phase-num">5</div>
+                    <div class="phase-name">Review</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="controls">
+            <button class="control-btn" id="expandAll">Expand All</button>
+            <button class="control-btn" id="collapseAll">Collapse All</button>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <p>No strategies found matching your search.</p>
+        </div>
+
+        <div id="cardsContainer">
+            <!-- Cards will be injected here by JavaScript -->
+        </div>
+
+        <section class="golden-rule">
+            <h3>The Golden Rule</h3>
+            <p>AI is a cognitive co-worker, not an answer machine. Your pedagogical insight, knowledge, and experience must guide every interaction. <strong>The more you put in, the more you get out.</strong></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>The Prompt Pathway Manual • Professional Learning 2026</p>
+        <p style="margin-top: 0.5rem;">Remember: AI outputs always require your professional human audit.</p>
+    </footer>
+
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script>
+        const cardsData = [
+            {
+                number: 1,
+                title: "The Initial Baseline",
+                subtitle: "A few key details can get the ball rolling",
+                infoDrop: "Begin by telling the AI just some basics, such as the task you want it to create and some basic context.",
+                strategies: [
+                    { name: "State a Specific Role", prompt: "Act as a Stage X teacher in a NSW school with 20 years of experience in explicit instruction." },
+                    { name: "Define the Persona", prompt: "You are a highly creative, inquiry-based educator known for making complex concepts accessible." },
+                    { name: "Negative Constraints", prompt: "Do not use a generic table format. Do not use a lecture-style introduction." },
+                    { name: "Set the Tonal DNA", prompt: "Your tone should be professional, academic, yet encouraging for a student audience." },
+                    { name: "Acknowledge the Audience", prompt: "The reading level must be strictly aligned to a [Year Level] student." },
+                    { name: "The Contextual Anchor", prompt: "Design this for a high-performing/support classroom context, focusing on high-impact outcomes." },
+                    { name: "Identify Prior Knowledge", prompt: "List three common misconceptions students have about [Topic] before we start." },
+                    { name: "The 'Anti-Vending Machine' Shift", prompt: "Instead of providing a final lesson, ask me three clarifying questions about my specific class needs first." },
+                    { name: "Time Reallocation Goal", prompt: "Focus on reducing my administrative preparation while maintaining high academic rigour." },
+                    { name: "Describe the Exact Task", prompt: "Draft three potential lesson titles that would spark immediate curiosity." },
+                    { name: "Negative Constraint (Language)", prompt: "Avoid using educational jargon that a parent or student wouldn't understand." },
+                    { name: "The Mindset Shift", prompt: "Remind the AI that it is a co-designer, not the primary author of this lesson." }
+                ]
+            },
+            {
+                number: 2,
+                title: "Contextual Rigour",
+                subtitle: "Instructional Design",
+                infoDrop: "Reply to the same chat. Add your specific context: 'The audience is Year [X]. The Learning Intention is for students to [Intention].' Use these strategies to anchor the AI in your professional standards.",
+                strategies: [
+                    { name: "NSW Syllabus Alignment", prompt: "Map this lesson directly to the NSW [Subject] K–10 Syllabus outcome codes." },
+                    { name: "Explicit Instruction Focus", prompt: "Structure the lesson using the 'I Do, We Do, You Do' gradual release of responsibility model." },
+                    { name: "Tiered Vocabulary Search", prompt: "Identify five Tier 2 and Tier 3 vocabulary words essential for this learning intention." },
+                    { name: "Resource Constraints", prompt: "Design this activity assuming we only have access to [Physical Resources/Laptops/Whiteboard]." },
+                    { name: "Diagnostic Check", prompt: "Generate three 'Entrance Ticket' questions to assess student readiness for this intention." },
+                    { name: "The Learning Hook", prompt: "Create a 'Cognitive Conflict' hook that challenges students to rethink what they know about [Topic]." },
+                    { name: "Evidence-Based Framing", prompt: "Ensure the instructional moves are aligned with the 'What Works Best' evidence from CESE." },
+                    { name: "Accessibility Check", prompt: "Ensure all instructions are written in short, readable chunks to avoid overloading working memory." },
+                    { name: "Safety and Ethics", prompt: "Identify any potential ethical dilemmas or safety concerns related to this topic." },
+                    { name: "Check for Coherence", prompt: "Does the suggested activity actually lead students toward the stated learning intention?" },
+                    { name: "Cultural Inclusion", prompt: "Identify concepts that might require specific bridging for EALD students in our context." },
+                    { name: "Meta-Reflection", prompt: "Ask the AI to explain why it chose the specific activity structure it suggested." }
+                ]
+            },
+            {
+                number: 3,
+                title: "The Innovation Sandpit",
+                subtitle: "Creative Refinement",
+                infoDrop: "This is the innovation phase. Push the AI beyond the first draft. Challenge its logic, re-imagine the structure, and turn it into a high-impact resource.",
+                strategies: [
+                    { name: "The Devil's Advocate", prompt: "Tell me exactly why a disengaged student would find this lesson boring. Then, suggest one fix." },
+                    { name: "Analogy Generator", prompt: "Provide three different analogies to explain this concept: one related to sport, one to nature, one to everyday life." },
+                    { name: "Visual Facilitation", prompt: "Describe three specific visual aids or diagrams that would help students process this complex information." },
+                    { name: "The Scaffolding Ladder", prompt: "Provide a 'Hint Card' that I can give students who get stuck, without giving away the answer." },
+                    { name: "Authentic Connection", prompt: "Localise this lesson. How does [Topic] impact our specific community in NSW today?" },
+                    { name: "The Engagement Audit", prompt: "Suggest a way to turn the main activity into a collaborative game or simulation." },
+                    { name: "Predictive Differentiating", prompt: "Predict which part of this lesson will cause the most confusion. Write a two-minute 're-teaching' script." },
+                    { name: "The Choice Board", prompt: "Turn this activity into a Choice Board, allowing students to demonstrate learning through writing, drawing, or oral presentation." },
+                    { name: "Higher-Order Synthesis", prompt: "Create a 'Platinum Challenge' task that requires students to evaluate two competing viewpoints on this topic." },
+                    { name: "The 'Yes-Man' Challenge", prompt: "Critique your own response. What assumptions have you made about students' prior knowledge that might be wrong?" },
+                    { name: "Creative Constraints", prompt: "Rewrite this lesson so students are not allowed to use any text. How would they communicate their learning?" },
+                    { name: "Student-Facing Persona", prompt: "Rewrite the student instructions as if delivered by a famous historical figure related to [Topic]." }
+                ]
+            },
+            {
+                number: 4,
+                title: "Masterclass Differentiation",
+                subtitle: "Targeted Support",
+                infoDrop: "Add depth and differentiation. Your class includes a wide range of learners. Use these strategies to create resources that meet the needs of all learners, from support to extension.",
+                strategies: [
+                    { name: "The Parallel Task", prompt: "Create a version of this task that covers the same concept but uses simplified sentence stems for support." },
+                    { name: "Tiered Vocabulary Integration", prompt: "Provide a student-friendly glossary for the five key terms identified earlier." },
+                    { name: "Cognitive Load Scrub", prompt: "Remove all unnecessary words from the worksheet. Use bold text for all action verbs." },
+                    { name: "Support Checklists", prompt: "Generate a self-assessment checklist that students can use to track their progress through the activity." },
+                    { name: "Extension via Reasoning", prompt: "Create a task that requires deeper reasoning or evaluation rather than just more of the same work." },
+                    { name: "EALD Bridge", prompt: "Translate the three most important instructions into [Language] for my EALD students." },
+                    { name: "Accessibility Check (Multimedia)", prompt: "If I am using a video, generate a written transcript in short, readable chunks." },
+                    { name: "Neurodiversity Audit", prompt: "Review the lesson for potential sensory or processing triggers for students with ASD or ADHD." },
+                    { name: "The 'I Do' Modelling", prompt: "Generate a 'Worked Example' of what a successful response looks like. Also generate one that would NOT satisfy requirements." },
+                    { name: "Prompt Scaffolding", prompt: "Create three differentiated topic sentences that students can use to start their written response." },
+                    { name: "Chunked Instructions", prompt: "Reformat the task into five clear, sequential steps. Ensure each step is no longer than 15 words." },
+                    { name: "Self-Correction Strategy", prompt: "Ask the AI to check its own answer for age appropriateness and bias, then revise it." }
+                ]
+            },
+            {
+                number: 5,
+                title: "The Lead Practitioner",
+                subtitle: "Critical Friend & Polish",
+                infoDrop: "Make this resource classroom-ready. Use the AI as a 'critical friend' to evaluate your work and then reformat it into professional school documentation.",
+                strategies: [
+                    { name: "The Tone Scrub", prompt: "Remove all 'AI-isms' like 'delve', 'tapestry', and 'unlocking potential'. Rewrite in a direct, professional voice. Remove all emojis." },
+                    { name: "The 'Program-Ready' Converter", prompt: "Summarise this entire sequence into a three-dot-point entry suitable for my teaching and learning program." },
+                    { name: "The Curriculum Map", prompt: "List the NSW Stage outcomes addressed and map exactly where they occur in the lesson sequence." },
+                    { name: "Resource Packaging", prompt: "Reformat the student instructions into a clean table that I can copy and paste directly into Word." },
+                    { name: "Success Criteria Checklist", prompt: "Generate a 'Success Criteria' checklist aligned to the Learning Intention for student self-reflection." },
+                    { name: "Teacher Implementation Notes", prompt: "Create a 'Cheat Sheet' for a substitute teacher. Include specific reminders for formative assessment." },
+                    { name: "The Meta-Coach", prompt: "Look back at our entire conversation. If I want to get to this result faster next time, how should I have phrased my first request?" },
+                    { name: "Output Format Check", prompt: "Present the final resource as a teacher-facing guide with an answer key and required materials list." },
+                    { name: "Verification Check", prompt: "Cite the pedagogical evidence or syllabus document that justifies this specific lesson structure." },
+                    { name: "Bias Check", prompt: "Examine the lesson for any unspoken assumptions about students' cultural context or prior knowledge." },
+                    { name: "Logic Audit", prompt: "Double-check the accuracy of the facts and calculations in this resource. Highlight any parts you are unsure of." },
+                    { name: "Implementation Strategy", prompt: "Suggest three 'Checking for Understanding' questions I can ask during the lesson to measure student impact." }
+                ]
+            }
+        ];
+
+        // Render cards
+        function renderCards() {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = cardsData.map((card, cardIndex) => `
+                <div class="card" data-card="${cardIndex}">
+                    <div class="card-header" onclick="toggleCard(${cardIndex})">
+                        <div class="card-header-content">
+                            <div class="card-number">Card ${card.number}</div>
+                            <h2 class="card-title">${card.title}</h2>
+                            <div class="card-subtitle">${card.subtitle}</div>
+                        </div>
+                        <div class="card-toggle">▼</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-content">
+                            <div class="info-drop">
+                                <div class="info-drop-label">The Information Drop</div>
+                                <p>${card.infoDrop}</p>
+                            </div>
+                            <div class="strategies-label">12 Micro-Moves</div>
+                            <div class="strategies-grid">
+                                ${card.strategies.map((strategy, stratIndex) => `
+                                    <div class="strategy" data-strategy="${cardIndex}-${stratIndex}" data-searchable="${strategy.name.toLowerCase()} ${strategy.prompt.toLowerCase()}">
+                                        <div class="strategy-header">
+                                            <span class="strategy-number">${stratIndex + 1}</span>
+                                            <span class="strategy-name">${strategy.name}</span>
+                                        </div>
+                                        <div class="strategy-prompt">"${strategy.prompt}"</div>
+                                        <button class="copy-btn" onclick="copyToClipboard('${strategy.prompt.replace(/'/g, "\\'")}', this)">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                            </svg>
+                                            Copy Prompt
+                                        </button>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle card expansion
+        function toggleCard(index) {
+            const card = document.querySelector(`[data-card="${index}"]`);
+            card.classList.toggle('expanded');
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Update button
+                const originalHTML = button.innerHTML;
+                button.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Copied!
+                `;
+                button.classList.add('copied');
+
+                // Show toast
+                const toast = document.getElementById('toast');
+                toast.classList.add('visible');
+
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                    toast.classList.remove('visible');
+                }, 2000);
+            });
+        }
+
+        // Search functionality
+        function handleSearch(query) {
+            const searchTerm = query.toLowerCase().trim();
+            const cards = document.querySelectorAll('.card');
+            const strategies = document.querySelectorAll('.strategy');
+            const noResults = document.getElementById('noResults');
+            const clearBtn = document.getElementById('clearSearch');
+
+            clearBtn.classList.toggle('visible', searchTerm.length > 0);
+
+            if (searchTerm === '') {
+                cards.forEach(card => card.classList.remove('hidden'));
+                strategies.forEach(strategy => {
+                    strategy.classList.remove('hidden');
+                    strategy.classList.remove('highlight');
+                });
+                noResults.classList.remove('visible');
+                return;
+            }
+
+            let anyVisible = false;
+
+            cards.forEach(card => {
+                const cardStrategies = card.querySelectorAll('.strategy');
+                let cardHasMatch = false;
+
+                cardStrategies.forEach(strategy => {
+                    const searchable = strategy.dataset.searchable;
+                    const matches = searchable.includes(searchTerm);
+                    strategy.classList.toggle('hidden', !matches);
+                    if (matches) {
+                        cardHasMatch = true;
+                        anyVisible = true;
+                        strategy.classList.add('highlight');
+                    } else {
+                        strategy.classList.remove('highlight');
+                    }
+                });
+
+                card.classList.toggle('hidden', !cardHasMatch);
+                if (cardHasMatch && !card.classList.contains('expanded')) {
+                    card.classList.add('expanded');
+                }
+            });
+
+            noResults.classList.toggle('visible', !anyVisible);
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            handleSearch(e.target.value);
+        });
+
+        document.getElementById('clearSearch').addEventListener('click', () => {
+            document.getElementById('searchInput').value = '';
+            handleSearch('');
+        });
+
+        document.getElementById('expandAll').addEventListener('click', () => {
+            document.querySelectorAll('.card').forEach(card => {
+                if (!card.classList.contains('hidden')) {
+                    card.classList.add('expanded');
+                }
+            });
+        });
+
+        document.getElementById('collapseAll').addEventListener('click', () => {
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('expanded');
+            });
+        });
+
+        // Initialize
+        renderCards();
+        
+        // Expand first card by default
+        document.querySelector('[data-card="0"]').classList.add('expanded');
+    </script>
+</body>
+</html>

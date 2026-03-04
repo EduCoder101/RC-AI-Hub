@@ -1,0 +1,819 @@
+/* ==========================================
+   STEP PAGES STYLES
+   ========================================== */
+
+.step-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #d9653e 100%);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background-color: rgba(244, 185, 66, 0.1);
+}
+
+.breadcrumb a:hover {
+    color: var(--secondary-color);
+    background-color: rgba(244, 185, 66, 0.2);
+}
+
+.breadcrumb a:first-child {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    font-weight: 700;
+}
+
+.breadcrumb a:first-child:hover {
+    opacity: 0.9;
+}
+
+/* Content Sections */
+.step-content {
+    margin-bottom: 3rem;
+}
+
+.principle-box {
+    background: linear-gradient(135deg, #e6f2f7 0%, var(--bg-light) 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 6px solid var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.principle-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.principle-box p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* Framework Section */
+.framework {
+    margin-bottom: 3rem;
+}
+
+.framework > h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.kud-section {
+    background-color: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.kud-section:hover {
+    border-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+}
+
+.kud-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.kud-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.kud-description {
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.example-box {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.example-box strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.example-box ul {
+    margin-left: 1.5rem;
+}
+
+.example-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.tip-box {
+    background-color: #fff9e6;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* AI Prompts Section */
+.ai-prompts-section {
+    margin-bottom: 3rem;
+}
+
+.ai-prompts-section > h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.ai-prompts-section > p {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.context-reminder {
+    background: linear-gradient(135deg, rgba(109, 179, 200, 0.15) 0%, rgba(109, 179, 200, 0.08) 100%);
+    border: 2px solid var(--accent-blue);
+    border-left: 6px solid var(--accent-blue);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.context-reminder h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.context-reminder p {
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+.context-reminder strong {
+    color: var(--primary-color);
+}
+
+.prompt-card {
+    background-color: var(--bg-white);
+    border: 3px solid var(--primary-color);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(125, 30, 63, 0.08);
+}
+
+/* Collapsible Prompt Card Header */
+.prompt-card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prompt-card-header:hover {
+    background: linear-gradient(135deg, #6a1936 0%, #8f2346 100%);
+}
+
+.prompt-card-header h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff !important;
+    flex: 1;
+}
+
+/* Extra specificity for prompt headers */
+.prompt-card .prompt-card-header h4 {
+    color: #ffffff !important;
+}
+
+.prompt-card-header .expand-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    min-width: 30px;
+    text-align: center;
+}
+
+.prompt-card.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+/* Collapsible Prompt Card Content */
+.prompt-card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.prompt-card.expanded .prompt-card-content {
+    max-height: 10000px;
+}
+
+/* Legacy prompt-card h4 for non-collapsible cards */
+.prompt-card h4:not(.prompt-card-header h4) {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+/* AI Prompts Section - Individual Prompts */
+.prompt-section {
+    margin-bottom: 2.5rem;
+}
+
+.prompt-title {
+    background: linear-gradient(135deg, rgba(244, 185, 66, 0.25) 0%, rgba(244, 185, 66, 0.15) 100%);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0;
+    border-radius: 12px 12px 0 0;
+    border: 2px solid var(--accent-color);
+    border-bottom: none;
+}
+
+.prompt-title h4 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.prompt-container {
+    background-color: #fafafa;
+    border: 2px solid #e5ddd5;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 1.5rem;
+    font-family: 'Courier New', 'Courier', monospace;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.prompt-container p {
+    margin-bottom: 1rem;
+    font-family: 'Courier New', 'Courier', monospace;
+}
+
+.prompt-container strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.prompt-container ul {
+    margin: 0.75rem 0 1rem 2rem;
+    padding: 0;
+}
+
+.prompt-container li {
+    margin-bottom: 0.5rem;
+}
+
+.prompt-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.prompt-box p {
+    margin-bottom: 0.75rem;
+}
+
+.prompt-box ul {
+    margin: 0.75rem 0 0.75rem 2rem;
+}
+
+.prompt-box li {
+    margin-bottom: 0.5rem;
+}
+
+.copy-btn {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+}
+
+.copy-btn.copied {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+/* Why This Matters Section */
+.why-this-matters {
+    background: linear-gradient(135deg, rgba(244, 185, 66, 0.08) 0%, rgba(109, 179, 200, 0.08) 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--accent-color);
+    border-left: 6px solid var(--accent-color);
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+}
+
+.why-this-matters h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.why-this-matters p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.why-this-matters ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.why-this-matters li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.quote {
+    font-style: italic;
+    color: var(--primary-color);
+    border-left: 5px solid var(--accent-color);
+    background-color: rgba(244, 185, 66, 0.08);
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+/* Step Navigation */
+.step-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background-color: var(--bg-white);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Strategy Card (for process/content/product pages) */
+.strategy-card {
+    background-color: var(--bg-white);
+    border: 3px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.strategy-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Collapsible Strategy Header */
+.strategy-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.strategy-header:hover {
+    background: linear-gradient(135deg, #6a1936 0%, #8f2346 100%);
+}
+
+.strategy-title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.strategy-number {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    margin-right: 1rem;
+    font-weight: 700;
+}
+
+.strategy-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #ffffff !important;
+}
+
+/* Ensure all h3 inside strategy headers are white */
+.strategy-card .strategy-header h3 {
+    color: #ffffff !important;
+}
+
+.expand-icon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    min-width: 30px;
+    text-align: center;
+    color: white;
+}
+
+.strategy-card.expanded .expand-icon {
+    transform: rotate(180deg);
+}
+
+/* Strategy Content - Collapsible */
+.strategy-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.strategy-card.expanded .strategy-content {
+    max-height: 10000px;
+}
+
+.strategy-inner {
+    padding: 2rem;
+}
+
+.strategy-card h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.75rem;
+}
+
+.strategy-card .description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.strategy-card .when-to-use {
+    background-color: #fff9e6;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--accent-color);
+}
+
+.strategy-card .when-to-use strong {
+    color: var(--primary-color);
+}
+
+/* Cycle Diagram (Step 7) */
+.cycle-diagram {
+    margin-bottom: 3rem;
+}
+
+.cycle-diagram h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cycle-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #e6f2f7 0%, var(--bg-light) 100%);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.cycle-step {
+    background-color: var(--bg-white);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    min-width: 150px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.cycle-step:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary-color);
+}
+
+.cycle-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.cycle-step h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cycle-step p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.cycle-arrow {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    font-weight: 300;
+}
+
+.cycle-return {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.cycle-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-light);
+    margin-top: 1rem;
+}
+
+/* Regrouping Section */
+.regrouping-section {
+    background: linear-gradient(135deg, #fff9e6 0%, #fef6e0 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 6px solid var(--accent-color);
+    margin-bottom: 3rem;
+}
+
+.regrouping-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.regrouping-section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Conclusion Box */
+.conclusion-box {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.conclusion-box h2 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.conclusion-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.back-to-start {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.conclusion-box .btn-primary,
+.conclusion-box .btn-secondary {
+    background: white;
+    color: var(--primary-color);
+    border: none;
+}
+
+.conclusion-box .btn-primary:hover {
+    background-color: var(--bg-light);
+}
+
+.conclusion-box .btn-secondary:hover {
+    background-color: var(--bg-light);
+}
+
+/* Principle Card (for Step 6) */
+.principle-card {
+    background-color: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.principle-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.principle-card p {
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+/* Planning Section */
+.planning-section {
+    margin-bottom: 3rem;
+}
+
+.planning-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Combining Section (Step 4) */
+.combining-section {
+    background: linear-gradient(135deg, #fff9e6 0%, #fef6e0 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border-left: 6px solid var(--accent-color);
+    margin-bottom: 3rem;
+}
+
+.combining-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.combining-section p {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .kud-section {
+        padding: 1.5rem;
+    }
+
+    .kud-section h3 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .prompt-card {
+        padding: 1.5rem;
+    }
+
+    .step-nav {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .cycle-visual {
+        flex-direction: column;
+    }
+
+    .cycle-arrow {
+        transform: rotate(90deg);
+    }
+
+    .cycle-return {
+        transform: rotate(0deg);
+    }
+
+    .back-to-start {
+        flex-direction: column;
+    }
+
+    .back-to-start .btn-primary,
+    .back-to-start .btn-secondary {
+        width: 100%;
+    }
+}
+
+/* CRITICAL: Force white text on all collapsible headers */
+.strategy-header h3,
+.strategy-card .strategy-header h3,
+.prompt-card-header h4,
+.prompt-card .prompt-card-header h4 {
+    color: #ffffff !important;
+}

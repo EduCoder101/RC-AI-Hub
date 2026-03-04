@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Differentiation Continuum | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/continuum.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a> → <a href="main.html">Manual</a> → Continuum
+        </nav>
+
+        <!-- Hero -->
+        <section class="continuum-hero">
+            <h1>The Differentiation Continuum</h1>
+            <p class="page-subtitle">Where does each strategy help most?</p>
+            <p class="intro-text">
+                Every student is working toward the same learning intention — but they need different support to get there.
+                This view organises strategies by where they help most: <strong>Foundations</strong> strategies build toward the core concept,
+                <strong>Core</strong> strategies help students engage with it, and <strong>Extension</strong> strategies push understanding further.
+                Find what you need, or explore the full picture.
+            </p>
+        </section>
+
+        <!-- Filter Bar -->
+        <div class="continuum-filters" id="filterBar">
+            <div class="filter-row">
+                <span class="filter-label">Show:</span>
+                <button class="filter-pill active" data-position="all">All</button>
+                <button class="filter-pill" data-position="foundations">🔵 Foundations</button>
+                <button class="filter-pill" data-position="core">🟡 Core</button>
+                <button class="filter-pill" data-position="extension">🟠 Extension</button>
+                <button class="category-toggle" id="categoryToggle" style="display:none;">Filter by category</button>
+            </div>
+            <div class="filter-row category-filters-row" id="categoryFiltersRow">
+                <span class="filter-label">Category:</span>
+                <button class="filter-pill category-pill" data-category="Content">Content</button>
+                <button class="filter-pill category-pill" data-category="Process">Process</button>
+                <button class="filter-pill category-pill" data-category="Product">Product</button>
+                <button class="filter-pill category-pill" data-category="Scaffolding">Scaffolding</button>
+                <button class="filter-pill category-pill" data-category="Assessment">Assessment</button>
+            </div>
+            <div class="filter-row category-filters-row" id="taskTypeFiltersRow">
+                <span class="filter-label">Task Type:</span>
+                <button class="filter-pill task-type-pill" data-tasktype="adjust-resource">Adjust Resource</button>
+                <button class="filter-pill task-type-pill" data-tasktype="diff-lesson">Diff Lesson</button>
+                <button class="filter-pill task-type-pill" data-tasktype="ideate-support">Support</button>
+                <button class="filter-pill task-type-pill" data-tasktype="ideate-extension">Extension</button>
+                <button class="filter-pill task-type-pill" data-tasktype="plan-sequence">Sequence</button>
+                <button class="filter-pill task-type-pill" data-tasktype="plan-unit">Unit</button>
+                <button class="filter-pill task-type-pill" data-tasktype="create-assessment">Assessment</button>
+                <button class="filter-pill task-type-pill" data-tasktype="setup-systems">Systems</button>
+            </div>
+        </div>
+
+        <!-- Strategy count -->
+        <div class="strategy-count" id="strategyCount"></div>
+
+        <!-- ========================================
+             DESKTOP: Three-Column Grid
+             ======================================== -->
+        <div class="continuum-grid">
+
+            <!-- Foundations Column -->
+            <div class="continuum-column">
+                <div class="column-header foundations">
+                    <h2>🔵 Foundations</h2>
+                    <span class="column-desc">Building toward the core</span>
+                </div>
+                <div class="column-cards" id="foundationsCards">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Core Column -->
+            <div class="continuum-column">
+                <div class="column-header core">
+                    <h2>🟡 Core</h2>
+                    <span class="column-desc">The learning intention</span>
+                </div>
+                <div class="column-cards" id="coreCards">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Extension Column -->
+            <div class="continuum-column">
+                <div class="column-header extension">
+                    <h2>🟠 Extension</h2>
+                    <span class="column-desc">Moving beyond</span>
+                </div>
+                <div class="column-cards" id="extensionCards">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================
+             MOBILE: Tabbed View
+             ======================================== -->
+        <div class="mobile-tabs">
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="foundations">🔵 Foundations</button>
+                <button class="tab-btn" data-tab="core">🟡 Core</button>
+                <button class="tab-btn" data-tab="extension">🟠 Extension</button>
+            </div>
+            <div class="tab-panel active" id="tab-foundations">
+                <!-- Populated by JS -->
+            </div>
+            <div class="tab-panel" id="tab-core">
+                <!-- Populated by JS -->
+            </div>
+            <div class="tab-panel" id="tab-extension">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- ========================================
+             FULL SPAN STRATEGIES
+             ======================================== -->
+        <div class="full-span-section" id="fullSpanSection">
+            <div class="section-header">
+                <h2>🔵🟡🟠 Full Span Strategies</h2>
+                <span class="section-desc">These create foundations, core, and extension versions simultaneously</span>
+            </div>
+            <div class="full-span-cards" id="fullSpanCards">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- ========================================
+             EQUALISER SECTION
+             ======================================== -->
+        <div class="equaliser-section" id="equaliserSection">
+            <div class="section-header">
+                <h2>Move Along the Continuum</h2>
+                <p class="section-desc">The Equaliser: eight dimensions for adjusting where a task sits. Slide any dimension left toward foundations or right toward extension.</p>
+            </div>
+            <div class="equaliser-cards" id="equaliserCards">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- ========================================
+             CTA
+             ======================================== -->
+        <div class="continuum-cta">
+            <h2>Ready to apply these strategies?</h2>
+            <p>Pick a strategy above, follow the link, and copy its AI prompt into Claude or ChatGPT with your specific context.</p>
+            <div class="cta-buttons">
+                <a href="main.html" class="btn-primary">Explore the Full Manual</a>
+                <a href="search.html" class="btn-secondary">Search for a Strategy</a>
+                <a href="randomiser.html" class="btn-secondary">Try a Random Strategy</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/search-data.js"></script>
+    <script src="js/continuum.js"></script>
+</body>
+</html>

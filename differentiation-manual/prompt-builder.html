@@ -1,0 +1,3810 @@
+<!DOCTYPE html>
+<!-- Prompt Builder | Differentiation Manual -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Builder | Differentiation Manual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ==========================================
+           CSS VARIABLE OVERRIDES (warm palette)
+           ========================================== */
+        :root {
+            --primary-color:    #7A1A38;   /* deep maroon — matches reference */
+            --secondary-color:  #5C1228;   /* darker maroon */
+            --accent-color:     #C8860A;   /* warm gold accent */
+            --accent-teal:      #3A8A7A;   /* teal for foundations/info */
+            --text-dark:        #2A0A18;   /* near-black maroon */
+            --text-light:       #7A5060;   /* muted rose-grey */
+            --border-color:     #E8D8DC;   /* blush border */
+            --bg-light:         #FBF6F4;   /* warm near-white */
+            --shadow:           0 4px 24px rgba(122,26,56,0.08);
+            --font-heading:     'Playfair Display', Georgia, serif;
+            --font-body:        'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+        }
+        /* ==========================================
+           PROMPT BUILDER - SPECIFIC STYLES
+           ========================================== */
+
+        body {
+            background-color: #F8F3EE;
+            background-image:
+                radial-gradient(ellipse at 0% 0%,   rgba(180,220,210,0.55) 0%, transparent 55%),
+                radial-gradient(ellipse at 100% 0%,  rgba(240,210,160,0.55) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 100%, rgba(230,200,215,0.4)  0%, transparent 60%);
+            min-height: 100vh;
+            font-family: var(--font-body);
+        }
+
+        .pb-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+        }
+
+        /* Header */
+        .pb-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .pb-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            border-radius: 2px;
+        }
+
+        .pb-header .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        .pb-header .back-link:hover { color: var(--primary-color); }
+
+        .pb-header h1 {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+        }
+
+        .pb-header .tagline {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.65;
+            font-style: normal;
+            font-family: var(--font-body);
+        }
+
+        /* Progress Bar */
+        .progress-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 5px;
+            background: #E8D0D8;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .progress-label {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--text-light);
+            white-space: nowrap;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        /* Question Panels */
+        .question-panel {
+            background: #FFFFFF;
+            border-radius: 18px;
+            padding: 2.2rem 2.2rem 1.5rem;
+            box-shadow: 0 4px 24px rgba(122,26,56,0.07), 0 1px 4px rgba(122,26,56,0.04);
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: slideIn 0.35s ease;
+            border: 1.5px solid rgba(122,26,56,0.12);
+            border-left: 4px solid rgba(122,26,56,0.4);
+        }
+
+        .question-panel.active { display: block; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-panel .q-label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .question-panel h2 {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .question-panel .q-hint {
+            font-size: 0.93rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Theory Toggle */
+        .theory-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: none;
+            border: 1.5px solid #C4A882;
+            color: var(--primary-color);
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 0.3rem 0.85rem;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .theory-toggle:hover {
+            background: #9A7045;
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .theory-toggle .arrow {
+            transition: transform 0.2s;
+            font-size: 0.7rem;
+        }
+
+        .theory-toggle.open .arrow { transform: rotate(180deg); }
+
+        .theory-box {
+            display: none;
+            background: linear-gradient(135deg, rgba(122,26,56,0.06) 0%, rgba(122,26,56,0.02) 100%);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.4rem;
+            font-size: 0.93rem;
+            line-height: 1.75;
+            color: var(--text-dark);
+            font-family: var(--font-heading);
+            font-style: italic;
+        }
+
+        .theory-box.open { display: block; }
+
+        /* Option Cards (single select) */
+        .option-cards {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .option-cards.cols-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .option-card {
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            background: white;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            background: #FDF5F7;
+            box-shadow: 0 3px 12px rgba(122,26,56,0.1);
+            transform: translateY(-1px);
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #FDF0F3 0%, #FDF7F8 100%);
+            box-shadow: 0 2px 14px rgba(122,26,56,0.1);
+        }
+
+        .option-card .card-icon {
+            flex-shrink: 0;
+            margin-top: 0.15rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #F5E8ED, #EDD8E0);
+            border-radius: 10px;
+            color: var(--primary-color);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.6), 0 1px 3px rgba(122,26,56,0.1);
+            transition: all 0.2s;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .option-card .card-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .option-card.selected .card-icon {
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 2px 8px rgba(42,88,133,0.3);
+        }
+
+        .option-card.disabled-task .card-icon {
+            background: #F0E0E8;
+            color: #B87A90;
+        }
+
+        .option-card .card-text strong {
+            display: block;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.97rem;
+            color: var(--text-dark);
+            margin-bottom: 0.15rem;
+        }
+
+        .option-card .card-text span {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            line-height: 1.45;
+        }
+
+        .option-card .check {
+            margin-left: auto;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            margin-top: 0.1rem;
+        }
+
+        .option-card.selected .check {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .option-card.selected .check::after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        /* Checkbox Cards (multi-select) */
+        .checkbox-cards {
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .checkbox-card {
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.85rem 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: white;
+        }
+
+        .checkbox-card:hover {
+            border-color: var(--primary-color);
+            background: #FDF5F7;
+        }
+
+        .checkbox-card.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #FDF0F3 0%, #FDF7F8 100%);
+        }
+
+        .checkbox-card .cb-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .checkbox-card.selected .cb-box {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-card.selected .cb-box::after {
+            content: '';
+            width: 5px;
+            height: 9px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        .checkbox-card .cb-label {
+            font-size: 0.97rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Sub-section header inside a panel */
+        .sub-q {
+            margin-top: 1.8rem;
+            padding-top: 1.6rem;
+            border-top: 1.5px dashed var(--border-color);
+        }
+
+        .sub-q h3 {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .sub-q .sub-hint {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* Conditional Checklist (EAL/D, Neurodiversity) */
+        .conditional-list {
+            display: none;
+            margin-top: 0.75rem;
+            padding: 1.2rem;
+            background: #FBF6F4;
+            border-radius: 10px;
+            border: 1.5px solid var(--border-color);
+        }
+
+        .conditional-list.open { display: block; }
+
+        .conditional-list .cl-title {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .cl-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.4rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .cl-item:hover { background: rgba(122,26,56,0.04); }
+
+        .cl-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .cl-item label {
+            font-size: 0.93rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .cl-item.lang-other input[type="text"] {
+            border: 1.5px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.3rem 0.6rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            outline: none;
+            width: 180px;
+            transition: border-color 0.2s;
+        }
+
+        .cl-item.lang-other input[type="text"]:focus {
+            border-color: var(--primary-color);
+        }
+
+        /* Context fill-in */
+        .context-fields {
+            display: grid;
+            gap: 1.1rem;
+        }
+
+        .field-group label {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.01em;
+        }
+
+        .field-group input,
+        .field-group textarea {
+            width: 100%;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.7rem 0.9rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: white;
+            resize: vertical;
+        }
+
+        .field-group input:focus,
+        .field-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(122,26,56,0.08);
+        }
+
+        .field-group textarea {
+            min-height: 120px;
+        }
+
+        .field-group .field-hint {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        /* Validation message */
+        .validation-msg {
+            display: none;
+            background: #fff3cd;
+            border: 1.5px solid #ffc107;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            color: #856404;
+            margin-top: 1rem;
+        }
+
+        .validation-msg.show { display: block; }
+
+        /* Navigation Buttons */
+        .panel-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-back {
+            background: none;
+            border: 1.5px solid var(--border-color);
+            color: var(--text-light);
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            color: white;
+            padding: 0.7rem 1.75rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 3px 10px rgba(122,26,56,0.22);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 16px rgba(122,26,56,0.28);
+        }
+
+        /* Output Stage */
+        #panel-output {
+            display: none;
+        }
+
+        #panel-output.active { display: block; }
+
+        .output-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .output-option-card {
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.5rem 1.25rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .output-option-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 3px 12px rgba(122,26,56,0.1);
+        }
+
+        .output-option-card.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #FDF0F3 0%, #FDF7F8 100%);
+        }
+
+        .output-option-card .oo-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #F5E8ED, #EDD8E0);
+            border-radius: 12px;
+            color: var(--primary-color);
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.6), 0 1px 4px rgba(122,26,56,0.1);
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .output-option-card .oo-icon svg { width: 20px; height: 20px; }
+        .output-option-card.selected .oo-icon {
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        .output-option-card h3 {
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+        }
+        .output-option-card p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Delivery format (master / chain) */
+        .delivery-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-card {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.1rem 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .delivery-card:hover { border-color: var(--primary-color); }
+
+        .delivery-card.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #FDF0F3 0%, #FDF7F8 100%);
+        }
+
+        .delivery-card h4 {
+            font-family: var(--font-body);
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .delivery-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Curate component cards */
+        .component-cards {
+            display: grid;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .component-card {
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 0.85rem 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .component-card:hover { border-color: var(--primary-color); background: #FDF5F7; }
+
+        .component-card.selected {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #FDF0F3 0%, #FDF7F8 100%);
+        }
+
+        .component-card .cb-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .component-card.selected .cb-box {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .component-card.selected .cb-box::after {
+            content: '';
+            width: 5px;
+            height: 9px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        .component-card .comp-label strong {
+            display: block;
+            font-size: 0.97rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .component-card .comp-label span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Final prompt output */
+        .prompt-output-area {
+            display: none;
+        }
+
+        .prompt-output-area.active { display: block; }
+
+        .prompt-box {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-box .prompt-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-box .prompt-title {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .copy-btn {
+            background: var(--accent-color);
+            border: none;
+            color: #1a1a2e;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover { opacity: 0.85; }
+        .copy-btn.copied { background: #4caf50; color: white; }
+
+        .prompt-text {
+            color: #e8e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* Chain step */
+        .chain-step {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+        }
+
+        .chain-step-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 0.85rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chain-step-header span {
+            font-family: var(--font-body);
+            font-weight: 700;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .chain-step-body { padding: 1.2rem; background: white; }
+
+        .chain-reflection {
+            background: rgba(122,26,56,0.06);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+            padding: 0.8rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-family: var(--font-heading);
+            font-style: italic;
+        }
+
+        .chain-reflection strong {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+            font-style: normal;
+        }
+
+        /* Response checklist */
+        .response-checklist {
+            background: linear-gradient(135deg, rgba(122,26,56,0.06) 0%, rgba(122,26,56,0.02) 100%);
+            border: 1.5px solid rgba(122,26,56,0.28);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .response-checklist h4 {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary-color);
+            margin-bottom: 0.9rem;
+        }
+
+        .response-checklist ul {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .response-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .response-checklist li::before {
+            content: '✦';
+            color: var(--accent-color);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.05rem;
+            font-size: 0.75rem;
+        }
+
+        /* Start over */
+        .start-over-wrap {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-start-over {
+            background: none;
+            border: 1.5px solid var(--border-color);
+            color: var(--text-light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-start-over:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* ── Content / Process cycle diagram ── */
+        .cp-cycle-wrap {
+            text-align: center;
+            margin: 1.2rem 0 1.8rem;
+            padding: 1.2rem 1rem;
+            background: linear-gradient(135deg, rgba(122,26,56,0.04) 0%, rgba(200,134,10,0.04) 100%);
+            border-radius: 14px;
+            border: 1.5px solid var(--border-color);
+        }
+
+        .cp-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 0.75rem;
+        }
+
+        .cp-label {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .cp-content { color: #7A1A38; }
+        .cp-process { color: #C8860A; }
+
+        .cp-ellipse {
+            display: flex;
+            flex-direction: column;
+            width: 160px;
+            gap: 0;
+        }
+
+        .cp-arrow {
+            width: 100%;
+            line-height: 0;
+        }
+
+        .cp-arrow svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cp-cycle-caption {
+            font-size: 0.86rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            white-space: nowrap;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        @media (max-width: 520px) {
+            .cp-cycle-caption { white-space: normal; }
+        }
+
+        /* ── Q1 section labels ── */
+        .q1-section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .q1-section-pill {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        .content-pill {
+            background: rgba(122,26,56,0.1);
+            color: var(--primary-color);
+        }
+
+        .process-pill {
+            background: rgba(200,134,10,0.12);
+            color: #9A6A08;
+        }
+
+        .q1-section-desc {
+            font-size: 0.86rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 560px) {
+            .option-cards.cols-2,
+            .output-options,
+            .delivery-options {
+                grid-template-columns: 1fr;
+            }
+            .pb-header h1 { font-size: 2.2rem; }
+            .cp-cycle-svg { width: 160px; height: 74px; }
+        }
+    </style>
+</head>
+<body>
+<div class="pb-container">
+
+    <!-- Header -->
+    <div class="pb-header">
+        <a href="index.html" class="back-link">&larr; Back to Manual</a>
+        <h1>Prompt Builder</h1>
+        <p class="tagline">Answer a few questions and we'll build you a ready-to-use differentiation prompt.</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-wrap">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Step 1 of 6</div>
+    </div>
+
+    <!-- =====================
+         Q1: TASK TYPE
+         ===================== -->
+    <div class="question-panel active" id="panel-q1">
+        <div class="q-label">Step 1</div>
+        <h2>What are you working on today?</h2>
+        <p class="q-hint">Differentiation works across two dimensions — choose which one you need.</p>
+
+        <!-- Content / Process cycle diagram -->
+        <div class="cp-cycle-wrap">
+            <div class="cp-diagram">
+                <span class="cp-label cp-content">CONTENT</span>
+                <div class="cp-ellipse">
+                    <div class="cp-arrow cp-arrow-top">
+                        <!-- top arc: left to right, maroon -->
+                        <svg viewBox="0 0 160 38" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 8 34 Q 80 2 152 34" fill="none" stroke="#7A1A38" stroke-width="2.2" stroke-linecap="round"></path>
+                            <!-- arrowhead at right end, pointing down-right -->
+                            <polyline points="144,26 152,34 142,36" fill="none" stroke="#7A1A38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                        </svg>
+                    </div>
+                    <div class="cp-arrow cp-arrow-bottom">
+                        <!-- bottom arc: right to left, gold -->
+                        <svg viewBox="0 0 160 38" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 152 4 Q 80 36 8 4" fill="none" stroke="#C8860A" stroke-width="2.2" stroke-linecap="round"></path>
+                            <!-- arrowhead at left end, pointing up-left -->
+                            <polyline points="16,12 8,4 18,2" fill="none" stroke="#C8860A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                <span class="cp-label cp-process">PROCESS</span>
+            </div>
+            <p class="cp-cycle-caption">Content shapes what students engage with. Process shapes how they engage with it. Both inform each other.</p>
+        </div>
+
+        <!-- CONTENT section -->
+        <div class="q1-section-label">
+            <span class="q1-section-pill content-pill">Content</span>
+            <span class="q1-section-desc">Working on a student-facing resource</span>
+        </div>
+        <div class="option-cards cols-2" style="margin-bottom: 1.5rem;">
+            <div class="option-card selected" data-value="resource" onclick="selectOption(this, &#39;q1&#39;); state.q1flow=&#39;content&#39;;">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="12" height="16" rx="2"></rect><path d="M8 7h6M8 11h6M8 15h4"></path></svg></div>
+                <div class="card-text">
+                    <strong>Differentiate a Resource</strong>
+                    <span>Adapt a text, worksheet, task or visual for different learners</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card disabled-task" style="opacity:0.4;cursor:not-allowed;" title="Coming soon">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
+                <div class="card-text">
+                    <strong>Differentiate a Lesson</strong>
+                    <span>Coming soon — adapt a lesson plan for a range of learners</span>
+                </div>
+                <div class="check"></div>
+            </div>
+        </div>
+
+        <!-- PROCESS section -->
+        <div class="q1-section-label">
+            <span class="q1-section-pill process-pill">Process</span>
+            <span class="q1-section-desc">Working on how students engage with learning</span>
+        </div>
+        <div class="option-cards cols-2">
+            <div class="option-card" data-value="strategies" onclick="selectOption(this, &#39;q1&#39;); state.q1flow=&#39;process&#39;;">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path><path d="M18 14l2 2 4-4" stroke-width="1.5"></path></svg></div>
+                <div class="card-text">
+                    <strong>Ideate Differentiation Strategies</strong>
+                    <span>Get specific, actionable strategies for how to structure learning differently</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card disabled-task" style="opacity:0.4;cursor:not-allowed;" title="Coming soon">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6l10-4 10 4v12l-10 4L2 18z"></path><path d="M12 2v20M2 6l10 4 10-4"></path></svg></div>
+                <div class="card-text">
+                    <strong>Differentiate a Unit</strong>
+                    <span>Coming soon — vary the range of teaching and learning strategies across a unit</span>
+                </div>
+                <div class="check"></div>
+            </div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-next" onclick="goToQ1Next()">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         Q1a: RESOURCE TYPE
+         ===================== -->
+    <div class="question-panel" id="panel-q1a">
+        <div class="q-label">Step 1b</div>
+        <h2>What kind of resource is it?</h2>
+        <p class="q-hint">Select one. Hover over each option if you're not sure.</p>
+
+        <style>
+            .resource-type-cards {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                margin-top: 0.75rem;
+            }
+            .rt-card {
+                position: relative;
+                border: 1.5px solid var(--border-color);
+                border-radius: 14px;
+                padding: 1.1rem 1.1rem 1rem;
+                background: white;
+                cursor: pointer;
+                transition: border-color 0.15s, box-shadow 0.15s;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            .rt-card:hover {
+                border-color: var(--primary-color);
+                box-shadow: 0 2px 12px rgba(122,26,56,0.08);
+            }
+            .rt-card.selected {
+                border-color: var(--primary-color);
+                background: rgba(122,26,56,0.03);
+                box-shadow: 0 2px 12px rgba(122,26,56,0.1);
+            }
+            .rt-card-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+                background: rgba(122,26,56,0.07);
+                color: var(--primary-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                margin-top: 0.1rem;
+            }
+            .rt-card.selected .rt-card-icon {
+                background: var(--primary-color);
+                color: white;
+            }
+            .rt-card-body { flex: 1; }
+            .rt-card-body strong {
+                display: block;
+                font-size: 0.92rem;
+                font-weight: 700;
+                color: var(--text-dark);
+                line-height: 1.3;
+                margin-bottom: 0.15rem;
+            }
+            .rt-card-body .rt-example {
+                font-size: 0.78rem;
+                color: var(--text-light);
+                line-height: 1.4;
+                /* hidden by default, shown on hover */
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: max-height 0.2s ease, opacity 0.2s ease, margin-top 0.2s ease;
+                margin-top: 0;
+            }
+            .rt-card:hover .rt-example,
+            .rt-card.selected .rt-example {
+                max-height: 5rem;
+                opacity: 1;
+                margin-top: 0.25rem;
+            }
+            .rt-check {
+                width: 18px;
+                height: 18px;
+                border: 2px solid var(--border-color);
+                border-radius: 50%;
+                flex-shrink: 0;
+                margin-top: 0.15rem;
+                transition: all 0.15s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .rt-card.selected .rt-check {
+                background: var(--primary-color);
+                border-color: var(--primary-color);
+            }
+            .rt-card.selected .rt-check::after {
+                content: '';
+                width: 4px;
+                height: 7px;
+                border-right: 2px solid white;
+                border-bottom: 2px solid white;
+                transform: rotate(45deg) translate(-1px, -1px);
+            }
+            @media (max-width: 560px) {
+                .resource-type-cards { grid-template-columns: 1fr; }
+            }
+        </style>
+
+        <div class="resource-type-cards">
+
+            <div class="rt-card" data-value="r1-text-only" onclick="selectOption(this, &#39;q1a&#39;)">
+                <div class="rt-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 10h14M4 14h10M4 18h8"></path></svg>
+                </div>
+                <div class="rt-card-body">
+                    <strong>Text only</strong>
+                    <div class="rt-example">A passage, article, source or extract with no accompanying task. Students read it — nothing more is asked of them on this sheet.</div>
+                </div>
+                <div class="rt-check"></div>
+            </div>
+
+            <div class="rt-card" data-value="r1-text-questions" onclick="selectOption(this, &#39;q1a&#39;)">
+                <div class="rt-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 10h12M4 14h8"></path><circle cx="17" cy="17" r="4"></circle><path d="M15.3 17h3.4M17 15.3v3.4"></path></svg>
+                </div>
+                <div class="rt-card-body">
+                    <strong>Text + questions</strong>
+                    <div class="rt-example">A text followed by discrete comprehension or analytical questions — numbered, sequenced, each expecting a specific response.</div>
+                </div>
+                <div class="rt-check"></div>
+            </div>
+
+            <div class="rt-card" data-value="r1-text-instructions" onclick="selectOption(this, &#39;q1a&#39;)">
+                <div class="rt-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 10h12M4 14h8"></path><path d="M17 13l4 4-4 4"></path></svg>
+                </div>
+                <div class="rt-card-body">
+                    <strong>Text + instructions</strong>
+                    <div class="rt-example">A text paired with an open-ended task — write an essay, construct an argument, produce an analysis. The task is a prompt, not a question set.</div>
+                </div>
+                <div class="rt-check"></div>
+            </div>
+
+            <div class="rt-card" data-value="r1-task-only" onclick="selectOption(this, &#39;q1a&#39;)">
+                <div class="rt-card-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"></path></svg>
+                </div>
+                <div class="rt-card-body">
+                    <strong>Questions / instructions only</strong>
+                    <div class="rt-example">A question set, task sheet or set of instructions — no extended reading component. Students are working from prior knowledge or a separate source.</div>
+                </div>
+                <div class="rt-check"></div>
+            </div>
+
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q1&#39;)">← Back</button>
+            <button class="btn-next" onclick="goToPanel(&#39;q2&#39;)">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         PROCESS FLOW: Q1b — AUDIENCE
+         ===================== -->
+    <div class="question-panel" id="panel-proc-q1b">
+        <div class="q-label">Step 2 — Strategies</div>
+        <h2>Who are you designing strategies for?</h2>
+        <p class="q-hint">This shapes which strategies we surface for you.</p>
+
+        <div class="option-cards">
+            <div class="option-card" data-value="support" onclick="selectOption(this, &#39;procAudience&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 14l7 7 7-7"></path></svg></div>
+                <div class="card-text">
+                    <strong>Students who need more support</strong>
+                    <span>Strategies for access, scaffolding, reducing barriers in the learning process</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card" data-value="extension" onclick="selectOption(this, &#39;procAudience&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V4M5 10l7-7 7 7"></path></svg></div>
+                <div class="card-text">
+                    <strong>Students who need more extension</strong>
+                    <span>Strategies for deeper engagement, greater autonomy, genuine challenge</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card" data-value="both" onclick="selectOption(this, &#39;procAudience&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 8l7-7 7 7M5 16l7 7 7-7"></path></svg></div>
+                <div class="card-text">
+                    <strong>Both — I need strategies for the full range</strong>
+                    <span>Surface strategies for support and extension students</span>
+                </div>
+                <div class="check"></div>
+            </div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q1&#39;)">← Back</button>
+            <button class="btn-next" onclick="goToPanel(&#39;proc-q2&#39;)">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         PROCESS FLOW: Q2 — CONTEXT
+         ===================== -->
+    <div class="question-panel" id="panel-proc-q2">
+        <div class="q-label">Step 3 — Strategies</div>
+        <h2>Tell us about your teaching context</h2>
+        <p class="q-hint">The more specific you are, the more actionable the strategies.</p>
+
+        <div class="context-fields">
+            <div class="field-group">
+                <label for="proc-year">Year group</label>
+                <input type="text" id="proc-year" placeholder="e.g. Year 9">
+            </div>
+            <div class="field-group">
+                <label for="proc-subject">Subject / topic</label>
+                <input type="text" id="proc-subject" placeholder="e.g. English — Persuasive Writing">
+            </div>
+            <div class="field-group">
+                <label for="proc-situation">What's the learning situation?</label>
+                <textarea id="proc-situation" placeholder="Describe what you&#39;re doing — e.g. &#39;Students are doing a Socratic seminar on a source text&#39; or &#39;We&#39;re mid-way through a research project and some students are stuck&#39;" style="min-height:90px;"></textarea>
+                <p class="field-hint">Be as specific as you can. The AI will use this to tailor its strategies.</p>
+            </div>
+            <div class="field-group">
+                <label for="proc-resource">Upload a resource (optional)</label>
+                <textarea id="proc-resource" placeholder="Paste the task, worksheet, or lesson plan here if you have one — or leave blank if you&#39;re working from scratch." style="min-height:80px;"></textarea>
+                <p class="field-hint">If you paste your resource, the strategies will reference it specifically rather than speaking generally.</p>
+                <div style="margin-top:0.75rem;">
+                    <input type="file" id="proc-file-upload" accept=".txt,.pdf,.doc,.docx" style="display:none;" onchange="handleProcFileUpload(this)">
+                    <button type="button" onclick="document.getElementById(&#39;proc-file-upload&#39;).click()" style="background:none;border:1.5px solid var(--border-color);color:var(--text-light);padding:0.4rem 1rem;border-radius:8px;font-family:var(--font-heading);font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor=&#39;var(--primary-color)&#39;;this.style.color=&#39;var(--primary-color)&#39;" onmouseout="this.style.borderColor=&#39;var(--border-color)&#39;;this.style.color=&#39;var(--text-light)&#39;">Upload a file (.txt, .pdf, .docx)</button>
+                    <span id="proc-upload-status" style="font-size:0.83rem;color:var(--text-light);margin-left:0.75rem;"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;proc-q1b&#39;)">← Back</button>
+            <button class="btn-next" onclick="goToPanel(&#39;proc-q3&#39;)">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         PROCESS FLOW: Q3 — STRATEGY LEVERS
+         ===================== -->
+    <div class="question-panel" id="panel-proc-q3">
+        <div class="q-label">Step 4 — Strategies</div>
+        <h2>What kind of strategies do you need?</h2>
+        <p class="q-hint">Select all that apply. Each generates a specific, research-grounded set of strategies.</p>
+
+        <div id="proc-q3-support-section">
+            <div class="q1-section-label" style="margin-bottom:0.75rem;">
+                <span class="q1-section-pill content-pill" style="background:rgba(122,26,56,0.1);color:var(--primary-color);">Support strategies</span>
+            </div>
+            <div class="checkbox-cards" id="proc-support-levers"></div>
+        </div>
+
+        <div id="proc-q3-extension-section" style="margin-top:1.5rem;">
+            <div class="q1-section-label" style="margin-bottom:0.75rem;">
+                <span class="q1-section-pill process-pill" style="background:rgba(200,134,10,0.1);color:#9A6A08;">Extension strategies</span>
+            </div>
+            <div class="checkbox-cards" id="proc-extension-levers"></div>
+        </div>
+
+        <div class="validation-msg" id="val-proc-q3" style="margin-top:1rem;">Please select at least one strategy type to continue.</div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;proc-q2&#39;)">← Back</button>
+            <button class="btn-next" onclick="validateProcQ3()">Build my strategies →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         Q2: WHO FOR
+         ===================== -->
+    <div class="question-panel" id="panel-q2">
+        <div class="q-label">Step 2</div>
+        <h2>Who are you differentiating for?</h2>
+        <p class="q-hint">This shapes the direction of everything we build.</p>
+
+        <button class="theory-toggle" onclick="toggleTheory(&#39;theory-q2&#39;, this)">
+            <span>Why does this matter?</span>
+            <span class="arrow">▼</span>
+        </button>
+        <div class="theory-box" id="theory-q2">
+            Support and extension are different in kind, not just degree. Support is about access — reducing barriers, providing scaffolds, making content reachable. Extension is about depth — increasing abstraction, complexity, and autonomy. Knowing which you're designing for changes which levers to pull, and changes what a successful outcome looks like.
+        </div>
+
+        <div class="option-cards">
+            <div class="option-card" data-value="support" onclick="selectOption(this, &#39;q2&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 14l7 7 7-7"></path></svg></div>
+                <div class="card-text">
+                    <strong>Students who need more support</strong>
+                    <span>Focus on access, scaffolding, and reducing barriers</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card" data-value="extension" onclick="selectOption(this, &#39;q2&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V4M5 10l7-7 7 7"></path></svg></div>
+                <div class="card-text">
+                    <strong>Students who need more extension</strong>
+                    <span>Focus on depth, complexity, and autonomy</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card" data-value="both" onclick="selectOption(this, &#39;q2&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 8l7-7 7 7M5 16l7 7 7-7"></path></svg></div>
+                <div class="card-text">
+                    <strong>Both — I need two versions</strong>
+                    <span>Produce a support and an extension version</span>
+                </div>
+                <div class="check"></div>
+            </div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q1a&#39;)">← Back</button>
+            <button class="btn-next" onclick="goToPanel(&#39;q3&#39;)">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         Q3: WHAT TO CHANGE — AUDIENCE-SPECIFIC
+         ===================== -->
+    <div class="question-panel" id="panel-q3">
+        <div class="q-label">Step 3</div>
+        <h2>What do you want to change?</h2>
+        <p class="q-hint">Select adjustments for each audience. You need at least one selection.</p>
+
+        <style>
+            .q3-columns {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem;
+                margin-top: 0.5rem;
+            }
+            .q3-column {
+                border: 1.5px solid var(--border-color);
+                border-radius: 14px;
+                padding: 1.1rem 1.1rem 1rem;
+                background: white;
+                transition: opacity 0.25s, filter 0.25s;
+            }
+            .q3-column.dimmed {
+                opacity: 0.38;
+                filter: grayscale(0.4);
+                pointer-events: none;
+            }
+            .q3-column-header {
+                display: flex;
+                align-items: center;
+                gap: 0.55rem;
+                margin-bottom: 0.9rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 1.5px solid var(--border-color);
+            }
+            .q3-col-icon {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+            .q3-col-icon.support  { background: #EDF4FF; color: #2A6DB5; }
+            .q3-col-icon.extension { background: #FFF3E8; color: #C8680A; }
+            .q3-column-header h3 {
+                font-family: var(--font-body);
+                font-size: 0.92rem;
+                font-weight: 700;
+                color: var(--text-dark);
+                margin: 0;
+                line-height: 1.2;
+            }
+            .q3-column-header p {
+                font-size: 0.78rem;
+                color: var(--text-light);
+                margin: 0.1rem 0 0;
+                line-height: 1.3;
+            }
+            .q3-dimmed-notice {
+                font-size: 0.8rem;
+                color: var(--text-light);
+                font-style: italic;
+                margin-top: 0.5rem;
+                padding: 0.4rem 0.6rem;
+                background: rgba(122,26,56,0.04);
+                border-radius: 6px;
+                display: none;
+            }
+            .q3-column.dimmed .q3-dimmed-notice { display: block; }
+            .q3-checkbox {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding: 0.55rem 0.5rem;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background 0.15s;
+                margin-bottom: 0.3rem;
+            }
+            .q3-checkbox:hover { background: rgba(122,26,56,0.04); }
+            .q3-checkbox.selected { background: rgba(122,26,56,0.06); }
+            .q3-cb-box {
+                width: 18px;
+                height: 18px;
+                border: 2px solid var(--border-color);
+                border-radius: 4px;
+                flex-shrink: 0;
+                margin-top: 0.1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.15s;
+            }
+            .q3-checkbox.selected .q3-cb-box {
+                background: var(--primary-color);
+                border-color: var(--primary-color);
+            }
+            .q3-checkbox.selected .q3-cb-box::after {
+                content: '';
+                width: 4px;
+                height: 8px;
+                border-right: 2px solid white;
+                border-bottom: 2px solid white;
+                transform: rotate(45deg) translate(-1px, -1px);
+            }
+            .q3-cb-text strong {
+                display: block;
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: var(--text-dark);
+                line-height: 1.3;
+            }
+            .q3-cb-text span {
+                display: block;
+                font-size: 0.78rem;
+                color: var(--text-light);
+                line-height: 1.35;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: max-height 0.2s ease, opacity 0.2s ease, margin-top 0.2s ease;
+                margin-top: 0;
+            }
+            .q3-checkbox:hover .q3-cb-text span,
+            .q3-checkbox.selected .q3-cb-text span {
+                max-height: 4rem;
+                opacity: 1;
+                margin-top: 0.2rem;
+            }
+                .q3-columns { grid-template-columns: 1fr; }
+            }
+        </style>
+
+        <div class="q3-columns">
+            <!-- SUPPORT COLUMN -->
+            <div class="q3-column" id="q3-support-col">
+                <div class="q3-column-header">
+                    <div class="q3-col-icon support">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 14l7 7 7-7"></path></svg>
+                    </div>
+                    <div>
+                        <h3>For support students</h3>
+                        <p>Access, scaffolding, reducing barriers</p>
+                    </div>
+                </div>
+                <div class="q3-dimmed-notice">Not selected — choose "Both" in Step 2 to enable</div>
+                <div id="q3-support-list"></div>
+            </div>
+
+            <!-- EXTENSION COLUMN -->
+            <div class="q3-column" id="q3-extension-col">
+                <div class="q3-column-header">
+                    <div class="q3-col-icon extension">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4M5 10l7-7 7 7"></path></svg>
+                    </div>
+                    <div>
+                        <h3>For extension students</h3>
+                        <p>Depth, abstraction, autonomy</p>
+                    </div>
+                </div>
+                <div class="q3-dimmed-notice">Not selected — choose "Both" in Step 2 to enable</div>
+                <div id="q3-extension-list"></div>
+            </div>
+        </div>
+
+        <div class="validation-msg" id="val-q3" style="margin-top:1rem;">Please select at least one adjustment to continue.</div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q2&#39;)">← Back</button>
+            <button class="btn-next" onclick="validateQ3()">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         Q4: LEARNING NEEDS
+         ===================== -->
+    <div class="question-panel" id="panel-q4">
+        <div class="q-label">Step 4</div>
+        <h2>Do any of your students have specific learning needs to address?</h2>
+        <p class="q-hint">Select all that apply, or choose Neither to move on.</p>
+
+        <div class="option-cards">
+            <div class="option-card" data-value="eald" onclick="toggleNeedsCard(this, &#39;eald-list&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 10h10"></path><circle cx="15" cy="15" r="5"></circle><path d="M13 15h4M15 13v4"></path></svg></div>
+                <div class="card-text">
+                    <strong>EAL/D support needed</strong>
+                    <span>English as an Additional Language or Dialect</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card" data-value="neuro" onclick="toggleNeedsCard(this, &#39;neuro-list&#39;)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v4m0 0H5m4 0h10M5 7v10a2 2 0 002 2h6m-6-6h6m-6 4h4M15 11v10m0 0l3-3m-3 3l-3-3"></path></svg></div>
+                <div class="card-text">
+                    <strong>Neurodiversity / learning differences</strong>
+                    <span>Strategy-based — what students need, not what they have</span>
+                </div>
+                <div class="check"></div>
+            </div>
+            <div class="option-card" id="neither-card" data-value="neither" onclick="selectNeither(this)">
+                <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path></svg></div>
+                <div class="card-text">
+                    <strong>Neither</strong>
+                    <span>No specific learning needs to address for this resource</span>
+                </div>
+                <div class="check"></div>
+            </div>
+        </div>
+
+        <!-- EAL/D checklist -->
+        <div class="conditional-list" id="eald-list">
+            <div class="cl-title">EAL/D — select all that apply</div>
+            <div class="cl-item"><input type="checkbox" id="eald-glossary" value="eald-glossary"><label for="eald-glossary">Key vocabulary glossary</label></div>
+            <div class="cl-item"><input type="checkbox" id="eald-subjectvocab" value="eald-subjectvocab"><label for="eald-subjectvocab">Subject-specific vocabulary support</label></div>
+            <div class="cl-item"><input type="checkbox" id="eald-frames" value="eald-frames"><label for="eald-frames">Sentence starters / frames</label></div>
+            <div class="cl-item"><input type="checkbox" id="eald-visual" value="eald-visual"><label for="eald-visual">Visual supports / labelled diagrams</label></div>
+            <div class="cl-item"><input type="checkbox" id="eald-syntax" value="eald-syntax"><label for="eald-syntax">Simplified syntax version of the text</label></div>
+            <div class="cl-item"><input type="checkbox" id="eald-mandarin" value="eald-mandarin"><label for="eald-mandarin">Mandarin translation of key vocabulary</label></div>
+            <div class="cl-item lang-other">
+                <input type="checkbox" id="eald-other" value="eald-other">
+                <label for="eald-other">Other language:</label>
+                <input type="text" id="eald-other-lang" placeholder="e.g. Korean">
+            </div>
+        </div>
+
+        <!-- Neurodiversity checklist -->
+        <div class="conditional-list" id="neuro-list">
+            <div class="cl-title">Learning needs — select all that apply</div>
+            <div class="cl-item"><input type="checkbox" id="neuro-chunk" value="neuro-chunk"><label for="neuro-chunk">Chunked instructions (one step at a time)</label></div>
+            <div class="cl-item"><input type="checkbox" id="neuro-memory" value="neuro-memory"><label for="neuro-memory">Reduced working memory load (word banks, partially completed examples)</label></div>
+            <div class="cl-item"><input type="checkbox" id="neuro-space" value="neuro-space"><label for="neuro-space">Increased white space / reduced visual clutter</label></div>
+            <div class="cl-item"><input type="checkbox" id="neuro-process" value="neuro-process"><label for="neuro-process">Explicit process steps / procedure guide</label></div>
+            <div class="cl-item"><input type="checkbox" id="neuro-output" value="neuro-output"><label for="neuro-output">Reduced written output options (oral, visual, dot points accepted)</label></div>
+            <div class="cl-item"><input type="checkbox" id="neuro-tts" value="neuro-tts"><label for="neuro-tts">Text-to-speech friendly formatting</label></div>
+            <div class="cl-item"><input type="checkbox" id="neuro-anchor" value="neuro-anchor"><label for="neuro-anchor">Anchor activity for early finishers</label></div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q3&#39;)">← Back</button>
+            <button class="btn-next" onclick="goToPanel(&#39;q5&#39;)">Next →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         Q5: CONTEXT
+         ===================== -->
+    <div class="question-panel" id="panel-q5">
+        <div class="q-label">Step 5</div>
+        <h2>Tell us about your resource</h2>
+        <p class="q-hint">This context gets woven directly into your prompt. The more detail, the better.</p>
+
+        <div class="context-fields">
+            <div class="field-group">
+                <label for="ctx-year">Year group</label>
+                <input type="text" id="ctx-year" placeholder="e.g. Year 7">
+            </div>
+            <div class="field-group">
+                <label for="ctx-subject">Subject / topic</label>
+                <input type="text" id="ctx-subject" placeholder="e.g. Geography — Ecosystems">
+            </div>
+            <div class="field-group">
+                <label for="ctx-intention">Learning intention</label>
+                <input type="text" id="ctx-intention" placeholder="e.g. Students will understand how human activity affects biodiversity">
+                <p class="field-hint">Or paste your syllabus outcome</p>
+            </div>
+            <div class="field-group">
+                <label for="ctx-resource">Your resource</label>
+                <textarea id="ctx-resource" placeholder="Paste your text and/or questions here, or describe them briefly."></textarea>
+                <p class="field-hint">You can paste the full resource, just the text, or a description. The more detail, the better the output.</p>
+                <div style="margin-top:0.75rem;">
+                    <input type="file" id="file-upload" accept=".txt,.pdf,.doc,.docx" style="display:none;" onchange="handleFileUpload(this)">
+                    <button type="button" onclick="document.getElementById(&#39;file-upload&#39;).click()" style="background:none;border:1.5px solid var(--border-color);color:var(--text-light);padding:0.4rem 1rem;border-radius:8px;font-family:var(--font-heading);font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor=&#39;var(--primary-color)&#39;;this.style.color=&#39;var(--primary-color)&#39;" onmouseout="this.style.borderColor=&#39;var(--border-color)&#39;;this.style.color=&#39;var(--text-light)&#39;">Upload a file (.txt, .pdf, .docx)</button>
+                    <span id="upload-status" style="font-size:0.83rem;color:var(--text-light);margin-left:0.75rem;"></span>
+                    <p style="font-size:0.78rem;color:var(--text-light);margin-top:0.4rem;">Plain text and .txt files are read automatically. PDF and .docx text extraction is basic — paste directly for best results. Full document AI reading coming when Gemini API access is available.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q4&#39;)">← Back</button>
+            <button class="btn-next" onclick="goToPanel(&#39;output&#39;)">Build my prompt →</button>
+        </div>
+    </div>
+
+    <!-- =====================
+         OUTPUT STAGE
+         ===================== -->
+    <div class="question-panel" id="panel-output">
+        <div class="q-label">Step 6 — Output</div>
+        <h2>How would you like your prompt?</h2>
+        <p class="q-hint">Choose how to get your prompt, then choose how it's delivered.</p>
+
+        <!-- Build vs Curate -->
+        <div class="output-options">
+            <div class="output-option-card selected" id="oo-build" onclick="selectOutputMode(&#39;build&#39;)">
+                <div class="oo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                <h3>Build it for me</h3>
+                <p>We assemble everything into a complete, ready-to-use prompt</p>
+            </div>
+            <div class="output-option-card" id="oo-curate" onclick="selectOutputMode(&#39;curate&#39;)">
+                <div class="oo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg></div>
+                <h3>I'll curate</h3>
+                <p>Choose which elements to include from your selections</p>
+            </div>
+        </div>
+
+        <!-- Curate component picker (hidden by default) -->
+        <div id="curate-section" style="display:none;">
+            <p style="font-family:var(--font-heading);font-weight:700;font-size:0.9rem;color:var(--text-dark);margin-bottom:0.75rem;">Select the elements you want in your prompt:</p>
+            <div class="component-cards" id="component-cards-container"></div>
+        </div>
+
+        <!-- Delivery format -->
+        <p style="font-family:var(--font-heading);font-weight:700;font-size:0.9rem;color:var(--text-dark);margin-bottom:0.75rem;margin-top:1rem;">How would you like it delivered?</p>
+        <div class="delivery-options">
+            <div class="delivery-card selected" id="del-master" onclick="selectDelivery(&#39;master&#39;)">
+                <h4>Master prompt</h4>
+                <p>One complete prompt to paste into your LLM, plus a response checklist</p>
+            </div>
+            <div class="delivery-card" id="del-chain" onclick="selectDelivery(&#39;chain&#39;)">
+                <h4>Chain prompt guide</h4>
+                <p>2–3 sequential prompts with reflection questions between steps</p>
+            </div>
+        </div>
+
+        <div class="panel-nav">
+            <button class="btn-back" onclick="goToPanel(&#39;q5&#39;)">← Back</button>
+            <button class="btn-next" onclick="generatePrompt()">Generate prompt →</button>
+        </div>
+
+        <!-- Generated prompt area -->
+        <div class="prompt-output-area" id="prompt-output-area"></div>
+
+        <div class="start-over-wrap" id="start-over-wrap" style="display:none;">
+            <button class="btn-start-over" onclick="startOver()">↩ Start over</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+/**
+ * PROMPT BLOCKS — Differentiation Manual
+ * ========================================
+ * Source-of-truth library for the Prompt Builder.
+ *
+ * Source key:
+ *   C  = step3-content.html
+ *   P  = step3-process.html
+ *   E  = step5-equalizer.html
+ *   S  = step6-scaffolding.html
+ *
+ * ARCHITECTURE:
+ * ─────────────
+ * The resource is injected ONCE into the preamble by the assembler.
+ * Block templates refer to "the resource above" — they never embed it.
+ *
+ * Q3 now has two audience-specific lists:
+ *   SUPPORT_OPTIONS   — access-focused adjustments for support students
+ *   EXTENSION_OPTIONS — depth-focused adjustments for extension students
+ *
+ * Each block in SOURCE carries an `audience` tag:
+ *   'support' | 'extension' | 'eald' | 'neuro'
+ *
+ * The assembler uses this to group blocks correctly for chain prompts.
+ *
+ * Context placeholders used in templates:
+ *   {{year}}       → Year group
+ *   {{subject}}    → Subject / topic
+ *   {{intention}}  → Learning intention
+ *   {{language}}   → EAL/D other language field
+ */
+
+const PB = (() => {
+
+  // ─── CONTEXT INJECTION ────────────────────────────────────────────────────
+
+  function inject(template, ctx, extras) {
+    const lang      = (extras && extras.language) ? extras.language : '[home language]';
+    const year      = ctx.year      || '[year group]';
+    const subject   = ctx.subject   || '[subject/topic]';
+    const intention = ctx.intention || '[learning intention]';
+
+    return template
+      .replace(/\{\{year\}\}/gi,      year)
+      .replace(/\{\{subject\}\}/gi,   subject)
+      .replace(/\{\{intention\}\}/gi, intention)
+      .replace(/\{\{language\}\}/gi,  lang);
+  }
+
+  // ─── OPTION DEFINITIONS ───────────────────────────────────────────────────
+  // Used by the UI to render the two Q3 columns.
+  // Each option maps to a key in SOURCE.
+
+  const SUPPORT_OPTIONS = [
+    {
+      id: 'sup-readability',
+      label: 'Simplify readability',
+      desc: 'Adjust vocabulary and sentence structure to reduce language barriers',
+      key: 'supportReadability',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'sup-essential',
+      label: 'Identify essential passages',
+      desc: 'Shorten to what students truly need — with a highlighting strategy',
+      key: 'supportEssential',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'sup-digest',
+      label: 'Pre-reading digest',
+      desc: 'Key vocabulary, main ideas and guiding questions before they read',
+      key: 'supportDigest',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'sup-analogy',
+      label: 'Use analogies to make concepts accessible',
+      desc: 'Concrete analogies that give students a foothold on abstract ideas',
+      key: 'supportAnalogy',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'sup-visual',
+      label: 'Visual supports and multimodal redesign',
+      desc: 'Icons, colour coding and layout that reduce cognitive load',
+      key: 'supportVisual',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'sup-chunk',
+      label: 'Chunk instructions into sequential steps',
+      desc: 'One action per step — no bundled or implied expectations',
+      key: 'supportChunk',
+      show: ['r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+    {
+      id: 'sup-sentences',
+      label: 'Sentence starters for written responses',
+      desc: 'Access frames that model academic language without replacing thinking',
+      key: 'supportSentences',
+      show: ['r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+    {
+      id: 'sup-syntax',
+      label: 'Simplified syntax version',
+      desc: 'Same concepts, shorter sentences, unpacked clauses — for language access',
+      key: 'supportSyntax',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'sup-memory',
+      label: 'Working memory supports',
+      desc: 'Word banks, partially completed frames, reference sheets',
+      key: 'supportMemory',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+  ];
+
+  const EXTENSION_OPTIONS = [
+    {
+      id: 'ext-language',
+      label: 'Elevate academic language and nuance',
+      desc: 'Increase precision, discipline-specific vocabulary and conceptual density',
+      key: 'extensionLanguage',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'ext-bigpicture',
+      label: 'Big picture framing',
+      desc: 'Implications, connections, essential questions and broader significance',
+      key: 'extensionBigPicture',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'ext-abstract',
+      label: 'Concrete \u2192 abstract version of the text',
+      desc: 'Move from examples to principles, patterns and transferable ideas',
+      key: 'extensionAbstract',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+    {
+      id: 'ext-organiser',
+      label: 'Analytical graphic organiser',
+      desc: 'A framework for synthesis, comparison or evaluation — not just note-taking',
+      key: 'extensionOrganiser',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+    {
+      id: 'ext-frames',
+      label: 'Academic language frames',
+      desc: 'Discipline-specific sentence frames that model expert writing',
+      key: 'extensionFrames',
+      show: ['r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+    {
+      id: 'ext-demand',
+      label: 'Increase cognitive demand of questions',
+      desc: "Shift questions toward analysis, evaluation and creation (Bloom's)",
+      key: 'extensionDemand',
+      show: ['r1-text-questions', 'r1-task-only']
+    },
+    {
+      id: 'ext-opentask',
+      label: 'Open-ended / student-directed version',
+      desc: 'Goal and criteria provided — students choose their approach and structure',
+      key: 'extensionOpenTask',
+      show: ['r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+    {
+      id: 'ext-modes',
+      label: 'Multiple response modes',
+      desc: 'Genuine choice in how students demonstrate understanding',
+      key: 'extensionModes',
+      show: ['r1-text-questions', 'r1-text-instructions', 'r1-task-only']
+    },
+    {
+      id: 'ext-perspectives',
+      label: 'Add nuance: competing perspectives',
+      desc: 'Introduce complexity, ambiguity or real-world tensions',
+      key: 'extensionPerspectives',
+      show: ['r1-text-only', 'r1-text-questions', 'r1-text-instructions']
+    },
+  ];
+
+  // ─── SOURCE PROMPTS ───────────────────────────────────────────────────────
+  // Templates never embed the resource — they reference "the resource above".
+
+  const SOURCE = {
+
+    // ══ SUPPORT BLOCKS ═══════════════════════════════════════════════════════
+
+    supportReadability: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Tiered Texts',
+      label: 'Simplify readability',
+      template: `Audience: Support students — reduce language barriers without reducing intellectual demand.
+
+Using the resource above, rewrite the text with:
+- Simpler vocabulary — replace low-frequency or academic words with more accessible alternatives, but keep key subject terminology (with brief inline definitions where helpful)
+- Shorter, clearer sentence structures — unpack complex sentences, remove embedded clauses
+- The same core concepts and ideas — do not remove or oversimplify the thinking
+
+Maintain similar length (\u00b120%). The goal is access, not simplicity of thought.`
+    },
+
+    supportEssential: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Highlighted Print Materials',
+      label: 'Identify essential passages and produce a shortened version',
+      template: `Audience: Support students — students who benefit from a reduced but complete version of the text.
+
+Using the resource above:
+1. Identify which passages contain the essential information aligned to this learning intention: {{intention}}
+2. Identify which sections are supplementary — useful but not critical for all students
+3. Suggest a highlighting or reading strategy (e.g. "Read highlighted sections first, return to the full text if time permits")
+
+Then produce a shortened version containing only the essential passages, with brief bridging sentences where needed to maintain coherence.`
+    },
+
+    supportDigest: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Digest of Key Ideas',
+      label: 'Pre-reading digest',
+      template: `Audience: Support students — give them a foothold before they encounter the full resource.
+
+Using the resource above, create a one-page pre-reading digest. Include:
+- Essential Question: The big question this content answers
+- Key Vocabulary: 5\u20138 terms with student-friendly definitions appropriate for {{year}}
+- Main Concepts: The 3\u20134 core ideas students must grasp
+- Guiding Questions: 4\u20135 questions to activate prior knowledge and focus reading
+
+Format it clearly so students can refer to it while they read.`
+    },
+
+    supportAnalogy: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Analogy Generator',
+      label: 'Use analogies to make concepts accessible',
+      template: `Audience: Support students — give them concrete analogies that provide a foothold on abstract ideas.
+
+Generate 3 analogies that make the key concepts in the resource above more concrete and approachable. For each analogy:
+- Explain it in 2\u20133 sentences, written as you would say it directly to a student
+- Map the key elements: "In this analogy, [X] represents [Y]"
+- Note where the analogy breaks down, so it doesn't accidentally create a misconception
+
+Choose analogies drawn from everyday experiences a {{year}} student is likely to have. Avoid analogies that introduce new abstract ideas.`
+    },
+
+    supportVisual: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Neurodiversity-Responsive Content Design',
+      label: 'Visual supports and multimodal redesign',
+      template: `Audience: Support students — students who process information better with visual cues and reduced text density.
+
+Using the resource above, redesign it as a multimodal version:
+- Suggest simple icons, diagrams, or symbols to represent key steps or concepts — describe each clearly enough that I can create or source them
+- Suggest a colour coding scheme to help students distinguish between types of information (e.g. instructions vs. examples, key terms vs. supporting detail)
+- Recommend layout changes that reduce visual clutter: white space, shorter chunks, clear headings
+
+Provide:
+- Revised text with [VISUAL] placeholders showing where visuals go
+- A description of each suggested visual
+- Colour coding rationale (e.g. "Blue = key terms, Green = examples")`
+    },
+
+    supportChunk: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Neurodiversity-Responsive Content Design',
+      label: 'Chunk instructions into sequential steps',
+      template: `Audience: Support students — students who benefit from explicit, sequential instructions rather than bundled or implied expectations.
+
+Using the resource above, rewrite the instructions and/or questions as:
+- Numbered steps (no more than 8 if possible)
+- Concrete, specific language — no metaphors, abstract terms, or implied information
+- Active verbs that tell students exactly what to do
+- One clear action per step
+
+If any step is still complex, break it into sub-steps (e.g. 3a, 3b).
+
+Note any abstract or implicit language you changed and briefly explain why the original phrasing may have been a barrier.`
+    },
+
+    supportSentences: {
+      audience: 'support',
+      source: 'step6-scaffolding.html \u2014 Sentence Starters & Thinking Stems',
+      label: 'Sentence starters for written responses',
+      template: `Audience: Support students — students who need help constructing academic written responses.
+
+Using the task or questions in the resource above, create 8\u201310 sentence starters that help students:
+- Begin their response using appropriate academic register
+- Add evidence or examples from the text
+- Explain the significance of evidence ("This shows that...", "This suggests...")
+- Make connections between ideas
+- Draw conclusions
+
+Use language that is academically appropriate for {{year}} but accessible — model the language of the discipline without making it a barrier.
+
+Also provide a brief note for the teacher on which starters are most useful for students who are very early in their written language development.`
+    },
+
+    supportSyntax: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Tiered Texts (syntax variant)',
+      label: 'Simplified syntax version',
+      template: `Audience: Support students — students who can engage with the ideas but are held back by complex sentence structures and dense academic syntax.
+
+Using the resource above, produce a simplified syntax version that:
+- Uses shorter sentences (aim for an average of 15\u201320 words per sentence)
+- Unpacks embedded clauses into separate sentences
+- Prefers active voice over passive voice
+- Makes logical connections explicit ("Because of this...", "As a result...", "This means that...")
+- Retains all key vocabulary (with brief inline definitions in brackets where helpful)
+- Preserves the original meaning and conceptual depth
+
+After the revised text, briefly note the main structural changes you made.`
+    },
+
+    supportMemory: {
+      audience: 'support',
+      source: 'step3-content.html \u2014 Neurodiversity-Responsive Content Design',
+      label: 'Working memory supports',
+      template: `Audience: Support students — students who struggle to hold multiple pieces of information in mind while completing tasks.
+
+Using the resource above, first identify what this task requires students to hold in working memory simultaneously (e.g. remember the question while reading the text, track multiple steps, recall prior knowledge while generating a response).
+
+Then design 3\u20134 practical supports that reduce working memory load. For each:
+- Describe the tool or strategy (e.g. word bank, partially completed frame, colour-coded reference card)
+- Explain how it reduces cognitive load
+- Write it in a strengths-first way — frame it as a tool for efficiency, not a crutch
+
+Format each support so it is ready to hand to a student.`
+    },
+
+    // ══ EXTENSION BLOCKS ═════════════════════════════════════════════════════
+
+    extensionLanguage: {
+      audience: 'extension',
+      source: 'step3-content.html \u2014 Tiered Texts',
+      label: 'Elevate academic language and nuance',
+      template: `Audience: Extension students — students who can handle increased linguistic and conceptual density.
+
+Using the resource above, rewrite the text with:
+- More precise, discipline-specific academic vocabulary — introduce technical terms with brief context rather than simplifying them away
+- More complex sentence structures where they add meaning — subordinate clauses, hedged claims, nuanced qualifications
+- Increased conceptual density — pack more ideas per sentence where appropriate
+- Greater nuance — acknowledge complexity, exceptions, and the limits of simple explanations
+
+Maintain similar length (\u00b120%). The goal is depth, not just harder words.`
+    },
+
+    extensionBigPicture: {
+      audience: 'extension',
+      source: 'step3-content.html \u2014 Digest of Key Ideas (extension variant)',
+      label: 'Big picture framing',
+      template: `Audience: Extension students — students who benefit from seeing where the content fits in a larger intellectual landscape.
+
+Using the resource above, create a one-page "big picture" framing document. Include:
+- Essential Question: A genuinely open, debatable question this content raises — not one with a single correct answer
+- Connections: 2\u20133 links to broader concepts, other subject areas, or real-world contexts
+- Implications: What does this idea mean beyond the classroom? What would change if it weren't true?
+- Points of complexity: Where do experts disagree, or where does the simple version break down?
+- Going further: 2\u20133 questions a curious student could investigate independently
+
+This is a thinking scaffold, not a reading guide. It should provoke inquiry, not summarise content.`
+    },
+
+    extensionAbstract: {
+      audience: 'extension',
+      source: 'step5-equalizer.html \u2014 Concrete \u2194 Abstract',
+      label: 'Concrete \u2192 abstract version of the text',
+      template: `Audience: Extension students — students who can move beyond examples to principles, patterns and transferable ideas.
+
+Using the resource above, create an abstract version that:
+- Moves from specific examples to underlying principles and generalisations
+- Uses "Why" and "What does this mean?" framing rather than "What" questions
+- Asks students to identify patterns, evaluate ideas, and make connections across contexts
+- Introduces the idea that these concepts have implications beyond the specific examples in the text
+
+Then generate 3 discipline-appropriate analogies that make the abstract principles more intellectually approachable without pulling them back to the concrete. For each:
+- Explain it in 2\u20133 sentences as you'd say it to a student
+- Map the key elements: "In this analogy, [X] represents [Y]"
+- Note where the analogy breaks down`
+    },
+
+    extensionOrganiser: {
+      audience: 'extension',
+      source: 'step5-equalizer.html \u2014 Structured \u2194 Open-Ended',
+      label: 'Analytical graphic organiser',
+      template: `Audience: Extension students — students who can handle analytical thinking, not just note-taking.
+
+Using the resource above, design an analytical graphic organiser that:
+- Requires students to do something with the information — compare, evaluate, synthesise, or argue — not just record it
+- Has a clear structure but leaves intellectual decisions to the student
+- Includes at least one section that requires a student-generated claim or judgement, not just retrieved information
+- Could serve as a planning tool for an extended written or oral response
+
+Provide:
+- The organiser itself, clearly labelled and ready to use
+- A brief teacher note explaining the analytical demand of each section
+- One example entry showing what "good" looks like at the first section only`
+    },
+
+    extensionFrames: {
+      audience: 'extension',
+      source: 'step6-scaffolding.html \u2014 Sentence Starters & Thinking Stems (extension variant)',
+      label: 'Academic language frames',
+      template: `Audience: Extension students — students who are developing expert academic writing in {{subject}}.
+
+Using the task or questions in the resource above, create 8\u201310 discipline-specific sentence frames that model the language of expert writing in this subject area. Include frames that help students:
+- Make a well-qualified claim or argument
+- Integrate and attribute evidence precisely
+- Acknowledge complexity or counter-arguments
+- Evaluate the significance of evidence
+- Draw disciplinary conclusions
+
+These frames should reflect how a knowledgeable person in {{subject}} actually writes — not generic academic language. Avoid frames that could work in any subject.
+
+Include a brief note on the disciplinary language conventions these frames model.`
+    },
+
+    extensionDemand: {
+      audience: 'extension',
+      source: 'step3-process.html \u2014 Tiered Questions by Cognitive Demand',
+      label: 'Increase cognitive demand of questions',
+      template: `Audience: Extension students — students ready for greater depth and challenge.
+
+Using the questions or task in the resource above, rewrite them to increase cognitive demand using Bloom's Taxonomy — targeting Evaluate and Create:
+- Questions should ask students to evaluate, argue, synthesise, or create
+- Questions should require students to go beyond the text — to judge, compare ideas, identify limitations, or generate something new
+- At least one question should have genuine intellectual uncertainty — one the teacher couldn't fully predict the answer to
+
+Ensure these require genuine higher-order thinking, not just harder vocabulary or longer responses. Include a brief note indicating which Bloom's level each question targets.`
+    },
+
+    extensionOpenTask: {
+      audience: 'extension',
+      source: 'step5-equalizer.html \u2014 Structured \u2194 Open-Ended',
+      label: 'Open-ended / student-directed version',
+      template: `Audience: Extension students — students ready for greater autonomy and depth.
+
+Using the task in the resource above, create an open-ended version that:
+- Provides the learning goal and success criteria, but does not specify approach, structure, or process
+- Requires students to make genuine intellectual decisions — not just stylistic ones
+- Offers enough constraint to be achievable, but enough openness to be genuinely student-directed
+- Could result in meaningfully different products from different students, all demonstrating the same understanding
+
+Provide:
+- The open-ended task as the student would receive it
+- Clear success criteria (a description of what genuine understanding looks like — not a checklist)
+- A brief teacher note on how to assess this fairly across different student responses`
+    },
+
+    extensionModes: {
+      audience: 'extension',
+      source: 'Prompt Builder \u2014 Mode of Response (extension variant)',
+      label: 'Multiple response modes',
+      template: `Audience: Extension students — students ready to exercise genuine choice in how they demonstrate understanding.
+
+Using the task in the resource above, redesign it to offer three genuine response mode options. Each option should:
+- Require equivalent depth of thinking — the mode changes, not the cognitive demand
+- Be genuinely different in form, not just superficially varied
+- Give students enough structure to work independently
+
+Provide three options:
+1. Written response — requires analysis or argument, not just description
+2. Visual response — diagram, concept map or annotated image; specify exactly what it must show and how it should be annotated
+3. Oral / recorded response — structured verbal explanation or argument; specify format, length, and what must be covered
+
+For each: write the task instruction as the student would receive it.`
+    },
+
+    extensionPerspectives: {
+      audience: 'extension',
+      source: 'Prompt Builder \u2014 Competing Perspectives',
+      label: 'Add nuance: competing perspectives or real-world complexity',
+      template: `Audience: Extension students — students ready to engage with the complexity and tensions within this content.
+
+Using the resource above, add a layer of nuance by:
+1. Identifying 2\u20133 points where experts disagree, the simple version breaks down, or real-world application is more complex than the text suggests
+2. For each point: briefly explain the tension or debate in intellectually honest but accessible terms
+3. Generating 1\u20132 discussion or inquiry questions for each point that a student could genuinely argue either way
+
+Then write a short "Beyond the text" section (200\u2013300 words) that could be added to the original resource, introducing these tensions to extension students.
+
+The goal is intellectual honesty — showing students that knowledge is contested and complex, not settled and simple.`
+    },
+
+    // ══ EAL/D BLOCKS ═════════════════════════════════════════════════════════
+
+    ealdGlossary: {
+      audience: 'eald',
+      source: 'step6-scaffolding.html \u2014 Tier 2/3 Vocabulary List',
+      label: 'Key vocabulary glossary (Tier 2/3)',
+      template: `Context: I'm teaching {{subject}} to {{year}} students. My EAL/D students need explicit vocabulary support to access this content.
+Objective: Identify and define the key academic vocabulary students will need.
+Instructional nuance: Focus on Tier 2 (high-utility academic words like "analyse," "synthesise") and Tier 3 (domain-specific terms). Provide student-friendly definitions \u2014 avoid circular language.
+
+Working from the resource above:
+- Identify 8\u201312 key vocabulary terms (mix of Tier 2 and Tier 3)
+- For each term, provide:
+  \u2014 A student-friendly definition appropriate for {{year}}
+  \u2014 An example sentence showing the word used in context
+  \u2014 Whether it is Tier 2 (general academic) or Tier 3 (subject-specific)
+
+Format the output as a table: Term | Definition | Example sentence | Tier`
+    },
+
+    ealdSubjectVocab: {
+      audience: 'eald',
+      source: 'step6-scaffolding.html \u2014 Tier 2/3 Vocabulary List (subject-specific)',
+      label: 'Unpack subject-specific language',
+      template: `Context: I'm teaching {{subject}} to {{year}} students. My EAL/D students need explicit support with the subject-specific language of this discipline.
+Objective: Surface and explain the subject-specific vocabulary and language patterns in this content.
+Instructional nuance: Each discipline has its own language. In geography, "explain the relationship between..." expects a particular kind of response. In science, "hypothesis" has a precise meaning unlike everyday usage. Make these demands explicit.
+
+Working from the resource above:
+1. Identify 6\u201310 subject-specific terms that carry precise meaning in {{subject}}
+2. For each term: provide a student-friendly definition and note how the meaning differs from everyday English where relevant
+3. Identify 3\u20134 subject-specific language patterns or task verbs (e.g. "justify," "account for") and explain in plain language what each one is asking students to do
+4. Format as a reference sheet students can keep beside the resource`
+    },
+
+    ealdSentenceFrames: {
+      audience: 'eald',
+      source: 'step6-scaffolding.html \u2014 Sentence Starters & Thinking Stems',
+      label: 'EAL/D sentence frames',
+      template: `Using the task or questions in the resource above, create sentence starters and frames specifically designed to support EAL/D students in constructing academic written responses. Include frames that help students:
+- Begin their response using appropriate academic register
+- Introduce evidence or examples from the text
+- Explain the significance of evidence ("This shows that...", "This suggests...")
+- Make connections between ideas
+- Draw conclusions
+
+Provide 10\u201312 frames in total. Use language that is academically appropriate for {{year}} but accessible to students who are still developing English proficiency. Avoid idiomatic phrases.
+
+Also provide a brief note for the teacher on which frames are most useful for early-stage vs. developing EAL/D learners.`
+    },
+
+    ealdVisualSupports: {
+      audience: 'eald',
+      source: 'step6-scaffolding.html \u2014 Add Visual Supports to Vocabulary',
+      label: 'Visual supports for vocabulary (EAL/D)',
+      template: `Context: The key vocabulary in the resource above would be more accessible if EAL/D students had visual cues alongside definitions.
+Objective: Suggest simple icons, symbols, or visual representations that support vocabulary learning.
+Instructional nuance: Visuals should be simple, unambiguous, and culturally appropriate \u2014 memory aids, not artwork.
+
+For the key vocabulary in the resource above, suggest:
+- A simple visual representation for each term (icon, symbol, diagram, or gesture \u2014 describe it clearly enough to create or source)
+- Why this visual support helps students remember or understand the term
+- How to practically represent this in the classroom
+
+Prioritise visuals that are simple to draw or find, unambiguous across cultures, and memorable.`
+    },
+
+    ealdSyntax: {
+      audience: 'eald',
+      source: 'step3-content.html \u2014 Tiered Texts (EAL/D syntax variant)',
+      label: 'Simplified syntax version (EAL/D)',
+      template: `Context: EAL/D students can engage with the ideas in the resource above but are held back by complex sentence structures and dense academic syntax.
+Objective: Produce a simplified syntax version that reduces linguistic complexity without reducing conceptual demand.
+
+Working from the resource above, produce a version that:
+- Uses shorter sentences (aim for 15\u201320 words average)
+- Unpacks embedded clauses into separate sentences
+- Prefers active voice over passive voice
+- Makes logical connections explicit ("Because of this...", "As a result...", "This means that...")
+- Retains all key vocabulary (with brief inline definitions in brackets where needed)
+- Preserves the original meaning and conceptual depth
+
+After the revised text, briefly note the main structural changes made.`
+    },
+
+    ealdMandarin: {
+      audience: 'eald',
+      source: 'step6-scaffolding.html \u2014 Create a Bilingual Glossary',
+      label: 'Bilingual English\u2013Mandarin glossary',
+      template: `Context: I have EAL/D students whose home language is Mandarin who need vocabulary support to access this content.
+Objective: Generate a bilingual glossary pairing English academic vocabulary with Mandarin translations and explanations.
+Instructional nuance: This is a scaffold, not a replacement for English instruction. Include student-friendly definitions in both languages \u2014 not just word translations.
+
+Working from the resource above, create a bilingual English\u2013Mandarin glossary with:
+- Each key term in English with a student-friendly definition appropriate for {{year}}
+- The same term in Mandarin (simplified characters) with an equivalent student-friendly explanation
+- A simple example sentence in English showing the term in context
+
+Format as a two-column table suitable for printing. Keep definitions to one sentence each.
+If a direct translation doesn't capture the meaning well, note this and provide a brief explanation rather than a misleading literal translation.`
+    },
+
+    ealdOtherLanguage: {
+      audience: 'eald',
+      source: 'step6-scaffolding.html \u2014 Bilingual Glossary + Translate Task Instructions',
+      label: 'Bilingual glossary + translated task instructions',
+      template: `Context: I have EAL/D students whose home language is {{language}} who need both vocabulary support and clarity on task instructions.
+Objective: Produce two resources: a bilingual glossary and a translated task instructions sheet.
+Instructional nuance: Home-language resources are cognitive anchors. Include student-friendly definitions, not just direct translations.
+
+Working from the resource above:
+
+Part 1 \u2014 Bilingual Glossary (English / {{language}}):
+- Identify 8\u201312 key terms
+- For each: English definition for {{year}}, {{language}} translation with brief explanation, example sentence in English
+- Format as a two-column table for printing
+- Note any translations that miss nuance and provide a brief explanation instead
+
+Part 2 \u2014 Translated Task Instructions:
+- Translate the task instructions into {{language}}, maintaining the same sequence
+- Highlight any English academic phrases likely to cause confusion and provide both the {{language}} equivalent and a plain-English alternative
+- Format with English on the left and {{language}} on the right`
+    },
+
+    // ══ NEURODIVERSITY / LEARNING NEEDS BLOCKS ═══════════════════════════════
+
+    neuroChunked: {
+      audience: 'neuro',
+      source: 'step3-content.html \u2014 Neurodiversity-Responsive Content Design',
+      label: 'Chunked instructions (one step at a time)',
+      template: `Context: The resource above may contain instructions or content that are difficult for students who need concrete, sequential information.
+Objective: Rewrite as numbered steps using clear, concrete language.
+Instructional nuance: One clear action per step. Active verbs. No implied information.
+
+Working from the resource above, rewrite the instructions and/or questions as:
+- Numbered steps (no more than 8 if possible)
+- Concrete, specific language \u2014 no metaphors, abstract terms, or implied information
+- Active verbs that tell students exactly what to do
+- One clear action per step
+
+If any step is still complex, break it into sub-steps (e.g. 3a, 3b).
+
+Note any abstract or implicit language you changed and explain why the original phrasing may have been a barrier.`
+    },
+
+    neuroWorkingMemory: {
+      audience: 'neuro',
+      source: 'step3-content.html \u2014 Neurodiversity-Responsive Content Design',
+      label: 'Reduce working memory load',
+      template: `Context: Some students have working memory challenges and struggle to hold multiple pieces of information in mind while completing tasks.
+Objective: Design supports that reduce working memory demands while affirming student strengths.
+Instructional nuance: Frame supports as tools for efficiency, not accommodations for deficiency.
+
+Working from the resource above, first identify what this task requires students to hold in working memory simultaneously.
+
+Then suggest 3\u20134 strength-based supports. For each:
+- Describe the tool or strategy
+- Explain how it reduces cognitive load
+- Frame it positively (e.g. "This tool helps you work efficiently")
+
+Suitable tools: reference sheets, colour-coded reminders, graphic organisers, partially completed frames, read-aloud cues, chunked check-in points.`
+    },
+
+    neuroWhiteSpace: {
+      audience: 'neuro',
+      source: 'step3-content.html \u2014 Neurodiversity-Responsive Content Design (layout)',
+      label: 'Increased white space and reduced visual clutter',
+      template: `Context: The resource above needs to be easier to navigate for students who experience visual overwhelm or benefit from a cleaner layout.
+Objective: Suggest specific layout adjustments that reduce visual density without changing the content.
+
+Working from the resource above, provide:
+1. A redesigned version with improved layout \u2014 more white space, clear visual hierarchy, shorter sections
+2. Specific formatting recommendations:
+   - Font and size suggestions
+   - Suggested line spacing
+   - How to use headings to create clear structure
+   - How to chunk content visually (boxes, dividers, numbering)
+3. Any content that could move to a separate reference sheet to reduce the visual load of the main task`
+    },
+
+    neuroExplicitProcess: {
+      audience: 'neuro',
+      source: 'step6-scaffolding.html \u2014 Break Down a Complex Task',
+      label: 'Explicit process steps / procedure guide',
+      template: `Working from the task in the resource above, create an explicit process guide \u2014 a step-by-step procedure students can follow independently.
+
+The guide should:
+- Break the task into 5\u20138 clear, manageable steps, sequenced logically
+- Include a success criterion for each step so students know when they're done
+- Use concrete, active language \u2014 tell students exactly what to do
+- Flag any decision points and briefly explain how to make that decision
+- End with a self-check list: 4\u20135 questions the student asks before submitting
+
+Use student-friendly language appropriate for {{year}}. The goal: a student who is stuck can consult this and get unstuck without needing the teacher.`
+    },
+
+    neuroReducedOutput: {
+      audience: 'neuro',
+      source: 'Prompt Builder \u2014 Reduced Output Options',
+      label: 'Reduced written output options',
+      template: `Context: Some students are held back not by the thinking required but by the output required \u2014 extended writing can mask genuine understanding.
+Objective: Redesign the task to offer output alternatives that reduce written production demand while maintaining cognitive demand.
+
+Working from the resource above, offer three output alternatives:
+
+1. Annotated diagram or visual: Describe exactly what students should create and annotate \u2014 what should be labelled, what needs to be shown.
+2. Structured spoken/recorded response: Provide the exact prompt and structure (e.g. "In 3\u20135 sentences, explain... Start with..., then..., finish with...").
+3. Structured dot-point response: Scaffolded written option \u2014 how many points, what each should cover, with sentence starters.
+
+For each: write it as the student would receive it, clearly enough to complete independently.`
+    },
+
+    neuroTTS: {
+      audience: 'neuro',
+      source: 'Prompt Builder \u2014 Text-to-Speech Formatting',
+      label: 'Text-to-speech friendly formatting',
+      template: `Context: Some students use text-to-speech software. Formatting that works visually can create confusion when read aloud.
+Objective: Reformat the resource above for text-to-speech compatibility without changing the content.
+Instructional nuance: TTS reads linearly. Structure must be communicated through language, not layout.
+
+Working from the resource above:
+1. Rewrite any tables as clearly structured text (e.g. "Term: [term]. Definition: [definition].")
+2. Spell out all abbreviations in full on first use
+3. Replace layout references ("see the diagram below") with descriptions of the content
+4. Add verbal cues that signal structure ("This section covers three ideas. The first is...")
+5. Flag any content in images that TTS cannot read \u2014 suggest text-based alternatives
+6. Note any other TTS compatibility issues`
+    },
+
+    neuroAnchor: {
+      audience: 'neuro',
+      source: 'step3-process.html \u2014 Anchor Activities',
+      label: 'Anchor activity menu for early finishers',
+      template: `Working from the main task in the resource above, create a menu of anchor activities for students who finish early.
+
+Each activity should:
+- Be self-directed (students can begin and continue without teacher input)
+- Connect meaningfully to the current learning \u2014 not busywork
+- Accommodate a range of readiness levels
+- Be sustainable across multiple lessons in this topic
+
+Create 4\u20135 anchor activities. For each:
+- Write the student-facing instruction
+- Explain the learning value (1 sentence \u2014 for the teacher)
+- Note the approximate time required`
+    }
+
+  };
+
+  // ─── PROCESS OPTIONS ──────────────────────────────────────────────────────
+  // These drive the Q3 lever selector in the Process flow.
+  // Each maps to a key in PROCESS_SOURCE.
+
+  const PROCESS_OPTIONS = [
+
+    // ── SUPPORT ──
+    {
+      id: 'proc-sup-questioning',
+      audience: 'support',
+      label: 'Tiered questioning strategies',
+      desc: 'How to frame questions in class that give support students a genuine entry point',
+      key: 'procSupQuestioning'
+    },
+    {
+      id: 'proc-sup-grouping',
+      audience: 'support',
+      label: 'Grouping and collaboration structures',
+      desc: 'How to organise group work so support students contribute meaningfully',
+      key: 'procSupGrouping'
+    },
+    {
+      id: 'proc-sup-scaffoldfade',
+      audience: 'support',
+      label: 'Scaffolding with a fade plan',
+      desc: 'Temporary in-class supports that build toward independence',
+      key: 'procSupScaffoldFade'
+    },
+    {
+      id: 'proc-sup-pacing',
+      audience: 'support',
+      label: 'Pacing and task management',
+      desc: 'How to structure time so support students can complete meaningful work',
+      key: 'procSupPacing'
+    },
+    {
+      id: 'proc-sup-environment',
+      audience: 'support',
+      label: 'Learning environment adjustments',
+      desc: 'Physical and social classroom conditions that reduce barriers',
+      key: 'procSupEnvironment'
+    },
+
+    // ── EXTENSION ──
+    {
+      id: 'proc-ext-questioning',
+      audience: 'extension',
+      label: 'Higher-order questioning strategies',
+      desc: 'How to push extension students toward genuine intellectual challenge in discussion',
+      key: 'procExtQuestioning'
+    },
+    {
+      id: 'proc-ext-anchor',
+      audience: 'extension',
+      label: 'Anchor and extension tasks',
+      desc: 'Meaningful self-directed tasks for students who finish early or need deeper challenge',
+      key: 'procExtAnchor'
+    },
+    {
+      id: 'proc-ext-independence',
+      audience: 'extension',
+      label: 'Building independence and self-direction',
+      desc: 'How to gradually release control so extension students lead their own learning',
+      key: 'procExtIndependence'
+    },
+    {
+      id: 'proc-ext-grouping',
+      audience: 'extension',
+      label: 'Flexible grouping for depth',
+      desc: 'How to use grouping to push extension students into genuine intellectual collaboration',
+      key: 'procExtGrouping'
+    },
+    {
+      id: 'proc-ext-compacting',
+      audience: 'extension',
+      label: 'Curriculum compacting',
+      desc: 'How to identify and eliminate unnecessary repetition for students who have mastered content',
+      key: 'procExtCompacting'
+    },
+  ];
+
+  // ─── PROCESS SOURCE BLOCKS ────────────────────────────────────────────────
+  // These blocks produce teacher-facing strategy advice, not student materials.
+  // They reference "the context above" and "the teaching situation described".
+  // Context placeholders: {{year}}, {{subject}}, {{situation}}
+
+  const PROCESS_SOURCE = {
+
+    // ══ SUPPORT PROCESS BLOCKS ════════════════════════════════════════════════
+
+    procSupQuestioning: {
+      audience: 'support',
+      source: 'step4-align.html — Readiness-Based Differentiation; step6-scaffolding.html — Scaffolding Principles',
+      label: 'Tiered questioning strategies',
+      template: `TASK: Tiered questioning strategies for support students
+
+You are designing a questioning strategy for support students in the context described above.
+
+Instructional principle: Every student should be able to participate in classroom discussion — but the type of question that gives each student a genuine entry point will differ. Support students need questions that start from what they already know and build toward the concept, rather than questions that presuppose understanding they haven't yet developed.
+
+Please provide:
+
+1. A set of 5–6 tiered questions specifically for this teaching context, sequenced from accessible entry point to growing challenge. For each question:
+   — Write the question exactly as you would say it to a student
+   — Note what prior knowledge or understanding it activates
+   — Explain how it builds toward the learning intention
+
+2. A cold-calling strategy: how to invite support students into discussion in a way that is genuine (not tokenistic) and gives them time to form a response. Include specific language you would use.
+
+3. A pair/share structure the teacher could use before whole-class discussion, so support students arrive at discussion with a prepared thought rather than improvising on the spot.
+
+Make all strategies specific to {{subject}} at {{year}} level. Avoid generic advice.`
+    },
+
+    procSupGrouping: {
+      audience: 'support',
+      source: 'step4-align.html — Readiness-Based Differentiation; step3-process.html — Flexible Grouping',
+      label: 'Grouping and collaboration structures',
+      template: `TASK: Grouping structures that support without stigmatising
+
+You are designing a collaboration structure for support students in the context described above.
+
+Instructional principle: Grouping must be flexible and purposeful — not a permanent label. Support students benefit from structured collaboration that gives them a clear role, reduces the cognitive overhead of managing the social dynamic, and ensures they are contributing to genuine thinking rather than copying or being sidelined.
+
+Please provide:
+
+1. Two specific grouping structures suited to this teaching context. For each:
+   — Describe the structure clearly (how groups form, how many, what roles)
+   — Explain what it does for support students specifically
+   — Give the teacher the exact instructions they would give to the class
+   — Note any management considerations
+
+2. A role structure for group work: 3–4 specific roles that support students can occupy that give them genuine agency without requiring them to lead prematurely. For each role, write the student-facing job description.
+
+3. A brief note on how to handle the moment when a support student is falling behind their group — what does the teacher do, and what does the student do?
+
+All advice should be specific to {{subject}} at {{year}} level and the teaching situation described.`
+    },
+
+    procSupScaffoldFade: {
+      audience: 'support',
+      source: 'step6-scaffolding.html — Scaffolding Principles; step6-scaffolding.html — Fade a Graphic Organizer',
+      label: 'Scaffolding with a fade plan',
+      template: `TASK: In-class scaffolding with a plan to fade
+
+You are designing in-class scaffolding for support students in the context described above.
+
+Instructional principle: Scaffolds are temporary bridges, not permanent ramps. Every scaffold should have a built-in plan for removal — otherwise it becomes a ceiling rather than a support. The goal is student independence, not permanent dependence on teacher or tool.
+
+Please provide:
+
+1. Three specific in-class scaffolds suited to this teaching context. For each:
+   — Describe the scaffold precisely (what it looks like, what the student does with it)
+   — Explain what specific barrier it addresses
+   — Write a fade plan: Stage 1 (full scaffold), Stage 2 (partial scaffold), Stage 3 (student self-manages)
+   — State the signal or evidence that tells the teacher a student is ready to move to the next stage
+
+2. A "first five minutes" strategy: what does the teacher do at the start of this lesson/task to set support students up before independent work begins?
+
+3. A self-monitoring prompt for support students: 2–3 questions they can ask themselves mid-task to assess whether they need to use a scaffold or are ready to work without it.
+
+All scaffolds should be specific to {{subject}} at {{year}} level.`
+    },
+
+    procSupPacing: {
+      audience: 'support',
+      source: 'step5-equalizer.html — Slow ↔ Fast Continuum',
+      label: 'Pacing and task management',
+      template: `TASK: Pacing and task management for support students
+
+You are designing a pacing approach for support students in the context described above.
+
+Instructional principle: The goal is not to slow down the learning, but to ensure support students spend their time on the parts of the task that matter most. This may mean compressing or removing lower-priority elements so students reach the essential thinking, rather than getting stuck on preliminary steps.
+
+Please provide:
+
+1. A task priority map: given the teaching context described, identify which parts of the task or lesson are essential (all students must engage with these), which are supplementary (useful but not critical), and which support students should deprioritise or skip if time is short.
+
+2. A pacing plan for support students: how the teacher structures the time, with approximate allocations. Include specific checkpoints where the teacher checks in.
+
+3. Two strategies for the moment when a support student is clearly going to run out of time. What does the teacher do? What is the student directed to do? Write these as concrete moves, not principles.
+
+4. An "exit with dignity" structure: how to ensure support students finish the lesson having genuinely engaged with the essential thinking, even if they haven't completed everything.
+
+All advice should be specific to {{subject}} at {{year}} level.`
+    },
+
+    procSupEnvironment: {
+      audience: 'support',
+      source: 'step3-environment.html — Differentiate the Environment',
+      label: 'Learning environment adjustments',
+      template: `TASK: Learning environment adjustments for support students
+
+You are advising on classroom environment design for support students in the context described above.
+
+Instructional principle: The physical and social environment sends constant messages to students about who belongs, who is capable, and what learning looks like. For support students, a well-designed environment reduces cognitive load, increases psychological safety, and makes the implicit expectations of school explicit.
+
+Please provide:
+
+1. Three specific physical environment adjustments suited to this teaching context. For each:
+   — Describe the change precisely
+   — Explain what barrier it addresses for support students
+   — Note what the teacher needs to do to implement it
+
+2. Two social/emotional environment strategies: how the teacher can build the conditions where support students feel safe to attempt, fail, and try again. Include specific language or rituals the teacher could use.
+
+3. A seating/positioning recommendation for this specific teaching context: where support students should sit, and why. Include what the teacher should be able to see and access from where they position themselves.
+
+4. One thing to avoid: a common classroom environment decision that inadvertently signals to support students that they are different or less capable.
+
+All advice should be specific to {{subject}} at {{year}} level.`
+    },
+
+    // ══ EXTENSION PROCESS BLOCKS ══════════════════════════════════════════════
+
+    procExtQuestioning: {
+      audience: 'extension',
+      source: 'step5-equalizer.html — Transformational; step4-align.html — Readiness-Based Differentiation',
+      label: 'Higher-order questioning for extension students',
+      template: `TASK: Higher-order questioning strategies for extension students
+
+You are designing a questioning strategy for extension students in the context described above.
+
+Instructional principle: Extension students often answer standard questions too quickly, with insufficient grappling. The goal is not harder questions — it is questions that require genuine intellectual work: synthesis, evaluation, ambiguity, and the honest acknowledgement that they don't yet have the answer.
+
+Please provide:
+
+1. A set of 5–6 higher-order questions for extension students in this teaching context, moving from analysis toward genuine uncertainty. For each question:
+   — Write the question exactly as you would pose it
+   — Explain what kind of thinking it requires (not just Bloom's label — describe the actual intellectual move)
+   — Note what a good response would look like, and what "sounding smart but not thinking hard" looks like
+
+2. A Socratic questioning strategy: how to take an extension student's confident-sounding first answer and push them to the edge of their thinking. Give the teacher 4–5 specific follow-up moves with example language.
+
+3. A debate or perspective-taking structure suited to this context, where extension students must argue for positions they may not personally hold. Write the task instruction exactly as the teacher would give it.
+
+All strategies should be specific to {{subject}} at {{year}} level.`
+    },
+
+    procExtAnchor: {
+      audience: 'extension',
+      source: 'step3-process.html — Anchor Activities; step5-equalizer.html — Great Leap',
+      label: 'Anchor and extension tasks',
+      template: `TASK: Anchor and extension tasks for students who need more challenge
+
+You are designing anchor and extension tasks for extension students in the context described above.
+
+Instructional principle: Anchor tasks are not busywork — they are substantive, self-directed learning that extension students can pick up and put down independently. They must connect genuinely to the current learning, require real thinking, and not simply be "more of the same."
+
+Please provide:
+
+1. Three anchor tasks for this teaching context. For each:
+   — Write the student-facing instruction exactly as the student would receive it
+   — Explain the learning value (one sentence, for the teacher)
+   — Note approximately how long it would sustain an extension student
+   — Indicate whether it is a "great leap" task (transfer to a different context) or a depth task (going further into this content)
+
+2. One genuinely open-ended inquiry prompt that extension students could pursue across multiple lessons — not just this one. It should connect to the core content but allow for genuine student-directed investigation.
+
+3. A brief protocol for how the teacher introduces anchor tasks to the class without creating a two-tier atmosphere. Write the exact language the teacher could use.
+
+All tasks should be specific to {{subject}} at {{year}} level.`
+    },
+
+    procExtIndependence: {
+      audience: 'extension',
+      source: 'step5-equalizer.html — Dependent ↔ Independent Continuum; step4-align.html — Interest-Based Differentiation',
+      label: 'Building independence and self-direction',
+      template: `TASK: Strategies for building independence in extension students
+
+You are designing a gradual release of independence for extension students in the context described above.
+
+Instructional principle: The Equaliser's Dependent ↔ Independent continuum has four stages: Skill Building → Structured Independence → Shared Independence → Self-Guided Independence. Extension students should be moving toward the right — but independence must be earned through demonstrated readiness, not assumed. The goal is genuine autonomy, not just working alone.
+
+Please provide:
+
+1. A readiness assessment: given this teaching context, how does the teacher determine which extension students are ready for greater independence? List 3–4 specific observable indicators.
+
+2. A staged release plan for this context, using the four stages above. For each stage:
+   — Describe what the student is doing
+   — Describe what the teacher is doing
+   — Give the specific trigger that moves a student to the next stage
+
+3. A student self-management protocol: a simple structure extension students can use to manage their own learning time, set their own checkpoints, and know when to seek teacher input. Write it as the student would receive it.
+
+4. A "re-entry plan" for when an extension student who has been given independence gets stuck or goes off-track — what does the teacher do, and what does the student do?
+
+All strategies should be specific to {{subject}} at {{year}} level.`
+    },
+
+    procExtGrouping: {
+      audience: 'extension',
+      source: 'step4-align.html — Interest-Based Differentiation; step3-process.html — Flexible Grouping',
+      label: 'Flexible grouping for depth',
+      template: `TASK: Grouping structures that push extension students toward depth
+
+You are designing a grouping strategy for extension students in the context described above.
+
+Instructional principle: Extension students often do their best thinking in carefully structured collaboration — not because they need the help, but because genuine intellectual challenge requires more than one mind. The goal is groups that push everyone's thinking further, not groups that allow extension students to coast on their existing understanding.
+
+Please provide:
+
+1. Two specific grouping structures for extension students in this context. For each:
+   — Describe the structure (how groups form, size, roles)
+   — Explain what intellectual challenge it creates — why can't one person do this alone?
+   — Give the teacher the exact task instruction for the group
+   — Note what "success" looks like and what "coasting" looks like
+
+2. A mixed-readiness grouping strategy: how to design a task where extension students and other students work together productively, without extension students simply doing the work for others or dominating the conversation. Include a specific role structure.
+
+3. A discussion protocol extension students can use to push each other's thinking — not just share answers. Write the protocol as the students would receive it.
+
+All strategies should be specific to {{subject}} at {{year}} level.`
+    },
+
+    procExtCompacting: {
+      audience: 'extension',
+      source: 'step4-align.html — Readiness-Based Differentiation; step5-equalizer.html — Foundational ↔ Transformational',
+      label: 'Curriculum compacting',
+      template: `TASK: Curriculum compacting for extension students
+
+You are designing a curriculum compacting approach for extension students in the context described above.
+
+Instructional principle: Curriculum compacting means buying time for deeper or different work by eliminating unnecessary repetition for students who have already demonstrated mastery. It is not about moving faster through the same content — it is about replacing what has been mastered with something more worthy of the student's time.
+
+Please provide:
+
+1. A pre-assessment strategy for this teaching context: how does the teacher quickly determine which students already have mastery of the prerequisite content? Give a specific pre-assessment method (not a full test — something that takes 5–10 minutes) and describe what evidence of mastery looks like.
+
+2. A compacting plan: given this teaching context, which elements of the planned learning could be skipped or dramatically abbreviated for students who demonstrate mastery? Be specific — name the activities, tasks, or teaching sequences, and note what they are replaced with.
+
+3. A "replacement curriculum" for this context: what do extension students do with the time that compacting creates? Provide 2–3 specific options that are connected to the core content but demand genuinely higher-level engagement.
+
+4. A brief protocol for how the teacher manages compacting logistically — without it feeling like a reward or punishment, and without creating a class where different students are permanently on different tracks.
+
+All advice should be specific to {{subject}} at {{year}} level.`
+    },
+
+  };
+
+  // ─── PROCESS BLOCK BUILDER ────────────────────────────────────────────────
+
+  function buildProcessBlock(key, ctx, audience) {
+    const entry = PROCESS_SOURCE[key];
+    if (!entry) return `[Process block "${key}" not found]`;
+    const year    = ctx.year      || '[year group]';
+    const subject = ctx.subject   || '[subject/topic]';
+    const situation = ctx.situation || '[teaching context]';
+    const assembled = entry.template
+      .replace(/\{\{year\}\}/gi, year)
+      .replace(/\{\{subject\}\}/gi, subject)
+      .replace(/\{\{situation\}\}/gi, situation);
+    return assembled;
+  }
+
+  // ─── PUBLIC API ───────────────────────────────────────────────────────────
+
+  /**
+   * Build a single prompt block.
+   *
+   * @param {string} key      - Key from SOURCE
+   * @param {object} ctx      - { year, subject, intention, resource }
+   *                            Note: resource is injected in preamble only
+   * @param {object} extras   - { language }
+   * @returns {string} Ready-to-use task instruction block
+   */
+  function buildBlock(key, ctx, extras) {
+    const entry = SOURCE[key];
+    if (!entry) return `[Prompt block "${key}" not found]`;
+
+    const assembled = inject(entry.template, ctx, extras);
+    return `TASK: ${entry.label}\n\n${assembled}`;
+  }
+
+  function getSource(key) {
+    return SOURCE[key] ? SOURCE[key].source : 'Unknown';
+  }
+
+  function listKeys() {
+    return Object.keys(SOURCE);
+  }
+
+  return {
+    buildBlock,
+    getSource,
+    listKeys,
+    SOURCE,
+    SUPPORT_OPTIONS,
+    EXTENSION_OPTIONS,
+    PROCESS_OPTIONS,
+    buildProcessBlock
+  };
+
+})();
+
+</script>
+<script>
+// ==========================================
+// STATE
+// ==========================================
+const state = {
+    q1: null,
+    q1flow: 'content',       // 'content' | 'process'
+    q1a: null,
+    q2: null,                // 'support' | 'extension' | 'both'
+    q3Support: [],
+    q3Extension: [],
+    q4: [],
+    ealdOtherLang: '',
+    ctx: { year: '', subject: '', intention: '', resource: '' },
+    outputMode: 'build',
+    delivery: 'master',
+    curateSelected: [],
+    // Process flow state
+    procAudience: null,      // 'support' | 'extension' | 'both'
+    procCtx: { year: '', subject: '', situation: '', resource: '' },
+    procLevers: []           // selected process lever IDs
+};
+
+const PANELS = ['q1', 'q1a', 'q2', 'q3', 'q4', 'q5', 'output',
+                 'proc-q1b', 'proc-q2', 'proc-q3'];
+const PANEL_LABELS = {
+    q1: 'Step 1 of 6', q1a: 'Step 1b of 6', q2: 'Step 2 of 6',
+    q3: 'Step 3 of 6', q4: 'Step 4 of 6', q5: 'Step 5 of 6', output: 'Step 6 of 6',
+    'proc-q1b': 'Step 2 of 4', 'proc-q2': 'Step 3 of 4', 'proc-q3': 'Step 4 of 4'
+};
+const PANEL_PROGRESS = {
+    q1: 5, q1a: 18, q2: 33, q3: 50, q4: 67, q5: 83, output: 100,
+    'proc-q1b': 33, 'proc-q2': 58, 'proc-q3': 83
+};
+
+// ==========================================
+// Q3 COLUMN RENDERING
+// ==========================================
+function buildQ3Columns() {
+    const resourceType = state.q1a;
+    const supList = document.getElementById('q3-support-list');
+    const extList = document.getElementById('q3-extension-list');
+    supList.innerHTML = '';
+    extList.innerHTML = '';
+
+    // Clear any previously selected options that are no longer valid for this resource type
+    state.q3Support   = state.q3Support.filter(id => {
+        const opt = PB.SUPPORT_OPTIONS.find(o => o.id === id);
+        return opt && opt.show.includes(resourceType);
+    });
+    state.q3Extension = state.q3Extension.filter(id => {
+        const opt = PB.EXTENSION_OPTIONS.find(o => o.id === id);
+        return opt && opt.show.includes(resourceType);
+    });
+
+    PB.SUPPORT_OPTIONS
+        .filter(opt => opt.show.includes(resourceType))
+        .forEach(opt => {
+            const el = document.createElement('div');
+            el.className = 'q3-checkbox' + (state.q3Support.includes(opt.id) ? ' selected' : '');
+            el.dataset.id = opt.id;
+            el.innerHTML = `<div class="q3-cb-box"></div><div class="q3-cb-text"><strong>${opt.label}</strong><span>${opt.desc}</span></div>`;
+            el.onclick = () => toggleQ3(el, 'support', opt.id);
+            supList.appendChild(el);
+        });
+
+    PB.EXTENSION_OPTIONS
+        .filter(opt => opt.show.includes(resourceType))
+        .forEach(opt => {
+            const el = document.createElement('div');
+            el.className = 'q3-checkbox' + (state.q3Extension.includes(opt.id) ? ' selected' : '');
+            el.dataset.id = opt.id;
+            el.innerHTML = `<div class="q3-cb-box"></div><div class="q3-cb-text"><strong>${opt.label}</strong><span>${opt.desc}</span></div>`;
+            el.onclick = () => toggleQ3(el, 'extension', opt.id);
+            extList.appendChild(el);
+        });
+
+    applyQ3Dimming();
+}
+
+function toggleQ3(el, audience, id) {
+    el.classList.toggle('selected');
+    const arr = audience === 'support' ? state.q3Support : state.q3Extension;
+    const idx = arr.indexOf(id);
+    if (idx === -1) arr.push(id);
+    else arr.splice(idx, 1);
+}
+
+function applyQ3Dimming() {
+    const supCol = document.getElementById('q3-support-col');
+    const extCol = document.getElementById('q3-extension-col');
+    if (!supCol || !extCol) return;
+    if (state.q2 === 'support') {
+        supCol.classList.remove('dimmed');
+        extCol.classList.add('dimmed');
+    } else if (state.q2 === 'extension') {
+        supCol.classList.add('dimmed');
+        extCol.classList.remove('dimmed');
+    } else {
+        supCol.classList.remove('dimmed');
+        extCol.classList.remove('dimmed');
+    }
+}
+
+// ==========================================
+// NAVIGATION — with browser history
+// ==========================================
+let _suppressPopstate = false;
+
+// ==========================================
+// Q1 NEXT — routes to content or process flow
+// ==========================================
+function goToQ1Next() {
+    if (!state.q1) { highlightRequired('panel-q1'); return; }
+    if (state.q1flow === 'process') {
+        goToPanel('proc-q1b');
+    } else {
+        goToPanel('q1a');
+    }
+}
+
+function goToPanel(id, pushHistory) {
+    // Content flow guards
+    if (id === 'q1a' && !state.q1)  { highlightRequired('panel-q1');  return; }
+    if (id === 'q2'  && !state.q1a) { highlightRequired('panel-q1a'); return; }
+    if (id === 'q3'  && !state.q2)  { highlightRequired('panel-q2');  return; }
+
+    // Process flow guards
+    if (id === 'proc-q2'  && !state.procAudience) { highlightRequired('panel-proc-q1b'); return; }
+    if (id === 'proc-q3') { buildProcQ3Levers(); }
+
+    // On entering content Q3, build columns
+    if (id === 'q3') buildQ3Columns();
+
+    document.querySelectorAll('.question-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel-' + id);
+    if (panel) {
+        panel.classList.add('active');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('progressFill').style.width = (PANEL_PROGRESS[id] || 0) + '%';
+    document.getElementById('progressLabel').textContent = PANEL_LABELS[id] || '';
+
+    if (pushHistory !== false) {
+        history.pushState({ panel: id }, '', '#' + id);
+    }
+}
+
+// ==========================================
+// PROCESS FLOW — LEVER RENDERING
+// ==========================================
+function buildProcQ3Levers() {
+    const audience = state.procAudience;
+
+    const supSection  = document.getElementById('proc-q3-support-section');
+    const extSection  = document.getElementById('proc-q3-extension-section');
+    const supList     = document.getElementById('proc-support-levers');
+    const extList     = document.getElementById('proc-extension-levers');
+
+    // Show/hide sections based on audience
+    supSection.style.display = (audience === 'extension') ? 'none' : 'block';
+    extSection.style.display = (audience === 'support')   ? 'none' : 'block';
+
+    // Clear previous selections that no longer apply
+    state.procLevers = state.procLevers.filter(id => {
+        const opt = PB.PROCESS_OPTIONS.find(o => o.id === id);
+        if (!opt) return false;
+        if (opt.audience === 'support'   && audience === 'extension') return false;
+        if (opt.audience === 'extension' && audience === 'support')   return false;
+        return true;
+    });
+
+    function renderLevers(container, options) {
+        container.innerHTML = '';
+        options.forEach(opt => {
+            const el = document.createElement('div');
+            el.className = 'checkbox-card' + (state.procLevers.includes(opt.id) ? ' selected' : '');
+            el.dataset.id = opt.id;
+            el.innerHTML = `<div class="cb-box"></div><div class="cb-label"><strong style="display:block;font-size:0.97rem;color:var(--text-dark);font-weight:600;">${opt.label}</strong><span style="font-size:0.84rem;color:var(--text-light);line-height:1.4;">${opt.desc}</span></div>`;
+            el.onclick = () => toggleProcLever(el, opt.id);
+            container.appendChild(el);
+        });
+    }
+
+    const supOpts = PB.PROCESS_OPTIONS.filter(o => o.audience === 'support');
+    const extOpts = PB.PROCESS_OPTIONS.filter(o => o.audience === 'extension');
+    renderLevers(supList, supOpts);
+    renderLevers(extList, extOpts);
+}
+
+function toggleProcLever(el, id) {
+    el.classList.toggle('selected');
+    const idx = state.procLevers.indexOf(id);
+    if (idx === -1) state.procLevers.push(id);
+    else state.procLevers.splice(idx, 1);
+}
+
+function validateProcQ3() {
+    const val = document.getElementById('val-proc-q3');
+    if (state.procLevers.length === 0) {
+        val.classList.add('show');
+        setTimeout(() => val.classList.remove('show'), 3000);
+        return;
+    }
+    generateProcessPrompt();
+}
+
+// ==========================================
+// PROCESS CONTEXT COLLECTION
+// ==========================================
+function collectProcContext() {
+    state.procCtx.year      = (document.getElementById('proc-year')      || {}).value?.trim() || '';
+    state.procCtx.subject   = (document.getElementById('proc-subject')   || {}).value?.trim() || '';
+    state.procCtx.situation = (document.getElementById('proc-situation') || {}).value?.trim() || '';
+    state.procCtx.resource  = (document.getElementById('proc-resource')  || {}).value?.trim() || '';
+}
+
+function handleProcFileUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const status = document.getElementById('proc-upload-status');
+    if (file.type === 'text/plain') {
+        const reader = new FileReader();
+        reader.onload = e => {
+            document.getElementById('proc-resource').value = e.target.result;
+            status.textContent = `✓ ${file.name} loaded`;
+        };
+        reader.readAsText(file);
+    } else {
+        status.textContent = `${file.name} uploaded — paste text manually for best results.`;
+    }
+}
+
+// ==========================================
+// PROCESS PROMPT ASSEMBLY
+// ==========================================
+function buildProcessPrompt() {
+    collectProcContext();
+    const ctx = state.procCtx;
+    const audience = state.procAudience;
+
+    const audienceLabel = audience === 'support'   ? 'students who need more support'
+                        : audience === 'extension' ? 'students who need more extension'
+                        : 'both support and extension students';
+
+    let preamble = `You are helping a teacher develop specific, actionable differentiation strategies for the learning process — not modifying a resource, but designing how students will engage with learning differently.\n\nAudience: ${audienceLabel}`;
+
+    const ctxLines = [
+        ctx.year      ? `Year group: ${ctx.year}` : null,
+        ctx.subject   ? `Subject / topic: ${ctx.subject}` : null,
+        ctx.situation ? `Teaching context: ${ctx.situation}` : null,
+    ].filter(Boolean);
+    if (ctxLines.length) preamble += `\n\n${ctxLines.join('\n')}`;
+
+    if (ctx.resource) {
+        preamble += `\n\nRESOURCE / TASK CONTEXT\n${'─'.repeat(40)}\n${ctx.resource}\n${'─'.repeat(40)}`;
+    }
+
+    const blocks = state.procLevers.map(id => {
+        const opt = PB.PROCESS_OPTIONS.find(o => o.id === id);
+        if (!opt) return null;
+        return PB.buildProcessBlock(opt.key, ctx, audience);
+    }).filter(Boolean);
+
+    if (blocks.length === 0) return '[No strategy levers selected.]';
+
+    preamble += `\n\nYou have ${blocks.length} task${blocks.length > 1 ? 's' : ''} to complete. Address each in order, clearly labelled.`;
+
+    return [preamble, ...blocks].join('\n\n---\n\n');
+}
+
+function generateProcessPrompt() {
+    const promptText = buildProcessPrompt();
+
+    // Find or create the output area — reuse the output panel
+    document.querySelectorAll('.question-panel').forEach(p => p.classList.remove('active'));
+    const outputPanel = document.getElementById('panel-output');
+    outputPanel.classList.add('active');
+    outputPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressLabel').textContent = 'Complete';
+
+    const area = document.getElementById('prompt-output-area');
+    area.innerHTML = `
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--border-color);">
+            <h3 style="font-family:var(--font-heading);font-size:1.1rem;color:var(--text-dark);margin-bottom:0.4rem;">Your strategy prompt is ready</h3>
+            <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:1rem;">Copy and paste into Claude, Gemini, or ChatGPT. Review the strategies it generates and select the ones that fit your context.</p>
+            <div class="prompt-box">
+                <div class="prompt-header">
+                    <span class="prompt-title">Process Differentiation Strategies</span>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'proc-prompt-text')">Copy prompt</button>
+                </div>
+                <div class="prompt-text" id="proc-prompt-text">${escapeHtml(promptText)}</div>
+            </div>
+            <div class="response-checklist">
+                <h4>Before you use these strategies — check:</h4>
+                <ul>
+                    <li>Read each strategy as if you are the student it's designed for. Does it genuinely open a door, or does it just add activity?</li>
+                    <li>Check that support strategies scaffold without removing intellectual demand — the thinking should still belong to the student.</li>
+                    <li>Check that extension strategies increase depth and autonomy, not just volume or pace.</li>
+                    <li>Once you have your strategies, head back to <strong>Differentiate a Resource</strong> to adapt your teaching materials to match.</li>
+                </ul>
+            </div>
+        </div>`;
+
+    area.classList.add('active');
+    document.getElementById('start-over-wrap').style.display = 'block';
+
+    // Also show the output panel's own nav elements minimally
+    const outputPanelNav = outputPanel.querySelector('.panel-nav');
+    if (outputPanelNav) outputPanelNav.style.display = 'none';
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', function(e) {
+    if (_suppressPopstate) return;
+    const id = (e.state && e.state.panel) ? e.state.panel : 'q1';
+    goToPanel(id, false);
+});
+
+// On first load, push initial state
+window.addEventListener('DOMContentLoaded', function() {
+    history.replaceState({ panel: 'q1' }, '', '#q1');
+});
+
+function highlightRequired(panelId) {
+    const panel = document.getElementById(panelId);
+    panel.style.boxShadow = '0 0 0 3px rgba(244,185,66,0.5)';
+    setTimeout(() => { panel.style.boxShadow = ''; }, 1200);
+}
+
+// ==========================================
+// OPTION SELECTION (single)
+// ==========================================
+function selectOption(el, key) {
+    if (el.classList.contains('disabled-task')) return;
+    // Scope deselection to the whole panel so sibling card groups are also cleared
+    const panel = el.closest('.question-panel') || el.closest('.option-cards, .resource-type-cards');
+    if (panel) panel.querySelectorAll('.option-card, .rt-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    state[key] = el.dataset.value;
+    // When content Q2 changes, update Q3 dimming if columns already built
+    if (key === 'q2') applyQ3Dimming();
+}
+
+// ==========================================
+// CHECKBOX TOGGLE (multi) — legacy Q3b removed
+// ==========================================
+function toggleCheckbox(el) {
+    // No longer used for Q3 — kept for any future multi-select panels
+    el.classList.toggle('selected');
+}
+
+// ==========================================
+// LEARNING NEEDS (multi-select + expand)
+// ==========================================
+function toggleNeedsCard(el, listId) {
+    if (el.classList.contains('disabled-task')) return;
+    const neither = document.getElementById('neither-card');
+    if (neither && neither.classList.contains('selected')) {
+        neither.classList.remove('selected');
+        const idx = state.q4.indexOf('neither');
+        if (idx !== -1) state.q4.splice(idx, 1);
+    }
+    el.classList.toggle('selected');
+    const list = document.getElementById(listId);
+    list.classList.toggle('open', el.classList.contains('selected'));
+    const val = el.dataset.value;
+    const idx = state.q4.indexOf(val);
+    if (idx === -1) state.q4.push(val);
+    else state.q4.splice(idx, 1);
+}
+
+// ==========================================
+// NEITHER OPTION (Q4)
+// ==========================================
+function selectNeither(el) {
+    document.querySelectorAll('#panel-q4 .option-card:not(#neither-card)').forEach(card => {
+        card.classList.remove('selected');
+        const listId = card.dataset.value === 'eald' ? 'eald-list' : 'neuro-list';
+        document.getElementById(listId).classList.remove('open');
+    });
+    state.q4 = [];
+    el.classList.toggle('selected');
+    if (el.classList.contains('selected')) state.q4 = ['neither'];
+}
+
+// ==========================================
+// FILE UPLOAD
+// ==========================================
+function handleFileUpload(input) {
+    const file = input.files[0];
+    if (!file) return;
+    const status = document.getElementById('upload-status');
+    status.textContent = 'Reading file...';
+    if (file.type === 'text/plain' || file.name.endsWith('.txt')) {
+        const reader = new FileReader();
+        reader.onload = e => {
+            document.getElementById('ctx-resource').value = e.target.result;
+            status.textContent = file.name + ' \u2014 loaded';
+        };
+        reader.readAsText(file);
+    } else {
+        status.textContent = 'For best results, paste your content directly.';
+    }
+}
+
+// ==========================================
+// THEORY TOGGLE
+// ==========================================
+function toggleTheory(id, btn) {
+    const box = document.getElementById(id);
+    box.classList.toggle('open');
+    btn.classList.toggle('open');
+}
+
+// ==========================================
+// Q3 VALIDATION
+// ==========================================
+function validateQ3() {
+    const supCount = state.q2 !== 'extension' ? state.q3Support.length : 0;
+    const extCount = state.q2 !== 'support'   ? state.q3Extension.length : 0;
+    const total = supCount + extCount;
+    const msg = document.getElementById('val-q3');
+    if (total === 0) {
+        msg.classList.add('show');
+        return;
+    }
+    msg.classList.remove('show');
+    goToPanel('q4');
+}
+
+// ==========================================
+// OUTPUT MODE
+// ==========================================
+function selectOutputMode(mode) {
+    state.outputMode = mode;
+    document.getElementById('oo-build').classList.toggle('selected', mode === 'build');
+    document.getElementById('oo-curate').classList.toggle('selected', mode === 'curate');
+    const curateSection = document.getElementById('curate-section');
+    if (mode === 'curate') {
+        buildComponentCards();
+        curateSection.style.display = 'block';
+    } else {
+        curateSection.style.display = 'none';
+    }
+}
+
+function selectDelivery(mode) {
+    state.delivery = mode;
+    document.getElementById('del-master').classList.toggle('selected', mode === 'master');
+    document.getElementById('del-chain').classList.toggle('selected', mode === 'chain');
+}
+
+// ==========================================
+// COMPONENT CARDS (curate mode)
+// ==========================================
+function buildComponentCards() {
+    const container = document.getElementById('component-cards-container');
+    const components = getComponentList();
+    container.innerHTML = '';
+    state.curateSelected = components.map(c => c.id);
+
+    components.forEach(comp => {
+        const card = document.createElement('div');
+        card.className = 'component-card selected';
+        card.dataset.id = comp.id;
+        card.innerHTML = `
+            <div class="cb-box"></div>
+            <div class="comp-label">
+                <strong>${comp.label}</strong>
+                <span>${comp.desc}</span>
+            </div>`;
+        card.onclick = () => {
+            card.classList.toggle('selected');
+            const idx = state.curateSelected.indexOf(comp.id);
+            if (idx === -1) state.curateSelected.push(comp.id);
+            else state.curateSelected.splice(idx, 1);
+        };
+        container.appendChild(card);
+    });
+}
+
+function getComponentList() {
+    const comps = [];
+
+    // Support selections
+    if (state.q2 !== 'extension') {
+        state.q3Support.forEach(id => {
+            const opt = PB.SUPPORT_OPTIONS.find(o => o.id === id);
+            if (opt) comps.push({ id, label: 'Support: ' + opt.label, desc: opt.desc });
+        });
+    }
+
+    // Extension selections
+    if (state.q2 !== 'support') {
+        state.q3Extension.forEach(id => {
+            const opt = PB.EXTENSION_OPTIONS.find(o => o.id === id);
+            if (opt) comps.push({ id, label: 'Extension: ' + opt.label, desc: opt.desc });
+        });
+    }
+
+    // EAL/D
+    const ealdChecked = Array.from(document.querySelectorAll('#eald-list input[type=checkbox]:checked')).map(i => i.value);
+    const ealdLabels = {
+        'eald-glossary': 'EAL/D: Key vocabulary glossary',
+        'eald-subjectvocab': 'EAL/D: Subject-specific vocabulary',
+        'eald-frames': 'EAL/D: Sentence starters / frames',
+        'eald-visual': 'EAL/D: Visual supports',
+        'eald-syntax': 'EAL/D: Simplified syntax version',
+        'eald-mandarin': 'EAL/D: Mandarin translation',
+        'eald-other': 'EAL/D: Other language translation'
+    };
+    ealdChecked.forEach(v => { if (ealdLabels[v]) comps.push({ id: v, label: ealdLabels[v], desc: '' }); });
+
+    // Neurodiversity
+    const neuroChecked = Array.from(document.querySelectorAll('#neuro-list input[type=checkbox]:checked')).map(i => i.value);
+    const neuroLabels = {
+        'neuro-chunk': 'Learning needs: Chunked instructions',
+        'neuro-memory': 'Learning needs: Reduce working memory load',
+        'neuro-space': 'Learning needs: Increased white space',
+        'neuro-process': 'Learning needs: Explicit process steps',
+        'neuro-output': 'Learning needs: Alternative output options',
+        'neuro-tts': 'Learning needs: Text-to-speech formatting',
+        'neuro-anchor': 'Learning needs: Anchor activity'
+    };
+    neuroChecked.forEach(v => { if (neuroLabels[v]) comps.push({ id: v, label: neuroLabels[v], desc: '' }); });
+
+    return comps;
+}
+
+// ==========================================
+// COLLECT CONTEXT
+// ==========================================
+function collectContext() {
+    state.ctx.year      = document.getElementById('ctx-year').value.trim();
+    state.ctx.subject   = document.getElementById('ctx-subject').value.trim();
+    state.ctx.intention = document.getElementById('ctx-intention').value.trim();
+    state.ctx.resource  = document.getElementById('ctx-resource').value.trim();
+}
+
+// ==========================================
+// PROMPT ASSEMBLY
+// ==========================================
+
+function getExtras() {
+    const lang = document.getElementById('eald-other-lang')
+        ? document.getElementById('eald-other-lang').value.trim()
+        : '';
+    return { language: lang || '[home language]' };
+}
+
+function assemblePromptBlocks(selectedIds) {
+    collectContext();
+    const s = state;
+    const ctx = s.ctx;
+    const extras = getExtras();
+    const use = id => !selectedIds || selectedIds.includes(id);
+
+    const entries = [];
+
+    // ── SUPPORT BLOCKS ────────────────────────────────────────────────────
+    if (s.q2 !== 'extension') {
+        s.q3Support.forEach(optId => {
+            if (!use(optId)) return;
+            const opt = PB.SUPPORT_OPTIONS.find(o => o.id === optId);
+            if (opt) entries.push({
+                id: optId,
+                group: 'support',
+                block: PB.buildBlock(opt.key, ctx, extras)
+            });
+        });
+    }
+
+    // ── EXTENSION BLOCKS ──────────────────────────────────────────────────
+    if (s.q2 !== 'support') {
+        s.q3Extension.forEach(optId => {
+            if (!use(optId)) return;
+            const opt = PB.EXTENSION_OPTIONS.find(o => o.id === optId);
+            if (opt) entries.push({
+                id: optId,
+                group: 'extension',
+                block: PB.buildBlock(opt.key, ctx, extras)
+            });
+        });
+    }
+
+    // ── EAL/D BLOCKS ──────────────────────────────────────────────────────
+    const ealdChecked = Array.from(
+        document.querySelectorAll('#eald-list input[type=checkbox]:checked')
+    ).map(i => i.value);
+
+    const ealdMap = {
+        'eald-glossary':    'ealdGlossary',
+        'eald-subjectvocab':'ealdSubjectVocab',
+        'eald-frames':      'ealdSentenceFrames',
+        'eald-visual':      'ealdVisualSupports',
+        'eald-syntax':      'ealdSyntax',
+        'eald-mandarin':    'ealdMandarin',
+        'eald-other':       'ealdOtherLanguage'
+    };
+    ealdChecked.forEach(v => {
+        if (use(v) && ealdMap[v]) entries.push({
+            id: v, group: 'eald',
+            block: PB.buildBlock(ealdMap[v], ctx, extras)
+        });
+    });
+
+    // ── NEURO BLOCKS ──────────────────────────────────────────────────────
+    const neuroChecked = Array.from(
+        document.querySelectorAll('#neuro-list input[type=checkbox]:checked')
+    ).map(i => i.value);
+
+    const neuroMap = {
+        'neuro-chunk':   'neuroChunked',
+        'neuro-memory':  'neuroWorkingMemory',
+        'neuro-space':   'neuroWhiteSpace',
+        'neuro-process': 'neuroExplicitProcess',
+        'neuro-output':  'neuroReducedOutput',
+        'neuro-tts':     'neuroTTS',
+        'neuro-anchor':  'neuroAnchor'
+    };
+    neuroChecked.forEach(v => {
+        if (use(v) && neuroMap[v]) entries.push({
+            id: v, group: 'neuro',
+            block: PB.buildBlock(neuroMap[v], ctx, extras)
+        });
+    });
+
+    return entries;
+}
+
+// ── MASTER PROMPT ──────────────────────────────────────────────────────────
+
+function buildMasterPrompt(selectedIds) {
+    const entries = assemblePromptBlocks(selectedIds);
+    if (entries.length === 0) return '[No differentiation options selected.]';
+
+    const blocks = entries.map(e => e.block);
+    const s = state;
+    const ctx = s.ctx;
+
+    let preamble = `You are helping a teacher differentiate a classroom resource.`;
+
+    const ctxLines = [
+        ctx.year      ? `Year group: ${ctx.year}` : null,
+        ctx.subject   ? `Subject / topic: ${ctx.subject}` : null,
+        ctx.intention ? `Learning intention: ${ctx.intention}` : null,
+    ].filter(Boolean);
+    if (ctxLines.length) preamble += `\n\n${ctxLines.join('\n')}`;
+
+    if (ctx.resource) {
+        preamble += `\n\nRESOURCE\n${'─'.repeat(40)}\n${ctx.resource}\n${'─'.repeat(40)}`;
+    }
+
+    const taskCount = blocks.length;
+    preamble += `\n\nYou have ${taskCount} task${taskCount > 1 ? 's' : ''} to complete using the resource above. Complete all of them in the order given. Label each output clearly with the task number and name.`;
+
+    return [preamble, ...blocks].join('\n\n---\n\n');
+}
+
+// ── CHAIN PROMPTS ──────────────────────────────────────────────────────────
+
+function buildChainPrompts(selectedIds) {
+    const entries = assemblePromptBlocks(selectedIds);
+    const s = state;
+    const ctx = s.ctx;
+
+    const supportEntries   = entries.filter(e => e.group === 'support');
+    const extensionEntries = entries.filter(e => e.group === 'extension');
+    const needsEntries     = entries.filter(e => e.group === 'eald' || e.group === 'neuro');
+
+    function buildStep(stepEntries, resourceNote, stepNote) {
+        if (!stepEntries.length) return null;
+
+        let ctxBlock = `You are helping a teacher differentiate a classroom resource.\n`;
+        const ctxLines = [
+            ctx.year      ? `Year group: ${ctx.year}` : null,
+            ctx.subject   ? `Subject / topic: ${ctx.subject}` : null,
+            ctx.intention ? `Learning intention: ${ctx.intention}` : null,
+        ].filter(Boolean);
+        if (ctxLines.length) ctxBlock += ctxLines.join('\n');
+
+        if (resourceNote === true && ctx.resource) {
+            ctxBlock += `\n\nRESOURCE\n${'─'.repeat(40)}\n${ctx.resource}\n${'─'.repeat(40)}`;
+        } else if (typeof resourceNote === 'string') {
+            ctxBlock += `\n\n${resourceNote}`;
+        }
+
+        const blocks = [ctxBlock, ...stepEntries.map(e => e.block)];
+        if (stepNote) blocks.push(stepNote);
+        return blocks.join('\n\n---\n\n');
+    }
+
+    const hasSupport   = supportEntries.length > 0;
+    const hasExtension = extensionEntries.length > 0;
+    const hasNeeds     = needsEntries.length > 0;
+
+    const activeGroups = [hasSupport, hasExtension, hasNeeds].filter(Boolean).length;
+
+    if (activeGroups === 1) {
+        const all = [...supportEntries, ...extensionEntries, ...needsEntries];
+        return { step1: buildStep(all, true, null), step2: null, step3: null };
+    }
+
+    const step1Note = (hasExtension || hasNeeds) ? 'Complete the support adjustments above only. Extension adjustments come in the next step.' : null;
+    const step2Note = hasNeeds ? 'Complete the extension adjustments now. Learning needs adjustments come in the next step.' : null;
+
+    const step1 = hasSupport   ? buildStep(supportEntries,   true,  step1Note) : null;
+    const step2 = hasExtension ? buildStep(extensionEntries, 'Use the original resource above for these extension adjustments.', step2Note) : null;
+    const step3 = hasNeeds     ? buildStep(needsEntries,     'Apply the following learning needs adjustments to the resource.', null) : null;
+
+    if (!step1 && step2) return { step1: step2, step2: step3, step3: null };
+    return { step1, step2, step3 };
+}
+
+// ==========================================
+// RESPONSE CHECKLIST
+// ==========================================
+function buildResponseChecklist() {
+    const s = state;
+    const items = [];
+
+    if (s.q2 !== 'extension' && s.q3Support.length > 0)
+        items.push('Read the support version as if you are the student it\'s for. Does the language genuinely open the door, or does it just add words?');
+    if (s.q2 !== 'support' && s.q3Extension.length > 0)
+        items.push('Check the extension version demands higher-order thinking — analysis, evaluation, synthesis — not simply more volume or harder vocabulary.');
+    if (s.q3Support.includes('sup-analogy'))
+        items.push('Check that analogies are structurally sound — the relationships in the analogy should mirror the concept, not just sound similar.');
+    if (s.q3Support.includes('sup-essential'))
+        items.push('Confirm the shortened version still contains everything students need to achieve the learning intention. Nothing essential should have been cut.');
+    if (document.querySelector('#eald-list input:checked'))
+        items.push('Review all vocabulary definitions for accuracy and age-appropriateness. Check that any translations convey nuance, not just literal word equivalents.');
+    if (document.querySelector('#neuro-list input:checked'))
+        items.push('Check that layout and process adjustments are applied consistently throughout the resource, not just in some sections.');
+    items.push('Read the final resource as a student encountering it for the first time. Is anything ambiguous, unexplained, or assumed?');
+    return items;
+}
+
+// ==========================================
+// GENERATE PROMPT
+// ==========================================
+function generatePrompt() {
+    const selectedIds = state.outputMode === 'curate' ? state.curateSelected : null;
+    const area = document.getElementById('prompt-output-area');
+    area.innerHTML = '';
+
+    if (state.delivery === 'master') {
+        const promptText = buildMasterPrompt(selectedIds);
+        const checklist = buildResponseChecklist();
+
+        area.innerHTML = `
+            <div style="margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--border-color);">
+                <h3 style="font-family:var(--font-heading);font-size:1.1rem;color:var(--text-dark);margin-bottom:0.4rem;">Your prompt is ready</h3>
+                <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:1rem;">Copy and paste into Gemini, Claude, or ChatGPT. Your resource and context are already included.</p>
+                <div class="prompt-box">
+                    <div class="prompt-header">
+                        <span class="prompt-title">Master Prompt</span>
+                        <button class="copy-btn" onclick="copyPrompt(this, 'master-prompt-text')">Copy prompt</button>
+                    </div>
+                    <div class="prompt-text" id="master-prompt-text">${escapeHtml(promptText)}</div>
+                </div>
+                <div class="response-checklist">
+                    <h4>Before you use this — check:</h4>
+                    <ul>${checklist.map(i => `<li>${i}</li>`).join('')}</ul>
+                </div>
+            </div>`;
+
+    } else {
+        const { step1, step2, step3 } = buildChainPrompts(selectedIds);
+
+        const stepLabels = [];
+        if (state.q2 !== 'extension' && state.q3Support.length > 0)   stepLabels.push('Support adjustments');
+        if (state.q2 !== 'support'   && state.q3Extension.length > 0)  stepLabels.push('Extension adjustments');
+        const hasNeeds = document.querySelector('#eald-list input:checked') || document.querySelector('#neuro-list input:checked');
+        if (hasNeeds) stepLabels.push('Learning needs adjustments');
+        if (stepLabels.length <= 1 && step1) {
+            stepLabels.length = 0;
+            stepLabels.push('Differentiate this resource');
+        }
+
+        const reflections = [
+            'Review the support output. Does the language genuinely open the door without reducing intellectual demand?',
+            'Review the extension output. Does it push thinking, not just workload? Does it require genuine higher-order engagement?',
+            'Check that all learning needs adjustments are integrated naturally — not bolted on as afterthoughts.'
+        ];
+
+        let html = `<div style="margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--border-color);">
+            <h3 style="font-family:var(--font-heading);font-size:1.1rem;color:var(--text-dark);margin-bottom:0.4rem;">Your chain prompt guide</h3>
+            <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:1.25rem;">Run each step in sequence. Review the output before moving to the next step.</p>`;
+
+        let stepNum = 0;
+        if (step1) html += renderChainStep(++stepNum, stepLabels[stepNum-1] || 'Step 1', step1, reflections[0]);
+        if (step2) html += renderChainStep(++stepNum, stepLabels[stepNum-1] || 'Step 2', step2, reflections[1]);
+        if (step3) html += renderChainStep(++stepNum, stepLabels[stepNum-1] || 'Step 3', step3, reflections[2]);
+
+        const checklist = buildResponseChecklist();
+        html += `<div class="response-checklist">
+            <h4>Final review — before you print or share:</h4>
+            <ul>${checklist.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div></div>`;
+
+        area.innerHTML = html;
+    }
+
+    area.classList.add('active');
+    document.getElementById('start-over-wrap').style.display = 'block';
+    area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderChainStep(num, title, promptText, reflection) {
+    const stepId = `chain-step-${num}`;
+    return `
+    <div class="chain-step">
+        <div class="chain-step-header">
+            <span>Step ${num}: ${title}</span>
+            <button class="copy-btn" onclick="copyPrompt(this, '${stepId}')">Copy</button>
+        </div>
+        <div class="chain-step-body">
+            <div class="prompt-text" id="${stepId}" style="background:#1a1a2e;border-radius:8px;padding:1rem;color:#e8e8f0;font-family:'Courier New',monospace;font-size:0.88rem;line-height:1.7;white-space:pre-wrap;word-break:break-word;">${escapeHtml(promptText)}</div>
+            <div class="chain-reflection">
+                <strong>Before moving on — reflect:</strong>
+                ${reflection}
+            </div>
+        </div>
+    </div>`;
+}
+
+// ==========================================
+// COPY
+// ==========================================
+function copyPrompt(btn, elementId) {
+    const el = document.getElementById(elementId);
+    navigator.clipboard.writeText(el.textContent).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+
+// ==========================================
+// START OVER
+// ==========================================
+function startOver() {
+    location.reload();
+}
+
+// ==========================================
+// UTILS
+// ==========================================
+function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+</script>
+
+
+</body></html>

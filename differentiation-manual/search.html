@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Strategies | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .search-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .search-hero h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        /* Search Box */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            font-size: 1.2rem;
+            border: 3px solid var(--primary-color);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        #searchInput:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(125, 30, 63, 0.15);
+        }
+
+        .search-hint {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Results Counter */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .results-count {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .clear-search {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .clear-search:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Results */
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .result-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            border-left-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(125, 30, 63, 0.1);
+            transform: translateX(5px);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .result-title {
+            flex: 1;
+        }
+
+        .result-title h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-badge {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .result-description {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .result-when-to-use {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+            padding: 0.75rem 1rem;
+            background: #fff9e6;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .result-when-to-use strong {
+            color: var(--primary-color);
+        }
+
+        .result-match {
+            background: rgba(244, 185, 66, 0.2);
+            padding: 0.75rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .result-match strong {
+            color: var(--primary-color);
+        }
+
+        .highlight {
+            background: rgba(244, 185, 66, 0.4);
+            font-weight: 600;
+            padding: 0 0.2rem;
+        }
+
+        .result-link {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .result-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(125, 30, 63, 0.3);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            display: none;
+        }
+
+        .empty-state.active {
+            display: block;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+
+        .empty-state h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            display: none;
+        }
+
+        .no-results.active {
+            display: block;
+        }
+
+        .no-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Popular Searches */
+        .popular-searches {
+            background: linear-gradient(135deg, var(--bg-light) 0%, rgba(109, 179, 200, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .popular-searches h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .search-tag {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .search-tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="search-hero">
+            <h1>Search Strategies</h1>
+            <p>Find the perfect differentiation strategy for your needs</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search for strategies... (e.g., 'reading levels', 'finish early', 'scaffolding')"
+                    autocomplete="off"
+                >
+            </div>
+            <div class="search-hint">
+                Try searching by problem, content type, or teaching approach
+            </div>
+        </div>
+
+        <div class="popular-searches">
+            <h3>Common Challenges</h3>
+            <div class="search-tags">
+                <span class="search-tag" onclick="quickSearch('text too hard')">Text is too hard for some</span>
+                <span class="search-tag" onclick="quickSearch('finish early')">Students finish at different times</span>
+                <span class="search-tag" onclick="quickSearch('reading levels')">Mixed reading levels</span>
+                <span class="search-tag" onclick="quickSearch('already know')">Some already know the material</span>
+                <span class="search-tag" onclick="quickSearch('scaffolding')">Need extra support structures</span>
+                <span class="search-tag" onclick="quickSearch('choice')">Want more student choice</span>
+                <span class="search-tag" onclick="quickSearch('grouping')">Better ways to group students</span>
+                <span class="search-tag" onclick="quickSearch('interest')">Students aren't engaged</span>
+            </div>
+        </div>
+
+        <div class="results-header" id="resultsHeader" style="display: none;">
+            <div class="results-count" id="resultsCount"></div>
+            <button class="clear-search" onclick="clearSearch()">Clear Search</button>
+        </div>
+
+        <div class="empty-state active" id="emptyState">
+            <h3>Start searching</h3>
+            <p>Type a keyword or phrase above to find relevant differentiation strategies</p>
+        </div>
+
+        <div class="no-results" id="noResults">
+            <h3>No strategies found</h3>
+            <p>Try different keywords or browse all strategies in the <a href="glossary.html" style="color: var(--primary-color); font-weight: 700;">Strategy Library</a></p>
+        </div>
+
+        <div class="results-container" id="resultsContainer"></div>
+
+        <nav style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+            <a href="index.html" class="btn-primary" style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 0.5rem;">← Back to Home</a>
+            <a href="glossary.html" class="btn-primary" style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 0.5rem;">Browse All Strategies →</a>
+        </nav>
+
+        <footer style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color); color: var(--text-light);">
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/search-data.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+/* ==========================================
+   EQUALIZER PAGE STYLES
+   ========================================== */
+
+.equalizer-intro {
+    background: linear-gradient(135deg, #e6f2f7 0%, var(--bg-light) 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.equalizer-intro h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Continuums Container */
+.continuums-container {
+    margin-bottom: 3rem;
+}
+
+.continuum-card {
+    background-color: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.continuum-card:hover {
+    border-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+}
+
+.continuum-header {
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.continuum-header:hover {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.continuum-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.continuum-card.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.continuum-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 2rem;
+}
+
+.continuum-card.expanded .continuum-content {
+    max-height: 2000px;
+    padding: 2rem;
+}
+
+/* Continuum Scale Visual */
+.continuum-scale {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.scale-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    white-space: nowrap;
+}
+
+.scale-label.left {
+    text-align: right;
+    min-width: 120px;
+}
+
+.scale-label.right {
+    text-align: left;
+    min-width: 120px;
+}
+
+.scale-bar {
+    flex: 1;
+    height: 12px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 50%, var(--secondary-color) 100%);
+    border-radius: 6px;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Continuum Explanation */
+.continuum-explanation {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.continuum-explanation p {
+    margin-bottom: 1rem;
+}
+
+.continuum-explanation ul {
+    margin-left: 1.5rem;
+}
+
+.continuum-explanation li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.continuum-explanation strong {
+    color: var(--primary-color);
+}
+
+/* Using Equalizer Section */
+.using-equalizer-section {
+    background: linear-gradient(135deg, #e6f2f7 0%, var(--bg-light) 100%);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 3rem;
+}
+
+.using-equalizer-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.using-equalizer-section ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.using-equalizer-section li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design for Equalizer */
+@media (max-width: 768px) {
+    .continuum-scale {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .scale-label.left,
+    .scale-label.right {
+        min-width: auto;
+        text-align: center;
+    }
+
+    .scale-bar {
+        width: 100%;
+        height: 8px;
+    }
+
+    .continuum-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .continuum-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .continuum-card.expanded .continuum-content {
+        padding: 1.5rem;
+    }
+}

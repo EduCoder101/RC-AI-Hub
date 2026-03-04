@@ -1,0 +1,13 @@
+# Working/source folders (not part of the live site)
+Differentiation Manual/
+Gem Builder/
+NotebookLM/
+PLG 1 - Chain Prompting/
+PLG 2 - Differentiation/
+
+# Empty folder
+assets/
+
+# Zip files and workspace files
+*.zip
+*.code-workspace

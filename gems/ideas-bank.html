@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem Ideas Bank | Roseville College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --burgundy: #5b152e;
+            --burgundy-dark: #3e0e20;
+            --burgundy-light: #7a1e3f;
+            --sandstone: #f6dc80;
+            --sandstone-light: #fdf3c4;
+            --heritage: #8ba8d8;
+            --heritage-light: #d0dff2;
+            --warm-rose: #f24468;
+            --light-grey: #c8bfb7;
+            --mid-grey: #a19a94;
+            --off-white: #faf8f5;
+            --white: #ffffff;
+            --text: #2c1a22;
+            --text-light: #6b5a62;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+            background: var(--off-white);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            background: var(--burgundy);
+            color: var(--white);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 4px 24px rgba(91,21,46,0.3);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--sandstone);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--burgundy);
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: 0.75rem;
+            color: var(--sandstone);
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-link.active {
+            color: var(--sandstone);
+            background: rgba(246,220,128,0.15);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 60%, var(--burgundy-light) 100%);
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 300px; height: 300px;
+            background: rgba(246,220,128,0.08);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -40px;
+            width: 250px; height: 250px;
+            background: rgba(139,168,216,0.08);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(246,220,128,0.2);
+            border: 1px solid rgba(246,220,128,0.4);
+            color: var(--sandstone);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ─── TAB BAR ─── */
+        .tab-bar {
+            position: sticky;
+            top: 72px;
+            z-index: 150;
+            background: var(--white);
+            border-bottom: 2px solid rgba(91,21,46,0.08);
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+        }
+
+        .tab-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .tab-bar-inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1.1rem;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            background: var(--off-white);
+            color: var(--text-light);
+            font-size: 0.8rem;
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .tab-btn:hover {
+            background: rgba(91,21,46,0.08);
+            color: var(--text);
+        }
+
+        .tab-btn.active {
+            background: var(--burgundy);
+            color: var(--white);
+            border-color: var(--burgundy);
+        }
+
+        /* ─── MAIN CONTENT ─── */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        /* ─── TAB SECTION ─── */
+        .tab-section {
+            display: none;
+        }
+
+        .tab-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* ─── CARD GRID ─── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        /* ─── IDEA CARD ─── */
+        .idea-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .idea-card:hover {
+            box-shadow: 0 8px 32px rgba(91,21,46,0.12);
+            transform: translateY(-2px);
+        }
+
+        .idea-card-accent {
+            height: 4px;
+            width: 100%;
+        }
+
+        .accent-writing { background: var(--heritage); }
+        .accent-feedback { background: var(--warm-rose); }
+        .accent-planning { background: #4a9a8a; }
+        .accent-data { background: var(--mid-grey); }
+        .accent-student { background: var(--heritage); }
+
+        .idea-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .idea-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .idea-card-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: Georgia, serif;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .idea-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+        }
+
+        .idea-card-detail {
+            margin-bottom: 0.75rem;
+        }
+
+        .idea-card-detail-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--mid-grey);
+            margin-bottom: 0.25rem;
+        }
+
+        .idea-card-detail-text {
+            font-size: 0.82rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .idea-card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(91,21,46,0.06);
+        }
+
+        .idea-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            text-decoration: none;
+            transition: gap 0.2s ease, color 0.2s ease;
+        }
+
+        .idea-card-link:hover {
+            color: var(--burgundy-light);
+            gap: 0.65rem;
+        }
+
+        /* ─── SAFETY CALLOUT ─── */
+        .safety-callout {
+            background: rgba(242,68,104,0.06);
+            border: 1px solid rgba(242,68,104,0.2);
+            border-left: 4px solid var(--warm-rose);
+            border-radius: 0 10px 10px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .safety-callout-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--warm-rose);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .safety-callout p {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.65;
+        }
+
+        .safety-callout a {
+            color: var(--burgundy);
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: rgba(91,21,46,0.3);
+            text-underline-offset: 2px;
+        }
+
+        .safety-callout a:hover {
+            text-decoration-color: var(--burgundy);
+        }
+
+        /* ─── FIND YOUR OWN GEM ─── */
+        .find-intro {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            max-width: 720px;
+        }
+
+        .prompt-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .prompt-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prompt-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--sandstone);
+        }
+
+        .prompt-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--sandstone);
+            color: var(--burgundy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-question {
+            font-size: 1.05rem;
+            font-weight: 700;
+            font-family: Georgia, serif;
+            color: var(--text);
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+
+        .prompt-example {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* ─── GOOD GEM CANDIDATE ─── */
+        .candidate-section {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
+            border: 1px solid rgba(91,21,46,0.06);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .candidate-section h3 {
+            font-size: 1.15rem;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .candidate-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .candidate-list li {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.65;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(91,21,46,0.04);
+        }
+
+        .candidate-list li:last-child {
+            border-bottom: none;
+        }
+
+        .candidate-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.85rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--sandstone);
+        }
+
+        /* ─── CTA BUTTON ─── */
+        .cta-block {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--burgundy);
+            color: var(--white);
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: Georgia, serif;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 16px rgba(91,21,46,0.2);
+        }
+
+        .cta-btn:hover {
+            background: var(--burgundy-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--burgundy-dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.03em;
+        }
+
+        .footer a {
+            color: var(--sandstone);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 1.25rem;
+            }
+
+            .header-nav {
+                gap: 0.25rem;
+            }
+
+            .tab-bar-inner {
+                padding: 0.6rem 1rem;
+            }
+
+            .main {
+                padding: 1.5rem 1.25rem 3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prompt-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .tab-btn {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <div class="header-logo">RC</div>
+            <div class="header-text">
+                <h1>Gem Ideas Bank</h1>
+                <p>Teaching with AI &mdash; Roseville College</p>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link">Hub</a>
+            <a href="../gemini.html" class="nav-link">Gemini</a>
+            <a href="gem-builder-guide.html" class="nav-link">Gem Builder</a>
+            <a href="../notebooklm.html" class="nav-link">NotebookLM</a>
+            <a href="../differentiation-manual/index.html" class="nav-link">Differentiation</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-eyebrow">Gemini Gems &middot; Inspiration Library</span>
+        <h2>Gem Ideas Bank</h2>
+        <p>Practical Gems for everyday teaching tasks &mdash; browse, choose, build.</p>
+    </div>
+</section>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+    <div class="tab-bar-inner">
+        <button class="tab-btn active" data-tab="writing">Writing &amp; Communication</button>
+        <button class="tab-btn" data-tab="feedback">Feedback &amp; Assessment</button>
+        <button class="tab-btn" data-tab="planning">Planning &amp; Organisation</button>
+        <button class="tab-btn" data-tab="data">Data &amp; Administration</button>
+        <button class="tab-btn" data-tab="student">Student-Facing Tools</button>
+        <button class="tab-btn" data-tab="find">Find Your Own Gem</button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- WRITING & COMMUNICATION                -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="tab-section active" id="tab-writing">
+        <h2 class="section-title">Writing &amp; Communication</h2>
+        <p class="section-subtitle">Gems that help you write clearly, consistently, and quickly &mdash; from report comments to staff bulletins.</p>
+
+        <div class="card-grid">
+
+            <!-- Report Comment Writer -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Report Comment Writer</span>
+                    </div>
+                    <p class="idea-card-desc">Generates personalised student report comments from dot points.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Student name, subject, key observations.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Polished report comment paragraph.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Drafter -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Email Drafter</span>
+                    </div>
+                    <p class="idea-card-desc">Drafts professional emails from a brief description of what you need to say.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Recipient context, key message, tone.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Ready-to-send email draft.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parent Letter Generator -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Parent Letter Generator</span>
+                    </div>
+                    <p class="idea-card-desc">Creates clear, warm parent letters for events, updates, or notices.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Purpose, key details, tone.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Formatted parent letter.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meeting Minutes Formatter -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Meeting Minutes Formatter</span>
+                    </div>
+                    <p class="idea-card-desc">Turns rough meeting notes into structured, professional minutes.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Raw notes, attendees, date.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Formatted minutes with action items.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Staff Bulletin Writer -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Staff Bulletin Writer</span>
+                    </div>
+                    <p class="idea-card-desc">Composes concise staff bulletins from multiple updates.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">List of updates and announcements.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Formatted staff bulletin.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tone Adjustor -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Tone Adjustor</span>
+                    </div>
+                    <p class="idea-card-desc">Rewrites text to match a specified tone &mdash; formal, friendly, empathetic, direct.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Original text, desired tone.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Rewritten text in the new tone.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome to Term Letter -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-writing"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Welcome to Term Letter</span>
+                    </div>
+                    <p class="idea-card-desc">Drafts a welcoming start-of-term letter for students or families.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Year group, term, key dates and themes.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Warm, informative welcome letter.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- FEEDBACK & ASSESSMENT                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="tab-section" id="tab-feedback">
+        <h2 class="section-title">Feedback &amp; Assessment</h2>
+        <p class="section-subtitle">Gems that support marking, rubrics, and assessment design &mdash; with teacher judgement always at the centre.</p>
+
+        <div class="card-grid">
+
+            <!-- Feedback Assistant -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-feedback"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Feedback Assistant</span>
+                    </div>
+                    <p class="idea-card-desc">Uses a rubric to draft written feedback &mdash; no grades, teacher judgement only.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Rubric criteria, student work summary, observations.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Detailed written feedback aligned to rubric.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rubric Builder -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-feedback"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Rubric Builder</span>
+                    </div>
+                    <p class="idea-card-desc">Creates assessment rubrics from learning outcomes and task descriptions.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Task description, learning outcomes, grade levels.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Structured rubric with criteria and descriptors.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Question Bank -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-feedback"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Exam Question Bank</span>
+                    </div>
+                    <p class="idea-card-desc">Generates exam questions at different cognitive levels from topic content.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Topic, syllabus points, desired question types.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Set of graded exam questions.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Self-Assessment Checklist Generator -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-feedback"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Self-Assessment Checklist Generator</span>
+                    </div>
+                    <p class="idea-card-desc">Builds student self-assessment checklists from learning goals.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Learning goals, task type.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Student-friendly checklist.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Moderation Notes Writer -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-feedback"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Moderation Notes Writer</span>
+                    </div>
+                    <p class="idea-card-desc">Drafts moderation notes from assessment data and discussion points.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Assessment context, discussion notes, outcomes.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Formal moderation notes.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Differentiation Engine -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-feedback"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Differentiation Engine</span>
+                    </div>
+                    <p class="idea-card-desc">A full interactive tool for building differentiated learning experiences.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Curriculum content, learner profiles.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Complete differentiated lesson framework.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="../differentiation-manual/index.html" class="idea-card-link">Open Differentiation Manual &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- PLANNING & ORGANISATION                -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="tab-section" id="tab-planning">
+        <h2 class="section-title">Planning &amp; Organisation</h2>
+        <p class="section-subtitle">Gems that structure your planning, scheduling, and event logistics.</p>
+
+        <div class="card-grid">
+
+            <!-- Lesson Planner -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-planning"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Lesson Planner</span>
+                    </div>
+                    <p class="idea-card-desc">Builds structured lesson plans from topic, outcomes, and time constraints.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Topic, learning outcomes, duration, year group.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Detailed lesson plan with timing.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unit Overview Generator -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-planning"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Unit Overview Generator</span>
+                    </div>
+                    <p class="idea-card-desc">Creates unit overviews with scope, sequence, and assessment mapping.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Unit topic, syllabus outcomes, duration.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Unit overview document.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas Program Formatter -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-planning"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Canvas Program Formatter</span>
+                    </div>
+                    <p class="idea-card-desc">Takes a pasted Canvas lesson map and formats it into a program document.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Pasted Canvas content, formatting preferences.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Clean, formatted program document.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Seating Planner -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-planning"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Event Seating Planner</span>
+                    </div>
+                    <p class="idea-card-desc">Generates seating arrangements based on constraints and group dynamics.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Guest list, table sizes, constraints (who sits together/apart).</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Seating plan with table assignments.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Function Data Organiser -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-planning"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Function Data Organiser</span>
+                    </div>
+                    <p class="idea-card-desc">Organises event data &mdash; RSVPs, dietary needs, logistics &mdash; into structured summaries.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Raw event data, categories needed.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Organised summary tables.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Term Planner Cross-Checker -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-planning"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Term Planner Cross-Checker</span>
+                    </div>
+                    <p class="idea-card-desc">Cross-references term dates, events, and assessment schedules for conflicts.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Term calendar, assessment dates, event list.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Conflict report with suggestions.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- DATA & ADMINISTRATION                  -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="tab-section" id="tab-data">
+        <h2 class="section-title">Data &amp; Administration</h2>
+        <p class="section-subtitle">Gems that tame data, streamline admin, and save you from repetitive paperwork.</p>
+
+        <div class="card-grid">
+
+            <!-- Attendance Follow-up Drafter -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-data"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Attendance Follow-up Drafter</span>
+                    </div>
+                    <p class="idea-card-desc">Drafts attendance follow-up communications from absence data.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Student name, absence pattern, context.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Professional follow-up letter or email.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Summary Writer -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-data"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Data Summary Writer</span>
+                    </div>
+                    <p class="idea-card-desc">Turns raw data tables into readable narrative summaries.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Data table or spreadsheet extract, audience.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Plain-language data summary.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spreadsheet Structurer -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-data"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Spreadsheet Structurer</span>
+                    </div>
+                    <p class="idea-card-desc">Suggests optimal spreadsheet structures for tracking tasks.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">What you want to track, categories.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Column headers, structure advice, example rows.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Policy Navigator -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-data"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Policy Navigator</span>
+                    </div>
+                    <p class="idea-card-desc">Answers questions about school policies by referencing uploaded policy documents.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Policy documents (uploaded), your question.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Relevant policy excerpts with references.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Report Drafter -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-data"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Financial Report Drafter</span>
+                    </div>
+                    <p class="idea-card-desc">Drafts narrative sections for financial reports from budget data.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Budget figures, context, reporting period.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Report narrative paragraphs.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- STUDENT-FACING TOOLS                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="tab-section" id="tab-student">
+        <h2 class="section-title">Student-Facing Tools</h2>
+        <p class="section-subtitle">Gems that students interact with directly &mdash; always with appropriate safety guardrails in place.</p>
+
+        <div class="safety-callout">
+            <div class="safety-callout-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636-2.87L13.637 3.59a1.914 1.914 0 0 0-3.274 0z"/><path d="M12 17h.01"/></svg>
+                Student Safety Required
+            </div>
+            <p>Student-Facing Gems require a <strong>Student-Safe Gem safety block</strong>. This ensures the Gem stays on-topic, refuses inappropriate requests, and maintains appropriate boundaries. See the <a href="gem-builder-guide.html">Student Safety section of the Gem Builder Guide</a> for setup instructions.</p>
+        </div>
+
+        <div class="card-grid">
+
+            <!-- Subject Tutor -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-student"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Subject Tutor</span>
+                    </div>
+                    <p class="idea-card-desc">A patient, Socratic tutor for a specific subject that guides without giving answers.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Subject, year level, topic boundaries.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Interactive tutoring conversation.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essay Coach -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-student"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Essay Coach</span>
+                    </div>
+                    <p class="idea-card-desc">Helps students improve their essay writing through structured feedback and prompts.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Essay task, rubric, student draft.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Guided feedback and improvement suggestions.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Preparation Partner -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-student"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Exam Preparation Partner</span>
+                    </div>
+                    <p class="idea-card-desc">Quizzes students on exam content and explains concepts they struggle with.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Subject, topic list, exam format.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Practice questions and explanations.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vocabulary Builder -->
+            <div class="idea-card">
+                <div class="idea-card-accent accent-student"></div>
+                <div class="idea-card-body">
+                    <div class="idea-card-header">
+                        <span class="idea-card-name">Vocabulary Builder</span>
+                    </div>
+                    <p class="idea-card-desc">Teaches subject-specific vocabulary through context, examples, and quizzes.</p>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you give it</div>
+                        <div class="idea-card-detail-text">Subject, word list, year level.</div>
+                    </div>
+                    <div class="idea-card-detail">
+                        <div class="idea-card-detail-label">What you get back</div>
+                        <div class="idea-card-detail-text">Interactive vocabulary exercises.</div>
+                    </div>
+                    <div class="idea-card-footer">
+                        <a href="gem-builder-guide.html" class="idea-card-link">Build this Gem &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- FIND YOUR OWN GEM                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="tab-section" id="tab-find">
+        <h2 class="section-title">Find Your Own Gem</h2>
+        <p class="section-subtitle">The best Gems come from your own work &mdash; use these prompts to discover yours.</p>
+
+        <p class="find-intro">The best Gems come from your own work. If you have a task that's repetitive, predictable, and always follows the same pattern &mdash; it's probably a great Gem candidate. Use these three questions to figure out what yours might be.</p>
+
+        <div class="prompt-cards">
+
+            <div class="prompt-card">
+                <div class="prompt-number">1</div>
+                <div class="prompt-question">What task do you do repeatedly that follows a predictable pattern?</div>
+                <p class="prompt-example">e.g., writing similar emails, formatting the same type of document, giving the same kind of feedback</p>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-number">2</div>
+                <div class="prompt-question">What makes it slow, frustrating, or inconsistent?</div>
+                <p class="prompt-example">e.g., you forget steps, the tone varies, it takes longer than it should</p>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-number">3</div>
+                <div class="prompt-question">If it were done perfectly every time, what would the output look like?</div>
+                <p class="prompt-example">Describe the ideal result as if you were showing someone exactly what 'good' looks like.</p>
+            </div>
+
+        </div>
+
+        <div class="candidate-section">
+            <h3>What makes a good Gem candidate?</h3>
+            <ul class="candidate-list">
+                <li>It has a clear, repeatable pattern</li>
+                <li>The inputs are consistent (you always provide similar information)</li>
+                <li>The output format is predictable</li>
+                <li>Quality matters but the task itself isn't creative judgment</li>
+                <li>You do it often enough that saving 10 minutes matters</li>
+            </ul>
+        </div>
+
+        <div class="cta-block">
+            <a href="gem-builder-guide.html" class="cta-btn">Ready to build? &rarr; Gem Builder Guide</a>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Roseville College &middot; Teaching with AI &middot; <a href="gem-builder-guide.html">Gem Builder Guide</a> &middot; <a href="../index.html">Back to Hub</a></p>
+</footer>
+
+<script>
+    // Tab filtering
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabSections = document.querySelectorAll('.tab-section');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+
+            // Update active button
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Show target section, hide others
+            tabSections.forEach(section => {
+                if (section.id === 'tab-' + target) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            // Smooth scroll to top of content area
+            document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+
+</body>
+</html>
