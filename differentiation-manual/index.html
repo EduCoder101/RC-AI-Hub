@@ -2,336 +2,580 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Differentiation Manual | Roseville College</title>
-    <link rel="stylesheet" href="./index_files/styles.css">
-    <link rel="stylesheet" href="css/landing-updates.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* Soft landing specific styles */
+        /* ─── RESET + BASE (hub pattern) ─── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe5 100%);
+            font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+            background: var(--bg-light, #faf8f5);
+            color: #2c1a22;
+            line-height: 1.6;
+            padding: 0;
         }
 
-        .soft-landing {
-            max-width: 900px;
+        /* ─── HEADER (matches hub) ─── */
+        .header {
+            background: #5b152e;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 4px 24px rgba(91,21,46,0.3);
+        }
+
+        .header-inner {
+            max-width: 1800px;
             margin: 0 auto;
+            padding: 1rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-brand a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .header-logo {
+            width: 44px;
+            height: 44px;
+            background: #f6dc80;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #5b152e;
+            flex-shrink: 0;
+        }
+
+        .header-text h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .header-text p {
+            font-size: 0.8rem;
+            color: #f6dc80;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .nav-link.active { color: #f6dc80; background: rgba(246,220,128,0.15); }
+
+        /* Nav dropdown */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
+        .nav-dropdown-toggle::after { content: '\25BE'; font-size: 0.6rem; opacity: 0.7; }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.4rem); left: 50%; transform: translateX(-50%); background: #3e0e20; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 300; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; }
+        .nav-dropdown-menu a { display: block; padding: 0.45rem 1rem; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.02em; transition: all 0.15s; white-space: nowrap; }
+        .nav-dropdown-menu a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .nav-dropdown-menu .dropdown-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.3rem 0; }
+
+        /* ─── HERO (differentiation colors) ─── */
+        .hero {
+            background: linear-gradient(135deg, #3e0e20 0%, #5b152e 50%, #7d1e3f 100%);
+            padding: 6rem 3rem 5.5rem;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -150px; right: -100px;
+            width: 600px; height: 600px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -120px; left: 5%;
+            width: 450px; height: 450px;
+            background: rgba(244,185,66,0.05);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.75rem;
+            color: #fff;
+        }
+
+        .hero .hero-lead {
+            font-size: 1.7rem;
+            color: rgba(255,255,255,0.92);
+            max-width: 900px;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .hero .hero-sub {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.55);
+            max-width: 700px;
+        }
+
+        /* ─── LANDING ZONES ─── */
+        .landing-zone {
+            padding: 4rem 2rem;
+        }
+
+        .landing-zone-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ---- Zone 1: Insight Blocks ---- */
+        .zone-insights {
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe5 50%, #f8f0e8 100%);
+            padding: 4rem 2rem 3rem;
+        }
+
+        .insight-blocks {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .insight-block {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem;
+            border-left: 4px solid var(--accent-color, #f4b942);
+            box-shadow: 0 2px 8px rgba(125, 30, 63, 0.06);
+        }
+
+        .insight-block h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color, #7d1e3f);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .insight-block p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark, #2d3748);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ---- Zone 2: Prompt Builder Hero CTA ---- */
+        .zone-prompt-builder {
+            background: linear-gradient(135deg, var(--primary-color, #7d1e3f) 0%, var(--secondary-color, #a52a52) 100%);
             padding: 4rem 2rem;
             text-align: center;
         }
 
-        .hero-section {
-            margin-bottom: 4rem;
-        }
-
-        .hero-section h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-color);
+        .zone-prompt-builder .pb-icon {
             margin-bottom: 1.5rem;
-            line-height: 1.2;
         }
 
-        .hero-subtitle {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .hero-description {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.2rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 3rem auto;
-            line-height: 1.7;
-        }
-
-        .pathway-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 700px) {
-            .pathway-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .pathway-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 4px 12px rgba(125, 30, 63, 0.08);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            border: 3px solid transparent;
-            border-top: 5px solid transparent;
-            color: inherit;
-        }
-
-        .pathway-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(125, 30, 63, 0.15);
-        }
-
-        /* Per-tile colours */
-        .pathway-card.tile-continuum { border-top-color: #6db3c8; }
-        .pathway-card.tile-continuum:hover { border-color: #6db3c8; }
-        .pathway-card.tile-continuum .pathway-icon svg { stroke: #6db3c8; }
-
-        .pathway-card.tile-framework { border-top-color: #7d1e3f; }
-        .pathway-card.tile-framework:hover { border-color: #7d1e3f; }
-        .pathway-card.tile-framework .pathway-icon svg { stroke: #7d1e3f; }
-
-        .pathway-card.tile-codes { border-top-color: #e07a3a; }
-        .pathway-card.tile-codes:hover { border-color: #e07a3a; }
-        .pathway-card.tile-codes .pathway-icon svg { stroke: #e07a3a; }
-
-        .pathway-card.tile-random { border-top-color: #f4b942; }
-        .pathway-card.tile-random:hover { border-color: #f4b942; }
-        .pathway-card.tile-random .pathway-icon svg { stroke: #c99520; }
-
-        .pathway-card.tile-principles { border-top-color: #a52a52; }
-        .pathway-card.tile-principles:hover { border-color: #a52a52; }
-        .pathway-card.tile-principles .pathway-icon svg { stroke: #a52a52; }
-
-        .pathway-card.tile-builder { border-top-color: #5a7fa8; }
-        .pathway-card.tile-builder:hover { border-color: #5a7fa8; }
-        .pathway-card.tile-builder .pathway-icon svg { stroke: #5a7fa8; }
-
-        /* Featured tile */
-        .pathway-card.featured {
-            background: linear-gradient(135deg, rgba(109, 179, 200, 0.08) 0%, rgba(244, 185, 66, 0.08) 50%, rgba(224, 122, 58, 0.08) 100%);
-            border: 3px solid #6db3c8;
-            border-top: 5px solid #6db3c8;
-            grid-column: 1 / -1;
-        }
-
-        .pathway-card.featured:hover {
-            border-color: var(--primary-color);
-            border-top-color: var(--primary-color);
-        }
-
-        .pathway-icon {
-            margin-bottom: 1rem;
-            line-height: 1;
-        }
-
-        .pathway-icon svg {
-            width: 36px;
-            height: 36px;
+        .zone-prompt-builder .pb-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
             stroke-width: 1.8;
             fill: none;
         }
 
-        .pathway-card.featured .pathway-icon svg {
-            width: 40px;
-            height: 40px;
-        }
-
-        .pathway-card h2 {
+        .zone-prompt-builder h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--primary-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .pathway-card p {
+        .zone-prompt-builder p {
             font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            line-height: 1.6;
-            margin-bottom: 0;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            line-height: 1.65;
         }
 
-        .secondary-links {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--border-color);
-        }
-
-        .secondary-links p {
-            font-family: 'Nunito Sans', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .secondary-links a {
-            font-family: 'Poppins', sans-serif;
-            color: var(--primary-color);
-            text-decoration: underline;
-            font-weight: 600;
-            margin: 0 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .secondary-links a:hover {
-            color: var(--secondary-color);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--border-color);
-            color: var(--text-light);
-            font-family: 'Nunito Sans', sans-serif;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 900px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 550px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .feature-box {
+        .pb-cta-button {
+            display: inline-block;
             background: white;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-
-        .feature-box:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 4px 12px rgba(125, 30, 63, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .feature-box h3 {
+            color: var(--primary-color, #7d1e3f);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-family: 'Poppins', sans-serif;
-            color: var(--primary-color);
-            font-size: 1.3rem;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .pb-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ---- Zone 3: Router ---- */
+        .zone-router {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .zone-router h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color, #7d1e3f);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .router-subtitle {
+            font-family: 'Nunito Sans', sans-serif;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-light, #5a5a5a);
+            margin-bottom: 2.5rem;
+        }
+
+        .router-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .router-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--bg-light, #faf8f5);
+            border: 2px solid var(--border-color, #e5ddd5);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .router-card:hover {
+            border-color: var(--primary-color, #7d1e3f);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(125, 30, 63, 0.1);
+        }
+
+        .router-card .router-intent {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: var(--primary-color, #7d1e3f);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .router-card .router-destination {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-light, #5a5a5a);
+            line-height: 1.5;
             margin-bottom: 0.75rem;
         }
 
-        .feature-box p {
-            font-family: 'Nunito Sans', sans-serif;
-            color: var(--text-dark);
-            font-size: 1rem;
+        .router-card .router-arrow {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--secondary-color, #a52a52);
+        }
+
+        /* ---- Zone 4: Go Deeper ---- */
+        .zone-deeper {
+            background: var(--bg-light, #faf8f5);
+            padding: 3rem 2rem;
+            border-top: 2px solid var(--border-color, #e5ddd5);
+        }
+
+        .zone-deeper h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light, #5a5a5a);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .deeper-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .deeper-links a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color, #7d1e3f);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            background: white;
+            border: 1px solid var(--border-color, #e5ddd5);
+        }
+
+        .deeper-links a:hover {
+            background: var(--primary-color, #7d1e3f);
+            color: white;
+            border-color: var(--primary-color, #7d1e3f);
+        }
+
+        /* ---- Footer (hub pattern) ---- */
+        .footer {
+            background: #3e0e20;
+            color: rgba(255,255,255,0.7);
+            padding: 2.5rem 3rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.05rem;
+            color: #f6dc80;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin: 0;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 1.25rem;
+            }
+            .header-nav { gap: 0.25rem; }
+            .nav-link { font-size: 0.72rem; padding: 0.25rem 0.5rem; }
+            .hero { padding: 4rem 1.5rem 3.5rem; }
+            .hero h2 { font-size: 2.8rem; }
+            .hero .hero-lead { font-size: 1.3rem; }
+            .hero .hero-sub { font-size: 1.1rem; }
+        }
+
+        @media (max-width: 700px) {
+            .insight-blocks { grid-template-columns: 1fr; }
+            .router-cards { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 550px) {
+            .hero h2 { font-size: 2.2rem; }
+            .hero .hero-lead { font-size: 1.1rem; }
+            .zone-prompt-builder h2 { font-size: 1.6rem; }
+            .zone-prompt-builder p { font-size: 1.05rem; }
+            .zone-router h2 { font-size: 1.6rem; }
+            .landing-zone { padding: 3rem 1.25rem; }
+            .footer { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="soft-landing">
-        <div class="hero-section">
-            <h1>Welcome to the<br>Differentiation Manual</h1>
-            <p class="hero-subtitle">AI-powered strategies to help every student succeed</p>
-            <p class="hero-description">
-                This manual helps you create learning experiences where every girl is known. 
-                With AI as your partner, differentiation becomes achievable, not overwhelming.
-            </p>
-        </div>
 
-        <div class="pathway-cards">
-            <a href="./prompt-builder.html" class="pathway-card featured tile-builder" target="_self">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></div>
-                <h2>Prompt Builder</h2>
-                <p>Answer a few questions about your class and resource — get a ready-to-use differentiation prompt powered by the manual's strategies.</p>
-            </a>
-
-            <a href="by-task-type.html" class="pathway-card tile-codes">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="6" rx="2"></rect><rect x="3" y="11" width="18" height="6" rx="2"></rect><rect x="3" y="19" width="18" height="2" rx="1"></rect></svg></div>
-                <h2>Find by Task Type</h2>
-                <p>Browse strategies by what you're actually doing — adjusting a resource, planning a lesson, ideating support, or building a unit.</p>
-            </a>
-
-            <a href="main.html" class="pathway-card tile-framework">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg></div>
-                <h2>The 7-Step Framework</h2>
-                <p>Plan differentiation from the ground up — work through all 7 steps from learning intentions to assessment.</p>
-            </a>
-
-            <a href="code-lookup.html" class="pathway-card tile-codes">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg></div>
-                <h2>Adjustment Code Lookup</h2>
-                <p>Enter codes from a student's learning profile and see which strategies support those adjustments.</p>
-            </a>
-
-            <a href="continuum.html" class="pathway-card tile-continuum">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 16l3-6 4 4 5-8"></path></svg></div>
-                <h2>View the Continuum</h2>
-                <p>See where each strategy helps most — foundations, core, or extension — and find what your students need right now.</p>
-            </a>
-
-            <a href="randomiser.html" class="pathway-card tile-random">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
-                <h2>Try a Strategy Now</h2>
-                <p>See three strategies you can use today, with ready-to-copy AI prompts.</p>
-            </a>
-
-            <a href="principles.html" class="pathway-card featured tile-principles">
-                <div class="pathway-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg></div>
-                <h2>The Thinking Behind It</h2>
-                <p>Explore the research-based principles that make differentiation effective.</p>
+<!-- ─── HEADER ─── -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a href="../index.html">
+                <div class="header-logo">RC</div>
+                <div class="header-text">
+                    <h1>Differentiation Manual</h1>
+                    <p>Roseville College Staff Hub</p>
+                </div>
             </a>
         </div>
-
-        <!-- What This Manual Provides -->
-        <section class="features-grid" style="margin-top: 4rem;">
-            <div class="feature-box">
-                <h3>Academic Foundation</h3>
-                <p>A thorough overview of differentiation grounded in research from leading scholars like Tomlinson, Hattie, and others.</p>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link">Hub</a>
+            <a href="../gemini.html" class="nav-link">Gemini</a>
+            <div class="nav-dropdown">
+                <a href="../gems/gem-builder-guide.html" class="nav-link nav-dropdown-toggle">Gem Builder</a>
+                <div class="nav-dropdown-menu">
+                    <a href="../gems/gem-builder-guide.html">Gem Builder Guide</a>
+                    <a href="../gems/ideas-bank.html">Ideas Bank</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="https://gemini.google.com/gem/1TriIs2vPlkaemSiJXY2Qcb8W43274Gdo?usp=sharing" target="_blank" rel="noopener">Gem Creator &#8599;</a>
+                </div>
             </div>
-            
-            <div class="feature-box">
-                <h3>Practical Workflows</h3>
-                <p>Research-based workflows and best practices you can implement immediately in your classroom.</p>
-            </div>
-            
-            <div class="feature-box">
-                <h3>AI-Powered Prompts</h3>
-                <p>146 ready-to-use AI prompts across 79 strategies to help you differentiate efficiently.</p>
-            </div>
-            
-            <div class="feature-box">
-                <h3>7-Step Framework</h3>
-                <p>A comprehensive process from defining learning goals through to implementation and assessment.</p>
-            </div>
-        </section>
-
-        <div class="secondary-links">
-            <p>Looking for something specific?</p>
-            <a href="search.html">Search Strategies</a>
-            <a href="by-task-type.html">Find by Task Type</a>
-            <a href="./prompt-builder.html" target="_self">Prompt Builder</a>
-            <a href="code-lookup.html">Adjustment Code Lookup</a>
-            <a href="flowchart.html">View Flowchart</a>
-            <a href="how-to-use.html">How to Use This Manual</a>
-        </div>
-
-        <footer>
-            <p>Roseville College Professional Learning | 2025</p>
-        </footer>
+            <a href="../notebooklm.html" class="nav-link">NotebookLM</a>
+            <a href="index.html" class="nav-link active">Differentiation</a>
+        </nav>
     </div>
+</header>
 
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <div class="hero-inner">
+        <h2>Differentiate with confidence.</h2>
+        <p class="hero-lead">The strategies you need, the AI prompts that build them, and a framework that makes differentiation part of your workflow, not a side project.</p>
+        <p class="hero-sub">79 strategies. 146 AI prompts. Built for real classrooms.</p>
+    </div>
+</section>
 
-</body></html>
+<!-- Zone 1: Insight Blocks -->
+<section class="landing-zone zone-insights">
+    <div class="landing-zone-inner">
+        <div class="insight-blocks">
+            <div class="insight-block">
+                <h3>The gap between knowing and doing</h3>
+                <p>Every teacher can describe good differentiation. But under time pressure, it defaults to "more work" or "less work." This manual bridges that gap with practical frameworks and AI-generated materials you can use on Monday.</p>
+            </div>
+            <div class="insight-block">
+                <h3>Same goal, different pathways</h3>
+                <p>Every student works toward the same learning intention. Foundations strategies build prerequisite skills to access it. Extension strategies deepen understanding beyond it. The continuum keeps everyone moving toward the same destination.</p>
+            </div>
+            <div class="insight-block">
+                <h3>Change the nature, not the amount</h3>
+                <p>Foundations does not mean easy. Extension does not mean more. Effective differentiation adjusts the kind of challenge, not the volume. Fewer questions is a quantitative fix. Sentence starters and graphic organisers are qualitative ones.</p>
+            </div>
+            <div class="insight-block">
+                <h3>AI handles production, you handle judgment</h3>
+                <p>Creating three versions of a resource used to take an evening. With AI, describe your learning intention and class profile, and get foundations, core, and extension materials to review, refine, and use. Minutes, not hours.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Zone 2: Prompt Builder Hero CTA -->
+<section class="landing-zone zone-prompt-builder">
+    <div class="landing-zone-inner">
+        <div class="pb-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+        </div>
+        <h2>Build a differentiation prompt in 2 minutes</h2>
+        <p>Answer a few questions about your class, resource, and learning intention. Get a ready-to-use AI prompt built from the manual's 79 strategies.</p>
+        <a href="prompt-builder.html" class="pb-cta-button">Open the Prompt Builder &rarr;</a>
+    </div>
+</section>
+
+<!-- Zone 3: Router -->
+<section class="landing-zone zone-router">
+    <div class="landing-zone-inner">
+        <h2>What are you trying to do?</h2>
+        <p class="router-subtitle">Pick the path that matches where you are right now.</p>
+
+        <div class="router-cards">
+            <a href="prompt-builder.html" class="router-card">
+                <div class="router-intent">I need to differentiate a resource right now</div>
+                <div class="router-destination">Answer a few questions, get a ready-to-use prompt.</div>
+                <span class="router-arrow">Prompt Builder &rarr;</span>
+            </a>
+            <a href="by-task-type.html" class="router-card">
+                <div class="router-intent">I want to explore strategies for my context</div>
+                <div class="router-destination">Browse by task type or see where strategies sit on the continuum.</div>
+                <span class="router-arrow">Find by Task Type &rarr;</span>
+            </a>
+            <a href="main.html" class="router-card">
+                <div class="router-intent">I'm planning a unit from scratch</div>
+                <div class="router-destination">Work through all 7 steps from learning intentions to assessment.</div>
+                <span class="router-arrow">7-Step Framework &rarr;</span>
+            </a>
+            <a href="code-lookup.html" class="router-card">
+                <div class="router-intent">I have adjustment codes to match</div>
+                <div class="router-destination">Enter codes from a student's learning profile and see matched strategies.</div>
+                <span class="router-arrow">Code Lookup &rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Zone 4: Go Deeper -->
+<section class="landing-zone zone-deeper">
+    <div class="landing-zone-inner">
+        <h3>Go deeper</h3>
+        <div class="deeper-links">
+            <a href="principles.html">The Thinking Behind It</a>
+            <a href="continuum.html">View the Continuum</a>
+            <a href="glossary.html">Glossary</a>
+            <a href="search.html">Search Strategies</a>
+            <a href="flowchart.html">Flowchart</a>
+            <a href="how-to-use.html">How to Use This Manual</a>
+            <a href="randomiser.html">Try a Random Strategy</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-title">Teaching with AI &middot; Roseville College</div>
+        <p class="footer-note">This hub is a living resource. Tools and guides will be updated as our practice develops.</p>
+    </div>
+</footer>
+
+</body>
+</html>

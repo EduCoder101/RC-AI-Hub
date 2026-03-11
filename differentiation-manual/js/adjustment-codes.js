@@ -30,7 +30,7 @@ const adjustmentCodes = {
     "M15": "Make eye contact with student when giving instructions",
     "M16": "Reduce, repeat, re-phrase verbal information",
     "M17": "Active monitoring and supervision",
-    "M18": "Other (Method) — e.g. subtitles/closed captioning",
+    "M18": "Other (Method), e.g. subtitles/closed captioning",
     "P1": "Provide a range of worked examples in various formats",
     "P2": "Alternative learning experience / task to show understanding",
     "P3": "Use scaffolds to support writing and assessment tasks",

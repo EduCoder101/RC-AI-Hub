@@ -52,9 +52,9 @@
         }
 
         .header-inner {
-            max-width: 1200px;
+            max-width: 1800px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
+            padding: 1rem 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -68,8 +68,8 @@
         }
 
         .header-logo {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: var(--sandstone);
             border-radius: 50%;
             display: flex;
@@ -77,20 +77,20 @@
             justify-content: center;
             font-family: Georgia, serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--burgundy);
             flex-shrink: 0;
         }
 
         .header-text h1 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--white);
             line-height: 1.2;
         }
 
         .header-text p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--sandstone);
             font-family: 'Franklin Gothic Medium', Arial, sans-serif;
             letter-spacing: 0.05em;
@@ -122,6 +122,17 @@
             color: var(--sandstone);
             background: rgba(246,220,128,0.15);
         }
+
+        /* ─── NAV DROPDOWN ─── */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
+        .nav-dropdown-toggle::after { content: '▾'; font-size: 0.6rem; opacity: 0.7; transition: transform 0.2s; }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.4rem); left: 50%; transform: translateX(-50%); background: var(--burgundy-dark); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 300; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; }
+        .nav-dropdown-menu a { display: block; padding: 0.45rem 1rem; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.02em; transition: all 0.15s; white-space: nowrap; }
+        .nav-dropdown-menu a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .nav-dropdown-menu a.active { color: var(--sandstone); }
+        .nav-dropdown-menu .dropdown-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.3rem 0; }
 
         /* ─── HERO ─── */
         .hero {
@@ -624,13 +635,21 @@
             <div class="header-logo">RC</div>
             <div class="header-text">
                 <h1>Gem Ideas Bank</h1>
-                <p>Teaching with AI &mdash; Roseville College</p>
+                <p>Roseville College Staff Hub</p>
             </div>
         </div>
         <nav class="header-nav">
             <a href="../index.html" class="nav-link">Hub</a>
             <a href="../gemini.html" class="nav-link">Gemini</a>
-            <a href="gem-builder-guide.html" class="nav-link">Gem Builder</a>
+            <div class="nav-dropdown">
+                <a href="gem-builder-guide.html" class="nav-link nav-dropdown-toggle">Gem Builder</a>
+                <div class="nav-dropdown-menu">
+                    <a href="gem-builder-guide.html">Gem Builder Guide</a>
+                    <a href="ideas-bank.html" class="active">Ideas Bank</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="https://gemini.google.com/gem/1TriIs2vPlkaemSiJXY2Qcb8W43274Gdo?usp=sharing" target="_blank" rel="noopener">Gem Creator ↗</a>
+                </div>
+            </div>
             <a href="../notebooklm.html" class="nav-link">NotebookLM</a>
             <a href="../differentiation-manual/index.html" class="nav-link">Differentiation</a>
         </nav>
@@ -642,7 +661,7 @@
     <div class="hero-inner">
         <span class="hero-eyebrow">Gemini Gems &middot; Inspiration Library</span>
         <h2>Gem Ideas Bank</h2>
-        <p>Practical Gems for everyday teaching tasks &mdash; browse, choose, build.</p>
+        <p>Practical Gems for everyday teaching tasks: browse, choose, build.</p>
     </div>
 </section>
 
@@ -666,7 +685,7 @@
     <!-- ═══════════════════════════════════════ -->
     <div class="tab-section active" id="tab-writing">
         <h2 class="section-title">Writing &amp; Communication</h2>
-        <p class="section-subtitle">Gems that help you write clearly, consistently, and quickly &mdash; from report comments to staff bulletins.</p>
+        <p class="section-subtitle">Gems that help you write clearly, consistently, and quickly, from report comments to staff bulletins.</p>
 
         <div class="card-grid">
 
@@ -787,7 +806,7 @@
                     <div class="idea-card-header">
                         <span class="idea-card-name">Tone Adjustor</span>
                     </div>
-                    <p class="idea-card-desc">Rewrites text to match a specified tone &mdash; formal, friendly, empathetic, direct.</p>
+                    <p class="idea-card-desc">Rewrites text to match a specified tone: formal, friendly, empathetic, direct.</p>
                     <div class="idea-card-detail">
                         <div class="idea-card-detail-label">What you give it</div>
                         <div class="idea-card-detail-text">Original text, desired tone.</div>
@@ -832,7 +851,7 @@
     <!-- ═══════════════════════════════════════ -->
     <div class="tab-section" id="tab-feedback">
         <h2 class="section-title">Feedback &amp; Assessment</h2>
-        <p class="section-subtitle">Gems that support marking, rubrics, and assessment design &mdash; with teacher judgement always at the centre.</p>
+        <p class="section-subtitle">Gems that support marking, rubrics, and assessment design, with teacher judgement always at the centre.</p>
 
         <div class="card-grid">
 
@@ -843,7 +862,7 @@
                     <div class="idea-card-header">
                         <span class="idea-card-name">Feedback Assistant</span>
                     </div>
-                    <p class="idea-card-desc">Uses a rubric to draft written feedback &mdash; no grades, teacher judgement only.</p>
+                    <p class="idea-card-desc">Uses a rubric to draft written feedback; no grades, teacher judgement only.</p>
                     <div class="idea-card-detail">
                         <div class="idea-card-detail-label">What you give it</div>
                         <div class="idea-card-detail-text">Rubric criteria, student work summary, observations.</div>
@@ -1075,7 +1094,7 @@
                     <div class="idea-card-header">
                         <span class="idea-card-name">Function Data Organiser</span>
                     </div>
-                    <p class="idea-card-desc">Organises event data &mdash; RSVPs, dietary needs, logistics &mdash; into structured summaries.</p>
+                    <p class="idea-card-desc">Organises event data (RSVPs, dietary needs, logistics) into structured summaries.</p>
                     <div class="idea-card-detail">
                         <div class="idea-card-detail-label">What you give it</div>
                         <div class="idea-card-detail-text">Raw event data, categories needed.</div>
@@ -1242,7 +1261,7 @@
     <!-- ═══════════════════════════════════════ -->
     <div class="tab-section" id="tab-student">
         <h2 class="section-title">Student-Facing Tools</h2>
-        <p class="section-subtitle">Gems that students interact with directly &mdash; always with appropriate safety guardrails in place.</p>
+        <p class="section-subtitle">Gems that students interact with directly, always with appropriate safety guardrails in place.</p>
 
         <div class="safety-callout">
             <div class="safety-callout-title">
@@ -1350,9 +1369,9 @@
     <!-- ═══════════════════════════════════════ -->
     <div class="tab-section" id="tab-find">
         <h2 class="section-title">Find Your Own Gem</h2>
-        <p class="section-subtitle">The best Gems come from your own work &mdash; use these prompts to discover yours.</p>
+        <p class="section-subtitle">The best Gems come from your own work. Use these prompts to discover yours.</p>
 
-        <p class="find-intro">The best Gems come from your own work. If you have a task that's repetitive, predictable, and always follows the same pattern &mdash; it's probably a great Gem candidate. Use these three questions to figure out what yours might be.</p>
+        <p class="find-intro">The best Gems come from your own work. If you have a task that's repetitive, predictable, and always follows the same pattern, it's probably a great Gem candidate. Use these three questions to figure out what yours might be.</p>
 
         <div class="prompt-cards">
 
