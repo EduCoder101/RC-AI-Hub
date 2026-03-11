@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Strategies by Task Type | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/continuum.css">
+    <style>
+        /* Task type specific styles */
+        .task-type-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .task-type-hero h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .task-type-hero .page-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Task type filter pills */
+        .task-filter-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+
+        .task-pill {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .task-pill:hover {
+            background: var(--bg-light);
+            transform: translateY(-2px);
+        }
+
+        .task-pill.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Strategy cards for task type view */
+        .task-strategies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .task-strategy-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .task-strategy-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 6px 12px rgba(125, 30, 63, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .task-strategy-card.dimmed {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .task-card-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .task-badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-category {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .badge-code {
+            background: linear-gradient(135deg, rgba(125, 30, 63, 0.1) 0%, rgba(134, 46, 80, 0.1) 100%);
+            color: var(--secondary-color);
+            font-family: monospace;
+        }
+
+        .task-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .task-card-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .task-card-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Count display */
+        .strategy-count {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin: 1.5rem 0;
+            font-weight: 600;
+        }
+
+        .count-number {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .empty-state h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a> → <a href="how-to-use.html">How to Use</a> → By Task Type
+        </nav>
+
+        <!-- Hero -->
+        <section class="task-type-hero">
+            <h1>Find Strategies by Task Type</h1>
+            <p class="page-subtitle">What are you trying to do?</p>
+            <p class="intro-text">
+                Teachers don't think "I need a process strategy." They think "I need to adjust this text" or "I'm planning a unit."
+                This view organises strategies by the actual tasks you're trying to accomplish. Select your task type below to see relevant strategies.
+            </p>
+        </section>
+
+        <!-- Task Type Filters -->
+        <div class="task-filter-pills">
+            <button class="task-pill active" data-task="all">All Strategies</button>
+            <button class="task-pill" data-task="adjust-resource">Adjusting a Resource</button>
+            <button class="task-pill" data-task="diff-lesson">Differentiating a Lesson</button>
+            <button class="task-pill" data-task="ideate-support">Ideating Support</button>
+            <button class="task-pill" data-task="ideate-extension">Ideating Extension</button>
+            <button class="task-pill" data-task="plan-sequence">Planning a Sequence</button>
+            <button class="task-pill" data-task="plan-unit">Planning a Unit</button>
+            <button class="task-pill" data-task="create-assessment">Creating Assessment</button>
+            <button class="task-pill" data-task="setup-systems">Setting Up Systems</button>
+        </div>
+
+        <!-- Strategy count -->
+        <div class="strategy-count" id="strategyCount"></div>
+
+        <!-- Task descriptions (shown when a specific task is selected) -->
+        <div id="taskDescription" style="display: none; background: var(--bg-light); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--accent-color);">
+            <h3 id="taskDescTitle" style="color: var(--primary-color); margin-bottom: 0.5rem;"></h3>
+            <p id="taskDescText" style="color: var(--text-light); margin-bottom: 0;"></p>
+        </div>
+
+        <!-- Strategies Grid -->
+        <div class="task-strategies-grid" id="strategiesGrid">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <h3>No strategies found</h3>
+            <p>Try selecting a different task type above.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="continuum-cta" style="margin-top: 4rem;">
+            <h2>Want to explore differently?</h2>
+            <p>Try another pathway to find strategies that work for you</p>
+            <div class="cta-buttons">
+                <a href="continuum.html" class="btn-primary">View the Continuum</a>
+                <a href="search.html" class="btn-secondary">Search Strategies</a>
+                <a href="randomiser.html" class="btn-secondary">Try a Random Strategy</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/search-data.js"></script>
+    <script>
+        (function() {
+            'use strict';
+
+            let activeTask = 'all';
+
+            // Task type descriptions
+            const taskDescriptions = {
+                'adjust-resource': {
+                    title: 'Adjusting a Resource',
+                    desc: 'Adapting existing content materials (texts, videos, worksheets) to make them more accessible or challenging for different learners.'
+                },
+                'diff-lesson': {
+                    title: 'Differentiating a Lesson',
+                    desc: 'Planning varied approaches for a single lesson period to meet diverse student needs during that class time.'
+                },
+                'ideate-support': {
+                    title: 'Ideating Support Strategies',
+                    desc: 'Generating ways to scaffold learning and help students access core concepts they are building toward.'
+                },
+                'ideate-extension': {
+                    title: 'Ideating Extension Strategies',
+                    desc: 'Pushing learning deeper and broader for students who have mastered the core content.'
+                },
+                'plan-sequence': {
+                    title: 'Planning a Lesson Sequence',
+                    desc: 'Designing 3-5 connected lessons with built-in differentiation points throughout the sequence.'
+                },
+                'plan-unit': {
+                    title: 'Planning a Unit',
+                    desc: 'Comprehensive planning for 2+ weeks of learning with multiple differentiation opportunities across the unit.'
+                },
+                'create-assessment': {
+                    title: 'Creating Assessment',
+                    desc: 'Designing how students will demonstrate their learning, whether formative checks or summative tasks.'
+                },
+                'setup-systems': {
+                    title: 'Setting Up Classroom Systems',
+                    desc: 'Establishing ongoing routines and structures that enable ongoing differentiation in your classroom.'
+                }
+            };
+
+            function renderStrategies() {
+                const grid = document.getElementById('strategiesGrid');
+                const emptyState = document.getElementById('emptyState');
+                
+                // Filter strategies that have taskTypes field (we'll add this to search-data.js)
+                const strategies = searchData.filter(s => s.taskTypes && s.taskTypes.length > 0);
+                
+                if (strategies.length === 0) {
+                    grid.style.display = 'none';
+                    emptyState.style.display = 'block';
+                    return;
+                }
+
+                grid.innerHTML = strategies.map(strategy => {
+                    const code = strategy.adjustmentCodes && strategy.adjustmentCodes.length > 0 
+                        ? strategy.adjustmentCodes[0] 
+                        : '';
+                    
+                    return `
+                        <a href="${strategy.link}#${strategy.id}" 
+                           class="task-strategy-card" 
+                           data-strategy-id="${strategy.id}"
+                           data-tasks="${strategy.taskTypes.join(',')}">
+                            <div class="task-card-badges">
+                                <span class="task-badge badge-category">${strategy.category}</span>
+                                ${code ? `<span class="task-badge badge-code">${code}</span>` : ''}
+                            </div>
+                            <div class="task-card-title">${strategy.title}</div>
+                            <div class="task-card-desc">${strategy.description}</div>
+                            <span class="task-card-link">View strategy & prompts →</span>
+                        </a>
+                    `;
+                }).join('');
+
+                applyFilters();
+            }
+
+            function applyFilters() {
+                const cards = document.querySelectorAll('.task-strategy-card');
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const tasks = card.dataset.tasks.split(',');
+                    const shouldShow = activeTask === 'all' || tasks.includes(activeTask);
+                    
+                    card.classList.toggle('dimmed', !shouldShow);
+                    if (shouldShow) visibleCount++;
+                });
+
+                updateCount(visibleCount, cards.length);
+                updateDescription();
+            }
+
+            function updateCount(showing, total) {
+                const el = document.getElementById('strategyCount');
+                if (!el) return;
+
+                if (activeTask === 'all') {
+                    el.innerHTML = `Showing all <span class="count-number">${total}</span> strategies`;
+                } else {
+                    el.innerHTML = `Showing <span class="count-number">${showing}</span> of ${total} strategies`;
+                }
+            }
+
+            function updateDescription() {
+                const descBox = document.getElementById('taskDescription');
+                const titleEl = document.getElementById('taskDescTitle');
+                const textEl = document.getElementById('taskDescText');
+
+                if (activeTask === 'all') {
+                    descBox.style.display = 'none';
+                } else {
+                    const desc = taskDescriptions[activeTask];
+                    if (desc) {
+                        titleEl.textContent = desc.title;
+                        textEl.textContent = desc.desc;
+                        descBox.style.display = 'block';
+                    }
+                }
+            }
+
+            function initFilters() {
+                document.querySelectorAll('.task-pill').forEach(pill => {
+                    pill.addEventListener('click', () => {
+                        document.querySelectorAll('.task-pill').forEach(p => p.classList.remove('active'));
+                        pill.classList.add('active');
+                        activeTask = pill.dataset.task;
+                        applyFilters();
+                    });
+                });
+            }
+
+            function init() {
+                renderStrategies();
+                initFilters();
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>

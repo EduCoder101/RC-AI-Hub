@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use This Manual | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Specific styles for How To page */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Four pathways */
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pathway {
+            background: white;
+            border: 3px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .pathway:hover {
+            box-shadow: 0 8px 16px rgba(125, 30, 63, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .pathway h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .pathway-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .pathway h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pathway ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .pathway li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .pathway p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .time-badge {
+            background: linear-gradient(135deg, rgba(244, 185, 66, 0.2) 0%, rgba(244, 185, 66, 0.1) 100%);
+            border: 2px solid var(--accent-color);
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .pathway-btn {
+            display: block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .pathway-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(125, 30, 63, 0.3);
+        }
+
+        /* Examples within pathway */
+        .examples {
+            margin-top: 1.5rem;
+        }
+
+        .example-item {
+            background: var(--bg-light);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .example-item strong {
+            color: var(--primary-color);
+        }
+
+        /* Quick problems section */
+        .problems-section {
+            background: linear-gradient(135deg, var(--bg-light) 0%, rgba(109, 179, 200, 0.1) 100%);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+
+        .problems-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .problems-intro {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .problem-card {
+            background: white;
+            border-left: 4px solid var(--accent-color);
+            padding: 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .problem-card:hover {
+            background: var(--bg-light);
+            border-left-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .problem-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .solution-text {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* Navigation */
+        .page-nav {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(125, 30, 63, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>How to Use This Manual</h1>
+            <p class="subtitle">Six pathways, depending on what you need</p>
+            <p class="tagline">You don't have to do all 7 steps every time</p>
+        </header>
+
+        <div class="pathways-grid">
+            <!-- Pathway 1: Full Journey -->
+            <div class="pathway">
+                <h2>The Full Journey</h2>
+                <p class="pathway-subtitle">All 7 Steps</p>
+
+                <h3>When to use this route:</h3>
+                <ul>
+                    <li>You're planning a <strong>new unit</strong> from scratch</li>
+                    <li>You're planning a <strong>sequence of lessons</strong> within a unit</li>
+                    <li>You're reviewing an existing unit</li>
+                    <li>You want a comprehensive differentiation approach</li>
+                </ul>
+
+                <h3>Why all 7 steps:</h3>
+                <p>Whether it's a full unit or a lesson sequence, you work through the complete cycle: clarify your learning goals, understand your students, choose how to differentiate, adjust challenge levels, plan scaffolds, then implement with ongoing assessment.</p>
+
+                <div class="examples">
+                    <h3>Examples:</h3>
+                    <div class="example-item">
+                        <strong>Full unit:</strong> Term 2: Persuasive Writing Unit (6 weeks)
+                    </div>
+                    <div class="example-item">
+                        <strong>Lesson sequence:</strong> Introducing fractions through concrete models (3 lessons)
+                    </div>
+                    <div class="example-item">
+                        <strong>Unit review:</strong> Refining my short story unit based on last year's experience
+                    </div>
+                </div>
+
+                <a href="step1-kuds.html" class="pathway-btn">Start at Step 1</a>
+            </div>
+
+            <!-- Pathway 2: Quick Fix -->
+            <div class="pathway">
+                <h2>The Quick Fix</h2>
+                <p class="pathway-subtitle">Jump to a Step</p>
+
+                <h3>When to use this route:</h3>
+                <ul>
+                    <li>You have a <strong>specific problem</strong> to solve</li>
+                    <li>You're short on time</li>
+                    <li>You know which aspect of differentiation you need help with</li>
+                </ul>
+
+                <h3>How it works:</h3>
+                <p>Find your problem in the list below and jump directly to the step that solves it. Each step has collapsible strategies with ready-to-use AI prompts.</p>
+
+                <h3>Common problems:</h3>
+                <ul>
+                    <li>My text is too hard for some students</li>
+                    <li>Students finish at different times</li>
+                    <li>I need better formative assessment</li>
+                    <li>Some students need more support</li>
+                    <li>This task is too easy or too hard</li>
+                </ul>
+
+                <a href="#problems" class="pathway-btn">Find Your Problem</a>
+            </div>
+
+            <!-- Pathway 3: Strategy Library -->
+            <div class="pathway">
+                <h2>The Strategy Library</h2>
+                <p class="pathway-subtitle">Browse All Strategies</p>
+
+                <h3>When to use this route:</h3>
+                <ul>
+                    <li>You're <strong>exploring options</strong> and browsing ideas</li>
+                    <li>You want to see all strategies in one place</li>
+                    <li>You're looking for inspiration</li>
+                    <li>You're doing professional learning</li>
+                </ul>
+
+                <h3>What you'll find:</h3>
+                <p>A complete index of all differentiation strategies across all 7 steps, organised by category. Each strategy includes a description, when to use it, examples, and AI prompts.</p>
+
+                <h3>Categories:</h3>
+                <ul>
+                    <li>KUDs Strategies (4)</li>
+                    <li>Know Your Learners Strategies (6)</li>
+                    <li>Content Strategies (10)</li>
+                    <li>Process Strategies (13)</li>
+                    <li>Product Strategies (10)</li>
+                    <li>Environment Strategies (4)</li>
+                    <li>Alignment Strategies (4)</li>
+                    <li>Equalizer Dimensions (8)</li>
+                    <li>Scaffolding Strategies (8)</li>
+                    <li>Assessment Strategies (12)</li>
+                </ul>
+
+                <a href="glossary.html" class="pathway-btn">Browse Library</a>
+            </div>
+
+            <!-- Pathway 4: The Continuum -->
+            <div class="pathway">
+                <h2>The Continuum</h2>
+                <p class="pathway-subtitle">Foundations → Core → Extension</p>
+
+                <h3>When to use this route:</h3>
+                <ul>
+                    <li>You need <strong>scaffolding ideas</strong> for students building toward the core</li>
+                    <li>You need <strong>extension ideas</strong> for students who've mastered it</li>
+                    <li>You want to see where each strategy <strong>helps most</strong></li>
+                    <li>You want to <strong>adjust a task</strong> along the continuum using the Equaliser</li>
+                </ul>
+
+                <h3>What you'll find:</h3>
+                <p>45 strategies organised by where they sit on the differentiation continuum, plus the 8 Equaliser dimensions for sliding any task between foundations and extension. Filter by position or category to find exactly what you need.</p>
+
+                <a href="continuum.html" class="pathway-btn">View the Continuum</a>
+            </div>
+
+            <!-- Pathway 5: Match the Code -->
+            <div class="pathway">
+                <h2>Match the Code to the Strategy</h2>
+                <p class="pathway-subtitle">Quick Strategy Lookup</p>
+
+                <h3>When to use this route:</h3>
+                <ul>
+                    <li>You've seen a <strong>strategy code</strong> (e.g., P07, C03) and want details</li>
+                    <li>You're reviewing past lesson plans with coded strategies</li>
+                    <li>Someone recommended a strategy by code</li>
+                    <li>You want to quickly jump to a specific strategy</li>
+                </ul>
+
+                <h3>How it works:</h3>
+                <p>Each of the 72 strategies has a unique code. Enter the code (like P07 for Choice Boards or S04 for Graphic Organisers) and instantly access the full strategy details, examples, and AI prompts.</p>
+
+                <h3>Code format:</h3>
+                <ul>
+                    <li><strong>K01-K04:</strong> KUDs Strategies</li>
+                    <li><strong>L01-L06:</strong> Know Your Learners</li>
+                    <li><strong>C01-C10:</strong> Content Strategies</li>
+                    <li><strong>P01-P13:</strong> Process Strategies</li>
+                    <li><strong>R01-R10:</strong> Product Strategies</li>
+                    <li><strong>E01-E04:</strong> Environment Strategies</li>
+                    <li><strong>A01-A04:</strong> Alignment Strategies</li>
+                    <li><strong>Q01-Q08:</strong> Equaliser Dimensions</li>
+                    <li><strong>S01-S08:</strong> Scaffolding Strategies</li>
+                    <li><strong>I01-I12:</strong> Assessment Strategies</li>
+                </ul>
+
+                <a href="code-lookup.html" class="pathway-btn">Look Up a Code</a>
+            </div>
+
+            <!-- Pathway 6: By Task Type -->
+            <div class="pathway">
+                <h2>Find Strategies by Task Type</h2>
+                <p class="pathway-subtitle">What are you trying to do?</p>
+
+                <h3>When to use this route:</h3>
+                <ul>
+                    <li>You need to <strong>adjust a resource</strong> you've already got</li>
+                    <li>You're planning <strong>one lesson</strong> and need quick ideas</li>
+                    <li>You're ideating <strong>support or extension</strong> strategies</li>
+                    <li>You're planning a <strong>sequence or unit</strong> from scratch</li>
+                </ul>
+
+                <h3>How it works:</h3>
+                <p>Instead of browsing all strategies, filter by what you're actually doing right now. Need to make a text more accessible? Click "Adjusting a Resource." Planning a unit? Click "Planning a Unit." You'll see only the strategies relevant to that task.</p>
+
+                <h3>Task types:</h3>
+                <ul>
+                    <li><strong>Adjusting a Resource</strong> (text, video, worksheet)</li>
+                    <li><strong>Differentiating a Lesson</strong> (single class period)</li>
+                    <li><strong>Ideating Support</strong> (scaffolding strategies)</li>
+                    <li><strong>Ideating Extension</strong> (challenge strategies)</li>
+                    <li><strong>Planning a Sequence</strong> (3-5 lessons)</li>
+                    <li><strong>Planning a Unit</strong> (2+ weeks)</li>
+                    <li><strong>Creating Assessment</strong> (formative/summative)</li>
+                    <li><strong>Setting Up Systems</strong> (ongoing routines)</li>
+                </ul>
+
+                <a href="by-task-type.html" class="pathway-btn">Find by Task Type</a>
+            </div>
+        </div>
+
+        <!-- Quick Problems Section -->
+        <div class="problems-section" id="problems">
+            <h2>Common Problems, Direct Solutions</h2>
+            <p class="problems-intro">Find your specific challenge below and jump straight to the strategy</p>
+            
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid var(--accent-color);">
+                <p style="text-align: center; margin-bottom: 1rem; font-size: 1.1rem;"><strong>Looking for something not listed here?</strong></p>
+                <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-light);">This is a curated list of the most common challenges. For a comprehensive search across all 79 strategies, use our search tool.</p>
+                <div style="text-align: center;">
+                    <a href="search.html" style="display: inline-block; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem;">Search All Strategies →</a>
+                </div>
+            </div>
+
+            <div class="problems-grid">
+                <a href="step3-content.html" class="problem-card">
+                    <div class="problem-text">My text or video is too complex for some students</div>
+                    <div class="solution-text">Step 3: Content (Tiered Texts)</div>
+                </a>
+
+                <a href="step3-content.html" class="problem-card">
+                    <div class="problem-text">I need to present information in multiple formats</div>
+                    <div class="solution-text">Step 3: Content (Multi-Modal Presentations)</div>
+                </a>
+
+                <a href="step3-process.html" class="problem-card">
+                    <div class="problem-text">Students finish at wildly different times</div>
+                    <div class="solution-text">Step 3: Process (Anchor Activities)</div>
+                </a>
+
+                <a href="step3-process.html" class="problem-card">
+                    <div class="problem-text">I need varied levels of the same task</div>
+                    <div class="solution-text">Step 3: Process (Tiered Activities)</div>
+                </a>
+
+                <a href="step3-product.html" class="problem-card">
+                    <div class="problem-text">Students should show learning in different ways</div>
+                    <div class="solution-text">Step 3: Product (Choice Boards)</div>
+                </a>
+
+                <a href="step7-implement.html" class="problem-card">
+                    <div class="problem-text">I need quick formative assessment strategies</div>
+                    <div class="solution-text">Step 7 (Exit Cards, Think-Pair-Share)</div>
+                </a>
+
+                <a href="step6-scaffolding.html" class="problem-card">
+                    <div class="problem-text">Some students need extra support on this task</div>
+                    <div class="solution-text">Step 6 (Scaffolding Strategies)</div>
+                </a>
+
+                <a href="step5-equalizer.html" class="problem-card">
+                    <div class="problem-text">This task is too easy or too hard for some students</div>
+                    <div class="solution-text">Step 5 (Equalizer Tool)</div>
+                </a>
+
+                <a href="step3-environment.html" class="problem-card">
+                    <div class="problem-text">I need flexible grouping and seating options</div>
+                    <div class="solution-text">Step 3: Environment (Flexible Seating, Stations)</div>
+                </a>
+
+                <a href="step2-learners.html" class="problem-card">
+                    <div class="problem-text">I need to assess what students already know</div>
+                    <div class="solution-text">Step 2 (Pre-Assessment Prompts)</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="page-nav">
+            <a href="index.html" class="btn-primary">Back to Home</a>
+            <a href="search.html" class="btn-primary">Search Strategies</a>
+            <a href="flowchart.html" class="btn-primary">View Flowchart</a>
+        </nav>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

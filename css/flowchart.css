@@ -1,0 +1,301 @@
+/* ==========================================
+   FLOWCHART PAGE STYLES
+   ========================================== */
+
+.breadcrumb {
+    margin-top: 1rem;
+}
+
+.breadcrumb a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-color);
+}
+
+/* Flowchart Intro */
+.flowchart-intro {
+    margin-bottom: 2rem;
+}
+
+.info-box {
+    background: linear-gradient(135deg, #e6f2f7 0%, var(--bg-light) 100%);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 6px solid var(--secondary-color);
+}
+
+.info-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.info-box ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.info-box li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.info-box .tip {
+    background-color: #fff9e6;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* Visual Flowchart Overview */
+.flowchart-visual-overview {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    color: white;
+}
+
+.flowchart-visual-overview h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.steps-overview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.step-overview {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    min-width: 120px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-overview h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.step-overview p {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.steps-overview .arrow {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Flowchart Section */
+.flowchart {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.step-card {
+    background: var(--bg-white);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.step-card:hover {
+    border-color: var(--secondary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.step-number {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+
+.step-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+.step-description {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.step-description strong {
+    color: var(--secondary-color);
+}
+
+.step-link {
+    display: inline-block;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.6rem 1.25rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: 0.75rem;
+}
+
+.step-link:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.step-links-multiple {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.step-link-small {
+    display: block;
+    text-align: center;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.step-link-small:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.step-note {
+    background-color: var(--bg-light);
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.75rem;
+}
+
+/* Flow Arrows */
+.flow-arrow {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin: 0.25rem 0;
+    font-weight: 300;
+}
+
+/* Quick Navigation Grid */
+.quick-nav {
+    margin-bottom: 3rem;
+}
+
+.quick-nav h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.quick-nav-card {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #e6f2f7 100%);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.quick-nav-card:hover {
+    border-color: var(--secondary-color);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.quick-nav-card h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.quick-nav-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.quick-nav-card.glossary-highlight {
+    background: linear-gradient(135deg, rgba(244, 185, 66, 0.15) 0%, rgba(109, 179, 200, 0.15) 100%);
+    border: 3px solid var(--accent-color);
+}
+
+.quick-nav-card.glossary-highlight h4 {
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .step-card {
+        padding: 1.5rem;
+    }
+
+    .step-links-multiple {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quick-nav-grid {
+        grid-template-columns: 1fr;
+    }
+}

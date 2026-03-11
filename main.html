@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore the Manual | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/landing-updates.css">
+    <style>
+        .overview-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(244, 185, 66, 0.1) 0%, rgba(109, 179, 200, 0.1) 100%);
+            border-radius: 16px;
+        }
+
+        .overview-hero h1 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .overview-hero p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .manual-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+        }
+
+        .framework-overview {
+            margin-bottom: 3rem;
+        }
+
+        .framework-overview h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .step-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(125, 30, 63, 0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .quick-start-section {
+            background: linear-gradient(135deg, #f4b942 0%, #ffd670 100%);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .quick-start-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-start-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-start-btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 3px solid var(--primary-color);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .quick-start-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .quick-start-btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .quick-start-btn.primary:hover {
+            background: var(--secondary-color);
+        }
+
+        .other-ways {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .other-ways h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .other-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .other-links a {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .other-links a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="breadcrumb">
+                <a href="index.html">← Back to Home</a>
+            </nav>
+        </header>
+
+        <div class="overview-hero">
+            <h1>Explore the Differentiation Manual</h1>
+            <p>A comprehensive, research-based guide to help you differentiate instruction using AI as your partner. Here's how it works.</p>
+        </div>
+
+        <!-- Manual Stats -->
+        <div class="manual-stats">
+            <div class="stat-item">
+                <div class="stat-number">79</div>
+                <div class="stat-label">Differentiation Strategies</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">146</div>
+                <div class="stat-label">AI Prompts Ready to Use</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Steps to Implementation</div>
+            </div>
+        </div>
+
+        <!-- Framework Overview -->
+        <div class="framework-overview">
+            <h2>The 7-Step Differentiation Framework</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: var(--text-light); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">This manual follows a research-based 7-step process. You can follow it start to finish, or jump to the step you need.</p>
+            
+            <div class="steps-grid">
+                <a href="step1-kuds.html" class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Define Learning Goals</h3>
+                    <p>Clarify what students should Know, Understand, Do, and the Skills they'll develop (KUDs).</p>
+                </a>
+
+                <a href="step2-learners.html" class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Know Your Learners</h3>
+                    <p>Create deidentified class profiles based on readiness, interest, and learning profile.</p>
+                </a>
+
+                <a href="step3-content.html" class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Differentiate Content, Process, Product & Environment</h3>
+                    <p>Choose strategies to help all students access and engage with learning. (45+ strategies here!)</p>
+                </a>
+
+                <a href="step4-align.html" class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Align to Learning Goals</h3>
+                    <p>Ensure your differentiation still targets the essential learning outcomes.</p>
+                </a>
+
+                <a href="step5-equalizer.html" class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Use the Equalizer</h3>
+                    <p>Adjust task complexity using Tomlinson's Equalizer framework.</p>
+                </a>
+
+                <a href="step6-scaffolding.html" class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Add Scaffolding</h3>
+                    <p>Provide temporary supports that students can use then remove as they gain competence.</p>
+                </a>
+
+                <a href="step7-implement.html" class="step-card">
+                    <div class="step-number">7</div>
+                    <h3>Implement & Assess</h3>
+                    <p>Put your plan into action and use formative assessment to guide next steps.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Start Section -->
+        <div class="quick-start-section">
+            <h2>Where Would You Like to Start?</h2>
+            <div class="quick-start-buttons">
+                <a href="step1-kuds.html" class="quick-start-btn primary">Start at Step 1</a>
+                <a href="code-lookup.html" class="quick-start-btn">Adjustment Code Lookup</a>
+                <a href="continuum.html" class="quick-start-btn">View the Continuum</a>
+                <a href="search.html" class="quick-start-btn">Search for a Strategy</a>
+            </div>
+        </div>
+
+        <!-- Other Ways to Explore -->
+        <div class="other-ways">
+            <h3>Other Ways to Explore</h3>
+            <div class="other-links">
+                <a href="code-lookup.html">Adjustment Code Lookup</a>
+                <a href="continuum.html">View the Continuum</a>
+                <a href="randomiser.html">Try a Random Strategy</a>
+                <a href="glossary.html">Browse Strategy Library</a>
+                <a href="principles.html">Read the Research Principles</a>
+                <a href="how-to-use.html">How to Use This Manual</a>
+            </div>
+        </div>
+
+        <footer style="margin-top: 4rem;">
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

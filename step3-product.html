@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 3: Differentiate Product | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/steps.css">
+    <link rel="stylesheet" href="css/reorganised-pages.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="step-badge">STEP 3: PRODUCT</div>
+            <h1>Differentiate Product</h1>
+            <p class="subtitle">The "Output" - Demonstrating and Extending Learning</p>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a> → <a href="main.html">Manual</a> → <a href="flowchart.html">Flowchart</a> → <a href="step3-product.html">Step 3</a> → Product
+            <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+        </header>
+
+        <section class="step-content">
+            <!-- Step 3 Sub-Navigation -->
+            <div class="step3-subnav">
+                <span class="step3-subnav-label">Step 3:</span>
+                <a href="step3-content.html">Content</a>
+                <a href="step3-process.html">Process</a>
+                <a href="step3-product.html" class="active">Product</a>
+                <a href="step3-environment.html">Environment</a>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="quick-nav-box">
+                <h3>Jump to Strategy:</h3>
+                <div class="quick-nav-links">
+                    <a href="#product-1" class="quick-nav-link" onclick="jumpToStrategy('product-1'); return false;">Choice Boards</a>
+                    <a href="#product-2" class="quick-nav-link" onclick="jumpToStrategy('product-2'); return false;">Tiered Products</a>
+                    <a href="#product-3" class="quick-nav-link" onclick="jumpToStrategy('product-3'); return false;">Think-Tac-Toe</a>
+                    <a href="#product-4" class="quick-nav-link" onclick="jumpToStrategy('product-4'); return false;">RAFT</a>
+                    <a href="#product-5" class="quick-nav-link" onclick="jumpToStrategy('product-5'); return false;">Independent Study</a>
+                    <a href="#product-6" class="quick-nav-link" onclick="jumpToStrategy('product-6'); return false;">Rubrics</a>
+                    <a href="#product-7" class="quick-nav-link" onclick="jumpToStrategy('product-7'); return false;">Varying Complexity</a>
+                    <a href="#product-8" class="quick-nav-link" onclick="jumpToStrategy('product-8'); return false;">Group Products</a>
+                </div>
+            </div>
+
+            <!-- Collapsible Theory Box -->
+            <div class="theory-box-collapsible">
+                <div class="theory-header" onclick="toggleTheoryBox(this)">
+                    <div>
+                        <h3>Theory: Why Product Differentiation Matters</h3>
+                        <p class="theory-subtitle">Click to expand research foundations</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="theory-content" style="display: none;">
+                    <p>Research-based foundations for this differentiation approach.</p>
+                </div>
+            </div>
+
+            <div class="principle-box">
+                <h2>Product: Breaking Free from "Write an Essay"</h2>
+                <p><em>Product differentiation</em> offers diverse ways for students to demonstrate mastery. It's about expanding beyond the default "written response" and recognising that students can show deep learning through multiple formats.</p>
+                <p>The whole education system has become heavily reliant on essays and traditional written formats. Product differentiation says: <strong>What if students could create posters, build websites, design presentations, code something, record podcasts, create infographics?</strong></p>
+                <p>AI makes it possible to support students in producing a much wider range of products, which means more students can show what they know in ways that work for them.</p>
+            </div>
+
+            <div class="strategy-section">
+                <h2>Product Differentiation Strategies</h2>
+
+                
+
+                <div class="strategy-card" id="product-1">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">2</span>
+                            <h3>Choice Boards & Menus</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Grids or menus of activity options that allow students to select how they will demonstrate learning. Students choose from multiple product options, all of which address the same learning goals but offer different ways to show mastery.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When you want to give students agency in how they demonstrate learning. Choice boards work well for culminating projects, application tasks, or ongoing skill practice. They increase engagement by honoring student preferences.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> A 3x3 choice board for showing understanding of ecosystems. Students pick 3 (one from each row):
+                        <ul>
+                            <li><strong>Row 1 (Visual):</strong> Create diagram | Design infographic | Build model</li>
+                            <li><strong>Row 2 (Written):</strong> Write article | Create field guide | Compose poem</li>
+                            <li><strong>Row 3 (Performance):</strong> Present to class | Record video | Create interactive quiz</li>
+                        </ul>
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create a Choice Board</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Design a choice board for [topic/unit]. My KUDs are: [paste KUDs]</p>
+                        <p>Create a 3x3 grid with 9 different product options that:</p>
+                        <ul>
+                            <li>All address the same learning goals but through different formats</li>
+                            <li>Vary in modality (visual, written, oral, digital, hands-on)</li>
+                            <li>Offer different entry points for different learning preferences</li>
+                            <li>Are equally rigorous (not "hard" vs "easy" options)</li>
+                        </ul>
+                        <p>Students should choose [number] options to complete. For each option, provide a brief description and what the final product should include.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create a Tiered Choice Board</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Design a choice board with built-in differentiation by readiness. Create three versions:</p>
+                        <ul>
+                            <li><strong>Board A (Support):</strong> More structured options with clear steps and scaffolds</li>
+                            <li><strong>Board B (Core):</strong> Standard challenge level</li>
+                            <li><strong>Board C (Extension):</strong> More open-ended, requires synthesis or evaluation</li>
+                        </ul>
+                        <p>All boards should offer similar types of products (visual, written, performance) but at different complexity levels. Topic: [topic], KUDs: [paste KUDs]</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create Product-Specific Guidance</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>A student has chosen to [specific product from choice board, e.g., "create an infographic" or "record a podcast episode"].</p>
+                        <p>Create step-by-step guidance for this student that includes:</p>
+                        <ul>
+                            <li>What elements the product must include to demonstrate learning</li>
+                            <li>Steps to create it (considering they may not have done this before)</li>
+                            <li>Tools or resources they could use</li>
+                            <li>How they'll be assessed (what "quality" looks like)</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-2">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">4</span>
+                            <h3>RAFT (Role, Audience, Format, Topic)</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">A technique where students demonstrate learning by taking on a specific <strong>Role</strong>, writing for a targeted <strong>Audience</strong>, in a chosen <strong>Format</strong>, about a specified <strong>Topic</strong>. RAFT makes learning feel more authentic and engaging.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When you want students to apply content knowledge in creative, authentic ways. RAFT works especially well for content that can be viewed from multiple perspectives or communicated to different audiences.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> Teaching about the water cycle:
+                        <ul>
+                            <li><strong>Role:</strong> Water droplet</li>
+                            <li><strong>Audience:</strong> Elementary students</li>
+                            <li><strong>Format:</strong> Travel diary</li>
+                            <li><strong>Topic:</strong> Journey through the water cycle</li>
+                        </ul>
+                        Student writes a first-person diary from the water droplet's perspective, explaining the cycle in accessible language.
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Generate RAFT Options</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create 6-8 RAFT options for demonstrating understanding of [topic]. My KUDs are: [paste KUDs]</p>
+                        <p>For each option, specify:</p>
+                        <ul>
+                            <li><strong>Role:</strong> Who the student is writing as</li>
+                            <li><strong>Audience:</strong> Who they're writing to</li>
+                            <li><strong>Format:</strong> What type of writing/product</li>
+                            <li><strong>Topic:</strong> What specific aspect they're addressing</li>
+                        </ul>
+                        <p>Make the options varied and creative, but ensure each would genuinely demonstrate the KUDs.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Differentiate RAFT by Readiness</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Topic: [topic]. Create RAFT options at three levels:</p>
+                        <ul>
+                            <li><strong>Level 1:</strong> Clear role/audience/format with concrete topic</li>
+                            <li><strong>Level 2:</strong> Standard complexity</li>
+                            <li><strong>Level 3:</strong> More sophisticated role/audience requiring abstract thinking</li>
+                        </ul>
+                        <p>Example for Level 3: Role might be "historian analysing primary sources," Audience might be "academic journal readers," Format might be "scholarly article."</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Support Students in Completing RAFT</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>A student is working on this RAFT:</p>
+                        <ul>
+                            <li><strong>Role:</strong> [role]</li>
+                            <li><strong>Audience:</strong> [audience]</li>
+                            <li><strong>Format:</strong> [format]</li>
+                            <li><strong>Topic:</strong> [topic]</li>
+                        </ul>
+                        <p>Provide:</p>
+                        <ul>
+                            <li>Guidance on how to write from this role's perspective</li>
+                            <li>What this audience needs to know/what tone to use</li>
+                            <li>Structural elements this format typically includes</li>
+                            <li>3-4 sentence starters to help them begin</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-3">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">6</span>
+                            <h3>Negotiated Criteria</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Collaborate with students to determine the core requirements for a product while allowing them to add personal quality goals. Students have voice in what "excellent work" looks like while ensuring essential elements are present.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When you want to build student ownership and agency while maintaining rigor. Works well for projects where students have choice in format but you need to ensure certain learning goals are demonstrated.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> For a research project, teacher establishes non-negotiables (must include 3 credible sources, must address essential question, must show evidence of analysis). Students then add their own quality goals (e.g., "I want to include original graphics" or "I want to interview an expert").
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Establish Non-Negotiable Criteria</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Students are creating [type of product] to demonstrate [KUDs]. What are the non-negotiable criteria (the elements that MUST be present) for students to demonstrate the learning goals?</p>
+                        <p>Create a list of 5-7 essential criteria that:</p>
+                        <ul>
+                            <li>Directly connect to the KUDs</li>
+                            <li>Are observable/assessable</li>
+                            <li>Apply regardless of the specific approach students take</li>
+                        </ul>
+                        <p>These are the baseline requirements all students must meet.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Generate Student Choice Criteria Options</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Beyond the non-negotiable criteria, what additional quality goals could students choose to pursue? Generate 8-10 options that would enhance their [product type], such as:</p>
+                        <ul>
+                            <li>Visual design elements</li>
+                            <li>Additional depth of research</li>
+                            <li>Creative presentation methods</li>
+                            <li>Audience engagement strategies</li>
+                        </ul>
+                        <p>Students should select 2-3 of these to pursue, making their work feel personalised while meeting core requirements.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-4">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">8</span>
+                            <h3>Tiered Assessments</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Provide multiple versions of a summative task that assess the same standards but vary in complexity, scaffolding, or mode of expression. All students demonstrate the same learning goals, but the pathway to demonstrating them differs.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When students have significantly varied readiness levels and you want to assess their learning accurately without ceiling or floor effects. Tiered assessments ensure you see what students actually know, not what they can't access due to task design.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Example in practice:</strong> All students demonstrate understanding of persuasive writing:
+                        <ul>
+                            <li><strong>Tier 1:</strong> Write persuasive paragraph using provided structure and sentence starters</li>
+                            <li><strong>Tier 2:</strong> Write persuasive essay with standard requirements</li>
+                            <li><strong>Tier 3:</strong> Write persuasive essay addressing counterarguments and evaluating evidence quality</li>
+                        </ul>
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Create Tiered Assessment Versions</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create three versions of an assessment for [topic]. All versions must assess the same KUDs: [paste KUDs]</p>
+                        <ul>
+                            <li><strong>Version A (Support):</strong> More scaffolding, step-by-step guidance, concrete application</li>
+                            <li><strong>Version B (Core):</strong> Standard expectations for grade level</li>
+                            <li><strong>Version C (Extension):</strong> More complex application, requires synthesis/evaluation</li>
+                        </ul>
+                        <p>Important: All three versions should be equally rigorous in demonstrating the KUDs. Vary the support and complexity, not the learning goals.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Tier by Changing Product Format</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create three assessment options that address the same KUDs but through different product formats:</p>
+                        <ul>
+                            <li><strong>Option 1:</strong> Traditional written format</li>
+                            <li><strong>Option 2:</strong> Visual/graphic format</li>
+                            <li><strong>Option 3:</strong> Oral/presentation format</li>
+                        </ul>
+                        <p>Ensure all three options would provide equal evidence of student learning. Topic: [topic], KUDs: [paste KUDs]</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-5">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">9</span>
+                            <h3>Expanding the Product Repertoire with AI</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">AI tools make it possible to support students in creating products that were previously too complex or time-consuming to scaffold. Consider these possibilities:</p>
+                            
+                            <div class="when-to-use">
+                                
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Digital products students can now create with AI support:</strong>
+                        <ul>
+                            <li><strong>Websites:</strong> Simple HTML sites to present research or projects</li>
+                            <li><strong>Podcasts/Audio:</strong> Scripted episodes explaining concepts</li>
+                            <li><strong>Infographics:</strong> Visual data representation</li>
+                            <li><strong>Interactive presentations:</strong> Beyond basic slideshows</li>
+                            <li><strong>Code projects:</strong> Simple programs demonstrating concepts</li>
+                            <li><strong>Digital posters:</strong> Combining text, images, data</li>
+                            <li><strong>Video content:</strong> Explainer videos, documentaries, tutorials</li>
+                        </ul>
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Support Non-Traditional Products</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>A student wants to demonstrate learning about [topic] by creating [specific product type, e.g., "a podcast episode" or "a simple website"].</p>
+                        <p>This is new territory for them. Provide:</p>
+                        <ul>
+                            <li>A simple template or structure for this product type</li>
+                            <li>Step-by-step guidance for creation</li>
+                            <li>What content elements must be included to demonstrate the KUDs: [paste KUDs]</li>
+                            <li>Tools they could use (free/accessible options)</li>
+                            <li>How to organise their work before creating the product</li>
+                        </ul>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Generate Product-Specific Rubrics</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create an assessment rubric for [specific product type] that students are creating to demonstrate [KUDs].</p>
+                        <p>The rubric should include criteria for:</p>
+                        <ul>
+                            <li>Content accuracy and completeness</li>
+                            <li>Demonstration of the specific KUDs</li>
+                            <li>Quality specific to this product format (e.g., for podcast: audio clarity, engagement, pacing)</li>
+                            <li>Organisation and presentation</li>
+                        </ul>
+                        <p>Use 4-point scale: Emerging, Developing, Proficient, Exemplary</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Transform Traditional to Digital Product</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>I traditionally have students [describe traditional assignment, e.g., "write a research paper" or "create a poster"].</p>
+                        <p>Suggest 3-4 digital product alternatives that:</p>
+                        <ul>
+                            <li>Would demonstrate the same learning (KUDs: [paste KUDs])</li>
+                            <li>Engage different skills or modalities</li>
+                            <li>Are feasible for [grade level] students with AI support</li>
+                            <li>Maintain or increase rigor</li>
+                        </ul>
+                        <p>For each alternative, explain what makes it equivalent to the original assignment in terms of demonstrating learning.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-6">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">11</span>
+                            <h3>Performance & Presentation Products</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Some students demonstrate their learning best through performance: presenting, demonstrating, teaching, or performing for an audience.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When learning involves demonstrable skills, when public speaking is a goal, or when students excel at oral communication over written.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Examples:</strong> Teach-backs, demonstrations, debates, presentations, gallery walks, simulations
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design a Performance Task</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Students need to demonstrate [KUDs] through a performance or presentation. Design a task where students [specify: teach, demonstrate, present, debate] to show mastery. Provide task description, success criteria, preparation guidance, and assessment rubric.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-7">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">13</span>
+                            <h3>Creative & Artistic Products</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Creative products allow students to demonstrate understanding through art, design, storytelling, or creative expression.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When content has emotional, thematic, or interpretive dimensions; when students need alternative ways to show understanding.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Examples:</strong> Visual art, comics/graphic novels, music/songs, poetry, sculptures/3D models, dramatic scripts
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design Creative Product Options</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Create 4-5 creative product options for demonstrating [KUDs]. For each: explain the form, required content, how creativity enhances learning, and assessment criteria. Ensure artistic skill doesn't become a barrier.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-card" id="product-8">
+                    <div class="strategy-header" onclick="toggleStrategy(this)">
+                        <div class="strategy-title">
+                            <span class="strategy-number">15</span>
+                            <h3>Collaborative Group Products</h3>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="strategy-content">
+                        <div class="strategy-inner">
+                            <p class="description">Some learning is best demonstrated through collaboration: products that require students to work together and create something no individual could create alone.</p>
+                            
+                            <div class="when-to-use">
+                                <strong>When to use:</strong> When learning goals include collaboration skills, when tasks benefit from multiple perspectives, or when product scope requires distributed effort.
+                            </div>
+
+                            <div class="example-box">
+                                <strong>Examples:</strong> Group research projects, collaborative websites/wikis, documentary/video projects, problem-solving challenges
+                            </div>
+
+                            <h4 class="ai-prompts-header">AI Prompts:</h4>
+                            
+                            <div class="prompt-section">
+                                <div class="prompt-title">
+                                    <h4>Design Collaborative Product</h4>
+                                </div>
+                                <div class="prompt-container">
+                                    <p>Design a group product for [KUDs] where students work in groups of [number]. Ensure genuine collaboration, identifiable individual contributions, and assessment of both group product and individual learning. Include task description, roles, timeline, criteria.</p>
+                                </div>
+                                <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                        </div>
+
+            </section>
+
+        <nav class="step-nav">
+            <a href="step3-process.html" class="btn-secondary">← Previous: Differentiate Process</a>
+            <a href="step3-environment.html" class="btn-primary">Next: Differentiate Environment →</a>
+        <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/copy-prompts.js"></script>
+    <script src="js/reorganised-pages.js"></script>
+</body>
+</html>

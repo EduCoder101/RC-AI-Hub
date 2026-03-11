@@ -3,48 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaching with AI | Roseville College Staff Hub</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <title>Differentiation Manual | Roseville College</title>
+    <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* ─── RESET + BASE (hub pattern) ─── */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --burgundy: #5b152e;
-            --burgundy-dark: #3e0e20;
-            --burgundy-light: #7a1e3f;
-            --sandstone: #f6dc80;
-            --sandstone-light: #fdf3c4;
-            --heritage: #8ba8d8;
-            --heritage-light: #d0dff2;
-            --heritage-dark: #5a7aaa;
-            --warm-rose: #f24468;
-            --light-grey: #c8bfb7;
-            --mid-grey: #a19a94;
-            --off-white: #faf8f5;
-            --white: #ffffff;
-            --text: #2c1a22;
-            --text-light: #6b5a62;
-            --nb-teal: #2a7a6a;
-            --nb-teal-light: #e0f2ee;
-        }
 
         body {
             font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
-            background: var(--off-white);
-            color: var(--text);
+            background: var(--bg-light, #faf8f5);
+            color: #2c1a22;
             line-height: 1.6;
+            padding: 0;
         }
 
-        h1, h2, h3, h4 {
-            font-family: Georgia, 'Times New Roman', serif;
-        }
-
-        /* ─── HEADER ─── */
+        /* ─── HEADER (matches hub) ─── */
         .header {
-            background: var(--burgundy);
-            color: var(--white);
+            background: #5b152e;
+            color: #fff;
             position: sticky;
             top: 0;
             z-index: 200;
@@ -67,10 +43,18 @@
             gap: 1rem;
         }
 
+        .header-brand a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
         .header-logo {
             width: 44px;
             height: 44px;
-            background: var(--sandstone);
+            background: #f6dc80;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -78,20 +62,21 @@
             font-family: Georgia, serif;
             font-weight: 700;
             font-size: 1.1rem;
-            color: var(--burgundy);
+            color: #5b152e;
             flex-shrink: 0;
         }
 
         .header-text h1 {
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.35rem;
             font-weight: 700;
-            color: var(--white);
+            color: #fff;
             line-height: 1.2;
         }
 
         .header-text p {
             font-size: 0.8rem;
-            color: var(--sandstone);
+            color: #f6dc80;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
@@ -105,32 +90,31 @@
         .nav-link {
             color: rgba(255,255,255,0.65);
             text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.4rem 1rem;
+            font-size: 0.78rem;
+            padding: 0.3rem 0.75rem;
             border-radius: 6px;
             transition: all 0.2s;
             letter-spacing: 0.03em;
         }
 
-        .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
-        .nav-link.active { color: var(--sandstone); background: rgba(246,220,128,0.15); }
+        .nav-link:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .nav-link.active { color: #f6dc80; background: rgba(246,220,128,0.15); }
 
-        /* ─── NAV DROPDOWN ─── */
+        /* Nav dropdown */
         .nav-dropdown { position: relative; }
         .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
-        .nav-dropdown-toggle::after { content: '▾'; font-size: 0.6rem; opacity: 0.7; transition: transform 0.2s; }
-        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.4rem); left: 50%; transform: translateX(-50%); background: var(--burgundy-dark); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 300; }
+        .nav-dropdown-toggle::after { content: '\25BE'; font-size: 0.6rem; opacity: 0.7; }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.4rem); left: 50%; transform: translateX(-50%); background: #3e0e20; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 300; }
         .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; }
         .nav-dropdown-menu a { display: block; padding: 0.45rem 1rem; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.02em; transition: all 0.15s; white-space: nowrap; }
-        .nav-dropdown-menu a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
-        .nav-dropdown-menu a.active { color: var(--sandstone); }
+        .nav-dropdown-menu a:hover { color: #fff; background: rgba(255,255,255,0.1); }
         .nav-dropdown-menu .dropdown-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.3rem 0; }
 
-        /* ─── HERO ─── */
+        /* ─── HERO (differentiation colors) ─── */
         .hero {
-            background: linear-gradient(135deg, var(--burgundy-dark) 0%, var(--burgundy) 50%, var(--burgundy-light) 100%);
+            background: linear-gradient(135deg, #3e0e20 0%, #5b152e 50%, #7d1e3f 100%);
             padding: 6rem 3rem 5.5rem;
-            color: var(--white);
+            color: #fff;
             position: relative;
             overflow: hidden;
         }
@@ -138,10 +122,8 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -150px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
+            top: -150px; right: -100px;
+            width: 600px; height: 600px;
             background: rgba(255,255,255,0.03);
             border-radius: 50%;
         }
@@ -149,11 +131,9 @@
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -120px;
-            left: 5%;
-            width: 450px;
-            height: 450px;
-            background: rgba(246,220,128,0.04);
+            bottom: -120px; left: 5%;
+            width: 450px; height: 450px;
+            background: rgba(244,185,66,0.05);
             border-radius: 50%;
         }
 
@@ -164,14 +144,16 @@
             z-index: 1;
         }
 
-        .hero-inner h2 {
-            font-size: 4.5rem;
+        .hero h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 4rem;
             font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 1.75rem;
-            line-height: 1.05;
+            color: #fff;
         }
 
-        .hero-inner .hero-lead {
+        .hero .hero-lead {
             font-size: 1.7rem;
             color: rgba(255,255,255,0.92);
             max-width: 900px;
@@ -179,243 +161,233 @@
             margin-bottom: 1rem;
         }
 
-        .hero-inner .hero-sub {
+        .hero .hero-sub {
             font-size: 1.25rem;
             color: rgba(255,255,255,0.55);
             max-width: 700px;
         }
 
-        /* ─── SECTION INTRO ─── */
-        .section-intro {
-            max-width: 1800px;
+        /* ─── LANDING ZONES ─── */
+        .landing-zone {
+            padding: 4rem 2rem;
+        }
+
+        .landing-zone-inner {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 5rem 3rem 1.5rem;
         }
 
-        .section-intro h2 {
-            font-size: 3rem;
-            color: var(--burgundy);
-            margin-bottom: 0.75rem;
+        /* ---- Zone 1: Insight Blocks ---- */
+        .zone-insights {
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe5 50%, #f8f0e8 100%);
+            padding: 4rem 2rem 3rem;
         }
 
-        .section-intro p {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            max-width: 900px;
-            line-height: 1.7;
-        }
-
-        /* ─── TOOL CARDS ─── */
-        .tools-section {
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 2.5rem 3rem 3.5rem;
-        }
-
-        .tool-cards {
+        .insight-blocks {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            gap: 1.5rem;
+            text-align: left;
         }
 
-        .tool-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(91,21,46,0.07);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
+        .insight-block {
+            background: white;
+            border-radius: 12px;
+            padding: 1.75rem;
+            border-left: 4px solid var(--accent-color, #f4b942);
+            box-shadow: 0 2px 8px rgba(125, 30, 63, 0.06);
         }
 
-        .tool-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(91,21,46,0.14);
-        }
-
-        .tool-card-top {
-            padding: 2.75rem 2.5rem 2.25rem;
-            position: relative;
-        }
-
-        .tool-card.card-gemini .tool-card-top {
-            background: linear-gradient(135deg, #e8f0fa 0%, var(--heritage-light) 100%);
-        }
-        .tool-card.card-gems .tool-card-top {
-            background: linear-gradient(135deg, #f5e8ec 0%, #edd0d8 100%);
-        }
-        .tool-card.card-notebook .tool-card-top {
-            background: linear-gradient(135deg, #e0f2ee 0%, #c8e8e0 100%);
-        }
-
-        .tool-card-badge {
-            display: inline-block;
-            font-size: 0.78rem;
+        .insight-block h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.35rem 0.85rem;
-            border-radius: 20px;
+            color: var(--primary-color, #7d1e3f);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .insight-block p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark, #2d3748);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ---- Zone 2: Prompt Builder Hero CTA ---- */
+        .zone-prompt-builder {
+            background: linear-gradient(135deg, var(--primary-color, #7d1e3f) 0%, var(--secondary-color, #a52a52) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .zone-prompt-builder .pb-icon {
+            margin-bottom: 1.5rem;
+        }
+
+        .zone-prompt-builder .pb-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .zone-prompt-builder h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
             margin-bottom: 1rem;
-        }
-
-        .tool-card.card-gemini .tool-card-badge {
-            background: rgba(90,122,170,0.15);
-            color: var(--heritage-dark);
-        }
-        .tool-card.card-gems .tool-card-badge {
-            background: rgba(91,21,46,0.12);
-            color: var(--burgundy);
-        }
-        .tool-card.card-notebook .tool-card-badge {
-            background: rgba(42,122,106,0.12);
-            color: var(--nb-teal);
-        }
-
-        .tool-card-top h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.9rem;
             line-height: 1.2;
         }
 
-        .tool-card.card-gemini .tool-card-top h3 { color: #4a6a9a; }
-        .tool-card.card-gems .tool-card-top h3 { color: var(--burgundy); }
-        .tool-card.card-notebook .tool-card-top h3 { color: var(--nb-teal); }
-
-        .tool-card-top .card-hook {
-            font-size: 1.55rem;
-            color: var(--text);
-            line-height: 1.35;
-            font-family: Georgia, 'Times New Roman', serif;
-            font-weight: 700;
+        .zone-prompt-builder p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            line-height: 1.65;
         }
 
-        .tool-card-desc {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            padding: 1.75rem 2.5rem 0;
-        }
-
-        .tool-card-body {
-            padding: 1.5rem 2.5rem 2.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tool-card-body .imagine-label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--mid-grey);
-            margin-bottom: 0.85rem;
-        }
-
-        .scenario-list {
-            list-style: none;
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.85rem;
-        }
-
-        .scenario-list li {
-            font-size: 1.08rem;
-            color: var(--text);
-            line-height: 1.55;
-            padding-left: 1.6rem;
-            position: relative;
-        }
-
-        .scenario-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.55rem;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .tool-card.card-gemini .scenario-list li::before { background: var(--heritage); }
-        .tool-card.card-gems .scenario-list li::before { background: var(--burgundy-light); }
-        .tool-card.card-notebook .scenario-list li::before { background: var(--nb-teal); }
-
-        .tool-card-footer {
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #eee;
-        }
-
-        .tool-card-footer .footer-note {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        .tool-card-footer .footer-note strong {
-            color: var(--text);
-        }
-
-        .tool-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 1.05rem;
-            font-weight: 700;
+        .pb-cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color, #7d1e3f);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            padding: 0.75rem 1.75rem;
-            border-radius: 10px;
-            transition: all 0.2s;
-            white-space: nowrap;
-            flex-shrink: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .tool-card.card-gemini .tool-cta {
-            background: var(--heritage);
-            color: var(--white);
+        .pb-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
-        .tool-card.card-gemini .tool-cta:hover { background: #7090c0; }
 
-        .tool-card.card-gems .tool-cta {
-            background: var(--burgundy);
-            color: var(--white);
+        /* ---- Zone 3: Router ---- */
+        .zone-router {
+            background: white;
+            padding: 4rem 2rem;
         }
-        .tool-card.card-gems .tool-cta:hover { background: var(--burgundy-light); }
 
-        .tool-card.card-notebook .tool-cta {
-            background: var(--nb-teal);
-            color: var(--white);
+        .zone-router h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color, #7d1e3f);
+            text-align: center;
+            margin-bottom: 0.5rem;
         }
-        .tool-card.card-notebook .tool-cta:hover { background: #348a7a; }
 
-        .tool-card.card-diff .tool-card-top {
-            background: linear-gradient(135deg, #f5e8ec 0%, #fdf3c4 100%);
+        .router-subtitle {
+            font-family: 'Nunito Sans', sans-serif;
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-light, #5a5a5a);
+            margin-bottom: 2.5rem;
         }
-        .tool-card.card-diff .tool-card-badge {
-            background: rgba(125, 30, 63, 0.12);
-            color: #7d1e3f;
-        }
-        .tool-card.card-diff .tool-card-top h3 { color: #7d1e3f; }
-        .tool-card.card-diff .scenario-list li::before { background: #f4b942; }
-        .tool-card.card-diff .tool-cta {
-            background: #7d1e3f;
-            color: var(--white);
-        }
-        .tool-card.card-diff .tool-cta:hover { background: #a52a52; }
 
-        /* ─── FOOTER ─── */
+        .router-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .router-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--bg-light, #faf8f5);
+            border: 2px solid var(--border-color, #e5ddd5);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .router-card:hover {
+            border-color: var(--primary-color, #7d1e3f);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(125, 30, 63, 0.1);
+        }
+
+        .router-card .router-intent {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color, #7d1e3f);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .router-card .router-destination {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-light, #5a5a5a);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+
+        .router-card .router-arrow {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--secondary-color, #a52a52);
+        }
+
+        /* ---- Zone 4: Go Deeper ---- */
+        .zone-deeper {
+            background: var(--bg-light, #faf8f5);
+            padding: 3rem 2rem;
+            border-top: 2px solid var(--border-color, #e5ddd5);
+        }
+
+        .zone-deeper h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light, #5a5a5a);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .deeper-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .deeper-links a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color, #7d1e3f);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            background: white;
+            border: 1px solid var(--border-color, #e5ddd5);
+        }
+
+        .deeper-links a:hover {
+            background: var(--primary-color, #7d1e3f);
+            color: white;
+            border-color: var(--primary-color, #7d1e3f);
+        }
+
+        /* ---- Footer (hub pattern) ---- */
         .footer {
-            background: var(--burgundy-dark);
+            background: #3e0e20;
             color: rgba(255,255,255,0.7);
             padding: 2.5rem 3rem;
             text-align: center;
@@ -429,7 +401,7 @@
         .footer-title {
             font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.05rem;
-            color: var(--sandstone);
+            color: #f6dc80;
             margin-bottom: 0.5rem;
         }
 
@@ -440,257 +412,170 @@
         }
 
         /* ─── RESPONSIVE ─── */
-        @media (max-width: 1100px) {
-            .tool-cards {
-                grid-template-columns: 1fr;
-                max-width: 700px;
-                margin: 0 auto;
-            }
-        }
-
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 1rem 1.5rem;
+                padding: 1rem 1.25rem;
             }
-
             .header-nav { gap: 0.25rem; }
-
-            .hero {
-                padding: 4rem 1.5rem 3.5rem;
-            }
-
-            .hero-inner h2 {
-                font-size: 2.8rem;
-            }
-
-            .hero-inner .hero-lead {
-                font-size: 1.3rem;
-            }
-
-            .hero-inner .hero-sub {
-                font-size: 1.1rem;
-            }
-
-            .section-intro {
-                padding: 3.5rem 1.5rem 0.75rem;
-            }
-
-            .section-intro h2 {
-                font-size: 2.2rem;
-            }
-
-            .section-intro p {
-                font-size: 1.15rem;
-            }
-
-            .tools-section {
-                padding: 1.5rem 1.5rem 2.5rem;
-            }
-
-            .tool-card-top {
-                padding: 2rem 1.5rem 1.5rem;
-            }
-
-            .tool-card-desc {
-                padding: 1.25rem 1.5rem 0;
-            }
-
-            .tool-card-body {
-                padding: 1.25rem 1.5rem 1.75rem;
-            }
-
-            .tool-card-top h3 {
-                font-size: 1.3rem;
-            }
-
-            .tool-card-top .card-hook {
-                font-size: 1.3rem;
-            }
-
-            .tool-card-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
+            .nav-link { font-size: 0.72rem; padding: 0.25rem 0.5rem; }
+            .hero { padding: 4rem 1.5rem 3.5rem; }
+            .hero h2 { font-size: 2.8rem; }
+            .hero .hero-lead { font-size: 1.3rem; }
+            .hero .hero-sub { font-size: 1.1rem; }
         }
 
-        @media (max-width: 480px) {
-            .hero-inner h2 {
-                font-size: 2.2rem;
-            }
+        @media (max-width: 700px) {
+            .insight-blocks { grid-template-columns: 1fr; }
+            .router-cards { grid-template-columns: 1fr; }
+        }
 
-            .hero-inner .hero-lead {
-                font-size: 1.1rem;
-            }
-
-            .nav-link {
-                font-size: 0.78rem;
-                padding: 0.3rem 0.6rem;
-            }
-
-            .section-intro h2 {
-                font-size: 1.75rem;
-            }
-
-            .tool-card-top .card-hook {
-                font-size: 1.2rem;
-            }
+        @media (max-width: 550px) {
+            .hero h2 { font-size: 2.2rem; }
+            .hero .hero-lead { font-size: 1.1rem; }
+            .zone-prompt-builder h2 { font-size: 1.6rem; }
+            .zone-prompt-builder p { font-size: 1.05rem; }
+            .zone-router h2 { font-size: 1.6rem; }
+            .landing-zone { padding: 3rem 1.25rem; }
+            .footer { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── HEADER ─── -->
-    <header class="header">
-        <div class="header-inner">
-            <div class="header-brand">
+<!-- ─── HEADER ─── -->
+<header class="header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a href="../index.html">
                 <div class="header-logo">RC</div>
                 <div class="header-text">
-                    <h1>Teaching with AI</h1>
+                    <h1>Differentiation Manual</h1>
                     <p>Roseville College Staff Hub</p>
                 </div>
+            </a>
+        </div>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link">Hub</a>
+            <a href="../gemini.html" class="nav-link">Gemini</a>
+            <div class="nav-dropdown">
+                <a href="../gems/gem-builder-guide.html" class="nav-link nav-dropdown-toggle">Gem Builder</a>
+                <div class="nav-dropdown-menu">
+                    <a href="../gems/gem-builder-guide.html">Gem Builder Guide</a>
+                    <a href="../gems/ideas-bank.html">Ideas Bank</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="https://gemini.google.com/gem/1TriIs2vPlkaemSiJXY2Qcb8W43274Gdo?usp=sharing" target="_blank" rel="noopener">Gem Creator &#8599;</a>
+                </div>
             </div>
-            <nav class="header-nav">
-                <a href="index.html" class="nav-link active">Hub</a>
-                <a href="gemini.html" class="nav-link">Gemini</a>
-                <div class="nav-dropdown">
-                    <a href="gems/gem-builder-guide.html" class="nav-link nav-dropdown-toggle">Gem Builder</a>
-                    <div class="nav-dropdown-menu">
-                        <a href="gems/gem-builder-guide.html">Gem Builder Guide</a>
-                        <a href="gems/ideas-bank.html">Ideas Bank</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="https://gemini.google.com/gem/1TriIs2vPlkaemSiJXY2Qcb8W43274Gdo?usp=sharing" target="_blank" rel="noopener">Gem Creator ↗</a>
-                    </div>
-                </div>
-                <a href="notebooklm.html" class="nav-link">NotebookLM</a>
-                <a href="differentiation-manual/index.html" class="nav-link">Differentiation</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- ─── HERO ─── -->
-    <section class="hero">
-        <div class="hero-inner">
-            <h2>What could you create with AI in your corner?</h2>
-            <p class="hero-lead">Three free Google tools and a practical differentiation manual that help you think, create, and explore, so the ideas in your head can actually become something.</p>
-            <p class="hero-sub">No experience needed. Pick a card below and try it today.</p>
-        </div>
-    </section>
-
-    <!-- ─── SECTION INTRO ─── -->
-    <div class="section-intro">
-        <h2>Not sure where to start?</h2>
-        <p>Each tool solves a different kind of problem. Read the questions below and pick the one that sounds most like you.</p>
+            <a href="../notebooklm.html" class="nav-link">NotebookLM</a>
+            <a href="index.html" class="nav-link active">Differentiation</a>
+        </nav>
     </div>
+</header>
 
-    <!-- ─── TOOL CARDS ─── -->
-    <div class="tools-section">
-        <div class="tool-cards">
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <div class="hero-inner">
+        <h2>Differentiate with confidence.</h2>
+        <p class="hero-lead">The strategies you need, the AI prompts that build them, and a framework that makes differentiation part of your workflow, not a side project.</p>
+        <p class="hero-sub">79 strategies. 146 AI prompts. Built for real classrooms.</p>
+    </div>
+</section>
 
-            <!-- Gemini -->
-            <a href="gemini.html" class="tool-card card-gemini">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">Start here, no setup needed</div>
-                    <h3>Gemini</h3>
-                    <div class="card-hook">What would you create if getting started was the easy part?</div>
-                </div>
-                <div class="tool-card-desc">Gemini is like texting a knowledgeable colleague who&rsquo;s always free. Describe what you need in plain English: an email, a lesson idea, a rewrite. It delivers in seconds.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>You need a parent email about camp. Describe the key points and get a polished draft in 30&nbsp;seconds</li>
-                        <li>Tomorrow&rsquo;s lesson needs discussion questions. Tell Gemini the topic and year level, done</li>
-                        <li>You have a half-formed idea for a unit. Use Gemini as a thinking partner: riff on approaches, test angles, and land on something that works</li>
-                        <li>A reading task needs adjusting for Year&nbsp;7. Paste it in, explain the learning goal and where students get stuck, and ask for a scaffolded version</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>No setup.</strong> No training. Just start typing.</div>
-                        <span class="tool-cta">Get started &rarr;</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Gems -->
-            <a href="gems/ideas-bank.html" class="tool-card card-gems">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">Save time every week</div>
-                    <h3>Gemini Gems</h3>
-                    <div class="card-hook">What if your most tedious task took one click?</div>
-                </div>
-                <div class="tool-card-desc">A Gem is a custom AI tool you build once, then reuse forever. Set your preferred tone, format, and style. It follows your rules every time.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>A report comment writer: paste dot points, get polished comments in your voice</li>
-                        <li>A quiz generator that matches your faculty&rsquo;s exact format every time</li>
-                        <li>A feedback tool: enter grades, get personalised formative comments</li>
-                        <li>A translator that turns policy-speak into clear, parent-friendly language</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>Some setup.</strong> Then one click every time after.</div>
-                        <span class="tool-cta">Browse ideas &rarr;</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- NotebookLM -->
-            <a href="notebooklm.html" class="tool-card card-notebook">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">Work with your own documents</div>
-                    <h3>NotebookLM</h3>
-                    <div class="card-hook">What if you could ask a 40-page document one question?</div>
-                </div>
-                <div class="tool-card-desc">Upload your own documents: syllabi, policies, research articles. Then ask questions and get answers with direct citations back to the source.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>Upload a syllabus and ask &ldquo;What are the key assessment requirements for Unit&nbsp;3?&rdquo;</li>
-                        <li>Drop in five research articles and get a summary of the main findings in minutes</li>
-                        <li>Load school policies and ask specific questions instead of reading every page</li>
-                        <li>Upload your course materials and generate a student study guide automatically</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>Upload sources first.</strong> Then just ask questions.</div>
-                        <span class="tool-cta">Open guide &rarr;</span>
-                    </div>
-                </div>
-            </a>
-
-            <!-- Differentiation Manual -->
-            <a href="differentiation-manual/index.html" class="tool-card card-diff">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">A practical framework for every teacher</div>
-                    <h3>Differentiation Manual</h3>
-                    <div class="card-hook">What if three versions of a resource took two minutes, not two hours?</div>
-                </div>
-                <div class="tool-card-desc">A step-by-step manual with 79 strategies and 146 AI prompts. Describe your class, paste your resource, and get a ready-to-use differentiation prompt built from research-backed strategies.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>You have a mixed-ability Year&nbsp;9 class and a text that half of them can&rsquo;t access. Use the Prompt Builder to generate foundations, core, and extension versions in minutes</li>
-                        <li>A student has adjustment codes you&rsquo;ve never worked with before. Look them up and get matched strategies with AI prompts ready to go</li>
-                        <li>You&rsquo;re planning a new unit and want to build in differentiation from the start. Walk through the 7-step framework with AI doing the heavy lifting</li>
-                        <li>You want to push your top students beyond &ldquo;more work.&rdquo; Explore extension strategies that deepen thinking rather than add volume</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>79 strategies.</strong> AI prompts for each. Start with the Prompt Builder.</div>
-                        <span class="tool-cta">Open manual &rarr;</span>
-                    </div>
-                </div>
-            </a>
-
+<!-- Zone 1: Insight Blocks -->
+<section class="landing-zone zone-insights">
+    <div class="landing-zone-inner">
+        <div class="insight-blocks">
+            <div class="insight-block">
+                <h3>The gap between knowing and doing</h3>
+                <p>Every teacher can describe good differentiation. But under time pressure, it defaults to "more work" or "less work." This manual bridges that gap with practical frameworks and AI-generated materials you can use on Monday.</p>
+            </div>
+            <div class="insight-block">
+                <h3>Same goal, different pathways</h3>
+                <p>Every student works toward the same learning intention. Foundations strategies build prerequisite skills to access it. Extension strategies deepen understanding beyond it. The continuum keeps everyone moving toward the same destination.</p>
+            </div>
+            <div class="insight-block">
+                <h3>Change the nature, not the amount</h3>
+                <p>Foundations does not mean easy. Extension does not mean more. Effective differentiation adjusts the kind of challenge, not the volume. Fewer questions is a quantitative fix. Sentence starters and graphic organisers are qualitative ones.</p>
+            </div>
+            <div class="insight-block">
+                <h3>AI handles production, you handle judgment</h3>
+                <p>Creating three versions of a resource used to take an evening. With AI, describe your learning intention and class profile, and get foundations, core, and extension materials to review, refine, and use. Minutes, not hours.</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- ─── FOOTER ─── -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-title">Teaching with AI &middot; Roseville College</div>
-            <p class="footer-note">This hub is a living resource. Tools and guides will be updated as our practice develops.</p>
+<!-- Zone 2: Prompt Builder Hero CTA -->
+<section class="landing-zone zone-prompt-builder">
+    <div class="landing-zone-inner">
+        <div class="pb-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
         </div>
-    </footer>
+        <h2>Build a differentiation prompt in 2 minutes</h2>
+        <p>Answer a few questions about your class, resource, and learning intention. Get a ready-to-use AI prompt built from the manual's 79 strategies.</p>
+        <a href="prompt-builder.html" class="pb-cta-button">Open the Prompt Builder &rarr;</a>
+    </div>
+</section>
+
+<!-- Zone 3: Router -->
+<section class="landing-zone zone-router">
+    <div class="landing-zone-inner">
+        <h2>What are you trying to do?</h2>
+        <p class="router-subtitle">Pick the path that matches where you are right now.</p>
+
+        <div class="router-cards">
+            <a href="prompt-builder.html" class="router-card">
+                <div class="router-intent">I need to differentiate a resource right now</div>
+                <div class="router-destination">Answer a few questions, get a ready-to-use prompt.</div>
+                <span class="router-arrow">Prompt Builder &rarr;</span>
+            </a>
+            <a href="by-task-type.html" class="router-card">
+                <div class="router-intent">I want to explore strategies for my context</div>
+                <div class="router-destination">Browse by task type or see where strategies sit on the continuum.</div>
+                <span class="router-arrow">Find by Task Type &rarr;</span>
+            </a>
+            <a href="main.html" class="router-card">
+                <div class="router-intent">I'm planning a unit from scratch</div>
+                <div class="router-destination">Work through all 7 steps from learning intentions to assessment.</div>
+                <span class="router-arrow">7-Step Framework &rarr;</span>
+            </a>
+            <a href="code-lookup.html" class="router-card">
+                <div class="router-intent">I have adjustment codes to match</div>
+                <div class="router-destination">Enter codes from a student's learning profile and see matched strategies.</div>
+                <span class="router-arrow">Code Lookup &rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Zone 4: Go Deeper -->
+<section class="landing-zone zone-deeper">
+    <div class="landing-zone-inner">
+        <h3>Go deeper</h3>
+        <div class="deeper-links">
+            <a href="principles.html">The Thinking Behind It</a>
+            <a href="continuum.html">View the Continuum</a>
+            <a href="glossary.html">Glossary</a>
+            <a href="search.html">Search Strategies</a>
+            <a href="flowchart.html">Flowchart</a>
+            <a href="how-to-use.html">How to Use This Manual</a>
+            <a href="randomiser.html">Try a Random Strategy</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-title">Teaching with AI &middot; Roseville College</div>
+        <p class="footer-note">This hub is a living resource. Tools and guides will be updated as our practice develops.</p>
+    </div>
+</footer>
 
 </body>
 </html>

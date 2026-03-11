@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 2: Know Your Learners | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/steps.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="step-badge">STEP 2</div>
+            <h1>Know Your Learners</h1>
+            <p class="subtitle">Pre-Assessment: Building Comprehensive Evidence</p>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a> → <a href="main.html">Manual</a> → <a href="flowchart.html">Flowchart</a> → Step 2
+            <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+        </header>
+
+        <section class="step-content">
+            <div class="principle-box">
+                <h2>Differentiation Without Data is Just Guessing</h2>
+                <p>You can't differentiate effectively without knowing your students. This step is about gathering comprehensive evidence (multiple data points over time) rather than relying on a single assessment.</p>
+                <p><strong>The goal:</strong> Understand where each student is in relation to the learning destination (Step 1), what ignites their curiosity, and how they learn best.</p>
+            </div>
+
+            <div class="framework">
+                <h2>Three Dimensions of Knowing Your Learners</h2>
+                
+                <div class="kud-section">
+                    <h3><span class="kud-letter">R</span> Readiness</h3>
+                    <p class="kud-description">A student's current proximity to the learning goal. This is not about "smart" vs. "not smart." It's about where they are right now in relation to this specific content.</p>
+                    <div class="example-box">
+                        <strong>Questions to ask:</strong>
+                        <ul>
+                            <li>What prerequisite knowledge or skills do they already have?</li>
+                            <li>What misconceptions might they bring?</li>
+                            <li>How much support will they need to access this content?</li>
+                            <li>Are they ready for extension beyond the core learning?</li>
+                        </ul>
+                    </div>
+                    <div class="tip-box">
+                        💡 <strong>Key insight:</strong> Readiness is content-specific. A student might be advanced in reading but need support in maths, or vice versa.
+                    </div>
+                </div>
+
+                <div class="kud-section">
+                    <h3><span class="kud-letter">I</span> Interests</h3>
+                    <p class="kud-description">What topics ignite a "spark" or "fire" of curiosity in the student. Interest-based differentiation increases engagement and motivation.</p>
+                    <div class="example-box">
+                        <strong>Questions to ask:</strong>
+                        <ul>
+                            <li>What topics do they talk about outside of class?</li>
+                            <li>What connections can you make between curriculum content and their passions?</li>
+                            <li>What examples or contexts would make this content more relevant to them?</li>
+                        </ul>
+                    </div>
+                    <div class="tip-box">
+                        💡 <strong>Key insight:</strong> You don't need to know everything about every student's interests. Even a few key connections can make differentiation more engaging.
+                    </div>
+                </div>
+
+                <div class="kud-section">
+                    <h3><span class="kud-letter">P</span> Learning Profile</h3>
+                    <p class="kud-description">How a student learns best: their preferred learning style, intelligence preference, cultural background, and environmental needs.</p>
+                    <div class="example-box">
+                        <strong>Considerations include:</strong>
+                        <ul>
+                            <li><strong>Learning style:</strong> Visual, auditory, kinesthetic preferences</li>
+                            <li><strong>Intelligence preference:</strong> Verbal, logical-mathematical, spatial, musical, etc.</li>
+                            <li><strong>Working environment:</strong> Quiet vs. collaborative, structured vs. flexible</li>
+                            <li><strong>Cultural and linguistic background:</strong> How their background shapes learning preferences</li>
+                        </ul>
+                    </div>
+                    <div class="tip-box">
+                        💡 <strong>Key insight:</strong> Learning profiles are about preferences, not limitations. Students can learn in multiple ways, but they often have a preference that makes learning more efficient.
+                    </div>
+                </div>
+            </div>
+
+            <div class="ai-prompts-section">
+                <h2>Using AI to Know Your Learners</h2>
+                <p>AI can help you create pre-assessments, analyse student data, and build teaching strategies based on what you know about your class.</p>
+                <div class="context-reminder">
+                    <h4>💡 Remember: Context is Key</h4>
+                    <p>For AI prompts to work at their best, provide context about your students and teaching situation. Include details like:</p>
+                    <p><strong>Year level, student ages, class size, prior learning, learning styles present in your class, specific needs or challenges, your curriculum requirements.</strong></p>
+                    <p>The more context you provide, the more tailored and useful the AI's suggestions will be.</p>
+                </div>
+
+
+                                <div class="prompt-card" id="learners-1">
+                    <div class="prompt-card-header" onclick="togglePromptCard(this)">
+                        <h4>Create a Pre-Assessment</h4>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="prompt-card-content">
+                        <div class="prompt-container">
+                            <p>I'm about to teach [topic/unit] to [grade level] students. My KUDs are:</p>
+                        <ul>
+                            <li><strong>KNOW:</strong> [paste your facts/vocabulary]</li>
+                            <li><strong>UNDERSTAND:</strong> [paste your concepts]</li>
+                            <li><strong>DO:</strong> [paste your skills]</li>
+                        </ul>
+                        <p>Create a pre-assessment that will help me determine:</p>
+                        <ul>
+                            <li>What students already know about this topic</li>
+                            <li>What misconceptions they might have</li>
+                            <li>What prerequisite skills they have or lack</li>
+                            <li>Who might need support vs. who is ready for extension</li>
+                        </ul>
+                        <p>The assessment should take no more than [10-15 minutes] and use a variety of question types (multiple choice, short answer, visual responses).</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                        
+                    </div>
+                </div>
+
+
+                                <div class="prompt-card" id="learners-2">
+                    <div class="prompt-card-header" onclick="togglePromptCard(this)">
+                        <h4>Build a Deidentified Class Profile</h4>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="prompt-card-content">
+                        <div class="prompt-container">
+                            <p>I teach [grade level] [subject]. Here's a deidentified profile of my students' readiness levels based on recent assessments:</p>
+                        <ul>
+                            <li>Student A: [brief description of readiness]</li>
+                            <li>Student B: [brief description]</li>
+                            <li>Student C: [brief description]</li>
+                            <li>[Continue for class...]</li>
+                        </ul>
+                        <p>Based on this profile, suggest:</p>
+                        <ul>
+                            <li>How I might group students for differentiated instruction on [topic]</li>
+                            <li>What different entry points or scaffolds different groups might need</li>
+                            <li>What extension opportunities would challenge students who are ready</li>
+                        </ul>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                        <div class="tip-box" style="margin-top: 1rem;">
+                        💡 <strong>Privacy note:</strong> When using Enterprise Gemini or similar tools, you can be more flexible with student information, but avoid using full names. Use "Student A," "Student B," or initials instead.
+                    </div>
+                    </div>
+                </div>
+
+
+                                <div class="prompt-card" id="learners-3">
+                    <div class="prompt-card-header" onclick="togglePromptCard(this)">
+                        <h4>Discover Student Interests</h4>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="prompt-card-content">
+                        <div class="prompt-container">
+                            <p>I'm teaching [topic] and want to make connections to student interests. Based on [brief description of your students' ages, backgrounds, common interests], suggest:</p>
+                        <ul>
+                            <li>Real-world connections or examples that would resonate</li>
+                            <li>Current events or pop culture references that relate to this content</li>
+                            <li>Ways to frame the topic through different interest lenses (sports, music, gaming, art, etc.)</li>
+                        </ul>
+                        <p>Give me 5-7 concrete ideas I could use to differentiate by interest.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                        
+                    </div>
+                </div>
+
+
+                                <div class="prompt-card" id="learners-4">
+                    <div class="prompt-card-header" onclick="togglePromptCard(this)">
+                        <h4>Identify Misconceptions</h4>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="prompt-card-content">
+                        <div class="prompt-container">
+                            <p>I'm teaching [topic] to [grade level] students. What are the most common misconceptions students have about this topic?</p>
+                        <p>For each misconception, explain:</p>
+                        <ul>
+                            <li>Why students typically develop this misconception</li>
+                            <li>How I can pre-assess for it</li>
+                            <li>What instructional strategy would help correct it</li>
+                        </ul>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                        
+                    </div>
+                </div>
+
+
+                                <div class="prompt-card" id="learners-5">
+                    <div class="prompt-card-header" onclick="togglePromptCard(this)">
+                        <h4>Differentiate for Learning Profiles</h4>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="prompt-card-content">
+                        <div class="prompt-container">
+                            <p>I have students with varied learning profiles in my [grade level] class. For the topic of [topic], create three versions of the same core activity:</p>
+                        <ul>
+                            <li>Version 1: Optimised for visual learners (use diagrams, graphic organisers, colour coding)</li>
+                            <li>Version 2: Optimised for auditory learners (use discussion, oral explanation, listening tasks)</li>
+                            <li>Version 3: Optimised for kinesthetic learners (use movement, hands-on manipulation, building/creating)</li>
+                        </ul>
+                        <p>All three versions should address the same KUDs but engage students differently based on their learning preferences.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                        
+                    </div>
+                </div>
+
+
+                                <div class="prompt-card" id="learners-6">
+                    <div class="prompt-card-header" onclick="togglePromptCard(this)">
+                        <h4>Analyse Pre-Assessment Results</h4>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    
+                    <div class="prompt-card-content">
+                        <div class="prompt-container">
+                            <p>I gave my students a pre-assessment on [topic]. Here are the results [paste deidentified data or summary].</p>
+                        <p>Based on this data, help me:</p>
+                        <ul>
+                            <li>Identify which students are ready for the core instruction vs. need review vs. ready for extension</li>
+                            <li>Spot patterns in misconceptions or gaps</li>
+                            <li>Suggest how I should group students for differentiated instruction</li>
+                            <li>Recommend what scaffolding or supports different groups will need</li>
+                        </ul>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Full Prompt</button>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="why-this-matters">
+                <h2>Why This Step Matters</h2>
+                <p>Effective differentiation is responsive, not arbitrary. When you differentiate based on actual student data (readiness, interests, and learning profiles), you create learning experiences that genuinely meet students where they are.</p>
+                <p>Without this step, you're essentially creating different versions of content based on assumptions. With this step, you're creating different versions based on evidence.</p>
+                <p class="quote">"Differentiation is not something we do to students. It is something we do for students, based on what we know about them."<br><em>- Carol Ann Tomlinson</em></p>
+            </div>
+        </section>
+
+        <nav class="step-nav">
+            <a href="step1-kuds.html" class="btn-secondary">← Previous: Establish KUDs</a>
+            <a href="step3-content.html" class="btn-primary">Next: Differentiate Content →</a>
+        <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/copy-prompts.js"></script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 5: The Equalizer | Differentiation Manual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/steps.css">
+    <link rel="stylesheet" href="css/equalizer.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="step-badge">STEP 5</div>
+            <h1>Use "The Equalizer"</h1>
+            <p class="subtitle">Fine-Tuning Challenge Across Eight Continuums</p>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a> → <a href="main.html">Manual</a> → <a href="flowchart.html">Flowchart</a> → Step 5
+            <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+        </header>
+
+        <section class="step-content">
+            <div class="principle-box">
+                <h2>🎛️ The Equaliser: Adjusting Challenge to Match Readiness</h2>
+                <p><strong>The music analogy:</strong> Like an audio equaliser that adjusts different frequency bands to create the perfect sound, "The Equaliser" helps you adjust different dimensions of a task to create the perfect level of challenge for each student.</p>
+                <p>"The Equaliser" is a tool designed to help teachers plan differentiated lessons by adjusting "buttons" across several continuums to match student readiness. <strong>The goal is to equalise a student's chances of being appropriately challenged</strong>, not too easy, not impossibly hard.</p>
+                <p>Think of these as eight different "knobs" you can turn to make a task more or less complex. You don't need to adjust all eight for every lesson. Choose the ones that matter most for your specific content and students.</p>
+            </div>
+
+            <div class="equalizer-intro">
+                <h2>The Eight Continuums</h2>
+                <p>Click on each continuum below to explore what it means and see examples. Each includes AI prompts to help you adjust tasks along that dimension.</p>
+            </div>
+
+            <div class="continuums-container">
+                
+                <!-- Continuum 1 -->
+                <div class="continuum-card" id="equalizer-1">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>1. Foundational ↔ Transformational</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Foundational</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Transformational</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Foundational:</strong> When an idea is new, students need supporting information that is clear and plainly worded, and time to practice applying the idea in a straightforward way.</li>
+                                <li><strong>Transformational:</strong> When students are already clear on a concept, they need to move quickly into information that shows them intricacies, stretch and bend the idea, and see how it interacts with other ideas to create new thought.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example:</strong> 
+                            <ul>
+                                <li><strong>Foundational task:</strong> Classify animals by body covering (fur, scales, feathers)</li>
+                                <li><strong>Transformational task:</strong> Predict how changes in environment would affect body coverings over time, and connect to adaptation and evolution</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Move Task from Foundational to Transformational:</strong></p>
+                            <p>Here's a foundational task I use: [describe task]</p>
+                            <p>Transform this into a more advanced version that:</p>
+                            <ul>
+                                <li>Assumes students grasp the basics</li>
+                                <li>Asks them to explore nuances, complexities, or exceptions</li>
+                                <li>Requires synthesis with other concepts</li>
+                                <li>Challenges them to see the "big picture" or generate new applications</li>
+                            </ul>
+                            <p>KUDs: [paste KUDs]</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 2 -->
+                <div class="continuum-card" id="equalizer-2">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>2. Concrete ↔ Abstract</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Concrete</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Abstract</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Concrete:</strong> Students need to become familiar with key information before looking at deeper meanings. Focus on tangible examples, specific details, and surface-level understanding.</li>
+                                <li><strong>Abstract:</strong> Once information is grasped concretely, students move to meanings, implications, themes, and underlying principles.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example (literature):</strong>
+                            <ul>
+                                <li><strong>Concrete task:</strong> Describe what happens in the story (plot summary)</li>
+                                <li><strong>Abstract task:</strong> Analyse the story's theme and what the author is saying about human nature</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Create Concrete and Abstract Versions:</strong></p>
+                            <p>Take this task: [describe task]</p>
+                            <p>Create two versions:</p>
+                            <ul>
+                                <li><strong>Concrete version:</strong> Focuses on specific, tangible information and examples. "What" questions.</li>
+                                <li><strong>Abstract version:</strong> Focuses on themes, implications, underlying principles. "Why" and "what does this mean" questions.</li>
+                            </ul>
+                            <p>Both should address the same core content but at different levels of abstraction.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 3 -->
+                <div class="continuum-card" id="equalizer-3">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>3. Simple ↔ Complex</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Simple</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Complex</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Simple:</strong> Students see just the "big picture" or the "skeleton" of a topic without many details. One concept at a time.</li>
+                                <li><strong>Complex:</strong> Once the skeleton is clear, students add "muscle, bone, and nerves": multiple details, variables, or concepts simultaneously.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example (science):</strong>
+                            <ul>
+                                <li><strong>Simple task:</strong> Identify one variable that affects plant growth</li>
+                                <li><strong>Complex task:</strong> Investigate how multiple variables (water, light, soil type, temperature) interact to affect plant growth</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Adjust Complexity Level:</strong></p>
+                            <p>Take this task: [describe task]</p>
+                            <p>Create three versions at different complexity levels:</p>
+                            <ul>
+                                <li><strong>Simple:</strong> One main concept/variable, minimal details</li>
+                                <li><strong>Moderate:</strong> 2-3 concepts/variables, some interconnections</li>
+                                <li><strong>Complex:</strong> Multiple concepts/variables, numerous details, intricate relationships</li>
+                            </ul>
+                            <p>Ensure all versions assess the same core understanding but with different levels of complexity.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 4 -->
+                <div class="continuum-card" id="equalizer-4">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>4. Single Facet ↔ Multiple Facets</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Single Facet</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Multiple Facets</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Single Facet:</strong> Tasks involve only a few steps, one solution method, or focus on one discipline/perspective.</li>
+                                <li><strong>Multiple Facets:</strong> Tasks require following complicated directions, solving problems that need flexible approaches, or making connections across disciplines.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example (maths):</strong>
+                            <ul>
+                                <li><strong>Single facet task:</strong> Solve for x in a linear equation using the standard algorithm</li>
+                                <li><strong>Multiple facets task:</strong> Solve a real-world problem that requires creating equations, graphing, interpreting results, and explaining why your method works</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Increase Number of Facets:</strong></p>
+                            <p>Here's a single-facet task: [describe task]</p>
+                            <p>Redesign it to incorporate multiple facets by:</p>
+                            <ul>
+                                <li>Adding steps or stages that require different skills</li>
+                                <li>Requiring multiple solution approaches or perspectives</li>
+                                <li>Connecting to other disciplines or contexts</li>
+                                <li>Asking students to justify or explain their process</li>
+                            </ul>
+                            <p>The core learning goal remains the same, but the path to it becomes more multifaceted.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 5 -->
+                <div class="continuum-card" id="equalizer-5">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>5. Small Leap ↔ Great Leap</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Small Leap</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Great Leap</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Small Leap:</strong> Students apply learning in straightforward, similar contexts. Limited transfer required.</li>
+                                <li><strong>Great Leap:</strong> Students transfer learning to very different contexts, make non-obvious connections, or synthesise across domains.</li>
+                            </ul>
+                            <p><em>Note: There is "no option for 'no leap'" because all students must think and apply ideas; the size of the leap varies.</em></p>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example (measurement):</strong>
+                            <ul>
+                                <li><strong>Small leap:</strong> Learn to calculate area, then verify the area of a hamster house</li>
+                                <li><strong>Great leap:</strong> Learn to calculate area, then estimate materials needed for a building project and calculate proportional cost implications of increasing the area by 50%</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Adjust Size of Application Leap:</strong></p>
+                            <p>Students are learning [concept/skill]. Create three application tasks with different-sized leaps:</p>
+                            <ul>
+                                <li><strong>Small leap:</strong> Apply in a very similar context to what was taught</li>
+                                <li><strong>Medium leap:</strong> Apply in a moderately different context</li>
+                                <li><strong>Great leap:</strong> Transfer to a quite different context or synthesise with other learning</li>
+                            </ul>
+                            <p>All three should require genuine thinking, but the transfer distance varies.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 6 -->
+                <div class="continuum-card" id="equalizer-6">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>6. Structured ↔ Open-Ended</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Structured</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Open-Ended</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Structured:</strong> Tasks are "fairly well laid out," like a driver on a prescribed driving course. Clear steps, specific requirements, often "right" answers.</li>
+                                <li><strong>Open-Ended:</strong> Once modeling has served its purpose, students "branch out and get creative": craft their own essays, design their own experiments, pose their own questions.</li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example (writing):</strong>
+                            <ul>
+                                <li><strong>Structured task:</strong> Write a paragraph following this exact structure: topic sentence, three supporting details with evidence, concluding sentence</li>
+                                <li><strong>Open-ended task:</strong> Write a persuasive piece on a topic of your choice, using strategies we've studied. You decide structure and approach</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Adjust Level of Structure:</strong></p>
+                            <p>Take this task: [describe task]</p>
+                            <p>Create two versions:</p>
+                            <ul>
+                                <li><strong>Structured version:</strong> Provide step-by-step directions, templates, models, specific requirements. Students follow a clear path.</li>
+                                <li><strong>Open-ended version:</strong> Provide the goal and success criteria, but let students determine their approach, structure, and process.</li>
+                            </ul>
+                            <p>Both should result in the same depth of learning but with different levels of independence.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 7 -->
+                <div class="continuum-card" id="equalizer-7">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>7. Dependent ↔ Independent</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Dependent</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Independent</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong> This continuum tracks students through four specific stages of growing independence:</p>
+                            <ol>
+                                <li><strong>Skill Building:</strong> Developing ability to make simple choices and follow directions</li>
+                                <li><strong>Structured Independence:</strong> Making choices from teacher-generated options and following prescribed timelines</li>
+                                <li><strong>Shared Independence:</strong> Students generate problems to be solved while teacher helps "tighten" or focus the plans</li>
+                                <li><strong>Self-Guided Independence:</strong> Students plan, execute, and evaluate their own tasks, seeking feedback only when needed</li>
+                            </ol>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Example (research project):</strong>
+                            <ul>
+                                <li><strong>Dependent:</strong> Teacher provides topic, resources, timeline, and format</li>
+                                <li><strong>Structured independence:</strong> Student chooses from 5 teacher-provided topics, follows given timeline</li>
+                                <li><strong>Shared independence:</strong> Student proposes topic and plan, teacher provides feedback and guidance</li>
+                                <li><strong>Self-guided independence:</strong> Student designs entire project, manages timeline, seeks help as needed</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Scaffold for Independence:</strong></p>
+                            <p>Students are working on [project/task]. Design scaffolds that gradually release responsibility:</p>
+                            <ul>
+                                <li><strong>Stage 1 (Skill Building):</strong> What basic skills do students need? What direct instruction and modeling?</li>
+                                <li><strong>Stage 2 (Structured Independence):</strong> What choices can students make from options you provide?</li>
+                                <li><strong>Stage 3 (Shared Independence):</strong> How can students generate ideas while you provide feedback?</li>
+                                <li><strong>Stage 4 (Self-Guided):</strong> What does full independence look like? How do students know when they're on track?</li>
+                            </ul>
+                            <p>Not all students will reach Stage 4 on this task. Meet them where they are.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+                <!-- Continuum 8 -->
+                <div class="continuum-card" id="equalizer-8">
+                    <div class="continuum-header" onclick="toggleContinuum(this)">
+                        <h3>8. Slow ↔ Fast</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="continuum-content">
+                        <div class="continuum-scale">
+                            <div class="scale-label left">Slow</div>
+                            <div class="scale-bar"></div>
+                            <div class="scale-label right">Fast</div>
+                        </div>
+
+                        <div class="continuum-explanation">
+                            <p><strong>What this means:</strong></p>
+                            <ul>
+                                <li><strong>Slow pace:</strong> Students need extended time to process, practice, and consolidate learning</li>
+                                <li><strong>Fast pace:</strong> Students grasp concepts quickly and are ready to move forward</li>
+                            </ul>
+                            <p><em>Note: This continuum is "most likely to require jumping around." Students might work slowly on core ideas but quickly through tangential areas, or vice versa.</em></p>
+                        </div>
+
+                        <div class="example-box">
+                            <strong>Adjusting pace thoughtfully:</strong>
+                            <ul>
+                                <li>A struggling learner might work slowly at first on core concepts, but then move quickly through supplementary examples once the pattern clicks</li>
+                                <li>An advanced learner might move quickly through mechanics but need time to grapple with complex applications</li>
+                            </ul>
+                        </div>
+
+                        <h4>AI Prompts:</h4>
+                        <div class="prompt-box">
+                            <p><strong>Adjust Pacing for Different Learners:</strong></p>
+                            <p>For [topic/unit], design two pacing approaches:</p>
+                            <ul>
+                                <li><strong>Extended pace:</strong> Students who need more time: what's the sequence, where do they spend more time, what gets extra practice?</li>
+                                <li><strong>Accelerated pace:</strong> Students who grasp quickly: what can be compacted, what can move faster, where do they spend time going deeper rather than longer?</li>
+                            </ul>
+                            <p>Both should achieve the same KUDs: [paste KUDs]. Time allocation is different, not the learning goals.</p>
+                        </div>
+                        <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="using-equalizer-section">
+                <h2>Using The Equalizer in Practice</h2>
+                <p>You don't need to adjust all eight continuums for every lesson; that would be overwhelming. Instead:</p>
+                <ul>
+                    <li>Identify which 2-3 continuums are most relevant to your content and students</li>
+                    <li>Consider where your students fall on those continuums</li>
+                    <li>Slide the "buttons" to create appropriate challenge</li>
+                    <li>The result: tasks that meet students where they are and stretch them appropriately</li>
+                </ul>
+
+                <div class="prompt-card">
+                    <h4>Use The Equalizer to Differentiate a Task</h4>
+                    <div class="prompt-box">
+                        <p>I'm differentiating this task: [describe task]</p>
+                        <p>My KUDs: [paste KUDs]</p>
+                        <p>My students range from [describe readiness range]</p>
+                        <p>Using The Equalizer framework, create three versions of this task for different readiness levels. For each version, specify which continuums you're adjusting and how:</p>
+                        <ul>
+                            <li><strong>Version A (Support):</strong> Where on the continuums? (e.g., more foundational, concrete, structured, dependent)</li>
+                            <li><strong>Version B (Core):</strong> Middle of the continuums</li>
+                            <li><strong>Version C (Extension):</strong> Where on the continuums? (e.g., more transformational, abstract, open-ended, independent)</li>
+                        </ul>
+                        <p>Explain your reasoning for which continuums matter most for this content.</p>
+                    </div>
+                    <button class="copy-btn" onclick="copyPrompt(this)">Copy Prompt</button>
+                </div>
+            </div>
+
+            <div class="why-this-matters">
+                <h2>Why The Equalizer Matters</h2>
+                <p>The Equalizer gives you precise language and tools for adjusting challenge. Instead of vaguely thinking "I need to make this harder/easier," you can identify exactly which dimensions to adjust.</p>
+                <p>This precision ensures that when you differentiate, you're genuinely matching task to student readiness, not just creating "more" or "less" work, but creating the right kind of challenge.</p>
+                <p class="quote">"Appropriate challenge means students are working on something they can't quite do yet, but with effort and support, they can succeed."<br><em>- Carol Ann Tomlinson</em></p>
+            </div>
+        </section>
+
+        <nav class="step-nav">
+            <a href="step4-align.html" class="btn-secondary">← Previous: Align Strategy to Need</a>
+            <a href="step6-scaffolding.html" class="btn-primary">Next: Plan Scaffolding →</a>
+        <span style="margin-left: auto;"><a href="search.html" style="background: var(--accent-color); color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;">Search</a></span></nav>
+
+        <footer>
+            <p>Roseville College Professional Learning | 2025</p>
+        </footer>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/copy-prompts.js"></script>
+    <script src="js/equalizer.js"></script>
+</body>
+</html>
