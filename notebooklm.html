@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- NotebookLM Guide | Roseville College -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NotebookLM Guide | Roseville College</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -26,7 +26,7 @@
             --white: #ffffff;
             --text: #2c1a22;
             --text-light: #6b5a62;
-            /* NotebookLM accent — teal/blue-green to distinguish from Gems */
+            /* NotebookLM accent - teal/blue-green to distinguish from Gems */
             --nb-teal: #2a7a6a;
             --nb-teal-light: #e0f2ee;
             --nb-teal-mid: #4a9a8a;
@@ -54,9 +54,9 @@
         }
 
         .header-inner {
-            max-width: 1200px;
+            max-width: 1800px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
+            padding: 1rem 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -70,7 +70,7 @@
         }
 
         .header-logo {
-            width: 40px; height: 40px;
+            width: 44px; height: 44px;
             background: var(--sandstone);
             border-radius: 50%;
             display: flex;
@@ -78,20 +78,20 @@
             justify-content: center;
             font-family: Georgia, serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--burgundy);
             flex-shrink: 0;
         }
 
         .header-text h1 {
-            font-size: 1.25rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--white);
             line-height: 1.2;
         }
 
         .header-text p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--sandstone);
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -116,13 +116,25 @@
         .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.1); }
         .nav-link.active { color: var(--sandstone); background: rgba(246,220,128,0.15); }
 
-        /* ─── HERO ─── */
+        /* ─── NAV DROPDOWN ─── */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; gap: 0.3rem; }
+        .nav-dropdown-toggle::after { content: '▾'; font-size: 0.6rem; opacity: 0.7; transition: transform 0.2s; }
+        .nav-dropdown-menu { position: absolute; top: calc(100% + 0.4rem); left: 50%; transform: translateX(-50%); background: var(--burgundy-dark); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 0.4rem 0; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: opacity 0.2s, visibility 0.2s; z-index: 300; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; }
+        .nav-dropdown-menu a { display: block; padding: 0.45rem 1rem; color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.76rem; letter-spacing: 0.02em; transition: all 0.15s; white-space: nowrap; }
+        .nav-dropdown-menu a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .nav-dropdown-menu a.active { color: var(--sandstone); }
+        .nav-dropdown-menu .dropdown-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0.3rem 0; }
+
+        /* ─── HERO (centred single-column) ─── */
         .hero {
             background: linear-gradient(135deg, #0d3d34 0%, #1a5c4e 50%, var(--nb-teal) 100%);
-            padding: 4rem 2rem;
+            padding: 4rem 2.5rem 3.5rem;
             color: var(--white);
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .hero::before {
@@ -144,75 +156,238 @@
         }
 
         .hero-inner {
-            max-width: 1200px;
+            max-width: 700px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-        }
-
-        .hero-eyebrow {
-            display: inline-block;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.9);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1.25rem;
         }
 
         .hero h2 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 1rem;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
             color: var(--white);
         }
 
-        .hero-tagline {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+        .hero .hero-lead {
+            font-size: 1.7rem;
+            color: rgba(255,255,255,0.92);
+            max-width: 620px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+            font-family: Georgia, 'Times New Roman', serif;
         }
 
-        .hero-distinction {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
+        .hero .hero-sub {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.55);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.5;
         }
 
-        .hero-distinction-label {
+        /* ─── WIZARD ─── */
+        .wizard-progress {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .wizard-step-indicator {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 0.4rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        .wizard-step-circle {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 2px solid var(--light-grey);
+            background: var(--white);
+            color: var(--mid-grey);
+            transition: all 0.3s;
+        }
+
+        .wizard-step-indicator.active .wizard-step-circle {
+            background: var(--nb-teal);
+            border-color: var(--nb-teal);
+            color: var(--white);
+        }
+
+        .wizard-step-indicator.completed .wizard-step-circle {
+            background: var(--sandstone);
+            border-color: var(--sandstone);
+            color: var(--nb-teal);
+        }
+
+        .wizard-step-label {
             font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--mid-grey);
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .wizard-step-indicator.active .wizard-step-label { color: var(--nb-teal); }
+        .wizard-step-indicator.completed .wizard-step-label { color: var(--text); }
+
+        .wizard-connector {
+            flex: 1;
+            height: 2px;
+            background: var(--light-grey);
+            margin: 0 0.5rem;
+            margin-top: 20px;
+            transition: background 0.3s;
+            min-width: 20px;
+        }
+
+        .wizard-connector.completed { background: var(--sandstone); }
+
+        .wizard-step-content { display: none; }
+        .wizard-step-content.active { display: block; }
+
+        .wizard-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 2rem 3rem;
+            gap: 1rem;
+        }
+
+        .wizard-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+        }
+
+        .wizard-btn-prev {
+            background: var(--white);
+            color: var(--text);
+            border: 2px solid var(--light-grey);
+        }
+
+        .wizard-btn-prev:hover { border-color: var(--nb-teal); color: var(--nb-teal); }
+
+        .wizard-btn-next {
+            background: var(--nb-teal);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(42,122,106,0.2);
+        }
+
+        .wizard-btn-next:hover { background: #1f5c4e; transform: translateY(-1px); }
+
+        .wizard-spacer { flex: 1; }
+
+        /* ─── ROLE TABS (Step 2) ─── */
+        .role-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1.5rem 0 2rem;
+            flex-wrap: wrap;
+        }
+
+        .role-tab {
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            border: 2px solid var(--light-grey);
+            background: var(--white);
+            color: var(--text-light);
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            line-height: 1.3;
+        }
+
+        .role-tab:hover { border-color: var(--nb-teal); color: var(--nb-teal); }
+
+        .role-tab.active {
+            background: var(--nb-teal);
+            border-color: var(--nb-teal);
+            color: var(--white);
+        }
+
+        .role-panel { display: none; }
+        .role-panel.active { display: block; animation: panelFadeIn 0.3s ease; }
+
+        @keyframes panelFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-section-label {
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--sandstone);
-            margin-bottom: 0.75rem;
+            color: var(--nb-teal);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--light-grey);
         }
 
-        .hero-distinction-row {
+        .tab-section-label:first-child { margin-top: 0; }
+
+        /* ─── DISTINCTION BOX (light bg, for Step 1) ─── */
+        .distinction-box {
+            background: var(--nb-teal-light);
+            border: 2px solid var(--nb-teal);
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .distinction-box-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--nb-teal);
+            margin-bottom: 0.85rem;
+        }
+
+        .distinction-box-row {
             display: flex;
             align-items: flex-start;
             gap: 0.75rem;
             margin-bottom: 0.6rem;
-            font-size: 0.875rem;
-            color: rgba(255,255,255,0.85);
-            line-height: 1.5;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.55;
         }
 
-        .hero-distinction-row:last-child { margin-bottom: 0; }
+        .distinction-box-row:last-child { margin-bottom: 0; }
 
         .distinction-icon {
             width: 22px; height: 22px;
@@ -225,24 +400,25 @@
             margin-top: 0.1rem;
         }
 
-        .distinction-icon.yes { background: rgba(74,154,138,0.4); color: #a0ffe0; }
-        .distinction-icon.no { background: rgba(242,68,104,0.3); color: #ffb0c0; }
+        .distinction-icon.yes { background: rgba(42,122,106,0.2); color: var(--nb-teal); }
+        .distinction-icon.no { background: rgba(242,68,104,0.1); color: var(--warm-rose); }
 
-        /* Right side of hero — what it is */
-        .hero-visual {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.12);
+        /* ─── CONCEPT FLOW (light bg, for Step 1) ─── */
+        .concept-flow-box {
+            background: var(--white);
+            border: 1px solid var(--light-grey);
             border-radius: 16px;
             padding: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-visual-label {
-            font-size: 0.68rem;
+        .concept-flow-label {
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--sandstone);
-            margin-bottom: 1rem;
+            color: var(--nb-teal);
+            margin-bottom: 1.25rem;
         }
 
         .concept-flow {
@@ -254,12 +430,13 @@
         .concept-step {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            background: rgba(255,255,255,0.07);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            font-size: 0.875rem;
-            color: rgba(255,255,255,0.9);
+            gap: 0.85rem;
+            background: var(--nb-teal-light);
+            border-radius: 10px;
+            padding: 0.85rem 1.15rem;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.5;
         }
 
         .concept-step-icon {
@@ -269,7 +446,7 @@
 
         .concept-arrow {
             text-align: center;
-            color: rgba(255,255,255,0.3);
+            color: var(--mid-grey);
             font-size: 0.9rem;
             padding: 0 0 0 1.5rem;
         }
@@ -278,7 +455,7 @@
         .main {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2.5rem 2rem 5rem;
+            padding: 3rem 2rem 2rem;
         }
 
         /* ─── SECTION HEADER ─── */
@@ -286,19 +463,19 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin: 3rem 0 1.25rem;
-            padding-bottom: 0.75rem;
+            margin: 3.5rem 0 1.5rem;
+            padding-bottom: 0.85rem;
             border-bottom: 2px solid var(--light-grey);
         }
 
         .section-dot {
-            width: 10px; height: 10px;
+            width: 12px; height: 12px;
             border-radius: 50%;
             flex-shrink: 0;
         }
 
         .section-header h3 {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             color: var(--text-light);
             font-family: 'Franklin Gothic Medium', Arial, sans-serif;
             letter-spacing: 0.06em;
@@ -318,8 +495,8 @@
         }
 
         .tool-col {
-            border-radius: 14px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1.75rem;
             border: 2px solid transparent;
         }
 
@@ -339,11 +516,11 @@
         }
 
         .tool-col-label {
-            font-size: 0.68rem;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .tool-col.notebooklm .tool-col-label { color: var(--nb-teal); }
@@ -351,19 +528,19 @@
         .tool-col.gems .tool-col-label { color: var(--burgundy); }
 
         .tool-col h4 {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             margin-bottom: 0.75rem;
             color: var(--text);
         }
 
         .tool-col-trigger {
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             font-style: italic;
             color: var(--text-light);
             margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
+            padding-bottom: 0.85rem;
             border-bottom: 1px solid rgba(0,0,0,0.08);
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         .tool-col ul {
@@ -372,71 +549,75 @@
         }
 
         .tool-col li {
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             color: var(--text);
-            padding: 0.3rem 0 0.3rem 1.2rem;
+            padding: 0.35rem 0 0.35rem 1.3rem;
             position: relative;
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         .tool-col li::before {
-            content: '→';
+            content: '\2192';
             position: absolute;
             left: 0;
             opacity: 0.5;
         }
 
-        /* ─── STEPS ─── */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-
-        .step-card {
+        /* ─── ACCESS STEPS ─── */
+        .access-steps {
+            display: flex;
+            gap: 0;
             background: var(--white);
-            border-radius: 14px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
             box-shadow: 0 2px 12px rgba(91,21,46,0.06);
             border: 1px solid rgba(91,21,46,0.06);
+            flex-wrap: wrap;
+        }
+
+        .access-step {
+            flex: 1;
+            min-width: 180px;
+            padding: 1.75rem;
+            border-right: 1px solid var(--light-grey);
             position: relative;
         }
 
-        .step-number {
-            width: 36px; height: 36px;
+        .access-step:last-child { border-right: none; }
+
+        .access-step-num {
+            width: 32px; height: 32px;
             background: var(--nb-teal);
             color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: Georgia, serif;
+            font-size: 0.88rem;
             font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            font-family: Georgia, serif;
+            margin-bottom: 0.85rem;
         }
 
-        .step-card h4 {
+        .access-step h4 {
             font-size: 1rem;
             color: var(--text);
             margin-bottom: 0.5rem;
-            line-height: 1.3;
         }
 
-        .step-card p {
-            font-size: 0.85rem;
+        .access-step p {
+            font-size: 0.88rem;
             color: var(--text-light);
-            line-height: 1.65;
-        }
-
-        .step-card .step-detail {
-            margin-top: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--light-grey);
-            font-size: 0.78rem;
-            color: var(--mid-grey);
             line-height: 1.6;
         }
+
+        .access-step a {
+            color: var(--nb-teal);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .access-step a:hover { text-decoration: underline; }
 
         /* ─── USE CASE CARDS ─── */
         .use-cases-grid {
@@ -447,8 +628,8 @@
 
         .use-case-card {
             background: var(--white);
-            border-radius: 14px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1.75rem;
             box-shadow: 0 2px 12px rgba(91,21,46,0.06);
             border: 1px solid rgba(91,21,46,0.06);
             border-top: 4px solid var(--nb-teal);
@@ -460,42 +641,42 @@
         }
 
         .use-case-icon {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 0.85rem;
             display: block;
         }
 
         .use-case-card h4 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .use-case-card p {
-            font-size: 0.85rem;
+            font-size: 0.92rem;
             color: var(--text-light);
-            line-height: 1.65;
-            margin-bottom: 0.75rem;
+            line-height: 1.7;
+            margin-bottom: 0.85rem;
         }
 
         .use-case-example {
             background: var(--nb-teal-light);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            font-size: 0.8rem;
+            border-radius: 10px;
+            padding: 0.85rem 1.15rem;
+            font-size: 0.88rem;
             color: var(--nb-teal);
-            line-height: 1.55;
+            line-height: 1.6;
             font-style: italic;
         }
 
         .use-case-example-label {
             font-style: normal;
             font-weight: 700;
-            font-size: 0.68rem;
+            font-size: 0.72rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.35rem;
         }
 
         /* ─── MULTIMODAL SECTION ─── */
@@ -507,8 +688,8 @@
 
         .multimodal-card {
             background: var(--white);
-            border-radius: 14px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1.75rem;
             box-shadow: 0 2px 12px rgba(91,21,46,0.06);
             border: 1px solid rgba(91,21,46,0.06);
             text-align: center;
@@ -516,26 +697,26 @@
         }
 
         .multimodal-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(42,122,106,0.12);
         }
 
         .multimodal-icon {
-            font-size: 2.25rem;
+            font-size: 2.5rem;
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.85rem;
         }
 
         .multimodal-card h4 {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             color: var(--text);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .multimodal-card p {
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             color: var(--text-light);
-            line-height: 1.55;
+            line-height: 1.6;
         }
 
         .multimodal-badge {
@@ -561,7 +742,7 @@
 
         .prompt-card {
             background: var(--white);
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 2px 12px rgba(91,21,46,0.06);
             border: 1px solid rgba(91,21,46,0.06);
@@ -569,7 +750,7 @@
 
         .prompt-card-header {
             background: var(--nb-teal);
-            padding: 0.75rem 1.25rem;
+            padding: 0.85rem 1.4rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -577,7 +758,7 @@
         }
 
         .prompt-card-header span {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
@@ -585,42 +766,42 @@
         }
 
         .prompt-card-body {
-            padding: 1.25rem;
+            padding: 1.5rem;
         }
 
         .prompt-context {
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             color: var(--mid-grey);
             text-transform: uppercase;
             letter-spacing: 0.07em;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .prompt-text {
-            font-size: 0.875rem;
+            font-size: 0.92rem;
             color: var(--text);
             font-family: 'Courier New', monospace;
-            line-height: 1.65;
+            line-height: 1.7;
             background: var(--off-white);
             border: 1px solid var(--light-grey);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
+            border-radius: 10px;
+            padding: 1.15rem;
+            margin-bottom: 0.85rem;
         }
 
         .copy-btn {
             background: var(--nb-teal);
             color: var(--white);
             border: none;
-            padding: 0.4rem 0.9rem;
-            border-radius: 6px;
-            font-size: 0.72rem;
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.35rem;
+            gap: 0.4rem;
             transition: background 0.2s;
             font-family: 'Franklin Gothic Medium', Arial, sans-serif;
             letter-spacing: 0.04em;
@@ -638,30 +819,30 @@
 
         .limit-card {
             background: var(--white);
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
             box-shadow: 0 2px 12px rgba(91,21,46,0.06);
             border: 1px solid rgba(91,21,46,0.06);
             border-left: 4px solid var(--warm-rose);
         }
 
         .limit-card h4 {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             color: var(--text);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
         .limit-card p {
-            font-size: 0.83rem;
+            font-size: 0.9rem;
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .limit-card .limit-instead {
-            margin-top: 0.6rem;
-            padding-top: 0.6rem;
+            margin-top: 0.7rem;
+            padding-top: 0.7rem;
             border-top: 1px solid var(--light-grey);
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             color: var(--nb-teal);
         }
 
@@ -671,30 +852,30 @@
         .data-note {
             background: var(--sandstone-light);
             border: 2px solid var(--sandstone);
-            border-radius: 14px;
-            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            padding: 1.75rem 2.25rem;
             display: flex;
-            gap: 1.25rem;
+            gap: 1.5rem;
             align-items: flex-start;
         }
 
         .data-note-icon {
-            font-size: 1.75rem;
+            font-size: 2rem;
             flex-shrink: 0;
             margin-top: 0.1rem;
         }
 
         .data-note h4 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--burgundy);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .data-note p {
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             color: var(--text);
             line-height: 1.7;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
 
         .data-note p:last-child { margin-bottom: 0; }
@@ -722,72 +903,16 @@
         .data-dont-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-rose); margin-bottom: 0.5rem; }
 
         .data-do li, .data-dont li {
-            font-size: 0.82rem;
-            line-height: 1.55;
-            margin-bottom: 0.3rem;
-            padding-left: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0.35rem;
+            padding-left: 1.1rem;
             position: relative;
             list-style: none;
         }
 
-        .data-do li::before { content: '✓'; position: absolute; left: 0; color: var(--nb-teal); }
-        .data-dont li::before { content: '✗'; position: absolute; left: 0; color: var(--warm-rose); }
-
-        /* ─── ACCESS STEPS ─── */
-        .access-steps {
-            display: flex;
-            gap: 0;
-            background: var(--white);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(91,21,46,0.06);
-            border: 1px solid rgba(91,21,46,0.06);
-            flex-wrap: wrap;
-        }
-
-        .access-step {
-            flex: 1;
-            min-width: 180px;
-            padding: 1.5rem;
-            border-right: 1px solid var(--light-grey);
-            position: relative;
-        }
-
-        .access-step:last-child { border-right: none; }
-
-        .access-step-num {
-            width: 28px; height: 28px;
-            background: var(--nb-teal);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            font-family: Georgia, serif;
-            margin-bottom: 0.75rem;
-        }
-
-        .access-step h4 {
-            font-size: 0.9rem;
-            color: var(--text);
-            margin-bottom: 0.4rem;
-        }
-
-        .access-step p {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            line-height: 1.55;
-        }
-
-        .access-step a {
-            color: var(--nb-teal);
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .access-step a:hover { text-decoration: underline; }
+        .data-do li::before { content: '\2713'; position: absolute; left: 0; color: var(--nb-teal); }
+        .data-dont li::before { content: '\2717'; position: absolute; left: 0; color: var(--warm-rose); }
 
         /* ─── TOAST ─── */
         .toast {
@@ -820,6 +945,11 @@
             .header { position: static; }
             .copy-btn { display: none; }
             .hero { background: #1a5c4e !important; -webkit-print-color-adjust: exact; }
+            .wizard-progress { display: none; }
+            .wizard-nav { display: none; }
+            .wizard-step-content { display: block !important; }
+            .role-panel { display: block !important; }
+            .role-tabs { display: none; }
         }
     </style>
 </head>
@@ -832,87 +962,126 @@
             <div class="header-logo">RC</div>
             <div class="header-text">
                 <h1>NotebookLM Guide</h1>
-                <p>Roseville College · Teaching with AI</p>
+                <p>Roseville College Staff Hub</p>
             </div>
         </div>
         <nav class="header-nav">
             <a href="index.html" class="nav-link">Hub</a>
             <a href="gemini.html" class="nav-link">Gemini</a>
-            <a href="gems/gem-builder-guide.html" class="nav-link">Gem Builder</a>
+            <div class="nav-dropdown">
+                <a href="gems/gem-builder-guide.html" class="nav-link nav-dropdown-toggle">Gem Builder</a>
+                <div class="nav-dropdown-menu">
+                    <a href="gems/gem-builder-guide.html">Gem Builder Guide</a>
+                    <a href="gems/ideas-bank.html">Ideas Bank</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="https://gemini.google.com/gem/1TriIs2vPlkaemSiJXY2Qcb8W43274Gdo?usp=sharing" target="_blank" rel="noopener">Gem Creator &#8599;</a>
+                </div>
+            </div>
             <a href="notebooklm.html" class="nav-link active">NotebookLM</a>
             <a href="differentiation-manual/index.html" class="nav-link">Differentiation</a>
         </nav>
     </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO (centred) -->
 <section class="hero">
     <div class="hero-inner">
-        <div class="hero-left">
-            <span class="hero-eyebrow">Tool 3 of 4 · Research &amp; Retrieval</span>
-            <h2>NotebookLM</h2>
-            <p class="hero-tagline">NotebookLM is not a chatbot. It is a document intelligence tool — you bring the sources, and it works entirely within them. Think of it as a research assistant that has read everything you've given it, and nothing else.</p>
-            <div class="hero-distinction">
-                <div class="hero-distinction-label">How it differs from Gemini</div>
-                <div class="hero-distinction-row">
-                    <div class="distinction-icon yes">✓</div>
-                    <span>Answers are grounded in <em>your</em> documents — not the general internet</span>
-                </div>
-                <div class="hero-distinction-row">
-                    <div class="distinction-icon yes">✓</div>
-                    <span>Cites exactly where in your documents each answer comes from</span>
-                </div>
-                <div class="hero-distinction-row">
-                    <div class="distinction-icon yes">✓</div>
-                    <span>Can synthesise across multiple documents simultaneously</span>
-                </div>
-                <div class="hero-distinction-row">
-                    <div class="distinction-icon no">→</div>
-                    <span>Cannot answer questions beyond what you've uploaded</span>
-                </div>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-visual-label">How it works</div>
-            <div class="concept-flow">
-                <div class="concept-step">
-                    <span class="concept-step-icon">📁</span>
-                    <span>You create a Notebook and upload your sources — PDFs, documents, slides, URLs</span>
-                </div>
-                <div class="concept-arrow">↓</div>
-                <div class="concept-step">
-                    <span class="concept-step-icon">🧠</span>
-                    <span>NotebookLM reads and indexes everything you've uploaded</span>
-                </div>
-                <div class="concept-arrow">↓</div>
-                <div class="concept-step">
-                    <span class="concept-step-icon">💬</span>
-                    <span>You ask questions, request summaries, or generate outputs</span>
-                </div>
-                <div class="concept-arrow">↓</div>
-                <div class="concept-step">
-                    <span class="concept-step-icon">📌</span>
-                    <span>Every answer links back to the exact source passage it came from</span>
-                </div>
-            </div>
-        </div>
+        <h2>NotebookLM</h2>
+        <p class="hero-lead">Your documents. Your questions. Cited answers.</p>
+        <p class="hero-sub">A research assistant that reads everything you give it, and nothing else.</p>
     </div>
 </section>
 
-<!-- MAIN -->
-<main class="main">
+<!-- WIZARD PROGRESS BAR -->
+<div class="wizard-progress">
+    <button class="wizard-step-indicator active" onclick="goToStep(1)">
+        <div class="wizard-step-circle">1</div>
+        <span class="wizard-step-label">Understand</span>
+    </button>
+    <div class="wizard-connector"></div>
+    <button class="wizard-step-indicator" onclick="goToStep(2)">
+        <div class="wizard-step-circle">2</div>
+        <span class="wizard-step-label">Try It</span>
+    </button>
+    <div class="wizard-connector"></div>
+    <button class="wizard-step-indicator" onclick="goToStep(3)">
+        <div class="wizard-step-circle">3</div>
+        <span class="wizard-step-label">Go Deeper</span>
+    </button>
+</div>
 
-    <!-- WHICH TOOL? -->
+<!-- ════════════════════════════════════════════ -->
+<!-- STEP 1: UNDERSTAND                          -->
+<!-- ════════════════════════════════════════════ -->
+<div class="wizard-step-content active" data-step="1">
+<div class="main">
+
+    <!-- What is NotebookLM? -->
     <div class="section-header" style="margin-top:1rem;">
+        <div class="section-dot" style="background:var(--nb-teal)"></div>
+        <h3>What is NotebookLM?</h3>
+    </div>
+
+    <p style="font-size:1.05rem; color:var(--text-light); max-width:750px; margin-bottom:1.75rem; line-height:1.7;">NotebookLM is not a chatbot. It is a document intelligence tool: you bring the sources, and it works entirely within them. Think of it as a research assistant that has read everything you've given it, and nothing else.</p>
+
+    <!-- Distinction box (moved from hero) -->
+    <div class="distinction-box">
+        <div class="distinction-box-label">How it differs from Gemini</div>
+        <div class="distinction-box-row">
+            <div class="distinction-icon yes">&#10003;</div>
+            <span>Answers are grounded in <em>your</em> documents, not the general internet</span>
+        </div>
+        <div class="distinction-box-row">
+            <div class="distinction-icon yes">&#10003;</div>
+            <span>Cites exactly where in your documents each answer comes from</span>
+        </div>
+        <div class="distinction-box-row">
+            <div class="distinction-icon yes">&#10003;</div>
+            <span>Can synthesise across multiple documents simultaneously</span>
+        </div>
+        <div class="distinction-box-row">
+            <div class="distinction-icon no">&rarr;</div>
+            <span>Cannot answer questions beyond what you've uploaded</span>
+        </div>
+    </div>
+
+    <!-- Concept flow (moved from hero) -->
+    <div class="concept-flow-box">
+        <div class="concept-flow-label">How it works</div>
+        <div class="concept-flow">
+            <div class="concept-step">
+                <span class="concept-step-icon">&#128193;</span>
+                <span>You create a Notebook and upload your sources: PDFs, documents, slides, URLs</span>
+            </div>
+            <div class="concept-arrow">&darr;</div>
+            <div class="concept-step">
+                <span class="concept-step-icon">&#129504;</span>
+                <span>NotebookLM reads and indexes everything you've uploaded</span>
+            </div>
+            <div class="concept-arrow">&darr;</div>
+            <div class="concept-step">
+                <span class="concept-step-icon">&#128172;</span>
+                <span>You ask questions, request summaries, or generate outputs</span>
+            </div>
+            <div class="concept-arrow">&darr;</div>
+            <div class="concept-step">
+                <span class="concept-step-icon">&#128204;</span>
+                <span>Every answer links back to the exact source passage it came from</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Which tool should I use? -->
+    <div class="section-header">
         <div class="section-dot" style="background:var(--nb-teal)"></div>
         <h3>Which tool should I use?</h3>
     </div>
 
     <div class="tool-comparison">
         <div class="tool-col notebooklm">
-            <div class="tool-col-label">Use NotebookLM when…</div>
+            <div class="tool-col-label">Use NotebookLM when&hellip;</div>
             <h4>You have documents to interrogate</h4>
-            <div class="tool-col-trigger">"I need to find, synthesise, or navigate information across a set of documents I already have."</div>
+            <div class="tool-col-trigger">&ldquo;I need to find, synthesise, or navigate information across a set of documents I already have.&rdquo;</div>
             <ul>
                 <li>Querying a syllabus or policy document</li>
                 <li>Synthesising meeting notes or reports</li>
@@ -923,9 +1092,9 @@
             </ul>
         </div>
         <div class="tool-col gemini">
-            <div class="tool-col-label">Use Gemini when…</div>
+            <div class="tool-col-label">Use Gemini when&hellip;</div>
             <h4>You have a one-off task to complete</h4>
-            <div class="tool-col-trigger">"I need help drafting, brainstorming, explaining, or producing something right now."</div>
+            <div class="tool-col-trigger">&ldquo;I need help drafting, brainstorming, explaining, or producing something right now.&rdquo;</div>
             <ul>
                 <li>Drafting an email or letter quickly</li>
                 <li>Brainstorming lesson ideas</li>
@@ -935,9 +1104,9 @@
             </ul>
         </div>
         <div class="tool-col gems">
-            <div class="tool-col-label">Use a Gem when…</div>
+            <div class="tool-col-label">Use a Gem when&hellip;</div>
             <h4>You do the same task repeatedly</h4>
-            <div class="tool-col-trigger">"I have a task I do regularly and want a consistent, reliable tool built for exactly that purpose."</div>
+            <div class="tool-col-trigger">&ldquo;I have a task I do regularly and want a consistent, reliable tool built for exactly that purpose.&rdquo;</div>
             <ul>
                 <li>Writing report comments every semester</li>
                 <li>Generating rubrics for assessment tasks</li>
@@ -948,7 +1117,7 @@
         </div>
     </div>
 
-    <!-- GETTING STARTED -->
+    <!-- Getting Started -->
     <div class="section-header">
         <div class="section-dot" style="background:var(--nb-teal)"></div>
         <h3>Getting Started</h3>
@@ -963,7 +1132,7 @@
         <div class="access-step">
             <div class="access-step-num">2</div>
             <h4>Create a Notebook</h4>
-            <p>Click <strong>New Notebook</strong>. Give it a clear name — e.g. "Stage 5 English Syllabus" or "Term 3 Meeting Notes."</p>
+            <p>Click <strong>New Notebook</strong>. Give it a clear name, e.g. &ldquo;Stage 5 English Syllabus&rdquo; or &ldquo;Term 3 Meeting Notes.&rdquo;</p>
         </div>
         <div class="access-step">
             <div class="access-step-num">3</div>
@@ -978,235 +1147,320 @@
         <div class="access-step">
             <div class="access-step-num">5</div>
             <h4>Generate outputs</h4>
-            <p>Use the Studio panel to generate an Audio Overview, a study guide, a briefing doc, a FAQ, or a timeline — all from your sources.</p>
+            <p>Use the Studio panel to generate an Audio Overview, a study guide, a briefing doc, a FAQ, or a timeline, all from your sources.</p>
         </div>
     </div>
 
-    <!-- USE CASES -->
-    <div class="section-header">
+</div>
+<div class="wizard-nav">
+    <div class="wizard-spacer"></div>
+    <button class="wizard-btn wizard-btn-next" onclick="goToStep(2)">Try It &rarr;</button>
+</div>
+</div><!-- end step 1 -->
+
+<!-- ════════════════════════════════════════════ -->
+<!-- STEP 2: TRY IT                              -->
+<!-- ════════════════════════════════════════════ -->
+<div class="wizard-step-content" data-step="2">
+<div class="main">
+
+    <div class="section-header" style="margin-top:1rem;">
         <div class="section-dot" style="background:var(--nb-teal)"></div>
         <h3>What Roseville Staff Can Use It For</h3>
     </div>
 
-    <div class="use-cases-grid">
+    <p style="font-size:1.05rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">Choose a role to see relevant use cases, multimodal outputs, and starter prompts you can try right away.</p>
 
-        <div class="use-case-card">
-            <span class="use-case-icon">📋</span>
-            <h4>Navigating Policy Documents</h4>
-            <p>Upload your school's policy library and ask specific questions rather than manually searching through documents. Get answers with direct citations so you can verify instantly.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "What does our policy say about mobile phone use during assessments?"
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">📚</span>
-            <h4>Querying Syllabus Documents</h4>
-            <p>Upload your NESA syllabus and ask it to find relevant outcomes, explain concepts, or map content to assessment requirements. No more manually scrolling through 80-page PDFs.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Which Stage 5 outcomes relate to persuasive writing? List them with their codes."
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">📝</span>
-            <h4>Synthesising Meeting Notes</h4>
-            <p>Upload agendas and minutes from a series of meetings and ask for a summary of decisions made, actions outstanding, or themes across the year.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Summarise all action items from this term's staff meetings. List who is responsible for each."
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">📰</span>
-            <h4>Researching College Archives</h4>
-            <p>Upload historical College publications and search across decades of content for specific events, people, or milestones. Particularly useful for anniversary events, speeches, or context pieces.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Find all references to the school's 50th anniversary celebration and summarise what took place."
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">📊</span>
-            <h4>Cross-Referencing Reports &amp; Data</h4>
-            <p>Upload multiple reports — enrolment data, staffing summaries, financial overviews — and ask questions that draw across all of them. Saves hours of manual cross-referencing.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Based on these three reports, what trends are visible in enrolment across the last four years?"
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">🎓</span>
-            <h4>Building Student Study Resources</h4>
-            <p>Upload your unit materials — readings, notes, key texts — and generate study guides, FAQs, glossaries, or practice questions for students. The content stays grounded in exactly what you taught.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Generate a set of 10 exam-style questions based on these unit readings. Include the answer for each."
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">📁</span>
-            <h4>Onboarding &amp; Handover Documents</h4>
-            <p>Upload the materials for a role, committee, or project and ask NotebookLM to generate a briefing document or FAQ for someone new stepping into the role.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Based on these documents, write a one-page briefing for a new Year 10 Advisor starting in Term 1."
-            </div>
-        </div>
-
-        <div class="use-case-card">
-            <span class="use-case-icon">🗓️</span>
-            <h4>Event &amp; Project Planning</h4>
-            <p>Upload previous event plans, budgets, and post-event notes. Ask NotebookLM to identify what worked, what needs attention, and generate a checklist or timeline for the next iteration.</p>
-            <div class="use-case-example">
-                <span class="use-case-example-label">Try asking</span>
-                "Based on last year's Gala notes, what were the three biggest logistical issues and how were they resolved?"
-            </div>
-        </div>
-
+    <!-- Tab bar -->
+    <div class="role-tabs">
+        <button class="role-tab active" data-role="teaching">Teaching &amp; Learning</button>
+        <button class="role-tab" data-role="admin">Administration</button>
+        <button class="role-tab" data-role="research">Research &amp; Archives</button>
     </div>
 
-    <!-- MULTIMODAL OUTPUTS -->
-    <div class="section-header">
-        <div class="section-dot" style="background:var(--sandstone)"></div>
-        <h3>Beyond Q&amp;A — Multimodal Outputs</h3>
-    </div>
+    <!-- ══════ TAB: Teaching & Learning ══════ -->
+    <div class="role-panel active" data-role="teaching">
 
-    <p style="font-size:0.95rem; color:var(--text-light); max-width:700px; margin-bottom:1.5rem; line-height:1.7;">NotebookLM can generate far more than text answers. The Studio panel lets you transform your source documents into a range of formats — all grounded in what you uploaded.</p>
+        <div class="tab-section-label">Use Cases</div>
+        <div class="use-cases-grid">
 
-    <div class="multimodal-grid">
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128218;</span>
+                <h4>Querying Syllabus Documents</h4>
+                <p>Upload your NESA syllabus and ask it to find relevant outcomes, explain concepts, or map content to assessment requirements. No more manually scrolling through 80-page PDFs.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Which Stage 5 outcomes relate to persuasive writing? List them with their codes.&rdquo;
+                </div>
+            </div>
 
-        <div class="multimodal-card">
-            <span class="multimodal-icon">🎙️</span>
-            <h4>Audio Overview</h4>
-            <p>Generates a natural-sounding podcast-style conversation between two hosts summarising your documents. Ideal for commutes, or for sharing with colleagues who prefer to listen.</p>
-            <span class="multimodal-badge">Most popular feature</span>
+            <div class="use-case-card">
+                <span class="use-case-icon">&#127891;</span>
+                <h4>Building Student Study Resources</h4>
+                <p>Upload your unit materials (readings, notes, key texts) and generate study guides, FAQs, glossaries, or practice questions for students. The content stays grounded in exactly what you taught.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Generate a set of 10 exam-style questions based on these unit readings. Include the answer for each.&rdquo;
+                </div>
+            </div>
+
         </div>
 
-        <div class="multimodal-card">
-            <span class="multimodal-icon">📖</span>
-            <h4>Study Guide</h4>
-            <p>Produces a structured study guide with key concepts, definitions, and review questions drawn directly from your sources.</p>
+        <div class="tab-section-label">Multimodal Outputs</div>
+        <p style="font-size:0.95rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">The Studio panel can transform your sources into these formats.</p>
+        <div class="multimodal-grid">
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#127897;&#65039;</span>
+                <h4>Audio Overview</h4>
+                <p>Generates a natural-sounding podcast-style conversation between two hosts summarising your documents. Ideal for commutes, or for sharing with colleagues who prefer to listen.</p>
+                <span class="multimodal-badge">Most popular feature</span>
+            </div>
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#128214;</span>
+                <h4>Study Guide</h4>
+                <p>Produces a structured study guide with key concepts, definitions, and review questions drawn directly from your sources.</p>
+            </div>
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#10067;</span>
+                <h4>FAQ</h4>
+                <p>Automatically generates the most likely questions someone would ask about your documents, with answers from the sources.</p>
+            </div>
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#128506;&#65039;</span>
+                <h4>Mind Map</h4>
+                <p>Generates a visual mind map of the key concepts and relationships in your documents. Useful for planning and curriculum mapping.</p>
+                <span class="multimodal-badge">Newer feature</span>
+            </div>
+
         </div>
 
-        <div class="multimodal-card">
-            <span class="multimodal-icon">📄</span>
-            <h4>Briefing Document</h4>
-            <p>A concise executive summary of all your sources — key points, themes, and takeaways in a format ready to share.</p>
+        <div class="tab-section-label">Starter Prompts</div>
+        <p style="font-size:0.95rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">Copy any of these into NotebookLM once you've uploaded your sources.</p>
+        <div class="prompts-grid">
+
+            <div class="prompt-card">
+                <div class="prompt-card-header">
+                    <span>For Syllabus &amp; Curriculum</span>
+                </div>
+                <div class="prompt-card-body">
+                    <div class="prompt-context">Use with: NESA syllabus documents</div>
+                    <div class="prompt-text">List all outcomes related to <em>[topic]</em> in Stage <em>[X]</em>. Present them as a table with the outcome code, the full outcome statement, and the relevant content dot points.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'List all outcomes related to [topic] in Stage [X]. Present them as a table with the outcome code, the full outcome statement, and the relevant content dot points.')">Copy</button>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-card-header">
+                    <span>For Student Study Resources</span>
+                </div>
+                <div class="prompt-card-body">
+                    <div class="prompt-context">Use with: Unit readings and notes</div>
+                    <div class="prompt-text">Generate a glossary of the 15 most important terms from these materials. For each term, give a one-sentence definition in plain language suitable for a Year <em>[X]</em> student.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'Generate a glossary of the 15 most important terms from these materials. For each term, give a one-sentence definition in plain language suitable for a Year [X] student.')">Copy</button>
+                </div>
+            </div>
+
         </div>
 
-        <div class="multimodal-card">
-            <span class="multimodal-icon">❓</span>
-            <h4>FAQ</h4>
-            <p>Automatically generates the most likely questions someone would ask about your documents, with answers from the sources.</p>
+    </div><!-- end teaching panel -->
+
+    <!-- ══════ TAB: Administration ══════ -->
+    <div class="role-panel" data-role="admin">
+
+        <div class="tab-section-label">Use Cases</div>
+        <div class="use-cases-grid">
+
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128203;</span>
+                <h4>Navigating Policy Documents</h4>
+                <p>Upload your school's policy library and ask specific questions rather than manually searching through documents. Get answers with direct citations so you can verify instantly.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;What does our policy say about mobile phone use during assessments?&rdquo;
+                </div>
+            </div>
+
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128221;</span>
+                <h4>Synthesising Meeting Notes</h4>
+                <p>Upload agendas and minutes from a series of meetings and ask for a summary of decisions made, actions outstanding, or themes across the year.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Summarise all action items from this term's staff meetings. List who is responsible for each.&rdquo;
+                </div>
+            </div>
+
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128193;</span>
+                <h4>Onboarding &amp; Handover Documents</h4>
+                <p>Upload the materials for a role, committee, or project and ask NotebookLM to generate a briefing document or FAQ for someone new stepping into the role.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Based on these documents, write a one-page briefing for a new Year 10 Advisor starting in Term 1.&rdquo;
+                </div>
+            </div>
+
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128197;&#65039;</span>
+                <h4>Event &amp; Project Planning</h4>
+                <p>Upload previous event plans, budgets, and post-event notes. Ask NotebookLM to identify what worked, what needs attention, and generate a checklist or timeline for the next iteration.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Based on last year's Gala notes, what were the three biggest logistical issues and how were they resolved?&rdquo;
+                </div>
+            </div>
+
         </div>
 
-        <div class="multimodal-card">
-            <span class="multimodal-icon">⏱️</span>
-            <h4>Timeline</h4>
-            <p>Extracts chronological events or sequences from your documents and presents them as a structured timeline.</p>
+        <div class="tab-section-label">Multimodal Outputs</div>
+        <p style="font-size:0.95rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">The Studio panel can transform your sources into these formats.</p>
+        <div class="multimodal-grid">
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#128196;</span>
+                <h4>Briefing Document</h4>
+                <p>A concise executive summary of all your sources: key points, themes, and takeaways in a format ready to share.</p>
+            </div>
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#9201;&#65039;</span>
+                <h4>Timeline</h4>
+                <p>Extracts chronological events or sequences from your documents and presents them as a structured timeline.</p>
+            </div>
+
         </div>
 
-        <div class="multimodal-card">
-            <span class="multimodal-icon">🗺️</span>
-            <h4>Mind Map</h4>
-            <p>Generates a visual mind map of the key concepts and relationships in your documents. Useful for planning and curriculum mapping.</p>
-            <span class="multimodal-badge">Newer feature</span>
+        <div class="tab-section-label">Starter Prompts</div>
+        <p style="font-size:0.95rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">Copy any of these into NotebookLM once you've uploaded your sources.</p>
+        <div class="prompts-grid">
+
+            <div class="prompt-card">
+                <div class="prompt-card-header">
+                    <span>For Policy Documents</span>
+                </div>
+                <div class="prompt-card-body">
+                    <div class="prompt-context">Use with: School policy library</div>
+                    <div class="prompt-text">What does the policy say about <em>[topic]</em>? Summarise the key rules and any exceptions. Cite the document and section for each point.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'What does the policy say about [topic]? Summarise the key rules and any exceptions. Cite the document and section for each point.')">Copy</button>
+                </div>
+            </div>
+
+            <div class="prompt-card">
+                <div class="prompt-card-header">
+                    <span>For Meeting Notes</span>
+                </div>
+                <div class="prompt-card-body">
+                    <div class="prompt-context">Use with: Agendas and minutes</div>
+                    <div class="prompt-text">Identify all action items mentioned across these documents. For each, list: the action, who is responsible, and any deadline mentioned. Format as a table.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'Identify all action items mentioned across these documents. For each, list: the action, who is responsible, and any deadline mentioned. Format as a table.')">Copy</button>
+                </div>
+            </div>
+
         </div>
 
-    </div>
+    </div><!-- end admin panel -->
 
-    <!-- STARTER PROMPTS -->
-    <div class="section-header">
-        <div class="section-dot" style="background:var(--heritage)"></div>
-        <h3>Starter Prompts to Try</h3>
-    </div>
+    <!-- ══════ TAB: Research & Archives ══════ -->
+    <div class="role-panel" data-role="research">
 
-    <p style="font-size:0.95rem; color:var(--text-light); max-width:700px; margin-bottom:1.5rem; line-height:1.7;">Copy any of these into NotebookLM's chat once you've uploaded your sources. Adapt the italicised parts to your context.</p>
+        <div class="tab-section-label">Use Cases</div>
+        <div class="use-cases-grid">
 
-    <div class="prompts-grid">
-
-        <div class="prompt-card">
-            <div class="prompt-card-header">
-                <span>For Syllabus &amp; Curriculum</span>
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128240;</span>
+                <h4>Researching College Archives</h4>
+                <p>Upload historical College publications and search across decades of content for specific events, people, or milestones. Particularly useful for anniversary events, speeches, or context pieces.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Find all references to the school's 50th anniversary celebration and summarise what took place.&rdquo;
+                </div>
             </div>
-            <div class="prompt-card-body">
-                <div class="prompt-context">Use with: NESA syllabus documents</div>
-                <div class="prompt-text">List all outcomes related to <em>[topic]</em> in Stage <em>[X]</em>. Present them as a table with the outcome code, the full outcome statement, and the relevant content dot points.</div>
-                <button class="copy-btn" onclick="copyPrompt(this, &#39;List all outcomes related to [topic] in Stage [X]. Present them as a table with the outcome code, the full outcome statement, and the relevant content dot points.&#39;)">Copy</button>
+
+            <div class="use-case-card">
+                <span class="use-case-icon">&#128202;</span>
+                <h4>Cross-Referencing Reports &amp; Data</h4>
+                <p>Upload multiple reports (enrolment data, staffing summaries, financial overviews) and ask questions that draw across all of them. Saves hours of manual cross-referencing.</p>
+                <div class="use-case-example">
+                    <span class="use-case-example-label">Try asking</span>
+                    &ldquo;Based on these three reports, what trends are visible in enrolment across the last four years?&rdquo;
+                </div>
             </div>
+
         </div>
 
-        <div class="prompt-card">
-            <div class="prompt-card-header">
-                <span>For Policy Documents</span>
+        <div class="tab-section-label">Multimodal Outputs</div>
+        <p style="font-size:0.95rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">The Studio panel can transform your sources into these formats.</p>
+        <div class="multimodal-grid">
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#127897;&#65039;</span>
+                <h4>Audio Overview</h4>
+                <p>Generates a natural-sounding podcast-style conversation between two hosts summarising your documents. Ideal for commutes, or for sharing with colleagues who prefer to listen.</p>
+                <span class="multimodal-badge">Most popular feature</span>
             </div>
-            <div class="prompt-card-body">
-                <div class="prompt-context">Use with: School policy library</div>
-                <div class="prompt-text">What does the policy say about <em>[topic]</em>? Summarise the key rules and any exceptions. Cite the document and section for each point.</div>
-                <button class="copy-btn" onclick="copyPrompt(this, &#39;What does the policy say about [topic]? Summarise the key rules and any exceptions. Cite the document and section for each point.&#39;)">Copy</button>
+
+            <div class="multimodal-card">
+                <span class="multimodal-icon">&#9201;&#65039;</span>
+                <h4>Timeline</h4>
+                <p>Extracts chronological events or sequences from your documents and presents them as a structured timeline.</p>
             </div>
+
         </div>
 
-        <div class="prompt-card">
-            <div class="prompt-card-header">
-                <span>For Meeting Notes</span>
+        <div class="tab-section-label">Starter Prompts</div>
+        <p style="font-size:0.95rem; color:var(--text-light); max-width:750px; margin-bottom:1rem; line-height:1.7;">Copy any of these into NotebookLM once you've uploaded your sources.</p>
+        <div class="prompts-grid">
+
+            <div class="prompt-card">
+                <div class="prompt-card-header">
+                    <span>For Reports &amp; Data</span>
+                </div>
+                <div class="prompt-card-body">
+                    <div class="prompt-context">Use with: Annual reports, data summaries</div>
+                    <div class="prompt-text">Across all these documents, identify the three most significant trends or changes over time. Explain each trend in two to three sentences and cite which document each finding comes from.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'Across all these documents, identify the three most significant trends or changes over time. Explain each trend in two to three sentences and cite which document each finding comes from.')">Copy</button>
+                </div>
             </div>
-            <div class="prompt-card-body">
-                <div class="prompt-context">Use with: Agendas and minutes</div>
-                <div class="prompt-text">Identify all action items mentioned across these documents. For each, list: the action, who is responsible, and any deadline mentioned. Format as a table.</div>
-                <button class="copy-btn" onclick="copyPrompt(this, &#39;Identify all action items mentioned across these documents. For each, list: the action, who is responsible, and any deadline mentioned. Format as a table.&#39;)">Copy</button>
+
+            <div class="prompt-card">
+                <div class="prompt-card-header">
+                    <span>For Archive Research</span>
+                </div>
+                <div class="prompt-card-body">
+                    <div class="prompt-context">Use with: College publications, newsletters</div>
+                    <div class="prompt-text">Find every reference to <em>[person / event / topic]</em> across these documents. For each, give the publication name, approximate date, and a brief summary of what was said.</div>
+                    <button class="copy-btn" onclick="copyPrompt(this, 'Find every reference to [person / event / topic] across these documents. For each, give the publication name, approximate date, and a brief summary of what was said.')">Copy</button>
+                </div>
             </div>
+
         </div>
 
-        <div class="prompt-card">
-            <div class="prompt-card-header">
-                <span>For Student Study Resources</span>
-            </div>
-            <div class="prompt-card-body">
-                <div class="prompt-context">Use with: Unit readings and notes</div>
-                <div class="prompt-text">Generate a glossary of the 15 most important terms from these materials. For each term, give a one-sentence definition in plain language suitable for a Year <em>[X]</em> student.</div>
-                <button class="copy-btn" onclick="copyPrompt(this, &#39;Generate a glossary of the 15 most important terms from these materials. For each term, give a one-sentence definition in plain language suitable for a Year [X] student.&#39;)">Copy</button>
-            </div>
-        </div>
+    </div><!-- end research panel -->
 
-        <div class="prompt-card">
-            <div class="prompt-card-header">
-                <span>For Reports &amp; Data</span>
-            </div>
-            <div class="prompt-card-body">
-                <div class="prompt-context">Use with: Annual reports, data summaries</div>
-                <div class="prompt-text">Across all these documents, identify the three most significant trends or changes over time. Explain each trend in two to three sentences and cite which document each finding comes from.</div>
-                <button class="copy-btn" onclick="copyPrompt(this, &#39;Across all these documents, identify the three most significant trends or changes over time. Explain each trend in two to three sentences and cite which document each finding comes from.&#39;)">Copy</button>
-            </div>
-        </div>
+</div>
+<div class="wizard-nav">
+    <button class="wizard-btn wizard-btn-prev" onclick="goToStep(1)">&larr; Understand</button>
+    <button class="wizard-btn wizard-btn-next" onclick="goToStep(3)">Go Deeper &rarr;</button>
+</div>
+</div><!-- end step 2 -->
 
-        <div class="prompt-card">
-            <div class="prompt-card-header">
-                <span>For Archive Research</span>
-            </div>
-            <div class="prompt-card-body">
-                <div class="prompt-context">Use with: College publications, newsletters</div>
-                <div class="prompt-text">Find every reference to <em>[person / event / topic]</em> across these documents. For each, give the publication name, approximate date, and a brief summary of what was said.</div>
-                <button class="copy-btn" onclick="copyPrompt(this, &#39;Find every reference to [person / event / topic] across these documents. For each, give the publication name, approximate date, and a brief summary of what was said.&#39;)">Copy</button>
-            </div>
-        </div>
+<!-- ════════════════════════════════════════════ -->
+<!-- STEP 3: GO DEEPER                           -->
+<!-- ════════════════════════════════════════════ -->
+<div class="wizard-step-content" data-step="3">
+<div class="main">
 
-    </div>
-
-    <!-- WHAT IT CAN'T DO -->
-    <div class="section-header">
+    <!-- What NotebookLM Can't Do -->
+    <div class="section-header" style="margin-top:1rem;">
         <div class="section-dot" style="background:var(--warm-rose)"></div>
         <h3>What NotebookLM Can't Do</h3>
     </div>
 
-    <p style="font-size:0.95rem; color:var(--text-light); max-width:700px; margin-bottom:1.5rem; line-height:1.7;">Understanding the limits is as important as knowing the capabilities. NotebookLM is a specialist tool — not a replacement for Gemini or Gems.</p>
+    <p style="font-size:1.05rem; color:var(--text-light); max-width:750px; margin-bottom:1.75rem; line-height:1.7;">Understanding the limits is as important as knowing the capabilities. NotebookLM is a specialist tool, not a replacement for Gemini or Gems.</p>
 
     <div class="limits-grid">
 
@@ -1224,13 +1478,13 @@
 
         <div class="limit-card">
             <h4>Remember between sessions</h4>
-            <p>Notebooks persist, but the conversation resets when you close and reopen. Your sources stay — your chat history does not carry context forward automatically.</p>
+            <p>Notebooks persist, but the conversation resets when you close and reopen. Your sources stay, but your chat history does not carry context forward automatically.</p>
             <div class="limit-instead"><strong>Instead:</strong> Keep key questions and outputs saved in a Note within the notebook.</div>
         </div>
 
         <div class="limit-card">
             <h4>Produce repeatable automated outputs</h4>
-            <p>If you want the same task done the same way every time — a rubric, a report comment, a formatted document — a Gem is a better fit than NotebookLM.</p>
+            <p>If you want the same task done the same way every time (a rubric, a report comment, a formatted document), a Gem is a better fit than NotebookLM.</p>
             <div class="limit-instead"><strong>Instead:</strong> Build a Gem for repeatable structured tasks. Use NotebookLM for research and retrieval.</div>
         </div>
 
@@ -1242,27 +1496,27 @@
 
         <div class="limit-card">
             <h4>Replace your professional judgement</h4>
-            <p>NotebookLM summarises and synthesises — it does not evaluate or recommend. Always verify important findings against the original source before acting on them.</p>
+            <p>NotebookLM summarises and synthesises; it does not evaluate or recommend. Always verify important findings against the original source before acting on them.</p>
             <div class="limit-instead"><strong>Instead:</strong> Use citations to check any significant claim directly in the source document.</div>
         </div>
 
     </div>
 
-    <!-- DATA NOTE -->
+    <!-- Data Note -->
     <div class="section-header">
         <div class="section-dot" style="background:var(--sandstone)"></div>
-        <h3>What to Upload — and What Not To</h3>
+        <h3>What to Upload (and What Not To)</h3>
     </div>
 
     <div class="data-note">
-        <div class="data-note-icon">🔒</div>
+        <div class="data-note-icon">&#128274;</div>
         <div>
-            <h4>Roseville College uses Google Workspace for Education — enterprise tier</h4>
+            <h4>Roseville College uses Google Workspace for Education, enterprise tier</h4>
             <p>This means your data is not used to train Google's AI models and is covered by Roseville's enterprise agreement. General school documents, curriculum materials, and professional resources are safe to upload.</p>
             <p>However, some categories of information should not be uploaded to any AI tool. Use common sense: if you would hesitate to email this document to a colleague outside the school, think carefully before uploading it.</p>
             <div class="data-do-dont">
                 <div class="data-do">
-                    <div class="data-do-label">✓ Safe to upload</div>
+                    <div class="data-do-label">&#10003; Safe to upload</div>
                     <ul>
                         <li>NESA syllabus and curriculum documents</li>
                         <li>School policies and handbooks</li>
@@ -1274,7 +1528,7 @@
                     </ul>
                 </div>
                 <div class="data-dont">
-                    <div class="data-dont-label">✗ Do not upload</div>
+                    <div class="data-dont-label">&#10007; Do not upload</div>
                     <ul>
                         <li>Documents containing individual student names and results</li>
                         <li>Case notes, counselling records, or medical information</li>
@@ -1288,21 +1542,68 @@
         </div>
     </div>
 
-</main>
+</div>
+<div class="wizard-nav">
+    <button class="wizard-btn wizard-btn-prev" onclick="goToStep(2)">&larr; Try It</button>
+    <div class="wizard-spacer"></div>
+</div>
+</div><!-- end step 3 -->
 
 <!-- FOOTER -->
 <footer class="footer">
-    <p><strong>NotebookLM Guide</strong> · Roseville College · Teaching with AI Staff Hub · 2025</p>
+    <p><strong>NotebookLM Guide</strong> &middot; Roseville College &middot; Teaching with AI Staff Hub &middot; 2025</p>
     <p style="margin-top:0.4rem;">Part of the Roseville College AI Tools suite. <a href="index.html" style="color:var(--sandstone);">Return to Hub &rarr;</a></p>
 </footer>
 
-<div class="toast" id="toast">✓ Copied to clipboard</div>
+<div class="toast" id="toast">&#10003; Copied to clipboard</div>
 
 <script>
+    /* ─── WIZARD NAVIGATION ─── */
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    function goToStep(step) {
+        if (step < 1 || step > totalSteps) return;
+
+        document.querySelectorAll('.wizard-step-content').forEach(s => s.classList.remove('active'));
+
+        const target = document.querySelector('.wizard-step-content[data-step="' + step + '"]');
+        if (target) target.classList.add('active');
+
+        document.querySelectorAll('.wizard-step-indicator').forEach((ind, i) => {
+            ind.classList.remove('active', 'completed');
+            if (i + 1 === step) {
+                ind.classList.add('active');
+            } else if (i + 1 < step) {
+                ind.classList.add('completed');
+            }
+        });
+
+        document.querySelectorAll('.wizard-connector').forEach((conn, i) => {
+            conn.classList.toggle('completed', i + 1 < step);
+        });
+
+        currentStep = step;
+
+        document.querySelector('.wizard-progress').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    /* ─── ROLE TABS (Step 2) ─── */
+    document.querySelectorAll('.role-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.role;
+            document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            document.querySelectorAll('.role-panel').forEach(p => p.classList.remove('active'));
+            document.querySelector('.role-panel[data-role="' + target + '"]').classList.add('active');
+        });
+    });
+
+    /* ─── COPY PROMPT ─── */
     function copyPrompt(btn, text) {
         navigator.clipboard.writeText(text).then(() => {
             const original = btn.innerHTML;
-            btn.innerHTML = '✓ Copied!';
+            btn.innerHTML = '\u2713 Copied!';
             btn.classList.add('copied');
             const toast = document.getElementById('toast');
             toast.classList.add('visible');
@@ -1318,11 +1619,10 @@
             ta.select();
             document.execCommand('copy');
             document.body.removeChild(ta);
-            btn.innerHTML = '✓ Copied!';
+            btn.innerHTML = '\u2713 Copied!';
             setTimeout(() => { btn.innerHTML = 'Copy'; }, 2000);
         });
     }
 </script>
-
 
 </body></html>
