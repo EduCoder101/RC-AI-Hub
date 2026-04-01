@@ -28,6 +28,8 @@
             --text-light: #6b5a62;
             --nb-teal: #2a7a6a;
             --nb-teal-light: #e0f2ee;
+            --report-gold: #6b5600;
+            --report-gold-light: #8a6d0b;
         }
 
         body {
@@ -205,213 +207,231 @@
             line-height: 1.7;
         }
 
-        /* ─── TOOL CARDS ─── */
+        /* ─── ACCORDION CARDS ─── */
         .tools-section {
-            max-width: 1800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 2.5rem 3rem 3.5rem;
         }
 
-        .tool-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+        .tool-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .tool-card {
+        .acc-card {
             background: var(--white);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(91,21,46,0.07);
-            transition: all 0.3s ease;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .acc-card:hover {
+            box-shadow: 0 8px 30px rgba(91,21,46,0.12);
+        }
+
+        .acc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 1.75rem 2rem;
+            cursor: pointer;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .acc-header-left {
             display: flex;
             flex-direction: column;
-            text-decoration: none;
-            color: inherit;
+            gap: 5px;
+            min-width: 0;
         }
 
-        .tool-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(91,21,46,0.14);
-        }
-
-        .tool-card-top {
-            padding: 2.75rem 2.5rem 2.25rem;
-            position: relative;
-        }
-
-        .tool-card.card-gemini .tool-card-top {
-            background: linear-gradient(135deg, #e8f0fa 0%, var(--heritage-light) 100%);
-        }
-        .tool-card.card-gems .tool-card-top {
-            background: linear-gradient(135deg, #f5e8ec 0%, #edd0d8 100%);
-        }
-        .tool-card.card-notebook .tool-card-top {
-            background: linear-gradient(135deg, #e0f2ee 0%, #c8e8e0 100%);
-        }
-
-        .tool-card-badge {
+        .acc-badge {
             display: inline-block;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            padding: 0.35rem 0.85rem;
+            padding: 0.3rem 0.75rem;
             border-radius: 20px;
-            margin-bottom: 1rem;
+            width: fit-content;
         }
 
-        .tool-card.card-gemini .tool-card-badge {
-            background: rgba(90,122,170,0.15);
-            color: var(--heritage-dark);
-        }
-        .tool-card.card-gems .tool-card-badge {
-            background: rgba(91,21,46,0.12);
-            color: var(--burgundy);
-        }
-        .tool-card.card-notebook .tool-card-badge {
-            background: rgba(42,122,106,0.12);
-            color: var(--nb-teal);
-        }
-
-        .tool-card-top h3 {
-            font-size: 1.5rem;
+        .acc-header h3 {
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 0.9rem;
             line-height: 1.2;
+            margin-top: 4px;
         }
 
-        .tool-card.card-gemini .tool-card-top h3 { color: #4a6a9a; }
-        .tool-card.card-gems .tool-card-top h3 { color: var(--burgundy); }
-        .tool-card.card-notebook .tool-card-top h3 { color: var(--nb-teal); }
-
-        .tool-card-top .card-hook {
-            font-size: 1.55rem;
+        .acc-hook {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--text);
             line-height: 1.35;
-            font-family: Georgia, 'Times New Roman', serif;
-            font-weight: 700;
+            margin-top: 2px;
         }
 
-        .tool-card-desc {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            padding: 1.75rem 2.5rem 0;
-        }
-
-        .tool-card-body {
-            padding: 1.5rem 2.5rem 2.5rem;
-            flex: 1;
+        .acc-chevron {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.35s ease;
         }
 
-        .tool-card-body .imagine-label {
-            font-size: 0.82rem;
+        .acc-chevron svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .acc-card.open .acc-chevron {
+            transform: rotate(180deg);
+        }
+
+        .acc-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .acc-body-inner {
+            padding: 0 2rem 2rem;
+        }
+
+        .acc-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.65;
+            margin-bottom: 1.25rem;
+        }
+
+        .acc-imagine {
+            font-size: 0.78rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             color: var(--mid-grey);
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
-        .scenario-list {
+        .acc-list {
             list-style: none;
-            margin-bottom: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        .scenario-list li {
-            font-size: 1.08rem;
+        .acc-list li {
+            font-size: 1rem;
             color: var(--text);
             line-height: 1.55;
-            padding-left: 1.6rem;
+            padding-left: 1.5rem;
             position: relative;
         }
 
-        .scenario-list li::before {
+        .acc-list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.55rem;
+            top: 0.5rem;
             width: 8px;
             height: 8px;
             border-radius: 50%;
         }
 
-        .tool-card.card-gemini .scenario-list li::before { background: var(--heritage); }
-        .tool-card.card-gems .scenario-list li::before { background: var(--burgundy-light); }
-        .tool-card.card-notebook .scenario-list li::before { background: var(--nb-teal); }
-
-        .tool-card-footer {
-            margin-top: auto;
+        .acc-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            padding-top: 1.5rem;
+            padding-top: 1.25rem;
             border-top: 1px solid #eee;
         }
 
-        .tool-card-footer .footer-note {
-            font-size: 0.95rem;
+        .acc-footer-note {
+            font-size: 0.9rem;
             color: var(--text-light);
             line-height: 1.5;
         }
 
-        .tool-card-footer .footer-note strong {
+        .acc-footer-note strong {
             color: var(--text);
         }
 
-        .tool-cta {
+        .acc-cta {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            text-decoration: none;
-            padding: 0.75rem 1.75rem;
+            padding: 0.65rem 1.5rem;
             border-radius: 10px;
-            transition: all 0.2s;
             white-space: nowrap;
             flex-shrink: 0;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.2s;
         }
 
-        .tool-card.card-gemini .tool-cta {
-            background: var(--heritage);
-            color: var(--white);
-        }
-        .tool-card.card-gemini .tool-cta:hover { background: #7090c0; }
+        /* ── Per-card colours ── */
+        .acc-card.card-gemini .acc-header { background: linear-gradient(135deg, #e8f0fa 0%, var(--heritage-light) 100%); }
+        .acc-card.card-gemini .acc-badge { background: rgba(90,122,170,0.15); color: var(--heritage-dark); }
+        .acc-card.card-gemini h3 { color: #4a6a9a; }
+        .acc-card.card-gemini .acc-chevron { background: rgba(90,122,170,0.12); }
+        .acc-card.card-gemini .acc-chevron svg { stroke: #4a6a9a; }
+        .acc-card.card-gemini .acc-list li::before { background: var(--heritage); }
+        .acc-card.card-gemini .acc-cta { background: var(--heritage); }
+        .acc-card.card-gemini .acc-cta:hover { background: #7090c0; }
 
-        .tool-card.card-gems .tool-cta {
-            background: var(--burgundy);
-            color: var(--white);
-        }
-        .tool-card.card-gems .tool-cta:hover { background: var(--burgundy-light); }
+        .acc-card.card-gems .acc-header { background: linear-gradient(135deg, #f5e8ec 0%, #edd0d8 100%); }
+        .acc-card.card-gems .acc-badge { background: rgba(91,21,46,0.12); color: var(--burgundy); }
+        .acc-card.card-gems h3 { color: var(--burgundy); }
+        .acc-card.card-gems .acc-chevron { background: rgba(91,21,46,0.1); }
+        .acc-card.card-gems .acc-chevron svg { stroke: var(--burgundy); }
+        .acc-card.card-gems .acc-list li::before { background: var(--burgundy-light); }
+        .acc-card.card-gems .acc-cta { background: var(--burgundy); }
+        .acc-card.card-gems .acc-cta:hover { background: var(--burgundy-light); }
 
-        .tool-card.card-notebook .tool-cta {
-            background: var(--nb-teal);
-            color: var(--white);
-        }
-        .tool-card.card-notebook .tool-cta:hover { background: #348a7a; }
+        .acc-card.card-notebook .acc-header { background: linear-gradient(135deg, #e0f2ee 0%, #c8e8e0 100%); }
+        .acc-card.card-notebook .acc-badge { background: rgba(42,122,106,0.12); color: var(--nb-teal); }
+        .acc-card.card-notebook h3 { color: var(--nb-teal); }
+        .acc-card.card-notebook .acc-chevron { background: rgba(42,122,106,0.1); }
+        .acc-card.card-notebook .acc-chevron svg { stroke: var(--nb-teal); }
+        .acc-card.card-notebook .acc-list li::before { background: var(--nb-teal); }
+        .acc-card.card-notebook .acc-cta { background: var(--nb-teal); }
+        .acc-card.card-notebook .acc-cta:hover { background: #348a7a; }
 
-        .tool-card.card-diff .tool-card-top {
-            background: linear-gradient(135deg, #f5e8ec 0%, #fdf3c4 100%);
-        }
-        .tool-card.card-diff .tool-card-badge {
-            background: rgba(125, 30, 63, 0.12);
-            color: #7d1e3f;
-        }
-        .tool-card.card-diff .tool-card-top h3 { color: #7d1e3f; }
-        .tool-card.card-diff .scenario-list li::before { background: #f4b942; }
-        .tool-card.card-diff .tool-cta {
-            background: #7d1e3f;
-            color: var(--white);
-        }
-        .tool-card.card-diff .tool-cta:hover { background: #a52a52; }
+        .acc-card.card-diff .acc-header { background: linear-gradient(135deg, #f5e8ec 0%, #fdf3c4 100%); }
+        .acc-card.card-diff .acc-badge { background: rgba(125,30,63,0.12); color: #7d1e3f; }
+        .acc-card.card-diff h3 { color: #7d1e3f; }
+        .acc-card.card-diff .acc-chevron { background: rgba(125,30,63,0.1); }
+        .acc-card.card-diff .acc-chevron svg { stroke: #7d1e3f; }
+        .acc-card.card-diff .acc-list li::before { background: #f4b942; }
+        .acc-card.card-diff .acc-cta { background: #7d1e3f; }
+        .acc-card.card-diff .acc-cta:hover { background: #a52a52; }
+
+        .acc-card.card-report .acc-header { background: linear-gradient(135deg, var(--sandstone-light) 0%, #faeeda 100%); }
+        .acc-card.card-report .acc-badge { background: rgba(138,109,11,0.12); color: var(--report-gold); }
+        .acc-card.card-report h3 { color: var(--report-gold); }
+        .acc-card.card-report .acc-chevron { background: rgba(138,109,11,0.1); }
+        .acc-card.card-report .acc-chevron svg { stroke: var(--report-gold); }
+        .acc-card.card-report .acc-list li::before { background: var(--sandstone); }
+        .acc-card.card-report .acc-cta { background: var(--report-gold); }
+        .acc-card.card-report .acc-cta:hover { background: var(--report-gold-light); }
 
         /* ─── FOOTER ─── */
         .footer {
@@ -433,21 +453,13 @@
             margin-bottom: 0.5rem;
         }
 
-        .footer-note {
+        .footer .footer-note {
             font-size: 0.9rem;
             line-height: 1.6;
             color: rgba(255,255,255,0.5);
         }
 
         /* ─── RESPONSIVE ─── */
-        @media (max-width: 1100px) {
-            .tool-cards {
-                grid-template-columns: 1fr;
-                max-width: 700px;
-                margin: 0 auto;
-            }
-        }
-
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
@@ -489,31 +501,27 @@
                 padding: 1.5rem 1.5rem 2.5rem;
             }
 
-            .tool-card-top {
-                padding: 2rem 1.5rem 1.5rem;
+            .acc-header {
+                padding: 1.25rem 1.25rem;
+                gap: 1rem;
             }
 
-            .tool-card-desc {
-                padding: 1.25rem 1.5rem 0;
+            .acc-header h3 {
+                font-size: 1.2rem;
             }
 
-            .tool-card-body {
-                padding: 1.25rem 1.5rem 1.75rem;
+            .acc-hook {
+                font-size: 1rem;
             }
 
-            .tool-card-top h3 {
-                font-size: 1.3rem;
+            .acc-body-inner {
+                padding: 0 1.25rem 1.5rem;
             }
 
-            .tool-card-top .card-hook {
-                font-size: 1.3rem;
-            }
-
-            .tool-card-footer {
+            .acc-footer {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
         }
 
         @media (max-width: 480px) {
@@ -534,8 +542,8 @@
                 font-size: 1.75rem;
             }
 
-            .tool-card-top .card-hook {
-                font-size: 1.2rem;
+            .acc-hook {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -566,6 +574,7 @@
                 </div>
                 <a href="notebooklm.html" class="nav-link">NotebookLM</a>
                 <a href="differentiation-manual/index.html" class="nav-link">Differentiation</a>
+                <a href="https://script.google.com/a/macros/roseville.nsw.edu.au/s/AKfycbx0FtGDi5xgb_qFUc9OgKw0dgArd8bmU_mHJjrH_VwHT-Yq2I3b1LBtqh3k-ikZ0Wo-SQ/exec" target="_blank" class="nav-link">Report Writer</a>
             </nav>
         </div>
     </header>
@@ -574,7 +583,7 @@
     <section class="hero">
         <div class="hero-inner">
             <h2>What could you create with AI in your corner?</h2>
-            <p class="hero-lead">Three free Google tools and a practical differentiation manual that help you think, create, and explore, so the ideas in your head can actually become something.</p>
+            <p class="hero-lead">Free Google tools, a differentiation manual, and a custom report writer that help you think, create, and explore, so the ideas in your head can actually become something.</p>
             <p class="hero-sub">No experience needed. Pick a card below and try it today.</p>
         </div>
     </section>
@@ -585,101 +594,149 @@
         <p>Each tool solves a different kind of problem. Read the questions below and pick the one that sounds most like you.</p>
     </div>
 
-    <!-- ─── TOOL CARDS ─── -->
+    <!-- ─── ACCORDION TOOL CARDS ─── -->
     <div class="tools-section">
-        <div class="tool-cards">
+        <div class="tool-accordion">
 
             <!-- Gemini -->
-            <a href="gemini.html" class="tool-card card-gemini">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">Start here, no setup needed</div>
-                    <h3>Gemini</h3>
-                    <div class="card-hook">What would you create if getting started was the easy part?</div>
+            <div class="acc-card card-gemini">
+                <div class="acc-header" onclick="toggleAccordion(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-badge">Start here, no setup needed</div>
+                        <h3>Gemini</h3>
+                        <div class="acc-hook">What would you create if getting started was the easy part?</div>
+                    </div>
+                    <div class="acc-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
                 </div>
-                <div class="tool-card-desc">Gemini is like texting a knowledgeable colleague who&rsquo;s always free. Describe what you need in plain English: an email, a lesson idea, a rewrite. It delivers in seconds.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>You need a parent email about camp. Describe the key points and get a polished draft in 30&nbsp;seconds</li>
-                        <li>Tomorrow&rsquo;s lesson needs discussion questions. Tell Gemini the topic and year level, done</li>
-                        <li>You have a half-formed idea for a unit. Use Gemini as a thinking partner: riff on approaches, test angles, and land on something that works</li>
-                        <li>A reading task needs adjusting for Year&nbsp;7. Paste it in, explain the learning goal and where students get stuck, and ask for a scaffolded version</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>No setup.</strong> No training. Just start typing.</div>
-                        <span class="tool-cta">Get started &rarr;</span>
+                <div class="acc-body">
+                    <div class="acc-body-inner">
+                        <p class="acc-desc">Gemini is like texting a knowledgeable colleague who&rsquo;s always free. Describe what you need in plain English: an email, a lesson idea, a rewrite. It delivers in seconds.</p>
+                        <div class="acc-imagine">Imagine&hellip;</div>
+                        <ul class="acc-list">
+                            <li>You need a parent email about camp. Describe the key points and get a polished draft in 30&nbsp;seconds</li>
+                            <li>Tomorrow&rsquo;s lesson needs discussion questions. Tell Gemini the topic and year level, done</li>
+                            <li>You have a half-formed idea for a unit. Use Gemini as a thinking partner: riff on approaches, test angles, and land on something that works</li>
+                            <li>A reading task needs adjusting for Year&nbsp;7. Paste it in, explain the learning goal and where students get stuck, and ask for a scaffolded version</li>
+                        </ul>
+                        <div class="acc-footer">
+                            <div class="acc-footer-note"><strong>No setup.</strong> No training. Just start typing.</div>
+                            <a href="gemini.html" class="acc-cta">Get started &rarr;</a>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
 
             <!-- Gems -->
-            <a href="gems/ideas-bank.html" class="tool-card card-gems">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">Save time every week</div>
-                    <h3>Gemini Gems</h3>
-                    <div class="card-hook">What if your most tedious task took one click?</div>
+            <div class="acc-card card-gems">
+                <div class="acc-header" onclick="toggleAccordion(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-badge">Save time every week</div>
+                        <h3>Gemini Gems</h3>
+                        <div class="acc-hook">What if your most tedious task took one click?</div>
+                    </div>
+                    <div class="acc-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
                 </div>
-                <div class="tool-card-desc">A Gem is a custom AI tool you build once, then reuse forever. Set your preferred tone, format, and style. It follows your rules every time.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>A report comment writer: paste dot points, get polished comments in your voice</li>
-                        <li>A quiz generator that matches your faculty&rsquo;s exact format every time</li>
-                        <li>A feedback tool: enter grades, get personalised formative comments</li>
-                        <li>A translator that turns policy-speak into clear, parent-friendly language</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>Some setup.</strong> Then one click every time after.</div>
-                        <span class="tool-cta">Browse ideas &rarr;</span>
+                <div class="acc-body">
+                    <div class="acc-body-inner">
+                        <p class="acc-desc">A Gem is a custom AI tool you build once, then reuse forever. Set your preferred tone, format, and style. It follows your rules every time.</p>
+                        <div class="acc-imagine">Imagine&hellip;</div>
+                        <ul class="acc-list">
+                            <li>A report comment writer: paste dot points, get polished comments in your voice</li>
+                            <li>A quiz generator that matches your faculty&rsquo;s exact format every time</li>
+                            <li>A feedback tool: enter grades, get personalised formative comments</li>
+                            <li>A translator that turns policy-speak into clear, parent-friendly language</li>
+                        </ul>
+                        <div class="acc-footer">
+                            <div class="acc-footer-note"><strong>Some setup.</strong> Then one click every time after.</div>
+                            <a href="gems/ideas-bank.html" class="acc-cta">Browse ideas &rarr;</a>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
 
             <!-- NotebookLM -->
-            <a href="notebooklm.html" class="tool-card card-notebook">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">Work with your own documents</div>
-                    <h3>NotebookLM</h3>
-                    <div class="card-hook">What if you could ask a 40-page document one question?</div>
+            <div class="acc-card card-notebook">
+                <div class="acc-header" onclick="toggleAccordion(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-badge">Work with your own documents</div>
+                        <h3>NotebookLM</h3>
+                        <div class="acc-hook">What if you could ask a 40-page document one question?</div>
+                    </div>
+                    <div class="acc-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
                 </div>
-                <div class="tool-card-desc">Upload your own documents: syllabi, policies, research articles. Then ask questions and get answers with direct citations back to the source.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>Upload a syllabus and ask &ldquo;What are the key assessment requirements for Unit&nbsp;3?&rdquo;</li>
-                        <li>Drop in five research articles and get a summary of the main findings in minutes</li>
-                        <li>Load school policies and ask specific questions instead of reading every page</li>
-                        <li>Upload your course materials and generate a student study guide automatically</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>Upload sources first.</strong> Then just ask questions.</div>
-                        <span class="tool-cta">Open guide &rarr;</span>
+                <div class="acc-body">
+                    <div class="acc-body-inner">
+                        <p class="acc-desc">Upload your own documents: syllabi, policies, research articles. Then ask questions and get answers with direct citations back to the source.</p>
+                        <div class="acc-imagine">Imagine&hellip;</div>
+                        <ul class="acc-list">
+                            <li>Upload a syllabus and ask &ldquo;What are the key assessment requirements for Unit&nbsp;3?&rdquo;</li>
+                            <li>Drop in five research articles and get a summary of the main findings in minutes</li>
+                            <li>Load school policies and ask specific questions instead of reading every page</li>
+                            <li>Upload your course materials and generate a student study guide automatically</li>
+                        </ul>
+                        <div class="acc-footer">
+                            <div class="acc-footer-note"><strong>Upload sources first.</strong> Then just ask questions.</div>
+                            <a href="notebooklm.html" class="acc-cta">Open guide &rarr;</a>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
 
             <!-- Differentiation Manual -->
-            <a href="differentiation-manual/index.html" class="tool-card card-diff">
-                <div class="tool-card-top">
-                    <div class="tool-card-badge">A practical framework for every teacher</div>
-                    <h3>Differentiation Manual</h3>
-                    <div class="card-hook">What if three versions of a resource took two minutes, not two hours?</div>
+            <div class="acc-card card-diff">
+                <div class="acc-header" onclick="toggleAccordion(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-badge">A practical framework for every teacher</div>
+                        <h3>Differentiation Manual</h3>
+                        <div class="acc-hook">What if three versions of a resource took two minutes, not two hours?</div>
+                    </div>
+                    <div class="acc-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
                 </div>
-                <div class="tool-card-desc">A step-by-step manual with 79 strategies and 146 AI prompts. Describe your class, paste your resource, and get a ready-to-use differentiation prompt built from research-backed strategies.</div>
-                <div class="tool-card-body">
-                    <div class="imagine-label">Imagine&hellip;</div>
-                    <ul class="scenario-list">
-                        <li>You have a mixed-ability Year&nbsp;9 class and a text that half of them can&rsquo;t access. Use the Prompt Builder to generate foundations, core, and extension versions in minutes</li>
-                        <li>A student has adjustment codes you&rsquo;ve never worked with before. Look them up and get matched strategies with AI prompts ready to go</li>
-                        <li>You&rsquo;re planning a new unit and want to build in differentiation from the start. Walk through the 7-step framework with AI doing the heavy lifting</li>
-                        <li>You want to push your top students beyond &ldquo;more work.&rdquo; Explore extension strategies that deepen thinking rather than add volume</li>
-                    </ul>
-                    <div class="tool-card-footer">
-                        <div class="footer-note"><strong>79 strategies.</strong> AI prompts for each. Start with the Prompt Builder.</div>
-                        <span class="tool-cta">Open manual &rarr;</span>
+                <div class="acc-body">
+                    <div class="acc-body-inner">
+                        <p class="acc-desc">A step-by-step manual with 79 strategies and 146 AI prompts. Describe your class, paste your resource, and get a ready-to-use differentiation prompt built from research-backed strategies.</p>
+                        <div class="acc-imagine">Imagine&hellip;</div>
+                        <ul class="acc-list">
+                            <li>You have a mixed-ability Year&nbsp;9 class and a text that half of them can&rsquo;t access. Use the Prompt Builder to generate foundations, core, and extension versions in minutes</li>
+                            <li>A student has adjustment codes you&rsquo;ve never worked with before. Look them up and get matched strategies with AI prompts ready to go</li>
+                            <li>You&rsquo;re planning a new unit and want to build in differentiation from the start. Walk through the 7-step framework with AI doing the heavy lifting</li>
+                            <li>You want to push your top students beyond &ldquo;more work.&rdquo; Explore extension strategies that deepen thinking rather than add volume</li>
+                        </ul>
+                        <div class="acc-footer">
+                            <div class="acc-footer-note"><strong>79 strategies.</strong> AI prompts for each. Start with the Prompt Builder.</div>
+                            <a href="differentiation-manual/index.html" class="acc-cta">Open manual &rarr;</a>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
+
+            <!-- Report Writer -->
+            <div class="acc-card card-report">
+                <div class="acc-header" onclick="toggleAccordion(this)">
+                    <div class="acc-header-left">
+                        <div class="acc-badge">Built for report season</div>
+                        <h3>Report Writer</h3>
+                        <div class="acc-hook">What if writing reports took minutes, not hours?</div>
+                    </div>
+                    <div class="acc-chevron"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+                </div>
+                <div class="acc-body">
+                    <div class="acc-body-inner">
+                        <p class="acc-desc">Paste your dot points about a student and get a polished report comment written in your voice. The tool learns your writing style from previous reports and follows every Roseville College report writing rule automatically.</p>
+                        <div class="acc-imagine">Imagine&hellip;</div>
+                        <ul class="acc-list">
+                            <li>You have dot points about a student&rsquo;s strengths and areas for growth. Paste them in and get a polished comment that sounds like you wrote it</li>
+                            <li>You have a draft that needs tightening. Drop it in and the tool corrects split infinitives, contractions, and spelling while preserving your voice</li>
+                            <li>You are not sure your comment meets the guidelines. Run a one-click compliance check against every Roseville College rule</li>
+                            <li>You write reports for multiple year groups. The tool maintains a separate style profile for each one</li>
+                        </ul>
+                        <div class="acc-footer">
+                            <div class="acc-footer-note"><strong>First-time setup takes five minutes.</strong> Upload a handful of previous reports and the tool learns your style. After that, just paste and go.</div>
+                            <a href="https://script.google.com/a/macros/roseville.nsw.edu.au/s/AKfycbx0FtGDi5xgb_qFUc9OgKw0dgArd8bmU_mHJjrH_VwHT-Yq2I3b1LBtqh3k-ikZ0Wo-SQ/exec" target="_blank" class="acc-cta">Open Report Writer &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -691,6 +748,25 @@
             <p class="footer-note">This hub is a living resource. Tools and guides will be updated as our practice develops.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleAccordion(header) {
+            var card = header.parentElement;
+            var body = card.querySelector('.acc-body');
+            var isOpen = card.classList.contains('open');
+
+            var allCards = document.querySelectorAll('.acc-card.open');
+            for (var i = 0; i < allCards.length; i++) {
+                allCards[i].classList.remove('open');
+                allCards[i].querySelector('.acc-body').style.maxHeight = '0';
+            }
+
+            if (!isOpen) {
+                card.classList.add('open');
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
+        }
+    </script>
 
 </body>
 </html>
